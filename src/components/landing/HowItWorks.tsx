@@ -94,7 +94,7 @@ const HowItWorks = () => {
                 {/* Step Number Badge */}
                 <div className="relative inline-flex items-center justify-center mb-6">
                   <div className={`absolute inset-0 bg-gradient-to-br ${step.gradient} rounded-full blur-xl opacity-30`} />
-                  <div className="relative w-14 h-14 rounded-full bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/[0.1] flex items-center justify-center">
+                  <div className="relative w-14 h-14 rounded-full bg-muted border border-border flex items-center justify-center">
                     <span className="text-lg font-bold text-foreground">{step.step}</span>
                   </div>
                 </div>
@@ -121,7 +121,7 @@ const HowItWorks = () => {
                 {/* Arrow for non-last items */}
                 {index < steps.length - 1 && (
                   <div className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 z-10">
-                    <div className="w-8 h-8 rounded-full bg-card border border-white/10 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-card border border-border flex items-center justify-center shadow-md">
                       <ArrowRight className="w-4 h-4 text-muted-foreground" />
                     </div>
                   </div>
@@ -139,7 +139,7 @@ const HowItWorks = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-16 text-center"
         >
-          <div className="inline-flex items-center gap-6 px-8 py-5 rounded-3xl bg-gradient-to-r from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm">
+          <div className="inline-flex items-center gap-6 px-8 py-5 rounded-3xl bg-card border border-border backdrop-blur-sm shadow-lg">
             <div className="flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-primary" />
               <span className="text-muted-foreground font-medium">Tempo totale:</span>
