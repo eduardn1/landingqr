@@ -1,3 +1,4 @@
+import { LeadFormProvider } from "@/hooks/useLeadForm";
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
 import Stats from "@/components/landing/Stats";
@@ -12,19 +13,21 @@ import Footer from "@/components/landing/Footer";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <Navbar />
-      <Hero />
-      <Stats />
-      <ProblemSolution />
-      <Features />
-      <HowItWorks />
-      <Pricing />
-      <Testimonials />
-      <FAQ />
-      <FinalCTA />
-      <Footer />
-    </main>
+    <LeadFormProvider>
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <Hero />
+        <Stats />
+        <ProblemSolution />
+        <Features />
+        <HowItWorks />
+        <Pricing />
+        <Testimonials />
+        <FAQ />
+        <FinalCTA />
+        <Footer />
+      </div>
+    </LeadFormProvider>
   );
 };
 

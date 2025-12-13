@@ -1,193 +1,182 @@
-import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { Check, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLeadForm } from "@/hooks/useLeadForm";
 
 const plans = [
   {
     name: "Gratis",
-    price: "€0",
-    period: "Per sempre",
-    description: "Perfetto per iniziare",
+    price: "0",
+    description: "Per provare senza impegno",
     features: [
-      "1 menu, 20 piatti",
-      "QR Code base",
-      "Multi-lingua",
-      "Dark/Light mode",
+      "Menu QR base",
+      "Fino a 20 piatti",
+      "1 lingua",
+      "Supporto email",
     ],
-    limitations: ["Branding MenuLink"],
     cta: "Inizia gratis",
-    popular: false,
+    featured: false,
   },
   {
     name: "Starter",
-    price: "€29",
-    period: "al mese",
-    description: "Per ristoranti che vogliono crescere",
+    price: "29",
+    description: "Per piccoli ristoranti",
     features: [
-      "3 menu, 100 piatti",
-      "Prenotazioni incluse",
-      "Analytics base",
-      "Nessun branding",
-      "Supporto email",
+      "Menu QR illimitato",
+      "Piatti illimitati",
+      "3 lingue",
+      "Prenotazioni online",
+      "Supporto prioritario",
     ],
-    limitations: [],
-    cta: "Prova gratis 14 giorni",
-    popular: true,
+    cta: "Prova 14 giorni gratis",
+    featured: false,
   },
   {
     name: "Pro",
-    price: "€79",
-    period: "al mese",
-    description: "Funzionalità complete",
+    price: "59",
+    description: "La scelta più popolare",
     features: [
-      "Menu illimitati",
-      "Takeaway e delivery",
-      "Loyalty e rewards",
-      "WhatsApp notifications",
+      "Tutto in Starter",
+      "Ordini asporto & delivery",
       "Analytics avanzati",
-      "Supporto prioritario",
+      "Multi-sede (fino a 3)",
+      "Integrazioni",
+      "Supporto WhatsApp",
     ],
-    limitations: [],
-    cta: "Prova gratis 14 giorni",
-    popular: false,
+    cta: "Prova 14 giorni gratis",
+    featured: true,
   },
   {
     name: "Enterprise",
     price: "Custom",
-    period: "",
-    description: "Per catene e agenzie",
+    description: "Per catene e franchising",
     features: [
-      "White-label completo",
-      "Multi-location",
-      "API access",
-      "Account manager",
+      "Tutto in Pro",
+      "Sedi illimitate",
+      "API personalizzate",
+      "Account manager dedicato",
       "SLA garantito",
-      "Personalizzazioni",
+      "Formazione on-site",
     ],
-    limitations: [],
     cta: "Contattaci",
-    popular: false,
+    featured: false,
   },
 ];
 
 const Pricing = () => {
+  const { openLeadForm } = useLeadForm();
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
+
   return (
-    <section id="pricing" className="section-padding relative overflow-hidden">
+    <section ref={containerRef} id="pricing" className="section-padding relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.02] to-background" />
+
       <div className="container relative z-10">
-        {/* Heading */}
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="text-center max-w-3xl mx-auto mb-20"
+          className="text-center mb-16"
         >
           <div className="badge-primary mb-6">
-            Prezzi trasparenti
+            <span>Prezzi</span>
           </div>
-
-          <h2 className="text-display-sm md:text-display-md font-bold leading-tight mb-6">
-            Scegli il tuo piano
+          <h2 className="text-display-sm md:text-display-md font-bold mb-6">
+            <span className="text-foreground">Semplice e </span>
+            <span className="gradient-text">trasparente</span>
           </h2>
-
-          <p className="text-body-lg text-muted-foreground">
-            Prezzi chiari, nessun costo nascosto. Cancella quando vuoi.
+          <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+            Nessun costo nascosto. Nessuna commissione sugli ordini. 
+            Paga solo quello che usi.
           </p>
         </motion.div>
 
-        {/* Pricing Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        {/* Pricing Cards */}
+        <motion.div 
+          style={{ y }}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className={`relative ${plan.popular ? "lg:-mt-4 lg:mb-4" : ""}`}
+              className={plan.featured ? "pricing-card-featured" : "pricing-card"}
             >
-              {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary text-primary-foreground text-xs font-medium z-10">
-                  Più popolare
+              {plan.featured && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <div className="badge-primary">
+                    <Star className="w-3 h-3" />
+                    <span>Più popolare</span>
+                  </div>
                 </div>
               )}
 
-              <div
-                className={`h-full ${
-                  plan.popular ? "pricing-card-featured" : "pricing-card"
+              <div className="mb-6">
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  {plan.name}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {plan.description}
+                </p>
+              </div>
+
+              <div className="mb-6">
+                {plan.price === "Custom" ? (
+                  <span className="text-3xl font-bold text-foreground">Su misura</span>
+                ) : (
+                  <>
+                    <span className="text-4xl font-bold text-foreground">€{plan.price}</span>
+                    <span className="text-muted-foreground">/mese</span>
+                  </>
+                )}
+              </div>
+
+              <ul className="space-y-3 mb-8 flex-grow">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3 text-sm">
+                    <Check className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-muted-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <Button
+                onClick={() => openLeadForm(`pricing-${plan.name.toLowerCase()}`)}
+                className={`w-full py-6 ${
+                  plan.featured
+                    ? "gradient-button text-primary-foreground"
+                    : "bg-muted hover:bg-muted/80 text-foreground"
                 }`}
               >
-                <div className="space-y-6">
-                  {/* Plan Header */}
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">{plan.name}</h3>
-
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-bold">{plan.price}</span>
-                      {plan.period && (
-                        <span className="text-muted-foreground text-sm">
-                          {plan.period}
-                        </span>
-                      )}
-                    </div>
-
-                    <p className="text-sm text-muted-foreground">
-                      {plan.description}
-                    </p>
-                  </div>
-
-                  {/* Features */}
-                  <div className="space-y-3">
-                    {plan.features.map((feature) => (
-                      <div key={feature} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-foreground/80">
-                          {feature}
-                        </span>
-                      </div>
-                    ))}
-                    {plan.limitations.map((limitation) => (
-                      <div
-                        key={limitation}
-                        className="flex items-start gap-3 opacity-50"
-                      >
-                        <Check className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-muted-foreground">
-                          {limitation}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* CTA */}
-                  <Button
-                    className={`w-full ${
-                      plan.popular
-                        ? "gradient-button text-primary-foreground"
-                        : "bg-white/5 border border-white/10 hover:bg-white/10"
-                    }`}
-                  >
-                    {plan.cta}
-                  </Button>
-                </div>
-              </div>
+                {plan.cta}
+              </Button>
             </motion.div>
           ))}
-        </div>
-
-        {/* Money Back Guarantee */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.4 }}
-          className="mt-12 text-center"
-        >
-          <p className="text-muted-foreground text-sm">
-            Garanzia soddisfatti o rimborsati 30 giorni •{" "}
-            <span className="text-foreground">Nessuna carta richiesta per la prova</span>
-          </p>
         </motion.div>
+
+        {/* Bottom Note */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center text-sm text-muted-foreground mt-12"
+        >
+          Tutti i piani includono 14 giorni di prova gratuita. Nessuna carta di credito richiesta.
+        </motion.p>
       </div>
     </section>
   );

@@ -1,200 +1,167 @@
-import { motion } from "framer-motion";
-import { X, Check, ArrowRight, Zap, Globe, TrendingUp, Smartphone } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { X, Check, TrendingUp, Users, Clock } from "lucide-react";
+import dashboardPreview from "@/assets/dashboard-preview.png";
 
-const painPoints = [
-  "Stampa menu: €200-500 ogni mese",
-  "Modifiche richiedono giorni",
-  "Turisti non capiscono (perdi vendite)",
-  "Zero dati sui tuoi clienti",
+const problems = [
+  "Menu cartacei costosi da ristampare",
+  "Prenotazioni telefoniche continue",
+  "Ordini persi o sbagliati",
+  "Nessun dato sui clienti",
+  "Costi di commissione delivery elevati",
 ];
 
-const benefits = [
-  {
-    icon: Zap,
-    text: "Aggiornamenti istantanei da smartphone",
-    stat: "5 secondi",
-  },
-  {
-    icon: Globe,
-    text: "5 lingue incluse (IT, EN, DE, ES, FR)",
-    stat: "Più turisti",
-  },
-  {
-    icon: TrendingUp,
-    text: "Analytics completi sui tuoi clienti",
-    stat: "+47% ordini",
-  },
-  {
-    icon: Smartphone,
-    text: "Clienti ordinano da tavolo, da casa, ovunque",
-    stat: "24/7 aperto",
-  },
+const solutions = [
+  "Aggiornamenti illimitati in tempo reale",
+  "Prenotazioni automatiche 24/7",
+  "Ordini digitali senza errori",
+  "Analytics dettagliati sui clienti",
+  "Zero commissioni sugli ordini",
 ];
 
 const ProblemSolution = () => {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const leftX = useTransform(scrollYProgress, [0, 0.5], [-50, 0]);
+  const rightX = useTransform(scrollYProgress, [0, 0.5], [50, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.3], [0.9, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+
   return (
-    <section className="section-padding">
-      <div className="container space-y-32">
-        {/* Problem Section */}
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+    <section ref={containerRef} className="section-padding relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-destructive/[0.02] to-background" />
+      
+      <div className="container relative z-10">
+        {/* Header */}
+        <motion.div
+          style={{ scale, opacity }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-display-sm md:text-display-md font-bold mb-6">
+            <span className="text-foreground">Dì addio ai</span>{" "}
+            <span className="text-destructive">vecchi problemi</span>
+          </h2>
+          <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+            I ristoratori italiani perdono tempo e soldi con metodi obsoleti. 
+            Noi cambiamo le regole del gioco.
+          </p>
+        </motion.div>
+
+        {/* Problem / Solution Grid */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Problems */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            style={{ x: leftX }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="order-2 lg:order-1"
           >
-            {/* Problem Image Placeholder */}
-            <div className="aspect-[4/3] rounded-3xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-center">
-              <div className="text-center p-8">
-                <div className="w-20 h-20 rounded-2xl bg-destructive/10 flex items-center justify-center mx-auto mb-4">
-                  <X className="w-10 h-10 text-destructive/50" />
-                </div>
-                <p className="text-muted-foreground">Menu cartacei obsoleti</p>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="order-1 lg:order-2 space-y-8"
-          >
-            <div className="badge-destructive">
-              Il problema
+            <div className="badge-destructive mb-6">
+              <X className="w-3 h-3" />
+              <span>Prima</span>
             </div>
 
-            <h2 className="text-display-sm md:text-display-md font-bold leading-tight">
-              I menu cartacei
-              <br />
-              <span className="text-muted-foreground">ti stanno costando soldi</span>
-            </h2>
-
-            <p className="text-body-lg text-muted-foreground leading-relaxed">
-              Ogni ristampa costa. Ogni errore costa. Ogni cliente che non
-              capisce il menu è un'opportunità persa.
-            </p>
-
-            <div className="space-y-3 pt-2">
-              {painPoints.map((pain, i) => (
+            <div className="space-y-4">
+              {problems.map((problem, index) => (
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: i * 0.1 }}
-                  className="pain-card"
-                >
-                  <X className="w-5 h-5 text-destructive flex-shrink-0" />
-                  <span className="text-foreground/80">{pain}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Solution Section */}
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="space-y-8"
-          >
-            <div className="badge-success">
-              La soluzione
-            </div>
-
-            <h2 className="text-display-sm md:text-display-md font-bold leading-tight">
-              Menu digitale che
-              <br />
-              <span className="text-muted-foreground">aumenta le vendite</span>
-            </h2>
-
-            <p className="text-body-lg text-muted-foreground leading-relaxed">
-              Aggiorna in 5 secondi. 5 lingue automatiche. Analytics in tempo
-              reale. E costa{" "}
-              <span className="text-success font-medium">meno di una pizza</span>{" "}
-              al mese.
-            </p>
-
-            <div className="space-y-4 pt-2">
-              {benefits.map((benefit, i) => (
-                <motion.div
-                  key={i}
+                  key={problem}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: i * 0.1 }}
+                  className="pain-card group"
+                >
+                  <div className="w-8 h-8 rounded-full bg-destructive/20 flex items-center justify-center flex-shrink-0 group-hover:bg-destructive/30 transition-colors">
+                    <X className="w-4 h-4 text-destructive" />
+                  </div>
+                  <span className="text-foreground">{problem}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Solutions */}
+          <motion.div
+            style={{ x: rightX }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="badge-success mb-6">
+              <Check className="w-3 h-3" />
+              <span>Con Flavour</span>
+            </div>
+
+            <div className="space-y-4">
+              {solutions.map((solution, index) => (
+                <motion.div
+                  key={solution}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true }}
                   className="benefit-card group"
                 >
-                  <div className="icon-box-lg bg-primary/10 flex-shrink-0">
-                    <benefit.icon className="w-6 h-6 text-primary" />
+                  <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center flex-shrink-0 group-hover:bg-success/30 transition-colors">
+                    <Check className="w-4 h-4 text-success" />
                   </div>
-                  <div className="flex-1">
-                    <div className="text-foreground/90 font-medium mb-1">
-                      {benefit.text}
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      {benefit.stat}
-                    </div>
+                  <span className="text-foreground">{solution}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Dashboard Preview */}
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mt-20 relative"
+        >
+          <div className="relative rounded-3xl overflow-hidden border border-border shadow-2xl shadow-primary/5">
+            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent z-10 pointer-events-none" />
+            <img 
+              src={dashboardPreview} 
+              alt="Dashboard Flavour" 
+              className="w-full h-auto"
+            />
+            
+            {/* Floating Stats */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-4">
+              {[
+                { icon: TrendingUp, label: "Ordini", value: "+43%" },
+                { icon: Users, label: "Clienti", value: "+127" },
+                { icon: Clock, label: "Tempo risparmiato", value: "2h/giorno" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-card/90 backdrop-blur-xl border border-border rounded-2xl px-4 py-3 flex items-center gap-3"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
+                    <stat.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">{stat.label}</p>
+                    <p className="text-lg font-bold text-foreground">{stat.value}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
-
-            <Button
-              size="lg"
-              className="group gradient-button text-primary-foreground mt-4"
-            >
-              Provalo gratis 14 giorni
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="relative"
-          >
-            {/* Solution Image/Dashboard Preview */}
-            <div className="aspect-[4/3] rounded-3xl bg-white/[0.02] border border-white/[0.06] overflow-hidden">
-              <img
-                src="https://demo2.studiojem.it/og-image.png"
-                alt="Dashboard MenuLink"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop";
-                }}
-              />
-            </div>
-
-            {/* Floating Stats Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              className="absolute -bottom-6 -right-6 p-5 rounded-2xl bg-background/90 backdrop-blur-sm border border-white/10 hidden md:block"
-            >
-              <div className="flex items-center gap-4">
-                <div className="icon-box-md bg-success/10">
-                  <TrendingUp className="w-5 h-5 text-success" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-success">+47%</div>
-                  <div className="text-sm text-muted-foreground">Ordini online</div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
