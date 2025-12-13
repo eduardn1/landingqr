@@ -284,7 +284,7 @@
   }
 
   .bento-card:hover {
-    @apply border-border-medium;
+    border-color: hsl(var(--border-medium));
     transform: translateY(-4px);
     box-shadow: 0 25px 50px -12px hsl(var(--foreground) / 0.1);
   }
@@ -305,7 +305,7 @@
   }
 
   .pricing-card:hover {
-    @apply border-border-medium;
+    border-color: hsl(var(--border-medium));
     transform: translateY(-4px);
   }
 
@@ -359,7 +359,8 @@
   }
 
   .logo-card:hover {
-    @apply bg-muted border-border-medium;
+    @apply bg-muted;
+    border-color: hsl(var(--border-medium));
     transform: scale(1.02);
   }
 
@@ -371,7 +372,7 @@
   }
 
   .testimonial-card:hover {
-    @apply border-border-medium;
+    border-color: hsl(var(--border-medium));
     transform: translateY(-2px);
   }
 
