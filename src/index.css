@@ -203,7 +203,7 @@
 
   /* Benefit Card */
   .benefit-card {
-    @apply group flex items-start gap-4 p-5 rounded-xl glass-card border border-success/20 transition-all cursor-pointer;
+    @apply flex items-start gap-4 p-5 rounded-xl glass-card border border-success/20 transition-all cursor-pointer;
   }
 
   .benefit-card:hover {
