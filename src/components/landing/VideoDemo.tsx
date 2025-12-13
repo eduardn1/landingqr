@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { 
   Play, 
   Pause,
@@ -271,16 +272,12 @@ const VideoDemo = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <a
-            href="https://demo2.studiojem.it"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link to="/demo">
             <Button className="gradient-button rounded-full px-8 py-6 text-base">
               <Play className="w-5 h-5 mr-2" />
               Prova la demo interattiva
             </Button>
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
