@@ -1,7 +1,8 @@
 import { useState, createContext, useContext, ReactNode } from "react";
-import LeadForm from "@/components/landing/LeadForm";
 
 interface LeadFormContextType {
+  isOpen: boolean;
+  source: string;
   openLeadForm: (source?: string) => void;
   closeLeadForm: () => void;
 }
@@ -22,9 +23,8 @@ export const LeadFormProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <LeadFormContext.Provider value={{ openLeadForm, closeLeadForm }}>
+    <LeadFormContext.Provider value={{ isOpen, source, openLeadForm, closeLeadForm }}>
       {children}
-      <LeadForm isOpen={isOpen} onClose={closeLeadForm} source={source} />
     </LeadFormContext.Provider>
   );
 };

@@ -15,6 +15,7 @@ const plansData = {
     description: "Perfetto per piccoli ristoranti che vogliono iniziare a digitalizzarsi",
     tagline: "Inizia la tua trasformazione digitale",
     color: "primary",
+    featured: false,
     features: [
       { name: "Menu QR illimitato", included: true, description: "Genera tutti i QR code di cui hai bisogno" },
       { name: "Piatti illimitati", included: true, description: "Nessun limite al numero di piatti nel menu" },
@@ -68,6 +69,7 @@ const plansData = {
     description: "Soluzione su misura per catene e franchising con esigenze specifiche",
     tagline: "Potenza e flessibilità senza limiti",
     color: "accent",
+    featured: false,
     features: [
       { name: "Tutto in Pro", included: true, description: "Tutte le funzionalità del piano Pro" },
       { name: "Sedi illimitate", included: true, description: "Gestisci tutte le tue sedi da un'unica piattaforma" },

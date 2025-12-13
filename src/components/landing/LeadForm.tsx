@@ -7,14 +7,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { useLeadForm } from "@/hooks/useLeadForm";
 
-interface LeadFormProps {
-  isOpen: boolean;
-  onClose: () => void;
-  source?: string;
-}
-
-const LeadForm = ({ isOpen, onClose, source = "website" }: LeadFormProps) => {
+const LeadForm = () => {
+  const { isOpen, closeLeadForm, source } = useLeadForm();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
@@ -41,7 +37,7 @@ const LeadForm = ({ isOpen, onClose, source = "website" }: LeadFormProps) => {
       toast.success("Richiesta inviata con successo!");
       
       setTimeout(() => {
-        onClose();
+        closeLeadForm();
         setIsSuccess(false);
         setFormData({
           name: "",
@@ -77,8 +73,8 @@ const LeadForm = ({ isOpen, onClose, source = "website" }: LeadFormProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+            onClick={closeLeadForm}
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50"
           />
 
           {/* Modal */}
@@ -101,7 +97,7 @@ const LeadForm = ({ isOpen, onClose, source = "website" }: LeadFormProps) => {
                   </p>
                 </div>
                 <button
-                  onClick={onClose}
+                  onClick={closeLeadForm}
                   className="p-2 rounded-full hover:bg-muted transition-colors"
                 >
                   <X className="w-5 h-5 text-muted-foreground" />
@@ -196,7 +192,7 @@ const LeadForm = ({ isOpen, onClose, source = "website" }: LeadFormProps) => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full gradient-button text-primary-foreground py-6 text-base"
+                    className="w-full gradient-button py-6 text-base"
                   >
                     {isSubmitting ? (
                       <>

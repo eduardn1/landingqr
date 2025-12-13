@@ -1,4 +1,5 @@
 import { LeadFormProvider } from "@/hooks/useLeadForm";
+import LeadForm from "@/components/landing/LeadForm";
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
 import Logos from "@/components/landing/Logos";
@@ -26,6 +27,7 @@ const Index = () => {
         <FAQ />
         <FinalCTA />
         <Footer />
+        <LeadForm />
       </div>
     </LeadFormProvider>
   );
