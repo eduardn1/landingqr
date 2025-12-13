@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   LayoutDashboard, 
@@ -24,10 +24,15 @@ import {
   Star,
   TrendingUp,
   ArrowLeft,
-  QrCode
+  QrCode,
+  HelpCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { OnboardingTutorial } from "@/components/demo/OnboardingTutorial";
+import { DeliveryContent } from "@/components/demo/DeliveryContent";
+import { AnalyticsContent } from "@/components/demo/AnalyticsContent";
+import { SettingsContent } from "@/components/demo/SettingsContent";
 
 // Sidebar navigation items
 const sidebarItems = [
@@ -105,6 +110,26 @@ const getStatusLabel = (status: string) => {
 const Demo = () => {
   const [activeSection, setActiveSection] = useState("dashboard");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(true);
+
+  // Check if first visit
+  useEffect(() => {
+    const hasSeenOnboarding = localStorage.getItem("demo-onboarding-seen");
+    if (hasSeenOnboarding) {
+      setShowOnboarding(false);
+    }
+  }, []);
+
+  const handleCloseOnboarding = () => {
+    setShowOnboarding(false);
+    localStorage.setItem("demo-onboarding-seen", "true");
+  };
+
+  const handleNavigateFromOnboarding = (section: string) => {
+    if (section) {
+      setActiveSection(section);
+    }
+  };
 
   const renderContent = () => {
     switch (activeSection) {
@@ -116,6 +141,12 @@ const Demo = () => {
         return <OrdersContent />;
       case "reservations":
         return <ReservationsContent />;
+      case "delivery":
+        return <DeliveryContent />;
+      case "analytics":
+        return <AnalyticsContent />;
+      case "settings":
+        return <SettingsContent />;
       default:
         return <DashboardContent />;
     }
@@ -174,6 +205,13 @@ const Demo = () => {
         </div>
       </motion.aside>
 
+      {/* Onboarding Tutorial */}
+      <OnboardingTutorial 
+        isOpen={showOnboarding} 
+        onClose={handleCloseOnboarding}
+        onNavigate={handleNavigateFromOnboarding}
+      />
+
       {/* Main Content */}
       <main className={`flex-1 transition-all duration-300 ${sidebarCollapsed ? "ml-20" : "ml-64"}`}>
         {/* Top Bar */}
@@ -189,6 +227,15 @@ const Demo = () => {
             </div>
             
             <div className="flex items-center gap-3">
+              {/* Help Button */}
+              <button 
+                onClick={() => setShowOnboarding(true)}
+                className="p-2 rounded-xl bg-muted hover:bg-muted/80 transition-colors"
+                title="Guida"
+              >
+                <HelpCircle className="w-5 h-5 text-foreground" />
+              </button>
+
               {/* Search */}
               <div className="relative hidden md:block">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
