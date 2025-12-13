@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
@@ -29,17 +29,17 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "glass-card border-b border-white/10 py-3"
+          ? "bg-background/80 backdrop-blur-md border-b border-white/[0.06] py-3"
           : "bg-transparent py-5"
       }`}
     >
       <div className="container flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-            <Sparkles className="w-5 h-5 text-primary-foreground" />
+        <a href="/" className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+            <span className="text-primary-foreground font-bold text-sm">M</span>
           </div>
-          <span className="font-display font-bold text-xl">MenuLink</span>
+          <span className="font-semibold text-lg tracking-tight">MenuLink</span>
         </a>
 
         {/* Desktop Navigation */}
@@ -48,7 +48,7 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
             >
               {link.label}
             </a>
@@ -56,18 +56,18 @@ const Navbar = () => {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3">
           <a
             href="https://demo2.studiojem.it"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button variant="ghost" size="sm">
-              Demo Live
+            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+              Demo
             </Button>
           </a>
-          <Button size="sm" className="gradient-primary gradient-primary-hover">
-            Inizia Gratis
+          <Button size="sm" className="gradient-button text-primary-foreground">
+            Inizia gratis
           </Button>
         </div>
 
@@ -77,9 +77,9 @@ const Navbar = () => {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           ) : (
-            <Menu className="w-6 h-6" />
+            <Menu className="w-5 h-5" />
           )}
         </button>
       </div>
@@ -91,14 +91,14 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden glass-card border-t border-white/10 mt-3"
+            className="lg:hidden bg-background/95 backdrop-blur-md border-t border-white/[0.06] mt-3"
           >
             <div className="container py-6 space-y-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="block text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  className="block text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -111,12 +111,12 @@ const Navbar = () => {
                   rel="noopener noreferrer"
                   className="block"
                 >
-                  <Button variant="outline" className="w-full">
-                    Demo Live
+                  <Button variant="outline" className="w-full border-white/10 hover:bg-white/5">
+                    Demo
                   </Button>
                 </a>
-                <Button className="w-full gradient-primary">
-                  Inizia Gratis
+                <Button className="w-full gradient-button text-primary-foreground">
+                  Inizia gratis
                 </Button>
               </div>
             </div>

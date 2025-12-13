@@ -1,169 +1,139 @@
 import { motion } from "framer-motion";
-import { Check, Sparkles, Crown, Zap, Building2 } from "lucide-react";
+import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const plans = [
   {
     name: "Gratis",
     price: "€0",
-    period: "/mese",
-    description: "Perfetto per iniziare e provare la piattaforma",
-    icon: Zap,
+    period: "Per sempre",
+    description: "Perfetto per iniziare",
     features: [
-      "1 menu",
-      "20 piatti",
+      "1 menu, 20 piatti",
       "QR Code base",
       "Multi-lingua",
       "Dark/Light mode",
     ],
-    limitations: ["Branding MenuLink", "Supporto community"],
-    cta: "Inizia Gratis",
+    limitations: ["Branding MenuLink"],
+    cta: "Inizia gratis",
     popular: false,
-    gradient: "from-muted to-muted",
   },
   {
     name: "Starter",
     price: "€29",
-    period: "/mese",
+    period: "al mese",
     description: "Per ristoranti che vogliono crescere",
-    icon: Sparkles,
     features: [
-      "3 menu",
-      "100 piatti",
-      "Prenotazioni",
+      "3 menu, 100 piatti",
+      "Prenotazioni incluse",
       "Analytics base",
       "Nessun branding",
-      "QR personalizzato",
       "Supporto email",
     ],
     limitations: [],
-    cta: "Prova Gratis 14 Giorni",
+    cta: "Prova gratis 14 giorni",
     popular: true,
-    gradient: "from-primary to-accent",
   },
   {
     name: "Pro",
     price: "€79",
-    period: "/mese",
-    description: "Funzionalità complete per locali ambiziosi",
-    icon: Crown,
+    period: "al mese",
+    description: "Funzionalità complete",
     features: [
       "Menu illimitati",
-      "Piatti illimitati",
-      "Takeaway & Delivery",
-      "Loyalty & Rewards",
+      "Takeaway e delivery",
+      "Loyalty e rewards",
       "WhatsApp notifications",
       "Analytics avanzati",
-      "Subdomain personalizzato",
       "Supporto prioritario",
     ],
     limitations: [],
-    cta: "Prova Gratis 14 Giorni",
+    cta: "Prova gratis 14 giorni",
     popular: false,
-    gradient: "from-success to-emerald-600",
   },
   {
     name: "Enterprise",
     price: "Custom",
     period: "",
-    description: "Per catene e agenzie con esigenze speciali",
-    icon: Building2,
+    description: "Per catene e agenzie",
     features: [
       "White-label completo",
       "Multi-location",
       "API access",
-      "SSO & SAML",
       "Account manager",
       "SLA garantito",
-      "Formazione team",
       "Personalizzazioni",
     ],
     limitations: [],
     cta: "Contattaci",
     popular: false,
-    gradient: "from-warning to-orange-600",
   },
 ];
 
 const Pricing = () => {
   return (
-    <section id="pricing" className="py-20 md:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 section-gradient" />
-      <div className="absolute top-1/4 left-0 w-96 h-96 orb-primary opacity-20" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 orb-accent opacity-15" />
-
+    <section id="pricing" className="section-padding relative overflow-hidden">
       <div className="container relative z-10">
         {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16 space-y-6"
+          transition={{ duration: 0.4 }}
+          className="text-center max-w-3xl mx-auto mb-20"
         >
-          <div className="inline-block px-5 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold tracking-wide uppercase">
-            💰 Prezzi Trasparenti
+          <div className="badge-primary mb-6">
+            Prezzi trasparenti
           </div>
 
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-            Costa Meno di{" "}
-            <span className="gradient-text">Una Pizza al Mese</span>
+          <h2 className="text-display-sm md:text-display-md font-bold leading-tight mb-6">
+            Scegli il tuo piano
           </h2>
 
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            Nessun costo nascosto. Nessuna commissione sugli ordini. Paghi solo
-            l'abbonamento.
+          <p className="text-body-lg text-muted-foreground">
+            Prezzi chiari, nessun costo nascosto. Cancella quando vuoi.
           </p>
         </motion.div>
 
         {/* Pricing Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               className={`relative ${plan.popular ? "lg:-mt-4 lg:mb-4" : ""}`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-bold z-10">
-                  ⭐ Più Popolare
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary text-primary-foreground text-xs font-medium z-10">
+                  Più popolare
                 </div>
               )}
 
               <div
                 className={`h-full ${
-                  plan.popular
-                    ? "pricing-card-featured"
-                    : "pricing-card border border-white/10"
-                } hover:scale-[1.02] transition-all duration-300`}
+                  plan.popular ? "pricing-card-featured" : "pricing-card"
+                }`}
               >
-                <div className="relative z-10 space-y-6">
+                <div className="space-y-6">
                   {/* Plan Header */}
                   <div className="space-y-4">
-                    <div
-                      className={`icon-container-md bg-gradient-to-br ${plan.gradient}`}
-                    >
-                      <plan.icon className="w-5 h-5 text-white" />
-                    </div>
-
-                    <div>
-                      <h3 className="font-display text-xl font-bold">
-                        {plan.name}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        {plan.description}
-                      </p>
-                    </div>
+                    <h3 className="text-lg font-semibold">{plan.name}</h3>
 
                     <div className="flex items-baseline gap-1">
                       <span className="text-4xl font-bold">{plan.price}</span>
-                      <span className="text-muted-foreground">
-                        {plan.period}
-                      </span>
+                      {plan.period && (
+                        <span className="text-muted-foreground text-sm">
+                          {plan.period}
+                        </span>
+                      )}
                     </div>
+
+                    <p className="text-sm text-muted-foreground">
+                      {plan.description}
+                    </p>
                   </div>
 
                   {/* Features */}
@@ -193,8 +163,8 @@ const Pricing = () => {
                   <Button
                     className={`w-full ${
                       plan.popular
-                        ? "gradient-primary gradient-primary-hover"
-                        : "bg-secondary hover:bg-secondary/80"
+                        ? "gradient-button text-primary-foreground"
+                        : "bg-white/5 border border-white/10 hover:bg-white/10"
                     }`}
                   >
                     {plan.cta}
@@ -207,14 +177,14 @@ const Pricing = () => {
 
         {/* Money Back Guarantee */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
           className="mt-12 text-center"
         >
-          <p className="text-muted-foreground">
-            🔒 Garanzia soddisfatti o rimborsati 30 giorni •{" "}
+          <p className="text-muted-foreground text-sm">
+            Garanzia soddisfatti o rimborsati 30 giorni •{" "}
             <span className="text-foreground">Nessuna carta richiesta per la prova</span>
           </p>
         </motion.div>
