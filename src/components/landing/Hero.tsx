@@ -1,8 +1,20 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLeadForm } from "@/hooks/useLeadForm";
+import dashboardPreview from "@/assets/dashboard-preview.png";
+import mobilePreview from "@/assets/mobile-menu-preview.png";
 
 const Hero = () => {
+  const { openLeadForm } = useLeadForm();
+  const { scrollY } = useScroll();
+  
+  // Parallax transforms
+  const heroY = useTransform(scrollY, [0, 500], [0, 150]);
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const screenshotY = useTransform(scrollY, [0, 500], [0, -50]);
+  const screenshotScale = useTransform(scrollY, [0, 500], [1, 1.05]);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-20">
       {/* Subtle Background Gradient */}
@@ -18,7 +30,10 @@ const Hero = () => {
       />
 
       <div className="container relative z-10 py-20">
-        <div className="max-w-4xl mx-auto text-center">
+        <motion.div 
+          style={{ y: heroY, opacity: heroOpacity }}
+          className="max-w-4xl mx-auto text-center"
+        >
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -65,6 +80,7 @@ const Hero = () => {
           >
             <Button
               size="lg"
+              onClick={() => openLeadForm("hero-cta")}
               className="group text-base px-8 py-6 h-auto gradient-button text-primary-foreground"
             >
               Inizia gratis
@@ -79,7 +95,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-base px-8 py-6 h-auto w-full sm:w-auto border-white/10 hover:bg-white/5 hover:border-white/20 transition-all"
+                className="text-base px-8 py-6 h-auto w-full sm:w-auto border-border hover:bg-muted hover:border-border transition-all"
               >
                 Guarda demo
               </Button>
@@ -104,7 +120,65 @@ const Hero = () => {
               </span>
             ))}
           </motion.div>
-        </div>
+        </motion.div>
+
+        {/* Product Screenshots with Parallax */}
+        <motion.div
+          style={{ y: screenshotY, scale: screenshotScale }}
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="relative mt-20 max-w-6xl mx-auto"
+        >
+          {/* Dashboard Preview - Main */}
+          <div className="relative rounded-2xl overflow-hidden border border-border shadow-2xl shadow-primary/10">
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent z-10 pointer-events-none" />
+            <img 
+              src={dashboardPreview} 
+              alt="Dashboard di gestione menu digitale" 
+              className="w-full h-auto"
+            />
+          </div>
+
+          {/* Mobile Preview - Floating */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="absolute -right-4 md:right-8 -bottom-8 md:bottom-8 w-32 md:w-48 lg:w-56"
+          >
+            <div className="rounded-3xl overflow-hidden border-4 border-background shadow-2xl">
+              <img 
+                src={mobilePreview} 
+                alt="Menu digitale su smartphone" 
+                className="w-full h-auto"
+              />
+            </div>
+          </motion.div>
+
+          {/* Floating Stats Card */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className="absolute -left-4 md:left-8 top-1/2 -translate-y-1/2 hidden md:block"
+          >
+            <div className="bg-card/90 backdrop-blur-xl border border-border rounded-2xl p-4 shadow-xl">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-success/20 flex items-center justify-center">
+                  <Check className="w-5 h-5 text-success" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">Ordini oggi</p>
+                  <p className="text-lg font-bold text-foreground">+127</p>
+                </div>
+              </div>
+              <div className="h-1 bg-muted rounded-full overflow-hidden">
+                <div className="h-full w-3/4 bg-gradient-to-r from-success to-primary rounded-full" />
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

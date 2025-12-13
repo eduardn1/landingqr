@@ -1,50 +1,125 @@
-import { motion } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLeadForm } from "@/hooks/useLeadForm";
 
 const FinalCTA = () => {
+  const { openLeadForm } = useLeadForm();
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 0.5], [0.95, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+
   return (
-    <section className="section-padding relative overflow-hidden">
-      <div className="container relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="max-w-3xl mx-auto text-center"
-        >
-          <h2 className="text-display-sm md:text-display-md font-bold leading-tight mb-6">
-            Pronto a trasformare
+    <section ref={containerRef} className="section-padding relative overflow-hidden">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.05] to-background" />
+      
+      {/* Animated Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] opacity-50" />
+
+      <motion.div 
+        style={{ scale, opacity }}
+        className="container relative z-10"
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="badge-primary mb-8"
+          >
+            <Sparkles className="w-3 h-3" />
+            <span>Inizia oggi</span>
+          </motion.div>
+
+          {/* Headline */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-display-sm md:text-display-md lg:text-display-lg font-bold mb-8"
+          >
+            <span className="text-foreground">Pronto a portare</span>
             <br />
-            <span className="text-muted-foreground">il tuo ristorante?</span>
-          </h2>
+            <span className="text-foreground">il tuo ristorante nel </span>
+            <span className="gradient-text">futuro?</span>
+          </motion.h2>
 
-          <p className="text-body-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-10">
-            Unisciti a oltre 500 ristoratori italiani. Inizia gratis oggi.
-          </p>
+          {/* Subheading */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-body-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12"
+          >
+            Unisciti a centinaia di ristoratori che hanno già scelto Flavour 
+            per digitalizzare la loro attività.
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-            <Button size="lg" className="group text-base px-8 py-6 h-auto gradient-button text-primary-foreground">
-              Inizia gratis
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+          >
+            <Button
+              size="lg"
+              onClick={() => openLeadForm("final-cta")}
+              className="group text-base px-10 py-7 h-auto gradient-button text-primary-foreground"
+            >
+              Inizia la prova gratuita
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <a href="https://wa.me/393533811359" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" variant="outline" className="text-base px-8 py-6 h-auto w-full sm:w-auto border-white/10 hover:bg-white/5">
-                Parla con noi
+
+            <a
+              href="https://demo2.studiojem.it"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-base px-10 py-7 h-auto w-full sm:w-auto border-border hover:bg-muted hover:border-border transition-all"
+              >
+                Vedi la demo live
               </Button>
             </a>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-wrap gap-6 items-center justify-center text-sm text-muted-foreground">
-            {["Nessuna carta richiesta", "14 giorni gratis", "Cancella quando vuoi"].map((text) => (
+          {/* Trust Signals */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap gap-8 items-center justify-center text-sm text-muted-foreground"
+          >
+            {[
+              "Setup in 10 minuti",
+              "Nessuna carta richiesta",
+              "Supporto italiano 24/7",
+              "Cancella quando vuoi",
+            ].map((text) => (
               <span key={text} className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-success" />
                 {text}
               </span>
             ))}
-          </div>
-        </motion.div>
-      </div>
+          </motion.div>
+        </div>
+      </motion.div>
     </section>
   );
 };
