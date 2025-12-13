@@ -1,23 +1,11 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Check, Star } from "lucide-react";
+import { Check, Star, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLeadForm } from "@/hooks/useLeadForm";
+import { Link } from "react-router-dom";
 
 const plans = [
-  {
-    name: "Gratis",
-    price: "0",
-    description: "Per provare senza impegno",
-    features: [
-      "Menu QR base",
-      "Fino a 20 piatti",
-      "1 lingua",
-      "Supporto email",
-    ],
-    cta: "Inizia gratis",
-    featured: false,
-  },
   {
     name: "Starter",
     price: "29",
@@ -31,6 +19,7 @@ const plans = [
     ],
     cta: "Prova 14 giorni gratis",
     featured: false,
+    slug: "starter",
   },
   {
     name: "Pro",
@@ -46,6 +35,7 @@ const plans = [
     ],
     cta: "Prova 14 giorni gratis",
     featured: true,
+    slug: "pro",
   },
   {
     name: "Enterprise",
@@ -61,6 +51,7 @@ const plans = [
     ],
     cta: "Contattaci",
     featured: false,
+    slug: "enterprise",
   },
 ];
 
@@ -104,7 +95,7 @@ const Pricing = () => {
         {/* Pricing Cards */}
         <motion.div 
           style={{ y }}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto"
         >
           {plans.map((plan, index) => (
             <motion.div
@@ -153,16 +144,24 @@ const Pricing = () => {
                 ))}
               </ul>
 
-              <Button
-                onClick={() => openLeadForm(`pricing-${plan.name.toLowerCase()}`)}
-                className={`w-full py-6 ${
-                  plan.featured
-                    ? "gradient-button text-primary-foreground"
-                    : "bg-muted hover:bg-muted/80 text-foreground"
-                }`}
-              >
-                {plan.cta}
-              </Button>
+              <div className="space-y-3 mt-auto">
+                <Button
+                  onClick={() => openLeadForm(`pricing-${plan.name.toLowerCase()}`)}
+                  className={`w-full py-6 ${
+                    plan.featured
+                      ? "gradient-button"
+                      : "bg-secondary hover:bg-secondary/80 text-foreground"
+                  }`}
+                >
+                  {plan.cta}
+                </Button>
+                <Link 
+                  to={`/pricing/${plan.slug}`}
+                  className="block text-center text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Vedi tutti i dettagli →
+                </Link>
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -177,6 +176,23 @@ const Pricing = () => {
         >
           Tutti i piani includono 14 giorni di prova gratuita. Nessuna carta di credito richiesta.
         </motion.p>
+
+        {/* Feature Comparison Link */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mt-8"
+        >
+          <Link 
+            to="/pricing/comparison"
+            className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+          >
+            Confronta tutti i piani nel dettaglio
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
