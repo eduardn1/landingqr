@@ -22,7 +22,7 @@ const Navbar = () => {
   const navLinks = [
     { label: "Funzionalità", href: "#features" },
     { label: "Prezzi", href: "#pricing" },
-    { label: "Testimonianze", href: "#testimonials" },
+    { label: "Demo", href: "/demo" },
     { label: "FAQ", href: "#faq" },
   ];
 
