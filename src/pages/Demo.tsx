@@ -25,7 +25,9 @@ import {
   TrendingUp,
   ArrowLeft,
   QrCode,
-  HelpCircle
+  HelpCircle,
+  Menu,
+  X
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -33,6 +35,7 @@ import { OnboardingTutorial } from "@/components/demo/OnboardingTutorial";
 import { DeliveryContent } from "@/components/demo/DeliveryContent";
 import { AnalyticsContent } from "@/components/demo/AnalyticsContent";
 import { SettingsContent } from "@/components/demo/SettingsContent";
+import { CustomersContent } from "@/components/demo/CustomersContent";
 
 // Sidebar navigation items
 const sidebarItems = [
@@ -111,6 +114,7 @@ const Demo = () => {
   const [activeSection, setActiveSection] = useState("dashboard");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Check if first visit
   useEffect(() => {
@@ -143,6 +147,8 @@ const Demo = () => {
         return <ReservationsContent />;
       case "delivery":
         return <DeliveryContent />;
+      case "customers":
+        return <CustomersContent />;
       case "analytics":
         return <AnalyticsContent />;
       case "settings":
@@ -154,11 +160,24 @@ const Demo = () => {
 
   return (
     <div className="min-h-screen bg-background flex">
-      {/* Sidebar */}
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Sidebar - Desktop */}
       <motion.aside
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        className={`fixed left-0 top-0 bottom-0 z-40 bg-card border-r border-border flex flex-col transition-all duration-300 ${
+        className={`hidden lg:flex fixed left-0 top-0 bottom-0 z-40 bg-card border-r border-border flex-col transition-all duration-300 ${
           sidebarCollapsed ? "w-20" : "w-64"
         }`}
       >
@@ -173,7 +192,7 @@ const Demo = () => {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 p-4 space-y-2">
+        <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
           {sidebarItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
@@ -205,6 +224,70 @@ const Demo = () => {
         </div>
       </motion.aside>
 
+      {/* Sidebar - Mobile */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.aside
+            initial={{ x: -280 }}
+            animate={{ x: 0 }}
+            exit={{ x: -280 }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="lg:hidden fixed left-0 top-0 bottom-0 z-50 w-[280px] bg-card border-r border-border flex flex-col"
+          >
+            {/* Logo + Close */}
+            <div className="p-4 border-b border-border flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/25">
+                  <span className="text-white font-bold">F</span>
+                </div>
+                <span className="font-bold text-lg text-foreground">Flavour</span>
+              </div>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 rounded-lg hover:bg-muted transition-colors"
+              >
+                <X className="w-5 h-5 text-foreground" />
+              </button>
+            </div>
+
+            {/* Navigation */}
+            <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
+              {sidebarItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = activeSection === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      setActiveSection(item.id);
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
+                      isActive 
+                        ? "bg-primary text-primary-foreground shadow-md" 
+                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    }`}
+                  >
+                    <Icon className="w-5 h-5 flex-shrink-0" />
+                    <span className="font-medium">{item.label}</span>
+                  </button>
+                );
+              })}
+            </nav>
+
+            {/* Back to Landing */}
+            <div className="p-4 border-t border-border">
+              <Link to="/">
+                <Button variant="outline" className="w-full gap-2">
+                  <ArrowLeft className="w-4 h-4" />
+                  Torna al sito
+                </Button>
+              </Link>
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
+
       {/* Onboarding Tutorial */}
       <OnboardingTutorial 
         isOpen={showOnboarding} 
@@ -213,20 +296,28 @@ const Demo = () => {
       />
 
       {/* Main Content */}
-      <main className={`flex-1 transition-all duration-300 ${sidebarCollapsed ? "ml-20" : "ml-64"}`}>
+      <main className={`flex-1 transition-all duration-300 ${sidebarCollapsed ? "lg:ml-20" : "lg:ml-64"}`}>
         {/* Top Bar */}
-        <header className="sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-border px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <h1 className="text-xl font-bold text-foreground capitalize">
+        <header className="sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-border px-4 lg:px-6 py-4">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                className="lg:hidden p-2 rounded-xl bg-muted hover:bg-muted/80 transition-colors"
+              >
+                <Menu className="w-5 h-5 text-foreground" />
+              </button>
+              
+              <h1 className="text-lg lg:text-xl font-bold text-foreground capitalize">
                 {sidebarItems.find(i => i.id === activeSection)?.label || "Dashboard"}
               </h1>
-              <span className="px-2 py-1 rounded-full bg-success/20 text-success text-xs font-medium">
+              <span className="hidden sm:inline-block px-2 py-1 rounded-full bg-success/20 text-success text-xs font-medium">
                 Demo Mode
               </span>
             </div>
             
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 lg:gap-3">
               {/* Help Button */}
               <button 
                 onClick={() => setShowOnboarding(true)}
@@ -236,8 +327,8 @@ const Demo = () => {
                 <HelpCircle className="w-5 h-5 text-foreground" />
               </button>
 
-              {/* Search */}
-              <div className="relative hidden md:block">
+              {/* Search - Desktop only */}
+              <div className="relative hidden lg:block">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
                   type="text"
@@ -255,11 +346,11 @@ const Demo = () => {
               </button>
               
               {/* User Avatar */}
-              <div className="flex items-center gap-3 px-3 py-2 rounded-xl bg-muted">
+              <div className="flex items-center gap-2 lg:gap-3 px-2 lg:px-3 py-2 rounded-xl bg-muted">
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-sm font-bold">
                   MR
                 </div>
-                <div className="hidden md:block">
+                <div className="hidden lg:block">
                   <p className="text-sm font-medium text-foreground">Mario Rossi</p>
                   <p className="text-xs text-muted-foreground">Admin</p>
                 </div>
@@ -269,7 +360,7 @@ const Demo = () => {
         </header>
 
         {/* Page Content */}
-        <div className="p-6">
+        <div className="p-4 lg:p-6">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeSection}
