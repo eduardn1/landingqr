@@ -11,7 +11,7 @@ const testimonials = [
     rating: 5,
     quote: "Da quando usiamo Flavour, gli ordini online sono aumentati del 52%. I clienti adorano poter ordinare dal tavolo senza aspettare il cameriere.",
     highlight: "+52% ordini",
-    featured: true,
+    gradient: "from-violet-500 to-purple-600",
   },
   {
     name: "Giulia Bianchi",
@@ -21,7 +21,7 @@ const testimonials = [
     rating: 5,
     quote: "Finalmente posso aggiornare i prezzi in tempo reale! Prima ogni modifica costava €150 di ristampa. Ora è gratis e immediato.",
     highlight: "€150 risparmiati",
-    featured: false,
+    gradient: "from-emerald-500 to-teal-600",
   },
   {
     name: "Alessandro Conti",
@@ -31,7 +31,7 @@ const testimonials = [
     rating: 5,
     quote: "I turisti stranieri ora capiscono tutto grazie alle 5 lingue automatiche. Le vendite del pranzo sono aumentate del 35%!",
     highlight: "+35% vendite",
-    featured: false,
+    gradient: "from-orange-500 to-red-500",
   },
   {
     name: "Francesca Marino",
@@ -41,7 +41,7 @@ const testimonials = [
     rating: 5,
     quote: "Setup facilissimo, in 15 minuti ero online. Il supporto è fantastico e risponde sempre in italiano.",
     highlight: "15 min setup",
-    featured: false,
+    gradient: "from-blue-500 to-cyan-500",
   },
   {
     name: "Roberto De Luca",
@@ -51,7 +51,7 @@ const testimonials = [
     rating: 5,
     quote: "Gestiamo 3 ristoranti dell'hotel con un unico pannello. Il room service è diventato digitale e gli ospiti sono entusiasti.",
     highlight: "3 ristoranti",
-    featured: true,
+    gradient: "from-pink-500 to-rose-500",
   },
   {
     name: "Elena Ferrara",
@@ -61,7 +61,7 @@ const testimonials = [
     rating: 5,
     quote: "Il sistema di takeaway integrato ci ha permesso di triplicare gli ordini da asporto. Meglio di qualsiasi aggregatore!",
     highlight: "3x asporto",
-    featured: false,
+    gradient: "from-amber-500 to-orange-500",
   },
 ];
 
@@ -77,7 +77,7 @@ const Testimonials = () => {
   return (
     <section ref={containerRef} id="testimonials" className="section-padding relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-warning/[0.02] to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />
       
       <div className="container relative z-10">
         {/* Heading */}
@@ -103,7 +103,7 @@ const Testimonials = () => {
           </p>
         </motion.div>
 
-        {/* Testimonials Bento Grid */}
+        {/* Testimonials Grid */}
         <motion.div style={{ y }} className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {testimonials.map((testimonial, index) => (
             <motion.div
@@ -112,16 +112,16 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className={`testimonial-card group ${testimonial.featured ? 'md:row-span-1 ring-1 ring-primary/20' : ''}`}
+              className="group relative p-6 rounded-3xl bg-card border border-border hover:border-primary/20 transition-all duration-300"
             >
               {/* Quote Icon */}
               <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity">
-                <Quote className="w-10 h-10 text-foreground" />
+                <Quote className="w-8 h-8 text-foreground" />
               </div>
 
               {/* Highlight Badge */}
               {testimonial.highlight && (
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-success/15 border border-success/20 text-success text-xs font-semibold mb-4">
+                <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r ${testimonial.gradient} text-white text-xs font-semibold mb-4 shadow-md`}>
                   {testimonial.highlight}
                 </div>
               )}
@@ -137,21 +137,18 @@ const Testimonials = () => {
               </div>
 
               {/* Quote */}
-              <p className="text-foreground/90 leading-relaxed mb-6 text-[15px]">
+              <p className="text-foreground/90 leading-relaxed mb-6 text-sm">
                 "{testimonial.quote}"
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-4 mt-auto pt-4 border-t border-white/[0.06]">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-full blur-sm opacity-50" />
-                  <div className="relative w-11 h-11 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 border border-white/10 flex items-center justify-center text-primary font-bold text-sm">
-                    {testimonial.name.split(' ').map(n => n[0]).join('')}
-                  </div>
+              <div className="flex items-center gap-3 mt-auto pt-4 border-t border-border">
+                <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white font-bold text-sm shadow-md`}>
+                  {testimonial.name.split(' ').map(n => n[0]).join('')}
                 </div>
-                <div className="flex-1">
-                  <div className="font-semibold text-foreground text-sm">{testimonial.name}</div>
-                  <div className="text-xs text-muted-foreground">
+                <div className="flex-1 min-w-0">
+                  <div className="font-semibold text-foreground text-sm truncate">{testimonial.name}</div>
+                  <div className="text-xs text-muted-foreground truncate">
                     {testimonial.role}, {testimonial.business}
                   </div>
                 </div>
@@ -172,15 +169,15 @@ const Testimonials = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-12 text-center"
         >
-          <div className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08]">
+          <div className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl bg-card border border-border">
             <div className="flex">
               {[1, 2, 3, 4, 5].map((i) => (
                 <Star key={i} className="w-5 h-5 text-warning fill-warning" />
               ))}
             </div>
-            <div className="h-6 w-px bg-white/10" />
+            <div className="h-6 w-px bg-border" />
             <span className="text-foreground font-semibold">4.9 su 5</span>
-            <span className="text-muted-foreground">basato su 500+ recensioni</span>
+            <span className="text-muted-foreground text-sm">basato su 500+ recensioni</span>
           </div>
         </motion.div>
       </div>
