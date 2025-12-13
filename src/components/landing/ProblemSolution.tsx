@@ -130,7 +130,7 @@ const ProblemSolution = () => {
             </motion.div>
           ))}
           
-          {/* CTA Card */}
+          {/* CTA Card with Stacked Avatars */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -138,14 +138,36 @@ const ProblemSolution = () => {
             viewport={{ once: true }}
             className="bento-card flex flex-col justify-center items-center text-center bg-gradient-to-br from-primary/10 to-accent/5 border-primary/20"
           >
-            <div className="icon-box-lg w-16 h-16 mb-6 bg-primary/20 border-primary/30">
-              <TrendingUp className="w-8 h-8 text-primary" />
+            {/* Stacked Avatars - Creativable Style */}
+            <div className="flex -space-x-3 mb-6">
+              {['from-pink-500 to-rose-500', 'from-blue-500 to-cyan-500', 'from-green-500 to-emerald-500', 'from-purple-500 to-violet-500', 'from-orange-500 to-amber-500'].map((gradient, i) => (
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: 0.6 + i * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`w-10 h-10 rounded-full bg-gradient-to-br ${gradient} border-2 border-card flex items-center justify-center text-white text-sm font-bold shadow-lg`}
+                >
+                  {String.fromCharCode(65 + i)}
+                </motion.div>
+              ))}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: 1.1 }}
+                viewport={{ once: true }}
+                className="w-10 h-10 rounded-full bg-muted border-2 border-card flex items-center justify-center text-foreground text-xs font-bold shadow-lg"
+              >
+                +500
+              </motion.div>
             </div>
+            
             <h3 className="text-xl font-bold text-foreground mb-2">
-              Pronto a trasformare il tuo ristorante?
+              Unisciti ai 500+ ristoratori
             </h3>
             <p className="text-muted-foreground text-sm mb-6">
-              Unisciti a centinaia di ristoratori che hanno già fatto il salto.
+              Che hanno già digitalizzato il loro locale con Flavour.
             </p>
             <Button
               onClick={() => openLeadForm("problem-solution")}
