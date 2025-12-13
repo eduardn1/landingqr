@@ -1,9 +1,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { Check, Star, ArrowRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { Check, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLeadForm } from "@/hooks/useLeadForm";
-import { Link } from "react-router-dom";
+import PricingComparisonModal from "./PricingComparisonModal";
 
 const plans = [
   {
@@ -57,6 +57,7 @@ const plans = [
 
 const Pricing = () => {
   const { openLeadForm } = useLeadForm();
+  const [isComparisonOpen, setIsComparisonOpen] = useState(false);
   const containerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -68,7 +69,7 @@ const Pricing = () => {
   return (
     <section ref={containerRef} id="pricing" className="section-padding relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.02] to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
 
       <div className="container relative z-10">
         {/* Header */}
@@ -104,7 +105,11 @@ const Pricing = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={plan.featured ? "pricing-card-featured" : "pricing-card"}
+              className={`relative p-8 rounded-3xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 ${
+                plan.featured 
+                  ? "bg-gradient-to-b from-primary/10 to-card border-2 border-primary/30 shadow-xl shadow-primary/10" 
+                  : "bg-card border border-border hover:border-border-medium"
+              }`}
             >
               {plan.featured && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
@@ -138,30 +143,24 @@ const Pricing = () => {
               <ul className="space-y-3 mb-8 flex-grow">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3 text-sm">
-                    <Check className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                    <div className="w-5 h-5 rounded-full bg-success/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 text-success" />
+                    </div>
                     <span className="text-muted-foreground">{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="space-y-3 mt-auto">
-                <Button
-                  onClick={() => openLeadForm(`pricing-${plan.name.toLowerCase()}`)}
-                  className={`w-full py-6 ${
-                    plan.featured
-                      ? "gradient-button"
-                      : "bg-secondary hover:bg-secondary/80 text-foreground"
-                  }`}
-                >
-                  {plan.cta}
-                </Button>
-                <Link 
-                  to={`/pricing/${plan.slug}`}
-                  className="block text-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Vedi tutti i dettagli →
-                </Link>
-              </div>
+              <Button
+                onClick={() => openLeadForm(`pricing-${plan.name.toLowerCase()}`)}
+                className={`w-full py-6 ${
+                  plan.featured
+                    ? "gradient-button"
+                    : "bg-secondary hover:bg-secondary/80 text-secondary-foreground"
+                }`}
+              >
+                {plan.cta}
+              </Button>
             </motion.div>
           ))}
         </motion.div>
@@ -177,7 +176,7 @@ const Pricing = () => {
           Tutti i piani includono 14 giorni di prova gratuita. Nessuna carta di credito richiesta.
         </motion.p>
 
-        {/* Feature Comparison Link */}
+        {/* Feature Comparison Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -185,15 +184,21 @@ const Pricing = () => {
           viewport={{ once: true }}
           className="text-center mt-8"
         >
-          <Link 
-            to="/pricing/comparison"
-            className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+          <Button 
+            variant="outline"
+            onClick={() => setIsComparisonOpen(true)}
+            className="border-border hover:border-primary/30 text-foreground"
           >
             Confronta tutti i piani nel dettaglio
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          </Button>
         </motion.div>
       </div>
+
+      {/* Comparison Modal */}
+      <PricingComparisonModal 
+        isOpen={isComparisonOpen} 
+        onClose={() => setIsComparisonOpen(false)} 
+      />
     </section>
   );
 };
