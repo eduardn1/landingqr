@@ -1,7 +1,7 @@
 import { LeadFormProvider } from "@/hooks/useLeadForm";
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
-import Stats from "@/components/landing/Stats";
+import Logos from "@/components/landing/Logos";
 import ProblemSolution from "@/components/landing/ProblemSolution";
 import Features from "@/components/landing/Features";
 import HowItWorks from "@/components/landing/HowItWorks";
@@ -14,10 +14,10 @@ import Footer from "@/components/landing/Footer";
 const Index = () => {
   return (
     <LeadFormProvider>
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background overflow-x-hidden">
         <Navbar />
         <Hero />
-        <Stats />
+        <Logos />
         <ProblemSolution />
         <Features />
         <HowItWorks />
