@@ -18,38 +18,29 @@ const steps = [
   {
     step: 1,
     icon: FileEdit,
-    title: "Crea il tuo menu",
-    description: "Aggiungi i tuoi piatti, prezzi, foto e descrizioni. Importa da Excel o inizia da un template.",
-    details: ["Import CSV/Excel", "Foto ottimizzate AI", "Descrizioni multilingua"],
+    title: "Crea il menu",
+    description: "Aggiungi piatti, prezzi, foto. Importa da Excel o inizia da un template. Traduzioni AI in 5 lingue.",
+    details: ["Import Excel/CSV", "Foto ottimizzate", "5 lingue automatiche"],
     time: "5 min",
     gradient: "from-violet-500 to-purple-600",
   },
   {
     step: 2,
     icon: Palette,
-    title: "Personalizza il design",
-    description: "Scegli tra 8 template premium. Personalizza colori, logo e layout secondo il tuo brand.",
+    title: "Personalizza",
+    description: "Scegli tra 8 template premium. Colori, logo e layout secondo il tuo brand. Zero codice.",
     details: ["8 template moderni", "Colori brand custom", "Logo & branding"],
-    time: "2 min",
+    time: "3 min",
     gradient: "from-blue-500 to-cyan-500",
   },
   {
     step: 3,
-    icon: QrCode,
-    title: "Genera il QR code",
-    description: "Ottieni il tuo QR code unico. Stampalo sui tavoli, menu cartacei o condividilo online.",
-    details: ["QR code personalizzato", "Materiali stampa inclusi", "Link condivisibile"],
-    time: "1 min",
-    gradient: "from-emerald-500 to-teal-600",
-  },
-  {
-    step: 4,
     icon: Rocket,
     title: "Vai live!",
-    description: "I clienti scansionano e accedono al tuo menu digitale. Tu gestisci tutto dalla dashboard.",
-    details: ["Attivo in tempo reale", "Analytics istantanei", "Aggiornamenti immediati"],
-    time: "0 sec",
-    gradient: "from-orange-500 to-rose-500",
+    description: "QR code pronto, condividi il link. I clienti ordinano, tu gestisci tutto dalla dashboard.",
+    details: ["QR code unico", "Link condivisibile", "Analytics istantanei"],
+    time: "2 min",
+    gradient: "from-emerald-500 to-teal-600",
   },
 ];
 
@@ -99,7 +90,7 @@ const HowItWorks = () => {
 
           <h2 className="font-display text-display-sm md:text-display-md font-bold leading-tight mb-6">
             <span className="text-foreground">Da zero a online in </span>
-            <span className="gradient-text">4 step</span>
+            <span className="gradient-text">3 step</span>
           </h2>
 
           <p className="text-body-lg text-muted-foreground leading-relaxed">

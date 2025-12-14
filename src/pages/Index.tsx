@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
  * QRCODESTUDIOJEM - Landing Page
- * Piattaforma completa per la digitalizzazione del ristorante
+ * Piattaforma completa per la digitalizzazione di bar, ristoranti, pub e caffè
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -19,7 +19,6 @@ import Logos from "@/components/landing/Logos";
 import ProblemSolution from "@/components/landing/ProblemSolution";
 import Features from "@/components/landing/Features";
 import ProductShowcase from "@/components/landing/ProductShowcase";
-import VideoDemo from "@/components/landing/VideoDemo";
 import HowItWorks from "@/components/landing/HowItWorks";
 import Pricing from "@/components/landing/Pricing";
 import Testimonials from "@/components/landing/Testimonials";
@@ -36,9 +35,8 @@ const Index = () => {
         <Logos />
         <ProblemSolution />
         <Features />
-        <ProductShowcase />
-        <VideoDemo />
         <HowItWorks />
+        <ProductShowcase />
         <Pricing />
         <Testimonials />
         <FAQ />
