@@ -147,30 +147,30 @@ const Testimonials = () => {
             <span className="text-xs sm:text-sm font-semibold text-warning">50+ ristoratori soddisfatti</span>
           </motion.div>
 
-          <h2 className="font-display text-display-sm sm:text-display-md md:text-display-lg font-bold leading-tight mb-4 md:mb-6 px-2">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-display-md font-bold leading-tight mb-3 sm:mb-4 md:mb-6 px-2">
             <span className="text-foreground">Cosa dicono i </span>
             <span className="gradient-text">nostri clienti</span>
           </h2>
 
-          <p className="text-body-md sm:text-body-lg text-muted-foreground px-4">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground px-4">
             Ristoratori italiani che hanno già trasformato il loro business con Flavour
           </p>
         </motion.div>
 
         {/* Main Carousel */}
-        <div className="relative max-w-5xl mx-auto mb-12">
+        <div className="relative max-w-4xl mx-auto mb-8 sm:mb-10 md:mb-12 px-2 sm:px-4">
           {/* Navigation Buttons */}
           <button 
             onClick={prevSlide}
-            className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-card border border-border shadow-lg flex items-center justify-center hover:border-primary/30 transition-colors"
+            className="absolute left-0 sm:-left-2 md:-left-10 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-card border border-border shadow-lg flex items-center justify-center hover:border-primary/30 transition-colors"
           >
-            <ChevronLeft className="w-5 h-5 text-foreground" />
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-foreground" />
           </button>
           <button 
             onClick={nextSlide}
-            className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-card border border-border shadow-lg flex items-center justify-center hover:border-primary/30 transition-colors"
+            className="absolute right-0 sm:-right-2 md:-right-10 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-card border border-border shadow-lg flex items-center justify-center hover:border-primary/30 transition-colors"
           >
-            <ChevronRight className="w-5 h-5 text-foreground" />
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-foreground" />
           </button>
 
           {/* Carousel Container */}
@@ -183,12 +183,12 @@ const Testimonials = () => {
               {testimonials.map((testimonial, index) => (
                 <div 
                   key={testimonial.name}
-                  className="w-full flex-shrink-0 px-2"
+                  className="w-full flex-shrink-0 px-6 sm:px-8 md:px-2"
                 >
-                  <div className="relative p-8 md:p-12 rounded-3xl bg-card border border-border">
+                  <div className="relative p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl bg-card border border-border">
                     {/* Quote Icon */}
-                    <div className="absolute top-8 right-8 md:top-12 md:right-12">
-                      <Quote className="w-12 h-12 text-primary/10" />
+                    <div className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8">
+                      <Quote className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary/10" />
                     </div>
 
                     {/* Highlight Badge */}
@@ -196,13 +196,13 @@ const Testimonials = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
-                      className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${testimonial.gradient} text-white text-sm font-semibold mb-6 shadow-lg`}
+                      className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r ${testimonial.gradient} text-white text-xs sm:text-sm font-semibold mb-4 sm:mb-5 md:mb-6 shadow-lg`}
                     >
                       {testimonial.highlight}
                     </motion.div>
 
                     {/* Stars */}
-                    <div className="flex gap-1 mb-6">
+                    <div className="flex gap-0.5 sm:gap-1 mb-4 sm:mb-5 md:mb-6">
                       {Array.from({ length: testimonial.rating }).map((_, i) => (
                         <motion.div
                           key={i}
@@ -210,39 +210,39 @@ const Testimonials = () => {
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: 0.1 + i * 0.05 }}
                         >
-                          <Star className="w-6 h-6 fill-warning text-warning" />
+                          <Star className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 fill-warning text-warning" />
                         </motion.div>
                       ))}
                     </div>
 
                     {/* Quote */}
-                    <blockquote className="text-xl md:text-2xl font-medium text-foreground leading-relaxed mb-8">
+                    <blockquote className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-foreground leading-relaxed mb-5 sm:mb-6 md:mb-8 pr-4 sm:pr-6">
                       "{testimonial.quote}"
                     </blockquote>
 
                     {/* Author */}
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                       {/* Animated Avatar */}
                       <motion.div 
                         whileHover={{ scale: 1.1, rotate: 5 }}
-                        className={`relative w-14 h-14 rounded-2xl bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white font-bold text-lg shadow-lg`}
+                        className={`relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white font-bold text-sm sm:text-base md:text-lg shadow-lg flex-shrink-0`}
                       >
                         {testimonial.avatar}
                         {/* Pulse ring */}
-                        <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${testimonial.gradient} animate-ping opacity-20`} />
+                        <div className={`absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br ${testimonial.gradient} animate-ping opacity-20`} />
                       </motion.div>
                       
-                      <div className="flex-1">
-                        <div className="font-bold text-foreground text-lg">
+                      <div className="flex-1 min-w-0">
+                        <div className="font-bold text-foreground text-sm sm:text-base md:text-lg">
                           {testimonial.name}
                         </div>
-                        <div className="text-muted-foreground">
+                        <div className="text-muted-foreground text-xs sm:text-sm truncate">
                           {testimonial.role}, {testimonial.business}
                         </div>
                       </div>
                       
-                      <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted text-sm text-muted-foreground">
-                        <MapPin className="w-4 h-4" />
+                      <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-muted text-xs sm:text-sm text-muted-foreground w-fit">
+                        <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
                         {testimonial.location}
                       </div>
                     </div>
@@ -253,31 +253,31 @@ const Testimonials = () => {
           </div>
 
           {/* Dot Indicators */}
-          <div className="flex justify-center gap-2 mt-8">
+          <div className="flex justify-center gap-1.5 sm:gap-2 mt-5 sm:mt-6 md:mt-8">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => scrollToIndex(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
                   activeIndex === index 
-                    ? 'w-8 bg-primary' 
-                    : 'w-2 bg-border hover:bg-muted-foreground'
+                    ? 'w-5 sm:w-8 bg-primary' 
+                    : 'w-1.5 sm:w-2 bg-border hover:bg-muted-foreground'
                 }`}
               />
             ))}
           </div>
 
           {/* Auto-play indicator */}
-          <div className="flex justify-center mt-4">
+          <div className="flex justify-center mt-3 sm:mt-4">
             <button
               onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-colors ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm transition-colors ${
                 isAutoPlaying 
                   ? 'bg-primary/10 text-primary' 
                   : 'bg-muted text-muted-foreground'
               }`}
             >
-              <Play className={`w-3 h-3 ${isAutoPlaying ? 'animate-pulse' : ''}`} />
+              <Play className={`w-2.5 h-2.5 sm:w-3 sm:h-3 ${isAutoPlaying ? 'animate-pulse' : ''}`} />
               {isAutoPlaying ? 'Autoplay attivo' : 'Autoplay disattivo'}
             </button>
           </div>
@@ -289,11 +289,11 @@ const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col md:flex-row items-center justify-center gap-8"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8"
         >
           {/* Avatar Stack */}
           <div className="flex items-center">
-            <div className="flex -space-x-3">
+            <div className="flex -space-x-2 sm:-space-x-3">
               {testimonials.slice(0, 5).map((t, i) => (
                 <motion.div
                   key={t.name}
@@ -301,31 +301,31 @@ const Testimonials = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className={`relative w-10 h-10 rounded-full bg-gradient-to-br ${t.gradient} flex items-center justify-center text-white text-xs font-bold border-2 border-background shadow-md`}
+                  className={`relative w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br ${t.gradient} flex items-center justify-center text-white text-[10px] sm:text-xs font-bold border-2 border-background shadow-md`}
                   style={{ zIndex: 5 - i }}
                 >
                   {t.avatar}
                 </motion.div>
               ))}
-              <div className="w-10 h-10 rounded-full bg-muted border-2 border-background flex items-center justify-center text-xs font-bold text-muted-foreground shadow-md">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-muted border-2 border-background flex items-center justify-center text-[10px] sm:text-xs font-bold text-muted-foreground shadow-md">
                 +495
               </div>
             </div>
           </div>
 
           {/* Rating Summary */}
-          <div className="flex items-center gap-4 px-6 py-4 rounded-2xl bg-card border border-border">
+          <div className="flex items-center gap-2 sm:gap-3 md:gap-4 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-4 rounded-xl sm:rounded-2xl bg-card border border-border">
             <div className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((i) => (
-                <Star key={i} className="w-5 h-5 text-warning fill-warning" />
+                <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-warning fill-warning" />
               ))}
             </div>
-            <div className="h-6 w-px bg-border" />
+            <div className="h-4 sm:h-5 md:h-6 w-px bg-border" />
             <div>
-              <span className="font-bold text-foreground text-lg">4.9</span>
-              <span className="text-muted-foreground text-sm"> su 5</span>
+              <span className="font-bold text-foreground text-sm sm:text-base md:text-lg">4.9</span>
+              <span className="text-muted-foreground text-xs sm:text-sm"> su 5</span>
             </div>
-            <div className="text-muted-foreground text-sm">
+            <div className="text-muted-foreground text-xs sm:text-sm hidden sm:block">
               (500+ recensioni)
             </div>
           </div>
