@@ -1,3 +1,15 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════════
+ * QRCODESTUDIOJEM - Landing Page
+ * Piattaforma completa per la digitalizzazione del ristorante
+ * 
+ * Sviluppato da Eduard Costin Udila @ studiojem.it
+ * Web Development & Digital Solutions
+ * 
+ * © 2024 StudioJEM - Tutti i diritti riservati
+ * ═══════════════════════════════════════════════════════════════════════════════
+ */
+
 import { LeadFormProvider } from "@/hooks/useLeadForm";
 import LeadForm from "@/components/landing/LeadForm";
 import Navbar from "@/components/landing/Navbar";

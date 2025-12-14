@@ -1,3 +1,15 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════════
+ * QRCODESTUDIOJEM - Features Section
+ * Showcase delle 30+ funzionalità della piattaforma
+ * 
+ * Sviluppato da Eduard Costin Udila @ studiojem.it
+ * Web Development & Digital Solutions
+ * 
+ * © 2024 StudioJEM - Tutti i diritti riservati
+ * ═══════════════════════════════════════════════════════════════════════════════
+ */
+
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { 
