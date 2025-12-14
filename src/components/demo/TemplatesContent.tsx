@@ -22,84 +22,64 @@ import { Button } from "@/components/ui/button";
 // Template data
 const templates = [
   {
-    id: "modern-glass",
-    name: "Modern Glassmorphism",
-    description: "Elegante con effetti vetro e trasparenze moderne",
+    id: "tema-1",
+    name: "Tema 1",
+    description: "Elegante con effetti vetro e trasparenze",
     style: "Moderno",
     color: "from-violet-500 to-purple-600",
     preview: "bg-gradient-to-br from-violet-900/90 via-purple-900/80 to-indigo-900/90",
-    features: ["Effetti blur", "Trasparenze", "Gradients animati"],
+    features: ["Effetti blur", "Trasparenze", "Gradients"],
     popular: true,
   },
   {
-    id: "classic",
-    name: "Classic Elegance",
-    description: "Tradizionale e raffinato per ristoranti classici",
+    id: "tema-2",
+    name: "Tema 2",
+    description: "Tradizionale e raffinato",
     style: "Classico",
     color: "from-amber-600 to-orange-700",
     preview: "bg-gradient-to-br from-amber-900/90 via-orange-900/80 to-red-900/90",
-    features: ["Typography serif", "Bordi eleganti", "Colori caldi"],
+    features: ["Typography serif", "Colori caldi"],
     popular: false,
   },
   {
-    id: "bento",
-    name: "Bento Minimal",
-    description: "Grid asimmetrica moderna e pulita",
+    id: "tema-3",
+    name: "Tema 3",
+    description: "Grid asimmetrica moderna",
     style: "Minimal",
     color: "from-slate-500 to-zinc-600",
     preview: "bg-gradient-to-br from-slate-900/90 via-zinc-900/80 to-neutral-900/90",
-    features: ["Grid layout", "Spazi ampi", "Focus contenuti"],
+    features: ["Grid layout", "Spazi ampi"],
     popular: true,
   },
   {
-    id: "masonry",
-    name: "Masonry Gallery",
-    description: "Layout Pinterest-style per menu fotografici",
+    id: "tema-4",
+    name: "Tema 4",
+    description: "Layout gallery per menu fotografici",
     style: "Gallery",
     color: "from-pink-500 to-rose-600",
     preview: "bg-gradient-to-br from-pink-900/90 via-rose-900/80 to-red-900/90",
-    features: ["Foto grandi", "Layout dinamico", "Visual-first"],
+    features: ["Foto grandi", "Visual-first"],
     popular: false,
   },
   {
-    id: "aurora",
-    name: "Aurora Gradient",
-    description: "Gradients animati premium e coinvolgenti",
+    id: "tema-5",
+    name: "Tema 5",
+    description: "Gradients animati premium",
     style: "Premium",
     color: "from-cyan-500 to-blue-600",
     preview: "bg-gradient-to-br from-cyan-900/90 via-blue-900/80 to-indigo-900/90",
-    features: ["Animazioni fluide", "Colori vivaci", "Alto impatto"],
+    features: ["Animazioni fluide", "Alto impatto"],
     popular: true,
   },
   {
-    id: "parallax",
-    name: "Parallax Depth",
-    description: "Effetto profondità e scroll coinvolgente",
+    id: "tema-6",
+    name: "Tema 6",
+    description: "Effetto profondità e scroll",
     style: "Immersivo",
     color: "from-emerald-500 to-teal-600",
     preview: "bg-gradient-to-br from-emerald-900/90 via-teal-900/80 to-cyan-900/90",
-    features: ["Parallax scroll", "Layers multipli", "Esperienza 3D"],
+    features: ["Parallax scroll", "Esperienza 3D"],
     popular: false,
-  },
-  {
-    id: "split",
-    name: "Split Hero",
-    description: "Due colonne bilanciate, immagine e contenuto",
-    style: "Bilanciato",
-    color: "from-indigo-500 to-violet-600",
-    preview: "bg-gradient-to-br from-indigo-900/90 via-violet-900/80 to-purple-900/90",
-    features: ["Layout 50/50", "Hero impattante", "CTA chiare"],
-    popular: false,
-  },
-  {
-    id: "video",
-    name: "Video Background",
-    description: "Video immersivo come sfondo principale",
-    style: "High-Impact",
-    color: "from-red-500 to-orange-600",
-    preview: "bg-gradient-to-br from-red-900/90 via-orange-900/80 to-amber-900/90",
-    features: ["Video hero", "Autoplay", "Massimo impatto"],
-    popular: true,
   },
 ];
 
@@ -111,7 +91,7 @@ const customizationOptions = [
 ];
 
 export const TemplatesContent = () => {
-  const [selectedTemplate, setSelectedTemplate] = useState<string>("modern-glass");
+  const [selectedTemplate, setSelectedTemplate] = useState<string>("tema-1");
   const [previewDevice, setPreviewDevice] = useState<"desktop" | "mobile">("desktop");
   const [showCustomization, setShowCustomization] = useState(false);
 
@@ -179,7 +159,7 @@ export const TemplatesContent = () => {
         {/* Template List */}
         <div className="lg:col-span-1 space-y-3">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-bold text-foreground">8 Template Disponibili</h3>
+            <h3 className="font-bold text-foreground">6 Temi Disponibili</h3>
           </div>
           
           <div className="space-y-2 max-h-[600px] overflow-y-auto pr-2">
