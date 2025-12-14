@@ -64,6 +64,9 @@ import { WhatsAppContent } from "@/components/demo/WhatsAppContent";
 import { StoriesContent } from "@/components/demo/StoriesContent";
 import { AllergensContent } from "@/components/demo/AllergensContent";
 import { MoodContent } from "@/components/demo/MoodContent";
+import { InstagramContent } from "@/components/demo/InstagramContent";
+import { EventsContent } from "@/components/demo/EventsContent";
+import { PushNotificationsContent } from "@/components/demo/PushNotificationsContent";
 
 // Sidebar navigation items - organized by category
 const sidebarItems = [
@@ -79,6 +82,9 @@ const sidebarItems = [
   { icon: Sparkles, label: "Mood", id: "mood", category: "engagement" },
   { icon: Filter, label: "Allergeni", id: "allergens", category: "tools" },
   { icon: MessageCircle, label: "WhatsApp", id: "whatsapp", category: "tools" },
+  { icon: Bell, label: "Push", id: "push", category: "tools" },
+  { icon: Instagram, label: "Instagram", id: "instagram", category: "tools" },
+  { icon: Calendar, label: "Eventi", id: "events", category: "tools" },
   { icon: Palette, label: "Template", id: "templates", category: "tools" },
   { icon: BarChart3, label: "Analytics", id: "analytics", category: "tools" },
   { icon: Settings, label: "Impostazioni", id: "settings", category: "tools" },
@@ -196,6 +202,12 @@ const Demo = () => {
         return <AllergensContent />;
       case "whatsapp":
         return <WhatsAppContent />;
+      case "push":
+        return <PushNotificationsContent />;
+      case "instagram":
+        return <InstagramContent />;
+      case "events":
+        return <EventsContent />;
       case "templates":
         return <TemplatesContent />;
       case "analytics":
