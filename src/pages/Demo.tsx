@@ -1,3 +1,14 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════════
+ * QRCODESTUDIOJEM - Interactive Demo Dashboard
+ * 
+ * Sviluppato da Eduard Costin Udila @ studiojem.it
+ * Web Development & Digital Solutions
+ * 
+ * © 2024 StudioJEM - Tutti i diritti riservati
+ * ═══════════════════════════════════════════════════════════════════════════════
+ */
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -7,7 +18,7 @@ import {
   Calendar, 
   Truck, 
   Users, 
-  BarChart3, 
+  BarChart3,
   Settings,
   Bell,
   Search,
