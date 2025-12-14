@@ -72,7 +72,7 @@ const Hero = memo(() => {
           >
             <div className="badge-primary">
               <Sparkles className="w-4 h-4" />
-              <span>Usato da 500+ ristoranti in Italia</span>
+              <span>La nuova era dei menu digitali</span>
               <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
             </div>
           </motion.div>

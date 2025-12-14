@@ -1,69 +1,65 @@
-import { motion } from "framer-motion";
-import { TrendingUp, Users, Star, Eye } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef, memo } from "react";
+import { TrendingUp, Users, Star, Zap } from "lucide-react";
 
-// Simulated client logos with gradient colors
+// Simulated client logos with gradient colors - smaller list
 const clients = [
-  { name: "Ristorante Milano", initials: "RM", gradient: "from-rose-500 to-pink-600" },
-  { name: "Trattoria Bella", initials: "TB", gradient: "from-amber-500 to-orange-600" },
-  { name: "Pizzeria Napoli", initials: "PN", gradient: "from-red-500 to-rose-600" },
-  { name: "Osteria Toscana", initials: "OT", gradient: "from-emerald-500 to-teal-600" },
-  { name: "Bistrot Roma", initials: "BR", gradient: "from-blue-500 to-indigo-600" },
-  { name: "Café Venezia", initials: "CV", gradient: "from-violet-500 to-purple-600" },
-  { name: "La Pergola", initials: "LP", gradient: "from-cyan-500 to-blue-600" },
+  { name: "Osteria Toscana", initials: "OT", gradient: "from-violet-500 to-purple-600" },
+  { name: "Bistrot Roma", initials: "BR", gradient: "from-emerald-500 to-teal-600" },
+  { name: "Café Venezia", initials: "CV", gradient: "from-cyan-500 to-blue-600" },
+  { name: "La Pergola", initials: "LP", gradient: "from-rose-500 to-pink-600" },
   { name: "Il Giardino", initials: "IG", gradient: "from-green-500 to-emerald-600" },
 ];
 
+// Realistic startup stats
 const stats = [
-  { value: "500+", label: "Ristoranti attivi", icon: Users, gradient: "from-violet-500 to-purple-600" },
-  { value: "2M+", label: "Menu visualizzati", icon: Eye, gradient: "from-blue-500 to-cyan-600" },
-  { value: "98%", label: "Clienti soddisfatti", icon: TrendingUp, gradient: "from-emerald-500 to-teal-600" },
-  { value: "4.9★", label: "Rating medio", icon: Star, gradient: "from-amber-500 to-orange-600" },
+  { value: "50+", label: "Ristoranti", icon: Users, gradient: "from-violet-500 to-purple-600" },
+  { value: "10K+", label: "Menu views", icon: Zap, gradient: "from-blue-500 to-cyan-600" },
+  { value: "95%", label: "Soddisfatti", icon: TrendingUp, gradient: "from-emerald-500 to-teal-600" },
+  { value: "4.8★", label: "Rating", icon: Star, gradient: "from-amber-500 to-orange-600" },
 ];
 
-const Logos = () => {
+const Logos = memo(() => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  
   // Duplicate for seamless loop
   const allClients = [...clients, ...clients];
 
   return (
-    <section className="py-16 md:py-24 overflow-hidden relative">
+    <section ref={ref} className="py-10 md:py-14 overflow-hidden relative">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
       
-      <div className="container relative z-10 mb-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center"
+      <div className="container relative z-10 mb-8">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.3 }}
+          className="text-center text-muted-foreground text-sm"
         >
-          <p className="text-muted-foreground text-sm uppercase tracking-widest font-medium mb-2">
-            I nostri partner
-          </p>
-          <p className="text-foreground text-lg font-medium">
-            Scelto da 500+ ristoranti in tutta Italia
-          </p>
-        </motion.div>
+          Usato da ristoranti in tutta Italia
+        </motion.p>
       </div>
 
-      {/* Marquee Container */}
-      <div className="relative mb-16">
+      {/* Compact Marquee */}
+      <div className="relative mb-8">
         {/* Gradient Masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-        {/* Scrolling Logos */}
+        {/* Scrolling Logos - Smaller */}
         <div className="flex animate-marquee">
           {allClients.map((client, index) => (
             <div
               key={`${client.name}-${index}`}
-              className="flex-shrink-0 mx-4 md:mx-6"
+              className="flex-shrink-0 mx-3"
             >
-              <div className="group flex items-center gap-3 px-5 py-4 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300">
-                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${client.gradient} flex items-center justify-center shadow-lg`}>
-                  <span className="text-white font-bold text-sm">{client.initials}</span>
+              <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-card/50 border border-border/50">
+                <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${client.gradient} flex items-center justify-center`}>
+                  <span className="text-white font-semibold text-xs">{client.initials}</span>
                 </div>
-                <span className="text-foreground font-medium text-sm whitespace-nowrap">
+                <span className="text-foreground/80 font-medium text-xs whitespace-nowrap">
                   {client.name}
                 </span>
               </div>
@@ -72,45 +68,41 @@ const Logos = () => {
         </div>
       </div>
 
-      {/* Stats with icons and gradients */}
+      {/* Compact Stats - Single Row */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        viewport={{ once: true }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.4, delay: 0.1 }}
         className="container"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          {stats.map((stat, index) => {
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+          {stats.map((stat) => {
             const Icon = stat.icon;
             return (
-              <motion.div
+              <div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 * index }}
-                viewport={{ once: true }}
-                className="group relative"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-card/50 border border-border/50"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity`} />
-                <div className="relative bento-card text-center py-6">
-                  <div className={`w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center shadow-lg`}>
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">
+                <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${stat.gradient} flex items-center justify-center`}>
+                  <Icon className="w-4 h-4 text-white" />
+                </div>
+                <div>
+                  <div className="text-lg font-bold text-foreground leading-tight">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-[10px] text-muted-foreground leading-tight">
                     {stat.label}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
       </motion.div>
     </section>
   );
-};
+});
+
+Logos.displayName = 'Logos';
 
 export default Logos;
