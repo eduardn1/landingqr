@@ -27,7 +27,10 @@ import {
   QrCode,
   HelpCircle,
   Menu,
-  X
+  X,
+  Trophy,
+  Palette,
+  Gift
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -39,6 +42,9 @@ import { MenuContent } from "@/components/demo/MenuContent";
 import { OrdersContent } from "@/components/demo/OrdersContent";
 import { ReservationsContent } from "@/components/demo/ReservationsContent";
 import { InteractiveCustomersContent } from "@/components/demo/InteractiveCustomersContent";
+import { LoyaltyContent } from "@/components/demo/LoyaltyContent";
+import { TemplatesContent } from "@/components/demo/TemplatesContent";
+import { PromoContent } from "@/components/demo/PromoContent";
 
 // Sidebar navigation items
 const sidebarItems = [
@@ -48,6 +54,9 @@ const sidebarItems = [
   { icon: Calendar, label: "Prenotazioni", id: "reservations" },
   { icon: Truck, label: "Delivery", id: "delivery" },
   { icon: Users, label: "Clienti", id: "customers" },
+  { icon: Trophy, label: "Loyalty", id: "loyalty" },
+  { icon: Gift, label: "Promo", id: "promo" },
+  { icon: Palette, label: "Template", id: "templates" },
   { icon: BarChart3, label: "Analytics", id: "analytics" },
   { icon: Settings, label: "Impostazioni", id: "settings" },
 ];
@@ -152,8 +161,12 @@ const Demo = () => {
         return <InteractiveCustomersContent />;
       case "delivery":
         return <DeliveryContent />;
-      case "customers":
-        return <InteractiveCustomersContent />;
+      case "loyalty":
+        return <LoyaltyContent />;
+      case "promo":
+        return <PromoContent />;
+      case "templates":
+        return <TemplatesContent />;
       case "analytics":
         return <AnalyticsContent />;
       case "settings":
