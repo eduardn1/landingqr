@@ -42,13 +42,13 @@ const faqs: FAQItem[] = [
     category: "pricing",
   },
   {
-    question: "C'è una fee di setup o commissioni sugli ordini?",
+    question: "Ci sono commissioni sugli ordini?",
     answer: "Assolutamente no! Non prendiamo commissioni sugli ordini come fanno i grandi aggregatori. Paghi solo l'abbonamento mensile, tutto incluso. Zero sorprese.",
     category: "pricing",
   },
   {
-    question: "Funziona per bar e caffetterie, non solo ristoranti?",
-    answer: "Certamente! Flavour è perfetto per ogni tipo di locale: bar, pub, cocktail bar, caffetterie, bistrot, pizzerie, gelaterie. Personalizza il menu con qualsiasi categoria: cocktail, birre, caffè, pasticceria, piatti, snack.",
+    question: "Funziona per bar, pub e caffetterie?",
+    answer: "Certamente! Flavour è perfetto per ogni tipo di locale: bar, pub, cocktail bar, wine bar, caffetterie, bistrot, pizzerie, osterie, gelaterie, ristoranti. Personalizza il menu con qualsiasi categoria: cocktail, birre artigianali, caffè, pasticceria, piatti, aperitivi, vini.",
     category: "features",
   },
   {
@@ -58,7 +58,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "I menu sono tradotti automaticamente?",
-    answer: "Sì! Flavour supporta 5 lingue (Italiano, Inglese, Tedesco, Spagnolo, Francese). Puoi scegliere la traduzione automatica AI oppure inserire traduzioni manuali per un controllo totale. Perfetto per bar turistici e locali internazionali.",
+    answer: "Sì! Flavour supporta 5 lingue (Italiano, Inglese, Tedesco, Spagnolo, Francese). Puoi scegliere la traduzione automatica AI oppure inserire traduzioni manuali per un controllo totale. Perfetto per bar turistici, pub internazionali e locali in zone turistiche.",
     category: "international",
   },
   {
@@ -68,22 +68,22 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Posso gestire più sedi?",
-    answer: "Sì! Con i piani Pro e Enterprise puoi gestire più locali da un unico pannello. Menu condivisi, analytics aggregati, gestione centralizzata del personale.",
+    answer: "Sì! Con i piani Pro e Enterprise puoi gestire più locali da un unico pannello. Menu condivisi o separati per ogni sede, analytics aggregati, gestione centralizzata del personale. Perfetto per catene di bar, franchising o gruppi di ristoranti.",
     category: "features",
   },
   {
     question: "Come funzionano le prenotazioni?",
-    answer: "I clienti prenotano direttamente dal menu digitale. Ricevi notifica istantanea, conferma automatica via WhatsApp, reminder prima della prenotazione. Sistema anti no-show incluso.",
+    answer: "I clienti prenotano direttamente dal menu digitale o dal sito. Ricevi notifica istantanea, conferma automatica via WhatsApp, reminder prima della prenotazione. Sistema anti no-show incluso. Funziona per tavoli al ristorante, aree lounge nei bar, sale private.",
     category: "features",
   },
   {
     question: "Qual è la differenza con Just Eat o Deliveroo?",
-    answer: "Loro prendono fino al 30% di commissioni su ogni ordine. Noi zero. Flavour è tuo: i clienti sono tuoi, i dati sono tuoi, il profitto è 100% tuo. E offri un'esperienza migliore.",
+    answer: "Loro prendono fino al 30% di commissioni su ogni ordine. Noi zero. Flavour è tuo: i clienti sono tuoi, i dati sono tuoi, il profitto è 100% tuo. E offri un'esperienza migliore e personalizzata.",
     category: "pricing",
   },
   {
     question: "Supportate pagamenti internazionali?",
-    answer: "Sì! Integriamo Stripe, PayPal, Satispay, Apple Pay, Google Pay. I tuoi clienti internazionali pagano come preferiscono, nella loro valuta.",
+    answer: "Sì! Integriamo Stripe, PayPal, Satispay, Apple Pay, Google Pay. I tuoi clienti internazionali pagano come preferiscono, nella loro valuta. Perfetto per locali turistici e pub in zone internazionali.",
     category: "international",
   },
 ];
