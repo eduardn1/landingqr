@@ -1,3 +1,26 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════════
+ * QRCODESTUDIOJEM - App Root Component
+ * Piattaforma completa per la digitalizzazione del ristorante
+ * 
+ * Features:
+ * - Menu Digitale QR (30+ funzionalità)
+ * - Multi-Lingua (5 lingue)
+ * - 8 Template Homepage
+ * - Asporto & Delivery (zero commissioni)
+ * - Prenotazioni Smart
+ * - Loyalty & Gamification
+ * - WhatsApp Automation
+ * - Analytics Dashboard
+ * - E molto altro...
+ * 
+ * Sviluppato da Eduard Costin Udila @ studiojem.it
+ * Web Development & Digital Solutions
+ * 
+ * © 2024 StudioJEM - Tutti i diritti riservati
+ * ═══════════════════════════════════════════════════════════════════════════════
+ */
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";

@@ -41,7 +41,11 @@ import {
   X,
   Trophy,
   Palette,
-  Gift
+  Gift,
+  MessageCircle,
+  Sparkles,
+  Filter,
+  Instagram
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -56,20 +60,28 @@ import { InteractiveCustomersContent } from "@/components/demo/InteractiveCustom
 import { LoyaltyContent } from "@/components/demo/LoyaltyContent";
 import { TemplatesContent } from "@/components/demo/TemplatesContent";
 import { PromoContent } from "@/components/demo/PromoContent";
+import { WhatsAppContent } from "@/components/demo/WhatsAppContent";
+import { StoriesContent } from "@/components/demo/StoriesContent";
+import { AllergensContent } from "@/components/demo/AllergensContent";
+import { MoodContent } from "@/components/demo/MoodContent";
 
-// Sidebar navigation items
+// Sidebar navigation items - organized by category
 const sidebarItems = [
-  { icon: LayoutDashboard, label: "Dashboard", id: "dashboard" },
-  { icon: UtensilsCrossed, label: "Menu", id: "menu" },
-  { icon: ShoppingBag, label: "Ordini", id: "orders" },
-  { icon: Calendar, label: "Prenotazioni", id: "reservations" },
-  { icon: Truck, label: "Delivery", id: "delivery" },
-  { icon: Users, label: "Clienti", id: "customers" },
-  { icon: Trophy, label: "Loyalty", id: "loyalty" },
-  { icon: Gift, label: "Promo", id: "promo" },
-  { icon: Palette, label: "Template", id: "templates" },
-  { icon: BarChart3, label: "Analytics", id: "analytics" },
-  { icon: Settings, label: "Impostazioni", id: "settings" },
+  { icon: LayoutDashboard, label: "Dashboard", id: "dashboard", category: "main" },
+  { icon: UtensilsCrossed, label: "Menu", id: "menu", category: "main" },
+  { icon: ShoppingBag, label: "Ordini", id: "orders", category: "main" },
+  { icon: Calendar, label: "Prenotazioni", id: "reservations", category: "main" },
+  { icon: Truck, label: "Delivery", id: "delivery", category: "main" },
+  { icon: Users, label: "Clienti", id: "customers", category: "main" },
+  { icon: Trophy, label: "Loyalty", id: "loyalty", category: "engagement" },
+  { icon: Gift, label: "Promo", id: "promo", category: "engagement" },
+  { icon: Instagram, label: "Stories", id: "stories", category: "engagement" },
+  { icon: Sparkles, label: "Mood", id: "mood", category: "engagement" },
+  { icon: Filter, label: "Allergeni", id: "allergens", category: "tools" },
+  { icon: MessageCircle, label: "WhatsApp", id: "whatsapp", category: "tools" },
+  { icon: Palette, label: "Template", id: "templates", category: "tools" },
+  { icon: BarChart3, label: "Analytics", id: "analytics", category: "tools" },
+  { icon: Settings, label: "Impostazioni", id: "settings", category: "tools" },
 ];
 
 // Mock data for orders
@@ -176,6 +188,14 @@ const Demo = () => {
         return <LoyaltyContent />;
       case "promo":
         return <PromoContent />;
+      case "stories":
+        return <StoriesContent />;
+      case "mood":
+        return <MoodContent />;
+      case "allergens":
+        return <AllergensContent />;
+      case "whatsapp":
+        return <WhatsAppContent />;
       case "templates":
         return <TemplatesContent />;
       case "analytics":
