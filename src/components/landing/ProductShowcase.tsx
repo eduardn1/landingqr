@@ -9,7 +9,7 @@
  */
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, memo } from "react";
 import { 
   Smartphone, 
   Monitor, 
@@ -75,7 +75,7 @@ const showcaseItems = [
   },
 ];
 
-const ProductShowcase = () => {
+const ProductShowcase = memo(() => {
   const containerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -184,6 +184,8 @@ const ProductShowcase = () => {
                         src={item.image} 
                         alt={item.title}
                         className="w-full h-auto"
+                        loading="lazy"
+                        decoding="async"
                       />
                       
                       {/* Overlay gradient */}
@@ -277,6 +279,8 @@ const ProductShowcase = () => {
       </div>
     </section>
   );
-};
+});
+
+ProductShowcase.displayName = 'ProductShowcase';
 
 export default ProductShowcase;

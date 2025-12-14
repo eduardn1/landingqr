@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronRight, ChevronLeft, Sparkles, LayoutDashboard, UtensilsCrossed, ShoppingBag, Calendar, Users, Gift, MessageCircle, Palette, BarChart3, Settings } from "lucide-react";
+import { X, ChevronRight, ChevronLeft, Sparkles, LayoutDashboard, UtensilsCrossed, ShoppingBag, Calendar, Users, Gift, MessageCircle, Palette, BarChart3, Settings, Truck, MapPin, Bell, Star, Instagram, FileText, Shield, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface OnboardingStep {
@@ -9,78 +9,97 @@ interface OnboardingStep {
   description: string;
   icon: React.ComponentType<{ className?: string }>;
   highlight: string;
+  features?: string[];
 }
 
 const steps: OnboardingStep[] = [
   {
     id: "welcome",
     title: "Benvenuto in Flavour! 🎉",
-    description: "Scopri come gestire il tuo ristorante in modo semplice e intuitivo. Ti guideremo attraverso le 10 sezioni principali.",
+    description: "Scopri come gestire il tuo ristorante in modo semplice e intuitivo. Ti guideremo attraverso le sezioni principali della piattaforma.",
     icon: Sparkles,
     highlight: "",
+    features: ["Gestione completa del ristorante", "Interfaccia intuitiva", "Tutto in un'unica dashboard"],
   },
   {
     id: "dashboard",
     title: "Dashboard",
-    description: "Visualizza statistiche in tempo reale: ordini, fatturato, prenotazioni e clienti attivi.",
+    description: "La tua panoramica in tempo reale. Monitora ordini, fatturato, prenotazioni e clienti attivi con statistiche aggiornate.",
     icon: LayoutDashboard,
     highlight: "dashboard",
+    features: ["Statistiche in tempo reale", "Ordini e fatturato giornaliero", "Prenotazioni attive", "Trend di crescita"],
   },
   {
     id: "menu",
     title: "Menu & Allergeni",
-    description: "Gestisci piatti, prezzi, categorie e informazioni sugli allergeni in un'unica sezione.",
+    description: "Gestisci il tuo menu digitale completo. Aggiungi piatti, modifica prezzi, organizza categorie e gestisci gli allergeni.",
     icon: UtensilsCrossed,
     highlight: "menu",
+    features: ["Gestione piatti e prezzi", "Categorie personalizzabili", "Informazioni allergeni", "Foto e descrizioni", "Attiva/disattiva piatti"],
   },
   {
     id: "orders",
     title: "Ordini & Delivery",
-    description: "Monitora ordini, traccia consegne in tempo reale e gestisci i driver su mappa interattiva.",
+    description: "Monitora tutti gli ordini in arrivo. Gestisci delivery, takeaway e traccia i driver in tempo reale sulla mappa.",
     icon: ShoppingBag,
     highlight: "orders",
+    features: ["Ordini in tempo reale", "Stato preparazione", "Tracking driver su mappa", "Gestione consegne", "Storico ordini"],
   },
   {
     id: "reservations",
     title: "Prenotazioni & Eventi",
-    description: "Gestisci prenotazioni tavoli ed eventi speciali con calendario integrato.",
+    description: "Calendario integrato per gestire prenotazioni tavoli ed eventi speciali. Conferma automatica e promemoria.",
     icon: Calendar,
     highlight: "reservations",
+    features: ["Calendario prenotazioni", "Gestione tavoli", "Eventi speciali", "Conferme automatiche", "Promemoria clienti"],
   },
   {
     id: "customers",
     title: "Clienti & Loyalty",
-    description: "CRM completo con programmi fedeltà, punti e offerte personalizzate.",
+    description: "CRM completo per fidelizzare i clienti. Gestisci programmi punti, offerte personalizzate e storico ordini.",
     icon: Users,
     highlight: "customers",
+    features: ["Database clienti", "Programma fedeltà", "Punti e premi", "Offerte personalizzate", "Storico acquisti"],
   },
   {
     id: "promo",
     title: "Promo & Stories",
-    description: "Crea promozioni, gestisci stories e contenuti Instagram per il tuo ristorante.",
+    description: "Crea promozioni accattivanti e gestisci contenuti social. Pubblica stories e connetti Instagram.",
     icon: Gift,
     highlight: "promo",
+    features: ["Promozioni e sconti", "Stories interattive", "Integrazione Instagram", "Codici sconto", "Campagne marketing"],
   },
   {
     id: "notifications",
     title: "Notifiche",
-    description: "Invia notifiche push, WhatsApp e gestisci tutte le comunicazioni ai clienti.",
+    description: "Comunica con i tuoi clienti. Invia notifiche push, messaggi WhatsApp e gestisci tutte le comunicazioni.",
     icon: MessageCircle,
     highlight: "notifications",
+    features: ["Notifiche push", "Messaggi WhatsApp", "Email automatiche", "Comunicazioni in-app", "Storico messaggi"],
   },
   {
     id: "templates",
-    title: "Temi",
-    description: "Personalizza l'aspetto del tuo menu digitale con temi professionali.",
+    title: "Temi & Personalizzazione",
+    description: "Personalizza l'aspetto del tuo menu digitale. Scegli tra temi professionali e adatta i colori al tuo brand.",
     icon: Palette,
     highlight: "templates",
+    features: ["Temi professionali", "Colori personalizzabili", "Logo e branding", "Anteprima live", "Mobile-first design"],
   },
   {
     id: "analytics",
-    title: "Analytics",
-    description: "Analizza trend, performance e comportamenti dei clienti con grafici dettagliati.",
+    title: "Analytics & Report",
+    description: "Analizza le performance del tuo ristorante. Grafici dettagliati, trend e insights per ottimizzare il business.",
     icon: BarChart3,
     highlight: "analytics",
+    features: ["Grafici fatturato", "Trend vendite", "Piatti più venduti", "Analisi orari", "Report esportabili"],
+  },
+  {
+    id: "settings",
+    title: "Impostazioni",
+    description: "Configura il tuo ristorante. Orari, metodi di pagamento, notifiche e tutte le preferenze del sistema.",
+    icon: Settings,
+    highlight: "settings",
+    features: ["Dati ristorante", "Orari apertura", "Metodi pagamento", "Preferenze notifiche", "Gestione account"],
   },
 ];
 
@@ -132,23 +151,23 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
+          {/* Backdrop - Semi-transparent to show content behind */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-background/60 backdrop-blur-sm z-50"
             onClick={handleSkip}
           />
 
-          {/* Modal */}
+          {/* Modal - Centered and responsive */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[calc(100%-2rem)] max-w-lg mx-4"
+            className="fixed left-4 right-4 top-1/2 -translate-y-1/2 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-50 w-auto sm:w-full max-w-md mx-auto"
           >
-            <div className="relative bg-card border border-border rounded-3xl shadow-2xl overflow-hidden">
+            <div className="relative bg-card/95 backdrop-blur-xl border border-border rounded-3xl shadow-2xl overflow-hidden">
               {/* Gradient Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
               
@@ -161,9 +180,9 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
               </button>
 
               {/* Content */}
-              <div className="relative p-6 sm:p-8">
+              <div className="relative p-5 sm:p-8">
                 {/* Progress Bar */}
-                <div className="mb-6">
+                <div className="mb-5">
                   <div className="h-1.5 bg-muted rounded-full overflow-hidden">
                     <motion.div 
                       className="h-full bg-gradient-to-r from-primary to-accent"
@@ -183,7 +202,7 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
                   initial={{ scale: 0, rotate: -180 }}
                   animate={{ scale: 1, rotate: 0 }}
                   transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                  className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-xl shadow-primary/25"
+                  className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-xl shadow-primary/25"
                 >
                   <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                 </motion.div>
@@ -194,14 +213,29 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="text-center mb-6 sm:mb-8"
+                  className="text-center mb-5"
                 >
-                  <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2 sm:mb-3">
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                     {step.description}
                   </p>
+                  
+                  {/* Features list */}
+                  {step.features && (
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {step.features.map((feature, index) => (
+                        <span 
+                          key={index}
+                          className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium"
+                        >
+                          <span className="w-1 h-1 rounded-full bg-primary" />
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </motion.div>
 
                 {/* Buttons */}
@@ -210,7 +244,7 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
                     variant="ghost"
                     onClick={handlePrev}
                     disabled={currentStep === 0}
-                    className="gap-1 sm:gap-2 px-3 sm:px-4"
+                    className="gap-1 px-3"
                     size="sm"
                   >
                     <ChevronLeft className="w-4 h-4" />
@@ -228,12 +262,11 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
 
                   <Button
                     onClick={handleNext}
-                    className="gradient-button gap-1 sm:gap-2 px-3 sm:px-4"
+                    className="gradient-button gap-1 px-4"
                     size="sm"
                   >
-                    {currentStep === steps.length - 1 ? "Inizia" : <span className="hidden sm:inline">Avanti</span>}
-                    {currentStep === steps.length - 1 ? null : <span className="sm:hidden">→</span>}
-                    <ChevronRight className="w-4 h-4 hidden sm:block" />
+                    {currentStep === steps.length - 1 ? "Inizia" : "Avanti"}
+                    <ChevronRight className="w-4 h-4" />
                   </Button>
                 </div>
               </div>
