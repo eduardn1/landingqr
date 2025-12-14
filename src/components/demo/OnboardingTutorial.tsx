@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronRight, ChevronLeft, Sparkles, LayoutDashboard, UtensilsCrossed, Truck, BarChart3, Settings } from "lucide-react";
+import { X, ChevronRight, ChevronLeft, Sparkles, LayoutDashboard, UtensilsCrossed, ShoppingBag, Calendar, Users, Gift, MessageCircle, Palette, BarChart3, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface OnboardingStep {
@@ -15,44 +15,72 @@ const steps: OnboardingStep[] = [
   {
     id: "welcome",
     title: "Benvenuto in Flavour! 🎉",
-    description: "Scopri come gestire il tuo ristorante in modo semplice e intuitivo. Ti guideremo attraverso le funzionalità principali.",
+    description: "Scopri come gestire il tuo ristorante in modo semplice e intuitivo. Ti guideremo attraverso le 10 sezioni principali.",
     icon: Sparkles,
     highlight: "",
   },
   {
     id: "dashboard",
     title: "Dashboard",
-    description: "Visualizza statistiche in tempo reale: ordini, fatturato, prenotazioni e clienti attivi. Tutto a colpo d'occhio.",
+    description: "Visualizza statistiche in tempo reale: ordini, fatturato, prenotazioni e clienti attivi.",
     icon: LayoutDashboard,
     highlight: "dashboard",
   },
   {
     id: "menu",
-    title: "Gestione Menu",
-    description: "Aggiungi, modifica e organizza i tuoi piatti. Gestisci prezzi, disponibilità e categorie con facilità.",
+    title: "Menu & Allergeni",
+    description: "Gestisci piatti, prezzi, categorie e informazioni sugli allergeni in un'unica sezione.",
     icon: UtensilsCrossed,
     highlight: "menu",
   },
   {
-    id: "delivery",
-    title: "Driver Tracking",
-    description: "Monitora le consegne in tempo reale su mappa. Assegna ordini ai driver e traccia i percorsi.",
-    icon: Truck,
-    highlight: "delivery",
+    id: "orders",
+    title: "Ordini & Delivery",
+    description: "Monitora ordini, traccia consegne in tempo reale e gestisci i driver su mappa interattiva.",
+    icon: ShoppingBag,
+    highlight: "orders",
+  },
+  {
+    id: "reservations",
+    title: "Prenotazioni & Eventi",
+    description: "Gestisci prenotazioni tavoli ed eventi speciali con calendario integrato.",
+    icon: Calendar,
+    highlight: "reservations",
+  },
+  {
+    id: "customers",
+    title: "Clienti & Loyalty",
+    description: "CRM completo con programmi fedeltà, punti e offerte personalizzate.",
+    icon: Users,
+    highlight: "customers",
+  },
+  {
+    id: "promo",
+    title: "Promo & Stories",
+    description: "Crea promozioni, gestisci stories e contenuti Instagram per il tuo ristorante.",
+    icon: Gift,
+    highlight: "promo",
+  },
+  {
+    id: "notifications",
+    title: "Notifiche",
+    description: "Invia notifiche push, WhatsApp e gestisci tutte le comunicazioni ai clienti.",
+    icon: MessageCircle,
+    highlight: "notifications",
+  },
+  {
+    id: "templates",
+    title: "Temi",
+    description: "Personalizza l'aspetto del tuo menu digitale con temi professionali.",
+    icon: Palette,
+    highlight: "templates",
   },
   {
     id: "analytics",
-    title: "Analytics Avanzate",
+    title: "Analytics",
     description: "Analizza trend, performance e comportamenti dei clienti con grafici dettagliati.",
     icon: BarChart3,
     highlight: "analytics",
-  },
-  {
-    id: "settings",
-    title: "Impostazioni",
-    description: "Configura orari, metodi di pagamento, notifiche e personalizza la tua esperienza.",
-    icon: Settings,
-    highlight: "settings",
   },
 ];
 
@@ -118,7 +146,7 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-lg"
+            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[calc(100%-2rem)] max-w-lg mx-4"
           >
             <div className="relative bg-card border border-border rounded-3xl shadow-2xl overflow-hidden">
               {/* Gradient Background */}
@@ -133,27 +161,20 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
               </button>
 
               {/* Content */}
-              <div className="relative p-8">
-                {/* Progress Dots */}
-                <div className="flex items-center justify-center gap-2 mb-8">
-                  {steps.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => {
-                        setCurrentStep(i);
-                        if (steps[i].highlight) {
-                          onNavigate(steps[i].highlight);
-                        }
-                      }}
-                      className={`w-2 h-2 rounded-full transition-all ${
-                        i === currentStep 
-                          ? "w-8 bg-primary" 
-                          : i < currentStep 
-                            ? "bg-primary/50" 
-                            : "bg-muted"
-                      }`}
+              <div className="relative p-6 sm:p-8">
+                {/* Progress Bar */}
+                <div className="mb-6">
+                  <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+                    <motion.div 
+                      className="h-full bg-gradient-to-r from-primary to-accent"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
+                      transition={{ duration: 0.3 }}
                     />
-                  ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-2 text-center">
+                    {currentStep + 1} di {steps.length}
+                  </p>
                 </div>
 
                 {/* Icon */}
@@ -162,9 +183,9 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
                   initial={{ scale: 0, rotate: -180 }}
                   animate={{ scale: 1, rotate: 0 }}
                   transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                  className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-xl shadow-primary/25"
+                  className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-xl shadow-primary/25"
                 >
-                  <Icon className="w-10 h-10 text-white" />
+                  <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                 </motion.div>
 
                 {/* Text */}
@@ -173,38 +194,46 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="text-center mb-8"
+                  className="text-center mb-6 sm:mb-8"
                 >
-                  <h3 className="text-2xl font-bold text-foreground mb-3">
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2 sm:mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                     {step.description}
                   </p>
                 </motion.div>
 
                 {/* Buttons */}
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-2">
                   <Button
                     variant="ghost"
                     onClick={handlePrev}
                     disabled={currentStep === 0}
-                    className="gap-2"
+                    className="gap-1 sm:gap-2 px-3 sm:px-4"
+                    size="sm"
                   >
                     <ChevronLeft className="w-4 h-4" />
-                    Indietro
+                    <span className="hidden sm:inline">Indietro</span>
                   </Button>
 
-                  <span className="text-sm text-muted-foreground">
-                    {currentStep + 1} / {steps.length}
-                  </span>
+                  <Button
+                    variant="ghost"
+                    onClick={handleSkip}
+                    size="sm"
+                    className="text-muted-foreground"
+                  >
+                    Salta
+                  </Button>
 
                   <Button
                     onClick={handleNext}
-                    className="gradient-button gap-2"
+                    className="gradient-button gap-1 sm:gap-2 px-3 sm:px-4"
+                    size="sm"
                   >
-                    {currentStep === steps.length - 1 ? "Inizia" : "Avanti"}
-                    <ChevronRight className="w-4 h-4" />
+                    {currentStep === steps.length - 1 ? "Inizia" : <span className="hidden sm:inline">Avanti</span>}
+                    {currentStep === steps.length - 1 ? null : <span className="sm:hidden">→</span>}
+                    <ChevronRight className="w-4 h-4 hidden sm:block" />
                   </Button>
                 </div>
               </div>
