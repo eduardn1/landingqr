@@ -72,7 +72,7 @@ const Hero = memo(() => {
           >
             <div className="badge-primary">
               <Sparkles className="w-4 h-4" />
-              <span>La nuova era dei menu digitali</span>
+              <span>La nuova era dei menu digitali per bar, ristoranti e pub</span>
               <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
             </div>
           </motion.div>
@@ -83,9 +83,9 @@ const Hero = memo(() => {
             transition={{ duration: 0.3, delay: 0.05 }}
             className="text-display-md sm:text-display-lg md:text-display-xl lg:text-[5.5rem] font-extrabold mb-6 md:mb-8 px-2"
           >
-            <span className="text-foreground">Il tuo ristorante</span>
+            <span className="text-foreground">La tua attività</span>
             <br />
-            <span className="gradient-text">digitalizzato</span>
+            <span className="gradient-text">digitalizzata</span>
           </motion.h1>
 
           {/* Subheading - Mobile-first */}
@@ -94,7 +94,7 @@ const Hero = memo(() => {
             transition={{ duration: 0.3, delay: 0.1 }}
             className="text-body-md sm:text-body-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-6 md:mb-8 px-4"
           >
-            Menu QR, prenotazioni, asporto e delivery.{" "}
+            Menu QR, prenotazioni, asporto e delivery per bar, ristoranti, pub e caffetterie.{" "}
             Tutto in una piattaforma.{" "}
             <span className="text-foreground font-semibold">Pronto in 10 minuti.</span>
           </motion.p>
@@ -293,7 +293,7 @@ const Hero = memo(() => {
                 </div>
                 <div className="text-xs">
                   <p className="font-semibold text-foreground">+500</p>
-                  <p className="text-muted-foreground">ristoratori</p>
+                  <p className="text-muted-foreground">locali attivi</p>
                 </div>
               </div>
             </div>

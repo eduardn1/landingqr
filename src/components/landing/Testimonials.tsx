@@ -17,10 +17,10 @@ const testimonials = [
   {
     name: "Marco Rossi",
     role: "Proprietario",
-    business: "Trattoria da Mario",
+    business: "Pub The Oak",
     location: "Milano",
     rating: 5,
-    quote: "Da quando usiamo Flavour, gli ordini online sono aumentati del 52%. I clienti adorano poter ordinare dal tavolo senza aspettare il cameriere.",
+    quote: "Da quando usiamo Flavour, gli ordini di birre e cocktail sono aumentati del 52%. I clienti adorano ordinare dal tavolo senza aspettare al bancone.",
     highlight: "+52% ordini",
     gradient: "from-violet-500 to-purple-600",
     avatar: "MR",
@@ -39,7 +39,7 @@ const testimonials = [
   {
     name: "Alessandro Conti",
     role: "Chef & Owner",
-    business: "Ristorante La Pergola",
+    business: "Bistrot Le Jardin",
     location: "Firenze",
     rating: 5,
     quote: "I turisti stranieri ora capiscono tutto grazie alle 5 lingue automatiche. Le vendite del pranzo sono aumentate del 35%!",
@@ -61,22 +61,22 @@ const testimonials = [
   {
     name: "Roberto De Luca",
     role: "Direttore",
-    business: "Hotel Bellavista",
+    business: "Cocktail Lab",
     location: "Amalfi",
     rating: 5,
-    quote: "Gestiamo 3 ristoranti dell'hotel con un unico pannello. Il room service è diventato digitale e gli ospiti sono entusiasti.",
-    highlight: "3 ristoranti",
+    quote: "Gestiamo prenotazioni e ordini cocktail da un unico pannello. Il delivery dei nostri drink è decollato, meglio di qualsiasi aggregatore!",
+    highlight: "3x delivery",
     gradient: "from-pink-500 to-rose-500",
     avatar: "RD",
   },
   {
     name: "Elena Ferrara",
     role: "Co-founder",
-    business: "Sushi Corner",
+    business: "Caffè Aroma",
     location: "Torino",
     rating: 5,
-    quote: "Il sistema di takeaway integrato ci ha permesso di triplicare gli ordini da asporto. Meglio di qualsiasi aggregatore!",
-    highlight: "3x asporto",
+    quote: "Il loyalty program ha fidelizzato i nostri clienti abituali. Punti per ogni caffè e cappuccino, tornano sempre!",
+    highlight: "+40% retention",
     gradient: "from-amber-500 to-orange-500",
     avatar: "EF",
   },
@@ -144,7 +144,7 @@ const Testimonials = () => {
             className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-warning/10 border border-warning/20 mb-6 md:mb-8"
           >
             <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-warning fill-warning" />
-            <span className="text-xs sm:text-sm font-semibold text-warning">50+ ristoratori soddisfatti</span>
+            <span className="text-xs sm:text-sm font-semibold text-warning">500+ locali soddisfatti</span>
           </motion.div>
 
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-display-md font-bold leading-tight mb-3 sm:mb-4 md:mb-6 px-2">
@@ -153,7 +153,7 @@ const Testimonials = () => {
           </h2>
 
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground px-4">
-            Ristoratori italiani che hanno già trasformato il loro business con Flavour
+            Bar, ristoranti e pub italiani che hanno già trasformato il loro business con Flavour
           </p>
         </motion.div>
 

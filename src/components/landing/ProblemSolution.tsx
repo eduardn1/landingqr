@@ -144,8 +144,8 @@ const ProblemSolution = memo(() => {
           </div>
           
           <div className="text-center sm:text-left">
-            <p className="font-bold text-foreground">500+ ristoratori hanno già scelto Flavour</p>
-            <p className="text-sm text-muted-foreground">Digitalizza il tuo locale oggi stesso</p>
+            <p className="font-bold text-foreground">500+ locali hanno già scelto Flavour</p>
+            <p className="text-sm text-muted-foreground">Digitalizza la tua attività oggi stesso</p>
           </div>
           
           <Button

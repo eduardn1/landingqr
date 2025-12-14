@@ -42,7 +42,7 @@ const Footer = () => {
               <span className="font-bold text-lg sm:text-xl tracking-tight text-foreground">Flavour</span>
             </a>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
-              La piattaforma all-in-one per menu digitali, prenotazioni e ordini online. 
+              La piattaforma all-in-one per menu digitali, prenotazioni e ordini online per bar, ristoranti, pub e caffetterie. 
               Zero commissioni, 100% controllo.
             </p>
             <div className="space-y-2 text-sm">

@@ -20,7 +20,7 @@ const plans = [
     name: "Starter",
     monthlyPrice: 29,
     yearlyPrice: 24,
-    description: "Per piccoli ristoranti che iniziano la digitalizzazione",
+    description: "Per piccoli locali che iniziano la digitalizzazione",
     features: [
       { text: "Menu QR illimitato", included: true },
       { text: "Fino a 50 piatti", included: true },
@@ -40,7 +40,7 @@ const plans = [
     name: "Pro",
     monthlyPrice: 59,
     yearlyPrice: 49,
-    description: "La scelta più popolare per ristoranti ambiziosi",
+    description: "La scelta più popolare per locali ambiziosi",
     features: [
       { text: "Tutto in Starter", included: true },
       { text: "Piatti illimitati", included: true },
