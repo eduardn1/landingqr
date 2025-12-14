@@ -123,18 +123,18 @@ const ProductShowcase = memo(() => {
             <span className="text-sm font-semibold text-primary">Multi-Device</span>
           </motion.div>
           
-          <h2 className="font-display text-display-sm md:text-display-md font-bold mb-6">
+          <h2 className="font-display text-display-sm sm:text-display-md md:text-display-lg font-bold mb-4 md:mb-6 px-2">
             <span className="text-foreground">Un'esperienza </span>
             <span className="gradient-text">su ogni schermo</span>
           </h2>
-          <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-body-md sm:text-body-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Dal menu mobile per i clienti alla dashboard gestionale per il tuo staff.
             Ogni interfaccia è ottimizzata per il suo dispositivo.
           </p>
         </motion.div>
 
-        {/* Device Showcase - Alternating Layout */}
-        <div className="space-y-32">
+        {/* Device Showcase - Mobile-first Alternating Layout */}
+        <div className="space-y-16 sm:space-y-24 md:space-y-32">
           {showcaseItems.map((item, index) => {
             const isEven = index % 2 === 0;
             const Icon = item.icon;
@@ -146,9 +146,9 @@ const ProductShowcase = memo(() => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 viewport={{ once: true, margin: "-100px" }}
-                className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-20`}
+                className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 sm:gap-10 lg:gap-16 xl:gap-20`}
               >
-                {/* Device Mockup */}
+                {/* Device Mockup - Mobile optimized */}
                 <motion.div 
                   style={{ 
                     y: index === 0 ? y1 : y2,

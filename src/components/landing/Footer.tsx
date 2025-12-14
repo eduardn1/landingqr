@@ -31,15 +31,15 @@ const footerLinks = {
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border py-16 bg-muted/30">
-      <div className="container">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
-          <div className="lg:col-span-2 space-y-6">
-            <a href="/" className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/25">
-                <span className="text-white font-bold text-base">F</span>
+    <footer className="border-t border-border py-12 sm:py-16 bg-muted/30 pb-24 lg:pb-16">
+      <div className="container px-4 sm:px-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-12 mb-8 sm:mb-12">
+          <div className="col-span-2 lg:col-span-2 space-y-4 sm:space-y-6">
+            <a href="/" className="flex items-center gap-2">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/25">
+                <span className="text-white font-bold text-sm sm:text-base">F</span>
               </div>
-              <span className="font-bold text-xl tracking-tight text-foreground">Flavour</span>
+              <span className="font-bold text-lg sm:text-xl tracking-tight text-foreground">Flavour</span>
             </a>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
               La piattaforma all-in-one per menu digitali, prenotazioni e ordini online. 

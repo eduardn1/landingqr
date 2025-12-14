@@ -7,7 +7,11 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.5rem",
+        lg: "2rem",
+      },
       screens: {
         "2xl": "1400px",
       },
@@ -18,17 +22,17 @@ export default {
         display: ['Cabinet Grotesk', 'Satoshi', 'sans-serif'],
       },
       fontSize: {
-        // Premium Typography Scale
-        'display-xl': ['7rem', { lineHeight: '1', letterSpacing: '-0.03em', fontWeight: '800' }],
-        'display-lg': ['5.5rem', { lineHeight: '1.05', letterSpacing: '-0.025em', fontWeight: '700' }],
-        'display-md': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
-        'display-sm': ['3rem', { lineHeight: '1.15', letterSpacing: '-0.015em', fontWeight: '700' }],
-        'heading-xl': ['2.5rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '600' }],
-        'heading-lg': ['2rem', { lineHeight: '1.25', letterSpacing: '-0.01em', fontWeight: '600' }],
-        'heading-md': ['1.5rem', { lineHeight: '1.3', letterSpacing: '-0.01em', fontWeight: '600' }],
-        'body-lg': ['1.125rem', { lineHeight: '1.7', fontWeight: '400' }],
-        'body-md': ['1rem', { lineHeight: '1.7', fontWeight: '400' }],
-        'body-sm': ['0.9375rem', { lineHeight: '1.6', fontWeight: '500' }],
+        // Mobile-first Typography Scale
+        'display-xl': ['3.5rem', { lineHeight: '1.05', letterSpacing: '-0.03em', fontWeight: '800' }],
+        'display-lg': ['2.75rem', { lineHeight: '1.1', letterSpacing: '-0.025em', fontWeight: '700' }],
+        'display-md': ['2.25rem', { lineHeight: '1.15', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'display-sm': ['1.875rem', { lineHeight: '1.2', letterSpacing: '-0.015em', fontWeight: '700' }],
+        'heading-xl': ['1.75rem', { lineHeight: '1.25', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'heading-lg': ['1.5rem', { lineHeight: '1.3', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'heading-md': ['1.25rem', { lineHeight: '1.35', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'body-lg': ['1rem', { lineHeight: '1.7', fontWeight: '400' }],
+        'body-md': ['0.9375rem', { lineHeight: '1.7', fontWeight: '400' }],
+        'body-sm': ['0.875rem', { lineHeight: '1.6', fontWeight: '500' }],
       },
       colors: {
         border: "hsl(var(--border))",

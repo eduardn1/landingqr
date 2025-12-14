@@ -204,9 +204,9 @@
     @apply border-primary text-primary;
   }
 
-  /* Section Spacing */
+  /* Section Spacing - Mobile-first */
   .section-padding {
-    @apply py-24 md:py-32 lg:py-40;
+    @apply py-16 sm:py-20 md:py-28 lg:py-36;
   }
 
   /* Modern Badge Styles */

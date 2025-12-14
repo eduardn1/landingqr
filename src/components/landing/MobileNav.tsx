@@ -92,10 +92,11 @@ const MobileNav = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="lg:hidden fixed bottom-0 left-0 right-0 z-50 pb-safe"
+          className="lg:hidden fixed bottom-0 left-0 right-0 z-50"
+          style={{ paddingBottom: 'env(safe-area-inset-bottom, 12px)' }}
         >
-          <div className="mx-3 mb-3">
-            <div className="bg-card/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl shadow-black/20 px-2 py-2">
+          <div className="mx-2 sm:mx-3 mb-2 sm:mb-3">
+            <div className="bg-card/95 backdrop-blur-xl border border-border rounded-xl sm:rounded-2xl shadow-2xl shadow-black/20 px-1 sm:px-2 py-1.5 sm:py-2">
               <div className="flex items-center justify-around">
                 {navItems.map((item) => {
                   const Icon = item.icon;
@@ -105,22 +106,22 @@ const MobileNav = () => {
                     <button
                       key={item.id}
                       onClick={() => handleNavClick(item)}
-                      className="relative flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all"
+                      className="relative flex flex-col items-center gap-0.5 sm:gap-1 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg sm:rounded-xl transition-all"
                     >
                       {isActive && (
                         <motion.div
                           layoutId="activeTab"
-                          className="absolute inset-0 bg-primary/10 rounded-xl"
+                          className="absolute inset-0 bg-primary/10 rounded-lg sm:rounded-xl"
                           transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                         />
                       )}
                       <Icon 
-                        className={`w-5 h-5 relative z-10 transition-colors ${
+                        className={`w-4 h-4 sm:w-5 sm:h-5 relative z-10 transition-colors ${
                           isActive ? "text-primary" : "text-muted-foreground"
                         }`} 
                       />
                       <span 
-                        className={`text-[10px] font-medium relative z-10 transition-colors ${
+                        className={`text-[9px] sm:text-[10px] font-medium relative z-10 transition-colors ${
                           isActive ? "text-primary" : "text-muted-foreground"
                         }`}
                       >
