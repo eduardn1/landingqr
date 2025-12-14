@@ -1,10 +1,21 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+/**
+ * ═══════════════════════════════════════════════════════════════════════════════
+ * QRCODESTUDIOJEM - Footer Component
+ * 
+ * Sviluppato da Eduard Costin Udila @ studiojem.it
+ * Web Development & Digital Solutions
+ * 
+ * © 2024 StudioJEM - Tutti i diritti riservati
+ * ═══════════════════════════════════════════════════════════════════════════════
+ */
+
+import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
 
 const footerLinks = {
   prodotto: [
     { label: "Funzionalità", href: "#features" },
     { label: "Prezzi", href: "#pricing" },
-    { label: "Demo", href: "https://demo2.studiojem.it" },
+    { label: "Demo Interattiva", href: "/demo" },
   ],
   azienda: [
     { label: "Chi siamo", href: "#" },
@@ -31,11 +42,12 @@ const Footer = () => {
               <span className="font-bold text-xl tracking-tight text-foreground">Flavour</span>
             </a>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
-              La piattaforma all-in-one per menu digitali, prenotazioni e ordini online.
+              La piattaforma all-in-one per menu digitali, prenotazioni e ordini online. 
+              Zero commissioni, 100% controllo.
             </p>
             <div className="space-y-2 text-sm">
-              <a href="mailto:info@flavour.it" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-                <Mail className="w-4 h-4" /> info@flavour.it
+              <a href="mailto:info@studiojem.it" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                <Mail className="w-4 h-4" /> info@studiojem.it
               </a>
               <a href="tel:+393533811359" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
                 <Phone className="w-4 h-4" /> +39 353 381 1359
@@ -88,9 +100,17 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Flavour by Studio JEM. Tutti i diritti riservati.
+            © {new Date().getFullYear()} Flavour. Tutti i diritti riservati.
           </p>
-          <p className="text-xs text-muted-foreground">Made with ❤️ in Sardegna</p>
+          <a 
+            href="https://studiojem.it" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors group"
+          >
+            Sviluppato da <span className="font-semibold text-foreground group-hover:text-primary">Eduard Costin Udila</span> @ studiojem.it
+            <ExternalLink className="w-3 h-3" />
+          </a>
         </div>
       </div>
     </footer>
