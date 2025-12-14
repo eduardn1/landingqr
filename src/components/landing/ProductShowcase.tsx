@@ -74,137 +74,62 @@ const showcaseItems = [
   },
 ];
 
-// Generic Mobile Mockup Component
+// Live Mobile Mockup with iframe - Menu Section
 const MobileMockup = memo(() => (
   <div className="relative w-full max-w-[280px] mx-auto">
     <div className="bg-card rounded-[2.5rem] p-2 border-4 border-muted shadow-2xl">
       <div className="bg-background rounded-[2rem] overflow-hidden">
         {/* Notch */}
-        <div className="flex justify-center py-2">
+        <div className="flex justify-center py-2 bg-background">
           <div className="w-20 h-5 bg-muted rounded-full" />
         </div>
         
-        {/* Content */}
-        <div className="px-4 pb-6 space-y-3">
-          {/* Header */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <QrCode className="w-4 h-4 text-white" />
-              </div>
-              <div className="h-3 w-16 bg-foreground/60 rounded" />
-            </div>
-            <Menu className="w-5 h-5 text-muted-foreground" />
-          </div>
-
-          {/* Menu Items */}
-          {[
-            { color: "from-orange-400 to-red-500", price: "€12" },
-            { color: "from-green-400 to-emerald-500", price: "€8" },
-            { color: "from-blue-400 to-indigo-500", price: "€15" },
-            { color: "from-pink-400 to-rose-500", price: "€10" },
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 + i * 0.1 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-3 p-2.5 bg-muted/50 rounded-xl"
-            >
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center`}>
-                <Sparkles className="w-5 h-5 text-white/80" />
-              </div>
-              <div className="flex-1 space-y-1.5">
-                <div className="h-2.5 w-20 bg-foreground/60 rounded" />
-                <div className="h-2 w-14 bg-muted-foreground/40 rounded" />
-              </div>
-              <span className="text-sm font-bold text-success">{item.price}</span>
-            </motion.div>
-          ))}
-
-          {/* CTA */}
-          <div className="h-10 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center gap-2 mt-4">
-            <CreditCard className="w-4 h-4 text-white" />
-            <span className="text-sm font-semibold text-white">Ordina ora</span>
-          </div>
+        {/* Live Demo Content */}
+        <div className="relative h-[400px] overflow-hidden">
+          <iframe
+            src="/demo?skip=true&section=menu"
+            className="absolute top-0 left-0 w-[800px] h-[600px] origin-top-left pointer-events-none"
+            style={{ transform: 'scale(0.35)', transformOrigin: 'top left' }}
+            title="Menu Preview"
+            loading="lazy"
+          />
+          {/* Overlay gradient */}
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent pointer-events-none" />
         </div>
       </div>
     </div>
+    {/* Device shadow */}
+    <div className="absolute -inset-4 bg-gradient-to-br from-violet-500/20 to-purple-600/10 rounded-[3rem] blur-2xl -z-10" />
   </div>
 ));
 MobileMockup.displayName = 'MobileMockup';
 
-// Generic Tablet Mockup Component
+// Live Tablet Mockup with iframe - Analytics Section
 const TabletMockup = memo(() => (
   <div className="relative w-full max-w-[500px] mx-auto">
     <div className="bg-card rounded-[2rem] p-3 border-4 border-muted shadow-2xl">
       <div className="bg-background rounded-[1.5rem] overflow-hidden">
-        {/* Content */}
-        <div className="p-4 md:p-6">
-          {/* Top Bar */}
-          <div className="flex items-center justify-between mb-4 pb-3 border-b border-border">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-                <BarChart3 className="w-4 h-4 text-white" />
-              </div>
-              <div className="h-3 w-20 bg-foreground/60 rounded" />
-            </div>
-            <div className="flex gap-2">
-              <div className="w-6 h-6 rounded bg-muted flex items-center justify-center">
-                <Bell className="w-3 h-3 text-muted-foreground" />
-              </div>
-              <div className="w-6 h-6 rounded bg-muted flex items-center justify-center">
-                <Settings className="w-3 h-3 text-muted-foreground" />
-              </div>
-            </div>
-          </div>
-
-          {/* Stats Row */}
-          <div className="grid grid-cols-3 gap-3 mb-4">
-            {[
-              { icon: TrendingUp, value: "€2.4k", label: "Oggi", color: "from-emerald-500 to-teal-600" },
-              { icon: ShoppingBag, value: "127", label: "Ordini", color: "from-violet-500 to-purple-600" },
-              { icon: Users, value: "89", label: "Clienti", color: "from-blue-500 to-cyan-500" },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + i * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-muted/50 rounded-xl p-3"
-              >
-                <div className={`w-6 h-6 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center mb-2`}>
-                  <stat.icon className="w-3 h-3 text-white" />
-                </div>
-                <p className="text-lg font-bold text-foreground">{stat.value}</p>
-                <p className="text-xs text-muted-foreground">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Chart Placeholder */}
-          <div className="bg-muted/30 rounded-xl p-4 h-32 flex items-end gap-1">
-            {[40, 65, 45, 80, 55, 90, 70, 85, 60, 75, 95, 80].map((h, i) => (
-              <motion.div
-                key={i}
-                initial={{ height: 0 }}
-                whileInView={{ height: `${h}%` }}
-                transition={{ delay: 0.5 + i * 0.05, duration: 0.4 }}
-                viewport={{ once: true }}
-                className="flex-1 bg-gradient-to-t from-primary to-primary/50 rounded-t"
-              />
-            ))}
-          </div>
+        {/* Live Demo Content */}
+        <div className="relative h-[320px] overflow-hidden">
+          <iframe
+            src="/demo?skip=true&section=analytics"
+            className="absolute top-0 left-0 w-[1200px] h-[800px] origin-top-left pointer-events-none"
+            style={{ transform: 'scale(0.42)', transformOrigin: 'top left' }}
+            title="Analytics Preview"
+            loading="lazy"
+          />
+          {/* Overlay gradient */}
+          <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background to-transparent pointer-events-none" />
         </div>
       </div>
     </div>
+    {/* Device shadow */}
+    <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/15 to-cyan-500/10 rounded-[2.5rem] blur-2xl -z-10" />
   </div>
 ));
 TabletMockup.displayName = 'TabletMockup';
 
-// Generic Desktop Mockup Component
+// Live Desktop Mockup with iframe - Orders Section  
 const DesktopMockup = memo(() => (
   <div className="relative w-full">
     <div className="bg-card rounded-xl border border-border shadow-2xl overflow-hidden">
@@ -217,103 +142,26 @@ const DesktopMockup = memo(() => (
         </div>
         <div className="flex-1 mx-4">
           <div className="h-6 bg-background rounded-md flex items-center px-3">
-            <div className="h-2 w-32 bg-muted-foreground/30 rounded" />
+            <span className="text-xs text-muted-foreground">app.flavour.io/ordini</span>
           </div>
         </div>
       </div>
 
-      {/* Dashboard Content */}
-      <div className="p-4 md:p-6 bg-background">
-        {/* Sidebar + Main */}
-        <div className="flex gap-4">
-          {/* Sidebar */}
-          <div className="hidden md:block w-48 space-y-2">
-            {[
-              { icon: BarChart3, label: "Dashboard", active: true },
-              { icon: Menu, label: "Menu" },
-              { icon: ShoppingBag, label: "Ordini" },
-              { icon: Calendar, label: "Prenotazioni" },
-              { icon: Users, label: "Clienti" },
-              { icon: Settings, label: "Impostazioni" },
-            ].map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 + i * 0.05 }}
-                viewport={{ once: true }}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg ${item.active ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted/50'}`}
-              >
-                <item.icon className="w-4 h-4" />
-                <span className="text-sm font-medium">{item.label}</span>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Main Content */}
-          <div className="flex-1 space-y-4">
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {[
-                { icon: TrendingUp, value: "€8.2k", label: "Ricavi Mensili", color: "from-emerald-500 to-teal-600", change: "+12%" },
-                { icon: ShoppingBag, value: "847", label: "Ordini Totali", color: "from-violet-500 to-purple-600", change: "+8%" },
-                { icon: Users, value: "234", label: "Clienti Attivi", color: "from-blue-500 to-cyan-500", change: "+15%" },
-                { icon: Star, value: "4.9", label: "Rating Medio", color: "from-amber-500 to-orange-500", change: "+0.2" },
-              ].map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + i * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-muted/30 rounded-xl p-3 border border-border"
-                >
-                  <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center mb-2`}>
-                    <stat.icon className="w-4 h-4 text-white" />
-                  </div>
-                  <p className="text-xl font-bold text-foreground">{stat.value}</p>
-                  <p className="text-xs text-muted-foreground">{stat.label}</p>
-                  <span className="text-xs text-success">{stat.change}</span>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Recent Orders */}
-            <div className="bg-muted/30 rounded-xl p-4 border border-border">
-              <div className="flex items-center justify-between mb-3">
-                <h4 className="font-semibold text-foreground text-sm">Ordini Recenti</h4>
-                <Clock className="w-4 h-4 text-muted-foreground" />
-              </div>
-              <div className="space-y-2">
-                {[
-                  { id: "#1234", status: "In preparazione", amount: "€24.50" },
-                  { id: "#1233", status: "Consegnato", amount: "€18.00" },
-                  { id: "#1232", status: "In consegna", amount: "€32.00" },
-                ].map((order, i) => (
-                  <motion.div
-                    key={order.id}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.5 + i * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-center justify-between py-2 border-b border-border/50 last:border-0"
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded bg-primary/20 flex items-center justify-center">
-                        <ShoppingBag className="w-3 h-3 text-primary" />
-                      </div>
-                      <span className="text-sm font-medium text-foreground">{order.id}</span>
-                    </div>
-                    <span className="text-xs text-muted-foreground">{order.status}</span>
-                    <span className="text-sm font-semibold text-foreground">{order.amount}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Live Demo Content */}
+      <div className="relative h-[350px] md:h-[400px] overflow-hidden bg-background">
+        <iframe
+          src="/demo?skip=true&section=orders"
+          className="absolute top-0 left-0 w-[1400px] h-[900px] origin-top-left pointer-events-none"
+          style={{ transform: 'scale(0.5)', transformOrigin: 'top left' }}
+          title="Orders Preview"
+          loading="lazy"
+        />
+        {/* Overlay gradient */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent pointer-events-none" />
       </div>
     </div>
+    {/* Device shadow */}
+    <div className="absolute -inset-4 bg-gradient-to-br from-pink-500/10 to-rose-500/10 rounded-2xl blur-2xl -z-10" />
   </div>
 ));
 DesktopMockup.displayName = 'DesktopMockup';
