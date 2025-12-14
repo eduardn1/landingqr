@@ -2,21 +2,21 @@ import { motion, useInView } from "framer-motion";
 import { useRef, memo } from "react";
 import { TrendingUp, Users, Star, Zap } from "lucide-react";
 
-// Simulated client logos with gradient colors - smaller list
+// Simulated client logos with gradient colors - diversified businesses
 const clients = [
-  { name: "Osteria Toscana", initials: "OT", gradient: "from-violet-500 to-purple-600" },
-  { name: "Bistrot Roma", initials: "BR", gradient: "from-emerald-500 to-teal-600" },
+  { name: "Pub The Oak", initials: "TO", gradient: "from-violet-500 to-purple-600" },
+  { name: "Bar Centrale", initials: "BC", gradient: "from-emerald-500 to-teal-600" },
   { name: "Café Venezia", initials: "CV", gradient: "from-cyan-500 to-blue-600" },
-  { name: "La Pergola", initials: "LP", gradient: "from-rose-500 to-pink-600" },
-  { name: "Il Giardino", initials: "IG", gradient: "from-green-500 to-emerald-600" },
+  { name: "Pizzeria Napoli", initials: "PN", gradient: "from-rose-500 to-pink-600" },
+  { name: "Cocktail Lab", initials: "CL", gradient: "from-amber-500 to-orange-600" },
 ];
 
 // Realistic startup stats
 const stats = [
-  { value: "50+", label: "Ristoranti", icon: Users, gradient: "from-violet-500 to-purple-600" },
-  { value: "10K+", label: "Menu views", icon: Zap, gradient: "from-blue-500 to-cyan-600" },
+  { value: "500+", label: "Locali", icon: Users, gradient: "from-violet-500 to-purple-600" },
+  { value: "2M+", label: "Menu views", icon: Zap, gradient: "from-blue-500 to-cyan-600" },
   { value: "95%", label: "Soddisfatti", icon: TrendingUp, gradient: "from-emerald-500 to-teal-600" },
-  { value: "4.8★", label: "Rating", icon: Star, gradient: "from-amber-500 to-orange-600" },
+  { value: "4.9★", label: "Rating", icon: Star, gradient: "from-amber-500 to-orange-600" },
 ];
 
 const Logos = memo(() => {
@@ -38,7 +38,7 @@ const Logos = memo(() => {
           transition={{ duration: 0.3 }}
           className="text-center text-muted-foreground text-sm"
         >
-          Usato da ristoranti in tutta Italia
+          Usato da bar, ristoranti e pub in tutta Italia
         </motion.p>
       </div>
 
