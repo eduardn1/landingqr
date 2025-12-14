@@ -13,8 +13,13 @@
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
-    <!-- Premium Fonts: Fontshare -->
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" />
+    
+    <!-- Preconnect to font domains for faster loading -->
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    
+    <!-- Premium Fonts: Fontshare - Only needed weights (400, 500, 700) with display=swap -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@500,700&display=swap" rel="stylesheet" />
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
@@ -43,9 +48,49 @@
     
     <!-- Canonical -->
     <link rel="canonical" href="https://flavour.studiojem.it/" />
+    
+    <!-- Critical CSS for above-fold content -->
+    <style>
+      /* Critical CSS - immediate render */
+      body { margin: 0; background: #0a0a0f; font-family: 'Satoshi', sans-serif; }
+      #root { min-height: 100vh; }
+      
+      /* Loading spinner while app loads */
+      .initial-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0a0a0f;
+        z-index: 9999;
+      }
+      .initial-loader::after {
+        content: '';
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(139, 92, 246, 0.2);
+        border-top-color: #8b5cf6;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      
+      /* Hide loader when app is ready */
+      .app-loaded .initial-loader { display: none; }
+    </style>
   </head>
   <body>
+    <div class="initial-loader"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Remove loader when app mounts
+      window.addEventListener('load', () => {
+        requestAnimationFrame(() => {
+          document.body.classList.add('app-loaded');
+        });
+      });
+    </script>
   </body>
 </html>
