@@ -50,6 +50,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { OnboardingTutorial } from "@/components/demo/OnboardingTutorial";
+import { BottomNav } from "@/components/demo/BottomNav";
 import { AnalyticsContent } from "@/components/demo/AnalyticsContent";
 import { SettingsContent } from "@/components/demo/SettingsContent";
 import { TemplatesContent } from "@/components/demo/TemplatesContent";
@@ -389,7 +390,7 @@ const Demo = () => {
         </header>
 
         {/* Page Content */}
-        <div className="p-4 lg:p-6">
+        <div className="p-4 lg:p-6 pb-24 lg:pb-6">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeSection}
@@ -403,6 +404,13 @@ const Demo = () => {
           </AnimatePresence>
         </div>
       </main>
+
+      {/* Bottom Navigation - Mobile */}
+      <BottomNav 
+        activeSection={activeSection}
+        onNavigate={setActiveSection}
+        onOpenMenu={() => setMobileMenuOpen(true)}
+      />
     </div>
   );
 };
