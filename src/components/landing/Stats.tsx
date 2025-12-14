@@ -5,7 +5,7 @@ import { TrendingUp, Users, Zap, Star, ArrowUpRight } from "lucide-react";
 const stats = [
   { 
     value: "500+", 
-    label: "Ristoranti attivi",
+    label: "Locali attivi",
     icon: Users,
     gradient: "from-primary/20 to-primary/5",
     change: "+127 questo mese"

@@ -248,11 +248,11 @@ const Features = memo(() => {
           
           <h2 className="font-display text-display-sm sm:text-display-md md:text-display-lg font-bold mb-4 md:mb-6 px-2">
             <span className="text-foreground">Tutto quello che serve al tuo </span>
-            <span className="gradient-text">ristorante digitale</span>
+            <span className="gradient-text">locale digitale</span>
           </h2>
           <p className="text-body-md sm:text-body-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Menu QR, ordini, delivery, prenotazioni, loyalty, analytics. 
-            Una dashboard all-in-one per gestire ogni aspetto del tuo locale.
+            Una dashboard all-in-one per gestire ogni aspetto della tua attività.
           </p>
         </motion.div>
 
@@ -392,7 +392,7 @@ const Features = memo(() => {
               Esplora tutte le funzionalità
             </h3>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Ogni aspetto del tuo ristorante, gestito da un'unica piattaforma
+              Ogni aspetto della tua attività, gestito da un'unica piattaforma
             </p>
           </div>
 

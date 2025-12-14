@@ -57,9 +57,9 @@ const FinalCTA = () => {
                 viewport={{ once: true }}
                 className="text-display-sm md:text-display-md font-bold mb-6"
               >
-                <span className="text-foreground">Pronto a portare il tuo</span>
+                <span className="text-foreground">Pronto a portare la tua</span>
                 <br />
-                <span className="text-foreground">ristorante nel </span>
+                <span className="text-foreground">attività nel </span>
                 <span className="gradient-text">futuro?</span>
               </motion.h2>
 
@@ -71,7 +71,7 @@ const FinalCTA = () => {
                 viewport={{ once: true }}
                 className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-10"
               >
-                Unisciti a centinaia di ristoratori che hanno già scelto Flavour 
+                Unisciti a centinaia di locali che hanno già scelto Flavour 
                 per digitalizzare la loro attività.
               </motion.p>
 

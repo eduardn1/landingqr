@@ -38,7 +38,7 @@ const faqCategories: FAQCategory[] = [
 const faqs: FAQItem[] = [
   {
     question: "Come funziona il white-label per agenzie?",
-    answer: "Con il piano Enterprise puoi rivendere Flavour con il tuo brand. I tuoi clienti non vedranno mai il nostro logo. Hai accesso a un pannello multi-tenant per gestire tutti i ristoranti, fatturazione separata e margini personalizzabili.",
+    answer: "Con il piano Enterprise puoi rivendere Flavour con il tuo brand. I tuoi clienti non vedranno mai il nostro logo. Hai accesso a un pannello multi-tenant per gestire tutti i locali, fatturazione separata e margini personalizzabili.",
     category: "pricing",
   },
   {
@@ -47,13 +47,18 @@ const faqs: FAQItem[] = [
     category: "pricing",
   },
   {
+    question: "Funziona per bar e caffetterie, non solo ristoranti?",
+    answer: "Certamente! Flavour è perfetto per ogni tipo di locale: bar, pub, cocktail bar, caffetterie, bistrot, pizzerie, gelaterie. Personalizza il menu con qualsiasi categoria: cocktail, birre, caffè, pasticceria, piatti, snack.",
+    category: "features",
+  },
+  {
     question: "Posso migrare da un'altra piattaforma?",
     answer: "Certo! Offriamo migrazione gratuita assistita per tutti i piani a pagamento. Importiamo menu da Excel, CSV o direttamente da altre piattaforme. Il nostro team ti guida in ogni step.",
     category: "technical",
   },
   {
     question: "I menu sono tradotti automaticamente?",
-    answer: "Sì! Flavour supporta 5 lingue (Italiano, Inglese, Tedesco, Spagnolo, Francese). Puoi scegliere la traduzione automatica AI oppure inserire traduzioni manuali per un controllo totale.",
+    answer: "Sì! Flavour supporta 5 lingue (Italiano, Inglese, Tedesco, Spagnolo, Francese). Puoi scegliere la traduzione automatica AI oppure inserire traduzioni manuali per un controllo totale. Perfetto per bar turistici e locali internazionali.",
     category: "international",
   },
   {
@@ -63,17 +68,12 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Posso gestire più sedi?",
-    answer: "Sì! Con i piani Pro e Enterprise puoi gestire più ristoranti da un unico pannello. Menu condivisi, analytics aggregati, gestione centralizzata del personale.",
+    answer: "Sì! Con i piani Pro e Enterprise puoi gestire più locali da un unico pannello. Menu condivisi, analytics aggregati, gestione centralizzata del personale.",
     category: "features",
   },
   {
     question: "Come funzionano le prenotazioni?",
     answer: "I clienti prenotano direttamente dal menu digitale. Ricevi notifica istantanea, conferma automatica via WhatsApp, reminder prima della prenotazione. Sistema anti no-show incluso.",
-    category: "features",
-  },
-  {
-    question: "Posso personalizzare il design?",
-    answer: "Assolutamente! Hai 8 template premium tra cui scegliere, più personalizzazione completa di colori, font, logo. Il tuo brand, il tuo stile. Zero codice richiesto.",
     category: "features",
   },
   {
