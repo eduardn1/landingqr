@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
  * QRCODESTUDIOJEM - Features Section
- * Showcase delle 30+ funzionalità della piattaforma (versione originale)
+ * Showcase delle funzionalità reali della piattaforma (basato su /demo)
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -11,32 +11,30 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { 
-  QrCode, 
+  UtensilsCrossed,
   Calendar, 
   ShoppingBag, 
   BarChart3,
   Languages,
-  CreditCard,
   Palette,
   MessageCircle,
   Heart,
   Instagram,
   Smartphone,
   Gift,
-  Star,
-  Gamepad2,
-  ChefHat,
-  Filter,
-  Moon,
-  Search,
-  Navigation,
-  Building2,
   Bell,
   Trophy,
   Sparkles,
   Check,
   ArrowRight,
-  Zap
+  Zap,
+  Users,
+  Filter,
+  Truck,
+  MapPin,
+  QrCode,
+  Star,
+  Gamepad2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -67,127 +65,138 @@ interface FeatureCategory {
   features: CategoryFeature[];
 }
 
-// Hero Features - Top 6 most impactful
+// Hero Features - Le 6 funzionalità principali della demo
 const heroFeatures: HeroFeature[] = [
   {
-    id: "qr-menu",
-    icon: QrCode,
-    title: "Menu QR Intelligente",
-    subtitle: "Scannerizza, ordina, paga. Zero carta.",
-    description: "Menu interattivo accessibile via QR code. Aggiornamenti istantanei, nessuna app da scaricare, sempre aggiornato in tempo reale.",
-    benefits: ["Zero costi stampa", "Aggiornamenti real-time", "PWA installabile", "Offline-first"],
+    id: "menu-allergeni",
+    icon: UtensilsCrossed,
+    title: "Menu & Allergeni",
+    subtitle: "Gestione piatti completa con filtri allergeni",
+    description: "Editor drag & drop per piatti, categorie, prezzi. 14 allergeni con badge visibili. Traduzioni automatiche in 5 lingue. Import da Excel/CSV.",
+    benefits: ["Editor drag & drop", "14 filtri allergeni", "5 lingue AI", "Import Excel"],
     gradient: "from-violet-500 to-purple-600",
-    stat: "100%",
-    statLabel: "Digitale"
+    stat: "∞",
+    statLabel: "Piatti"
   },
   {
-    id: "multi-lingua",
-    icon: Languages,
-    title: "Multi-Lingua AI",
-    subtitle: "5 lingue incluse. +23% vendite turisti.",
-    description: "Switch automatico basato su browser. Traduzioni complete di piatti, descrizioni e interfaccia. I turisti ordinano nella loro lingua.",
-    benefits: ["IT, EN, DE, ES, FR", "Traduzione AI", "Zero barriere", "Auto-detect"],
-    gradient: "from-blue-500 to-cyan-500",
-    stat: "+23%",
-    statLabel: "Vendite estere"
-  },
-  {
-    id: "templates",
-    icon: Palette,
-    title: "8 Template Premium",
-    subtitle: "Da glassmorphism a video background.",
-    description: "Modern Glassmorphism, Classic, Bento Minimal, Masonry, Aurora, Parallax, Split Hero, Video Background. Personalizza colori, logo, layout in 2 minuti.",
-    benefits: ["8 stili unici", "Branding custom", "Drag & drop", "White-label"],
-    gradient: "from-amber-500 to-orange-500",
-    stat: "8",
-    statLabel: "Template"
-  },
-  {
-    id: "delivery",
+    id: "ordini-delivery",
     icon: ShoppingBag,
-    title: "Asporto & Delivery",
-    subtitle: "Zero commissioni. Tieni 100% profitto.",
-    description: "Menu asporto dedicato, carrello intelligente, checkout completo, tracking GPS live, gestione driver con performance dashboard.",
-    benefits: ["0% commissioni", "Tracking real-time", "WhatsApp auto", "Driver management"],
+    title: "Ordini & Delivery",
+    subtitle: "Zero commissioni. Tracking GPS real-time.",
+    description: "Gestione ordini asporto e delivery con tracking GPS live. Assegnazione driver, performance dashboard, notifiche WhatsApp automatiche. Zero commissioni.",
+    benefits: ["0% commissioni", "Tracking GPS live", "Gestione driver", "Notifiche auto"],
     gradient: "from-orange-500 to-red-500",
     stat: "0%",
     statLabel: "Commissioni"
   },
   {
-    id: "reservations",
+    id: "prenotazioni-eventi",
     icon: Calendar,
-    title: "Prenotazioni Smart",
-    subtitle: "Clienti prenotano. Tu ottimizzi. Zero no-show.",
-    description: "Calendario disponibilità, selezione orario, conferma istantanea via WhatsApp, reminder automatici, gestione coperti intelligente.",
-    benefits: ["Conferma automatica", "Reminder WhatsApp", "Anti no-show", "Capacity ottimale"],
+    title: "Prenotazioni & Eventi",
+    subtitle: "-80% no-show con conferma automatica",
+    description: "Calendario prenotazioni, selezione orario, conferma istantanea via WhatsApp. Gestione eventi speciali, coperti, sale private. Reminder automatici.",
+    benefits: ["Conferma WhatsApp", "Gestione eventi", "Anti no-show", "Sale private"],
     gradient: "from-emerald-500 to-teal-600",
     stat: "-80%",
     statLabel: "No-show"
   },
   {
-    id: "loyalty",
+    id: "clienti-loyalty",
     icon: Trophy,
-    title: "Loyalty & Gamification",
-    subtitle: "+40% clienti che ritornano.",
-    description: "Punti per ordine, livelli progressivi, badge achievements, sfide settimanali, leaderboard, referral program con quiz interattivi e animazioni.",
-    benefits: ["Punti & livelli", "Badge & sfide", "Referral program", "Confetti 🎉"],
+    title: "Clienti & Loyalty",
+    subtitle: "+40% clienti che ritornano",
+    description: "CRM completo con storico ordini. Sistema punti fedeltà, livelli, badge, sfide. Gamification con confetti e animazioni. Referral program.",
+    benefits: ["CRM completo", "Punti fedeltà", "Gamification", "Referral"],
     gradient: "from-pink-500 to-rose-500",
     stat: "+40%",
     statLabel: "Retention"
   },
+  {
+    id: "promo-stories",
+    icon: Gift,
+    title: "Promo & Stories",
+    subtitle: "Marketing integrato stile Instagram",
+    description: "Crea promozioni, codici sconto, flash sales. Stories Instagram-style per novità ed eventi. Feed Instagram sincronizzato live nel menu.",
+    benefits: ["Codici sconto", "Flash sales", "Stories swipe", "Instagram live"],
+    gradient: "from-amber-500 to-orange-500",
+    stat: "+25%",
+    statLabel: "Engagement"
+  },
+  {
+    id: "analytics",
+    icon: BarChart3,
+    title: "Analytics Dashboard",
+    subtitle: "Dati real-time per decisioni smart",
+    description: "Dashboard con fatturato, ordini, piatti top, orari di punta. Grafici interattivi, export report, KPI personalizzabili. Tutto in tempo reale.",
+    benefits: ["Real-time data", "Piatti top", "Orari punta", "Export report"],
+    gradient: "from-blue-500 to-cyan-500",
+    stat: "Live",
+    statLabel: "Analytics"
+  },
 ];
 
-// Feature categories with all features
+// Feature categories - tutte le funzionalità organizzate
 const featureCategories: FeatureCategory[] = [
   {
-    id: "engagement",
-    label: "Engagement",
-    icon: Heart,
+    id: "menu",
+    label: "Menu",
+    icon: UtensilsCrossed,
     features: [
-      { icon: Instagram, title: "Instagram Feed Live", desc: "Post sincronizzati automaticamente nel menu" },
-      { icon: Smartphone, title: "Stories Instagram-style", desc: "Promozioni, novità, eventi con swipe" },
-      { icon: Gamepad2, title: "Mood Selector", desc: "Clienti scelgono mood, menu si adatta" },
-      { icon: Star, title: "Google Reviews", desc: "5 stelle live nel menu. Social proof" },
+      { icon: UtensilsCrossed, title: "Editor Piatti", desc: "Aggiungi, modifica, elimina piatti con drag & drop" },
+      { icon: Filter, title: "Filtri Allergeni", desc: "14 allergeni con badge visibili e sicurezza" },
+      { icon: Languages, title: "Multi-Lingua", desc: "5 lingue con traduzione AI automatica" },
+      { icon: QrCode, title: "Menu QR", desc: "QR code personalizzato, sempre aggiornato" },
     ]
   },
   {
-    id: "operations",
-    label: "Operazioni",
-    icon: Building2,
+    id: "ordini",
+    label: "Ordini",
+    icon: ShoppingBag,
     features: [
-      { icon: MessageCircle, title: "WhatsApp Automation", desc: "Conferme, tracking, promemoria auto" },
-      { icon: BarChart3, title: "Analytics Dashboard", desc: "Vendite, piatti top, orari di punta" },
-      { icon: ChefHat, title: "Menu Editor Pro", desc: "CRUD, multi-lingua, drag & drop" },
-      { icon: Bell, title: "Notifiche Push", desc: "Alert ordini, promo, eventi" },
+      { icon: ShoppingBag, title: "Ordini Asporto", desc: "Carrello smart, checkout completo, zero commissioni" },
+      { icon: Truck, title: "Delivery GPS", desc: "Tracking real-time, assegnazione driver automatica" },
+      { icon: MapPin, title: "Zone Consegna", desc: "Definisci zone, costi dinamici per distanza" },
+      { icon: MessageCircle, title: "WhatsApp Auto", desc: "Conferme e tracking via WhatsApp automatici" },
     ]
   },
   {
-    id: "customization",
-    label: "Personalizzazione",
+    id: "clienti",
+    label: "Clienti",
+    icon: Users,
+    features: [
+      { icon: Users, title: "CRM Completo", desc: "Storico ordini, preferenze, note per cliente" },
+      { icon: Trophy, title: "Loyalty Points", desc: "Sistema punti, livelli, premi automatici" },
+      { icon: Gamepad2, title: "Gamification", desc: "Badge, sfide, leaderboard, confetti 🎉" },
+      { icon: Star, title: "Recensioni", desc: "Raccolta feedback, integrazione Google Reviews" },
+    ]
+  },
+  {
+    id: "marketing",
+    label: "Marketing",
+    icon: Gift,
+    features: [
+      { icon: Gift, title: "Promo & Sconti", desc: "Codici sconto, flash sales, birthday offers" },
+      { icon: Smartphone, title: "Stories", desc: "Contenuti swipe stile Instagram per novità" },
+      { icon: Instagram, title: "Instagram Feed", desc: "Post sincronizzati live nel tuo menu" },
+      { icon: Bell, title: "Push Notifications", desc: "Notifiche push per promo e aggiornamenti" },
+    ]
+  },
+  {
+    id: "gestione",
+    label: "Gestione",
     icon: Palette,
     features: [
-      { icon: Filter, title: "Filtri Allergeni", desc: "14 allergeni, badge visibili, sicurezza" },
-      { icon: Gift, title: "Promo & Sconti", desc: "Codici, flash sales, referral, birthday" },
-      { icon: Moon, title: "Dark/Light Mode", desc: "Preferenza utente, transizioni smooth" },
-      { icon: Search, title: "SEO 2026-ready", desc: "Meta, Schema.org, rich snippets" },
-    ]
-  },
-  {
-    id: "payments",
-    label: "Pagamenti",
-    icon: CreditCard,
-    features: [
-      { icon: CreditCard, title: "Pagamenti Integrati", desc: "Carte, Satispay, Apple Pay, PayPal" },
-      { icon: Navigation, title: "Zone di Consegna", desc: "Delivery zones, costi dinamici" },
-      { icon: Sparkles, title: "Customization Piatti", desc: "Extra, varianti, +15% revenue" },
-      { icon: Building2, title: "Multi-sede", desc: "Gestione centralizzata più locali" },
+      { icon: Palette, title: "6 Temi Premium", desc: "Template moderni, personalizzazione completa" },
+      { icon: BarChart3, title: "Analytics Pro", desc: "Dashboard real-time, report, KPI" },
+      { icon: Calendar, title: "Prenotazioni", desc: "Calendario, conferme, gestione coperti" },
+      { icon: Heart, title: "Eventi Speciali", desc: "Gestione eventi, sale private, menù dedicati" },
     ]
   },
 ];
 
 const Features = () => {
   const containerRef = useRef<HTMLElement>(null);
-  const [activeCategory, setActiveCategory] = useState("engagement");
+  const [activeCategory, setActiveCategory] = useState("menu");
   const [activeFeature, setActiveFeature] = useState(0);
   
   const { scrollYProgress } = useScroll({
@@ -234,17 +243,16 @@ const Features = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-violet-500/10 to-purple-600/10 border border-violet-500/20 mb-6"
           >
             <Zap className="w-4 h-4 text-violet-500" />
-            <span className="text-sm font-medium text-violet-500">30+ Funzionalità Pro</span>
+            <span className="text-sm font-medium text-violet-500">Piattaforma Completa</span>
           </motion.div>
           
           <h2 className="font-display text-display-sm md:text-display-md font-bold mb-6">
-            <span className="text-foreground">Tutto il potere di un</span>
-            <br />
+            <span className="text-foreground">Tutto quello che serve al tuo </span>
             <span className="gradient-text">ristorante digitale</span>
           </h2>
           <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
-            Menu QR, delivery, prenotazioni, loyalty, analytics. Una piattaforma all-in-one 
-            che trasforma il tuo ristorante in un'esperienza moderna.
+            Menu QR, ordini, delivery, prenotazioni, loyalty, analytics. 
+            Una dashboard all-in-one per gestire ogni aspetto del tuo locale.
           </p>
         </motion.div>
 
@@ -381,10 +389,10 @@ const Features = () => {
         >
           <div className="text-center mb-8">
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              E molto altro ancora...
+              Esplora tutte le funzionalità
             </h3>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Esplora tutte le funzionalità organizzate per categoria
+              Ogni aspetto del tuo ristorante, gestito da un'unica piattaforma
             </p>
           </div>
 
@@ -465,6 +473,9 @@ const Features = () => {
               <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
+          <p className="text-sm text-muted-foreground mt-4">
+            Esplora tutte le funzionalità senza registrazione
+          </p>
         </motion.div>
       </div>
     </section>
