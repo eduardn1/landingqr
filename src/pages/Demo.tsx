@@ -35,7 +35,10 @@ import { OnboardingTutorial } from "@/components/demo/OnboardingTutorial";
 import { DeliveryContent } from "@/components/demo/DeliveryContent";
 import { AnalyticsContent } from "@/components/demo/AnalyticsContent";
 import { SettingsContent } from "@/components/demo/SettingsContent";
-import { CustomersContent } from "@/components/demo/CustomersContent";
+import { MenuContent } from "@/components/demo/MenuContent";
+import { OrdersContent } from "@/components/demo/OrdersContent";
+import { ReservationsContent } from "@/components/demo/ReservationsContent";
+import { InteractiveCustomersContent } from "@/components/demo/InteractiveCustomersContent";
 
 // Sidebar navigation items
 const sidebarItems = [
@@ -145,10 +148,12 @@ const Demo = () => {
         return <OrdersContent />;
       case "reservations":
         return <ReservationsContent />;
+      case "customers":
+        return <InteractiveCustomersContent />;
       case "delivery":
         return <DeliveryContent />;
       case "customers":
-        return <CustomersContent />;
+        return <InteractiveCustomersContent />;
       case "analytics":
         return <AnalyticsContent />;
       case "settings":
@@ -470,199 +475,6 @@ const DashboardContent = () => (
           ))}
         </div>
       </div>
-    </div>
-  </div>
-);
-
-// Menu Content
-const MenuContent = () => (
-  <div className="space-y-6">
-    {/* Header */}
-    <div className="flex items-center justify-between">
-      <div>
-        <h2 className="text-lg text-muted-foreground">Gestisci i tuoi piatti</h2>
-      </div>
-      <Button className="gradient-button gap-2">
-        <Plus className="w-4 h-4" />
-        Nuovo piatto
-      </Button>
-    </div>
-
-    {/* Menu Table */}
-    <div className="rounded-2xl bg-card border border-border overflow-hidden">
-      <table className="w-full">
-        <thead>
-          <tr className="border-b border-border bg-muted/50">
-            <th className="text-left p-4 text-sm font-medium text-muted-foreground">Piatto</th>
-            <th className="text-left p-4 text-sm font-medium text-muted-foreground">Categoria</th>
-            <th className="text-left p-4 text-sm font-medium text-muted-foreground">Prezzo</th>
-            <th className="text-left p-4 text-sm font-medium text-muted-foreground">Ordini</th>
-            <th className="text-left p-4 text-sm font-medium text-muted-foreground">Stato</th>
-            <th className="text-right p-4 text-sm font-medium text-muted-foreground">Azioni</th>
-          </tr>
-        </thead>
-        <tbody>
-          {mockMenuItems.map((item) => (
-            <tr key={item.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
-              <td className="p-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-200 to-orange-300 flex items-center justify-center text-2xl">
-                    🍕
-                  </div>
-                  <span className="font-medium text-foreground">{item.name}</span>
-                </div>
-              </td>
-              <td className="p-4 text-muted-foreground">{item.category}</td>
-              <td className="p-4 font-medium text-foreground">{item.price}</td>
-              <td className="p-4 text-muted-foreground">{item.orders}</td>
-              <td className="p-4">
-                <span className={`text-xs px-2.5 py-1 rounded-full ${getStatusColor(item.status)}`}>
-                  {getStatusLabel(item.status)}
-                </span>
-              </td>
-              <td className="p-4">
-                <div className="flex items-center justify-end gap-2">
-                  <button className="p-2 rounded-lg hover:bg-muted transition-colors">
-                    <Eye className="w-4 h-4 text-muted-foreground" />
-                  </button>
-                  <button className="p-2 rounded-lg hover:bg-muted transition-colors">
-                    <Edit className="w-4 h-4 text-muted-foreground" />
-                  </button>
-                  <button className="p-2 rounded-lg hover:bg-destructive/10 transition-colors">
-                    <Trash2 className="w-4 h-4 text-destructive" />
-                  </button>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </div>
-);
-
-// Orders Content
-const OrdersContent = () => (
-  <div className="space-y-6">
-    {/* Filters */}
-    <div className="flex flex-wrap gap-3">
-      {["Tutti", "Nuovi", "In preparazione", "Pronti", "Consegnati"].map((filter, i) => (
-        <button
-          key={filter}
-          className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-            i === 0 ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted/80"
-          }`}
-        >
-          {filter}
-        </button>
-      ))}
-    </div>
-
-    {/* Orders Grid */}
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {mockOrders.map((order) => (
-        <motion.div
-          key={order.id}
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="p-5 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all"
-        >
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <p className="text-lg font-bold text-foreground">{order.id}</p>
-              <p className="text-sm text-muted-foreground">{order.customer}</p>
-            </div>
-            <span className={`text-xs px-2.5 py-1 rounded-full ${getStatusColor(order.status)}`}>
-              {getStatusLabel(order.status)}
-            </span>
-          </div>
-          
-          <div className="space-y-2 mb-4">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Clock className="w-4 h-4" />
-              {order.time}
-            </div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              {order.type === "delivery" ? <Truck className="w-4 h-4" /> : <ShoppingBag className="w-4 h-4" />}
-              {order.type === "delivery" ? "Delivery" : "Asporto"}
-            </div>
-          </div>
-          
-          <div className="flex items-center justify-between pt-4 border-t border-border">
-            <span className="text-xl font-bold text-foreground">{order.total}</span>
-            <Button size="sm" className="gradient-button">
-              Gestisci
-            </Button>
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-);
-
-// Reservations Content
-const ReservationsContent = () => (
-  <div className="space-y-6">
-    {/* Header */}
-    <div className="flex items-center justify-between">
-      <div className="flex gap-3">
-        {["Oggi", "Domani", "Questa settimana"].map((tab, i) => (
-          <button
-            key={tab}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-              i === 0 ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted/80"
-            }`}
-          >
-            {tab}
-          </button>
-        ))}
-      </div>
-      <Button className="gradient-button gap-2">
-        <Plus className="w-4 h-4" />
-        Nuova prenotazione
-      </Button>
-    </div>
-
-    {/* Reservations List */}
-    <div className="space-y-4">
-      {mockReservations.map((res) => (
-        <motion.div
-          key={res.id}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="p-5 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all flex items-center justify-between"
-        >
-          <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-              <Users className="w-7 h-7 text-primary" />
-            </div>
-            <div>
-              <p className="text-lg font-bold text-foreground">{res.name}</p>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <span className="flex items-center gap-1">
-                  <Users className="w-4 h-4" /> {res.guests} ospiti
-                </span>
-                <span className="flex items-center gap-1">
-                  <MapPin className="w-4 h-4" /> {res.table}
-                </span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-6">
-            <div className="text-right">
-              <p className="text-lg font-bold text-foreground">{res.time}</p>
-              <p className="text-sm text-muted-foreground">{res.date}</p>
-            </div>
-            <span className={`text-xs px-3 py-1.5 rounded-full ${getStatusColor(res.status)}`}>
-              {getStatusLabel(res.status)}
-            </span>
-            <Button variant="outline" size="sm">
-              <MoreVertical className="w-4 h-4" />
-            </Button>
-          </div>
-        </motion.div>
-      ))}
     </div>
   </div>
 );
