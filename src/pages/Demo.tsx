@@ -9,7 +9,7 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   LayoutDashboard, 
@@ -45,21 +45,35 @@ import {
   MessageCircle,
   Sparkles,
   Filter,
-  Instagram
+  Instagram,
+  Loader2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { OnboardingTutorial } from "@/components/demo/OnboardingTutorial";
 import { BottomNav } from "@/components/demo/BottomNav";
-import { AnalyticsContent } from "@/components/demo/AnalyticsContent";
+import { ThemeToggle } from "@/components/demo/ThemeToggle";
 import { SettingsContent } from "@/components/demo/SettingsContent";
 import { TemplatesContent } from "@/components/demo/TemplatesContent";
-import { MenuAllergensContent } from "@/components/demo/MenuAllergensContent";
-import { OrdersDeliveryContent } from "@/components/demo/OrdersDeliveryContent";
-import { ReservationsEventsContent } from "@/components/demo/ReservationsEventsContent";
-import { CustomersLoyaltyContent } from "@/components/demo/CustomersLoyaltyContent";
-import { PromoStoriesContent } from "@/components/demo/PromoStoriesContent";
 import { NotificationsContent } from "@/components/demo/NotificationsContent";
+
+// Lazy load heavy components for performance
+const AnalyticsContent = lazy(() => import("@/components/demo/AnalyticsContent").then(m => ({ default: m.AnalyticsContent })));
+const MenuAllergensContent = lazy(() => import("@/components/demo/MenuAllergensContent").then(m => ({ default: m.MenuAllergensContent })));
+const OrdersDeliveryContent = lazy(() => import("@/components/demo/OrdersDeliveryContent").then(m => ({ default: m.OrdersDeliveryContent })));
+const ReservationsEventsContent = lazy(() => import("@/components/demo/ReservationsEventsContent").then(m => ({ default: m.ReservationsEventsContent })));
+const CustomersLoyaltyContent = lazy(() => import("@/components/demo/CustomersLoyaltyContent").then(m => ({ default: m.CustomersLoyaltyContent })));
+const PromoStoriesContent = lazy(() => import("@/components/demo/PromoStoriesContent").then(m => ({ default: m.PromoStoriesContent })));
+
+// Loading fallback component
+const LoadingFallback = () => (
+  <div className="flex items-center justify-center min-h-[400px]">
+    <div className="text-center">
+      <Loader2 className="w-8 h-8 text-primary animate-spin mx-auto mb-3" />
+      <p className="text-sm text-muted-foreground">Caricamento...</p>
+    </div>
+  </div>
+);
 
 // Sidebar navigation items - grouped and optimized
 const sidebarItems = [
@@ -162,30 +176,39 @@ const Demo = () => {
   };
 
   const renderContent = () => {
-    switch (activeSection) {
-      case "dashboard":
-        return <DashboardContent />;
-      case "menu":
-        return <MenuAllergensContent />;
-      case "orders":
-        return <OrdersDeliveryContent />;
-      case "reservations":
-        return <ReservationsEventsContent />;
-      case "customers":
-        return <CustomersLoyaltyContent />;
-      case "promo":
-        return <PromoStoriesContent />;
-      case "notifications":
-        return <NotificationsContent />;
-      case "templates":
-        return <TemplatesContent />;
-      case "analytics":
-        return <AnalyticsContent />;
-      case "settings":
-        return <SettingsContent />;
-      default:
-        return <DashboardContent />;
+    const content = (() => {
+      switch (activeSection) {
+        case "dashboard":
+          return <DashboardContent />;
+        case "menu":
+          return <MenuAllergensContent />;
+        case "orders":
+          return <OrdersDeliveryContent />;
+        case "reservations":
+          return <ReservationsEventsContent />;
+        case "customers":
+          return <CustomersLoyaltyContent />;
+        case "promo":
+          return <PromoStoriesContent />;
+        case "notifications":
+          return <NotificationsContent />;
+        case "templates":
+          return <TemplatesContent />;
+        case "analytics":
+          return <AnalyticsContent />;
+        case "settings":
+          return <SettingsContent />;
+        default:
+          return <DashboardContent />;
+      }
+    })();
+
+    // Wrap lazy-loaded components in Suspense
+    if (["menu", "orders", "reservations", "customers", "promo", "analytics"].includes(activeSection)) {
+      return <Suspense fallback={<LoadingFallback />}>{content}</Suspense>;
     }
+    
+    return content;
   };
 
   return (
@@ -348,6 +371,9 @@ const Demo = () => {
             </div>
             
             <div className="flex items-center gap-2 lg:gap-3">
+              {/* Theme Toggle */}
+              <ThemeToggle />
+              
               {/* Help Button */}
               <button 
                 onClick={() => setShowOnboarding(true)}
