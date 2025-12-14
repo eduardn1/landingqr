@@ -225,138 +225,151 @@ export const DeliveryContent = () => {
     });
   }, [drivers, mapLoaded]);
 
-  // Initialize map
+  // Fetch Mapbox token from backend
   useEffect(() => {
-    if (!mapContainer.current) return;
+    const fetchToken = async () => {
+      try {
+        const baseUrl = import.meta.env.VITE_SUPABASE_URL;
+        if (!baseUrl) {
+          setMapError("URL backend non configurato");
+          return;
+        }
 
-    const token = import.meta.env.VITE_MAPBOX_PUBLIC_TOKEN;
-    
-    if (!token) {
-      setMapError("Token Mapbox non configurato");
-      return;
-    }
+        const response = await fetch(`${baseUrl}/functions/v1/mapbox-token`);
+        if (!response.ok) {
+          throw new Error("Risposta non valida dal backend");
+        }
 
-    try {
-      mapboxgl.accessToken = token;
+        const data = await response.json() as { token?: string };
+        if (!data.token) {
+          setMapError("Token Mapbox non disponibile dal backend");
+          return;
+        }
 
-      map.current = new mapboxgl.Map({
-        container: mapContainer.current,
-        style: "mapbox://styles/mapbox/dark-v11",
-        center: [restaurantLocation.lng, restaurantLocation.lat],
-        zoom: 13,
-        pitch: 45,
-      });
+        mapboxgl.accessToken = data.token;
 
-      map.current.addControl(
-        new mapboxgl.NavigationControl({ visualizePitch: true }),
-        "top-right"
-      );
+        if (!mapContainer.current) return;
 
-      map.current.on("load", () => {
-        // Add restaurant marker
-        const restaurantEl = document.createElement("div");
-        restaurantEl.innerHTML = `
-          <div style="
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #8b5cf6, #ec4899);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5);
-            border: 3px solid white;
-            cursor: pointer;
-          ">
-            <span style="color: white; font-weight: bold; font-size: 18px;">F</span>
-          </div>
-        `;
+        map.current = new mapboxgl.Map({
+          container: mapContainer.current,
+          style: "mapbox://styles/mapbox/dark-v11",
+          center: [restaurantLocation.lng, restaurantLocation.lat],
+          zoom: 13,
+          pitch: 45,
+        });
 
-        new mapboxgl.Marker(restaurantEl)
-          .setLngLat([restaurantLocation.lng, restaurantLocation.lat])
-          .setPopup(
-            new mapboxgl.Popup({ offset: 25 }).setHTML(`
-              <div style="padding: 8px;">
-                <h3 style="font-weight: bold; margin-bottom: 4px;">Flavour Restaurant</h3>
-                <p style="font-size: 12px; color: #666;">Sede centrale</p>
-              </div>
-            `)
-          )
-          .addTo(map.current!);
+        map.current.addControl(
+          new mapboxgl.NavigationControl({ visualizePitch: true }),
+          "top-right"
+        );
 
-        // Add driver markers
-        initialDrivers.forEach((driver) => {
-          const el = document.createElement("div");
-          el.innerHTML = `
+        map.current.on("load", () => {
+          // Add restaurant marker
+          const restaurantEl = document.createElement("div");
+          restaurantEl.innerHTML = `
             <div style="
-              position: relative;
-              width: 40px;
-              height: 40px;
-              background: ${getMarkerColor(driver.status)};
+              width: 48px;
+              height: 48px;
+              background: linear-gradient(135deg, #8b5cf6, #ec4899);
               border-radius: 50%;
               display: flex;
               align-items: center;
               justify-content: center;
-              box-shadow: 0 4px 15px ${getMarkerColor(driver.status)}80;
-              border: 2px solid white;
+              box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5);
+              border: 3px solid white;
               cursor: pointer;
-              transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
             ">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 17h4V5H2v12h3"/>
-                <path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5"/>
-                <path d="M14 17h1"/>
-                <circle cx="7.5" cy="17.5" r="2.5"/>
-                <circle cx="17.5" cy="17.5" r="2.5"/>
-              </svg>
+              <span style="color: white; font-weight: bold; font-size: 18px;">F</span>
             </div>
           `;
 
-          el.addEventListener("mouseenter", () => {
-            const innerDiv = el.querySelector("div") as HTMLElement;
-            if (innerDiv) innerDiv.style.transform = "scale(1.2)";
-          });
-          el.addEventListener("mouseleave", () => {
-            const innerDiv = el.querySelector("div") as HTMLElement;
-            if (innerDiv) innerDiv.style.transform = "scale(1)";
-          });
-
-          const marker = new mapboxgl.Marker(el)
-            .setLngLat([driver.location.lng, driver.location.lat])
+          new mapboxgl.Marker(restaurantEl)
+            .setLngLat([restaurantLocation.lng, restaurantLocation.lat])
             .setPopup(
               new mapboxgl.Popup({ offset: 25 }).setHTML(`
-                <div style="padding: 8px; min-width: 150px;">
-                  <h3 style="font-weight: bold; margin-bottom: 4px;">${driver.name}</h3>
-                  <p style="font-size: 12px; color: #666;">${getDriverStatusLabel(driver.status)}</p>
+                <div style="padding: 8px;">
+                  <h3 style="font-weight: bold; margin-bottom: 4px;">Flavour Restaurant</h3>
+                  <p style="font-size: 12px; color: #666;">Sede centrale</p>
                 </div>
               `)
             )
             .addTo(map.current!);
 
-          markersRef.current.set(driver.id, marker);
+          // Add driver markers
+          initialDrivers.forEach((driver) => {
+            const el = document.createElement("div");
+            el.innerHTML = `
+              <div style="
+                position: relative;
+                width: 40px;
+                height: 40px;
+                background: ${getMarkerColor(driver.status)};
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 15px ${getMarkerColor(driver.status)}80;
+                border: 2px solid white;
+                cursor: pointer;
+                transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
+              ">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 17h4V5H2v12h3"/>
+                  <path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5"/>
+                  <path d="M14 17h1"/>
+                  <circle cx="7.5" cy="17.5" r="2.5"/>
+                  <circle cx="17.5" cy="17.5" r="2.5"/>
+                </svg>
+              </div>
+            `;
+
+            el.addEventListener("mouseenter", () => {
+              const innerDiv = el.querySelector("div") as HTMLElement;
+              if (innerDiv) innerDiv.style.transform = "scale(1.2)";
+            });
+            el.addEventListener("mouseleave", () => {
+              const innerDiv = el.querySelector("div") as HTMLElement;
+              if (innerDiv) innerDiv.style.transform = "scale(1)";
+            });
+
+            const marker = new mapboxgl.Marker(el)
+              .setLngLat([driver.location.lng, driver.location.lat])
+              .setPopup(
+                new mapboxgl.Popup({ offset: 25 }).setHTML(`
+                  <div style="padding: 8px; min-width: 150px;">
+                    <h3 style="font-weight: bold; margin-bottom: 4px;">${driver.name}</h3>
+                    <p style="font-size: 12px; color: #666;">${getDriverStatusLabel(driver.status)}</p>
+                  </div>
+                `)
+              )
+              .addTo(map.current!);
+
+            markersRef.current.set(driver.id, marker);
+          });
+
+          // Add animation styles
+          const style = document.createElement("style");
+          style.textContent = `
+            @keyframes ping {
+              75%, 100% { transform: scale(1.5); opacity: 0; }
+            }
+          `;
+          document.head.appendChild(style);
+
+          setMapLoaded(true);
         });
 
-        // Add animation styles
-        const style = document.createElement("style");
-        style.textContent = `
-          @keyframes ping {
-            75%, 100% { transform: scale(1.5); opacity: 0; }
-          }
-        `;
-        document.head.appendChild(style);
+        map.current.on("error", (e) => {
+          console.error("Mapbox error:", e);
+          setMapError("Errore nel caricamento della mappa");
+        });
+      } catch (error) {
+        console.error("Map initialization error:", error);
+        setMapError("Errore nell'inizializzazione della mappa");
+      }
+    };
 
-        setMapLoaded(true);
-      });
-
-      map.current.on("error", (e) => {
-        console.error("Mapbox error:", e);
-        setMapError("Errore nel caricamento della mappa");
-      });
-
-    } catch (error) {
-      console.error("Map initialization error:", error);
-      setMapError("Errore nell'inizializzazione della mappa");
-    }
+    fetchToken();
 
     return () => {
       markersRef.current.forEach(marker => marker.remove());
