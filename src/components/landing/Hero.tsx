@@ -9,13 +9,11 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import { memo, useState } from "react";
+import { memo } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Check, Sparkles, Zap, Star, QrCode, CalendarCheck, Truck, BarChart3 } from "lucide-react";
+import { ArrowRight, Check, Sparkles, Zap, Star, QrCode, CalendarCheck, Truck, BarChart3, Menu, CreditCard, Bell, Settings, Users, TrendingUp, ShoppingBag, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLeadForm } from "@/hooks/useLeadForm";
-import dashboardPreview from "@/assets/dashboard-preview.png";
-import mobilePreview from "@/assets/mobile-menu-preview.png";
 
 const featureBadges = [
   { icon: QrCode, text: "Menu QR", color: "from-violet-500 to-purple-600" },
@@ -31,8 +29,6 @@ const fadeInUp = {
 };
 
 const Hero = memo(() => {
-  const [mainImageLoaded, setMainImageLoaded] = useState(false);
-  const [mobileImageLoaded, setMobileImageLoaded] = useState(false);
   const { openLeadForm } = useLeadForm();
   const { scrollY } = useScroll();
   
@@ -174,37 +170,88 @@ const Hero = memo(() => {
           </motion.div>
         </motion.div>
 
-        {/* Product Screenshots with Parallax - reduced animation */}
+        {/* Product Preview - Generic Device Mockup with Icons */}
         <motion.div
           style={{ y: screenshotY, scale: screenshotScale }}
           {...fadeInUp}
           transition={{ duration: 0.3, delay: 0.3 }}
           className="relative mt-20 max-w-6xl mx-auto perspective-1000"
         >
-          {/* Main Dashboard Preview */}
+          {/* Main Dashboard Preview - Generic UI */}
           <div className="relative rounded-3xl overflow-hidden border border-border shadow-2xl">
             {/* Glow Effect */}
             <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-accent/10 to-primary/20 rounded-3xl blur-xl opacity-50" />
             
-            <div className="relative bg-card rounded-3xl overflow-hidden">
+            <div className="relative bg-card rounded-3xl overflow-hidden p-6 md:p-8">
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 pointer-events-none" />
-              {/* Placeholder while loading */}
-              {!mainImageLoaded && (
-                <div className="w-full aspect-video bg-muted animate-pulse" />
-              )}
-              <img 
-                src={dashboardPreview} 
-                alt="Dashboard di gestione menu digitale" 
-                className={`w-full h-auto transition-opacity duration-300 ${mainImageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                onLoad={() => setMainImageLoaded(true)}
-              />
+              
+              {/* Mock Dashboard UI */}
+              <div className="relative z-0">
+                {/* Top Bar */}
+                <div className="flex items-center justify-between mb-6 pb-4 border-b border-border">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                      <QrCode className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <div className="h-4 w-24 bg-foreground/80 rounded" />
+                      <div className="h-3 w-16 bg-muted-foreground/40 rounded mt-1" />
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center">
+                      <Bell className="w-4 h-4 text-muted-foreground" />
+                    </div>
+                    <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center">
+                      <Settings className="w-4 h-4 text-muted-foreground" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Stats Cards */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6">
+                  {[
+                    { icon: ShoppingBag, label: "Ordini", value: "127", color: "from-violet-500 to-purple-600", change: "+12%" },
+                    { icon: TrendingUp, label: "Ricavi", value: "€2.4k", color: "from-emerald-500 to-teal-600", change: "+8%" },
+                    { icon: Users, label: "Clienti", value: "89", color: "from-blue-500 to-cyan-500", change: "+15%" },
+                    { icon: Calendar, label: "Prenotazioni", value: "24", color: "from-orange-500 to-red-500", change: "+5%" },
+                  ].map((stat, i) => (
+                    <motion.div
+                      key={stat.label}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 + i * 0.1 }}
+                      className="bg-muted/50 rounded-xl p-3 md:p-4 border border-border"
+                    >
+                      <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center mb-2`}>
+                        <stat.icon className="w-4 h-4 text-white" />
+                      </div>
+                      <p className="text-xs text-muted-foreground">{stat.label}</p>
+                      <p className="text-lg md:text-xl font-bold text-foreground">{stat.value}</p>
+                      <span className="text-xs text-success">{stat.change}</span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Menu Preview Grid */}
+                <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3">
+                  {[...Array(6)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.6 + i * 0.05 }}
+                      className="aspect-square bg-gradient-to-br from-muted to-muted/50 rounded-xl border border-border flex items-center justify-center"
+                    >
+                      <Menu className="w-6 h-6 text-muted-foreground/50" />
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Floating Mobile Preview - simplified animation */}
+          {/* Floating Mobile Preview - Generic */}
           <motion.div
             style={{ y: floatingY1 }}
             initial={{ opacity: 0 }}
@@ -212,20 +259,40 @@ const Hero = memo(() => {
             transition={{ duration: 0.3, delay: 0.35 }}
             className="absolute -right-4 md:right-8 -bottom-8 md:bottom-12 w-32 md:w-48 lg:w-56"
           >
-          <div className="relative">
+            <div className="relative">
               <div className="absolute -inset-2 bg-gradient-to-r from-primary/30 to-accent/30 rounded-[2rem] blur-xl opacity-60" />
-              <div className="relative rounded-[1.5rem] overflow-hidden border-4 border-card shadow-2xl">
-                {!mobileImageLoaded && (
-                  <div className="w-full aspect-[9/16] bg-muted animate-pulse" />
-                )}
-                <img 
-                  src={mobilePreview} 
-                  alt="Menu digitale su smartphone" 
-                  className={`w-full h-auto transition-opacity duration-300 ${mobileImageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  loading="lazy"
-                  decoding="async"
-                  onLoad={() => setMobileImageLoaded(true)}
-                />
+              <div className="relative rounded-[1.5rem] overflow-hidden border-4 border-card shadow-2xl bg-card p-3">
+                {/* Phone Notch */}
+                <div className="w-16 h-4 bg-muted rounded-full mx-auto mb-3" />
+                
+                {/* Menu Items */}
+                <div className="space-y-2">
+                  {[
+                    { color: "from-orange-400 to-red-500" },
+                    { color: "from-green-400 to-emerald-500" },
+                    { color: "from-blue-400 to-indigo-500" },
+                  ].map((item, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 + i * 0.1 }}
+                      className="flex items-center gap-2 p-2 bg-muted/50 rounded-lg"
+                    >
+                      <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${item.color}`} />
+                      <div className="flex-1 space-y-1">
+                        <div className="h-2 w-12 bg-foreground/60 rounded" />
+                        <div className="h-1.5 w-8 bg-muted-foreground/40 rounded" />
+                      </div>
+                      <div className="h-2 w-6 bg-success/60 rounded" />
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* CTA Button */}
+                <div className="mt-3 h-8 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center">
+                  <CreditCard className="w-4 h-4 text-white" />
+                </div>
               </div>
             </div>
           </motion.div>
