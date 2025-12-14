@@ -8,7 +8,7 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useRef, useState, memo } from "react";
 import { 
   UtensilsCrossed,
@@ -198,14 +198,6 @@ const Features = memo(() => {
   const containerRef = useRef<HTMLElement>(null);
   const [activeCategory, setActiveCategory] = useState("menu");
   const [activeFeature, setActiveFeature] = useState(0);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [80, -80]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   const activeFeatureData = heroFeatures[activeFeature];
   const ActiveIcon = activeFeatureData.icon;
@@ -216,15 +208,9 @@ const Features = memo(() => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />
       <div className="absolute inset-0 grid-pattern opacity-20" />
       
-      {/* Floating orbs */}
-      <motion.div 
-        style={{ y: y1 }}
-        className="absolute top-20 left-[10%] w-72 h-72 bg-gradient-to-br from-violet-500/20 to-purple-600/10 rounded-full blur-3xl"
-      />
-      <motion.div 
-        style={{ y: y2 }}
-        className="absolute bottom-20 right-[10%] w-96 h-96 bg-gradient-to-br from-orange-500/15 to-rose-600/10 rounded-full blur-3xl"
-      />
+      {/* Floating orbs - static for performance */}
+      <div className="absolute top-20 left-[10%] w-72 h-72 bg-gradient-to-br from-violet-500/15 to-purple-600/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-gradient-to-br from-orange-500/10 to-rose-600/5 rounded-full blur-3xl" />
       
       <div className="container relative z-10">
         {/* Header */}

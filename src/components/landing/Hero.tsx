@@ -51,9 +51,9 @@ const Hero = memo(() => {
       {/* Noise Overlay */}
       <div className="absolute inset-0 noise-overlay" />
 
-      {/* Animated Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[150px] animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
+      {/* Animated Orbs - reduced blur for performance */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
 
       <div className="container relative z-10 py-20">
         <motion.div 
