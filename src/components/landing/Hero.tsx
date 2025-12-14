@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Hero Section
+ * QRCODESTUDIOJEM - Hero Section (Performance Optimized)
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -9,6 +9,7 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
+import { memo, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Check, Sparkles, Zap, Star, QrCode, CalendarCheck, Truck, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -23,7 +24,15 @@ const featureBadges = [
   { icon: BarChart3, text: "Analytics", color: "from-blue-500 to-cyan-500" },
 ];
 
-const Hero = () => {
+// Simplified animation variants for better performance
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+};
+
+const Hero = memo(() => {
+  const [mainImageLoaded, setMainImageLoaded] = useState(false);
+  const [mobileImageLoaded, setMobileImageLoaded] = useState(false);
   const { openLeadForm } = useLeadForm();
   const { scrollY } = useScroll();
   
@@ -57,9 +66,8 @@ const Hero = () => {
         >
           {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.5 }}
+            {...fadeInUp}
+            transition={{ duration: 0.3 }}
             className="mb-8 inline-flex"
           >
             <div className="badge-primary">
@@ -71,9 +79,8 @@ const Hero = () => {
 
           {/* Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            {...fadeInUp}
+            transition={{ duration: 0.3, delay: 0.05 }}
             className="text-display-md md:text-display-lg lg:text-display-xl font-extrabold mb-8"
           >
             <span className="text-foreground">Il tuo ristorante</span>
@@ -83,9 +90,8 @@ const Hero = () => {
 
           {/* Subheading */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            {...fadeInUp}
+            transition={{ duration: 0.3, delay: 0.1 }}
             className="text-body-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8"
           >
             Menu QR, prenotazioni, asporto e delivery.{" "}
@@ -95,17 +101,13 @@ const Hero = () => {
 
           {/* Feature Badges - Stile Creativable */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
+            {...fadeInUp}
+            transition={{ duration: 0.3, delay: 0.15 }}
             className="flex flex-wrap gap-3 justify-center mb-10"
           >
-            {featureBadges.map((badge, i) => (
-              <motion.div
+            {featureBadges.map((badge) => (
+              <div
                 key={badge.text}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
                 className="group relative"
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${badge.color} rounded-full blur-lg opacity-40 group-hover:opacity-60 transition-opacity`} />
@@ -115,15 +117,14 @@ const Hero = () => {
                   </div>
                   <span className="text-sm font-medium text-foreground">{badge.text}</span>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            {...fadeInUp}
+            transition={{ duration: 0.3, delay: 0.2 }}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
           >
             <Button
@@ -153,9 +154,8 @@ const Hero = () => {
 
           {/* Trust Signals */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            {...fadeInUp}
+            transition={{ duration: 0.3, delay: 0.25 }}
             className="flex flex-wrap gap-6 items-center justify-center text-sm text-muted-foreground"
           >
             {[
@@ -173,12 +173,11 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Product Screenshots with Parallax */}
+        {/* Product Screenshots with Parallax - reduced animation */}
         <motion.div
           style={{ y: screenshotY, scale: screenshotScale }}
-          initial={{ opacity: 0, y: 80 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
+          {...fadeInUp}
+          transition={{ duration: 0.3, delay: 0.3 }}
           className="relative mt-20 max-w-6xl mx-auto perspective-1000"
         >
           {/* Main Dashboard Preview */}
@@ -188,40 +187,54 @@ const Hero = () => {
             
             <div className="relative bg-card rounded-3xl overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 pointer-events-none" />
+              {/* Placeholder while loading */}
+              {!mainImageLoaded && (
+                <div className="w-full aspect-video bg-muted animate-pulse" />
+              )}
               <img 
                 src={dashboardPreview} 
                 alt="Dashboard di gestione menu digitale" 
-                className="w-full h-auto"
+                className={`w-full h-auto transition-opacity duration-300 ${mainImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                onLoad={() => setMainImageLoaded(true)}
               />
             </div>
           </div>
 
-          {/* Floating Mobile Preview */}
+          {/* Floating Mobile Preview - simplified animation */}
           <motion.div
             style={{ y: floatingY1 }}
-            initial={{ opacity: 0, x: 80 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.35 }}
             className="absolute -right-4 md:right-8 -bottom-8 md:bottom-12 w-32 md:w-48 lg:w-56"
           >
-            <div className="relative">
+          <div className="relative">
               <div className="absolute -inset-2 bg-gradient-to-r from-primary/30 to-accent/30 rounded-[2rem] blur-xl opacity-60" />
               <div className="relative rounded-[1.5rem] overflow-hidden border-4 border-card shadow-2xl">
+                {!mobileImageLoaded && (
+                  <div className="w-full aspect-[9/16] bg-muted animate-pulse" />
+                )}
                 <img 
                   src={mobilePreview} 
                   alt="Menu digitale su smartphone" 
-                  className="w-full h-auto"
+                  className={`w-full h-auto transition-opacity duration-300 ${mobileImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                  loading="lazy"
+                  decoding="async"
+                  onLoad={() => setMobileImageLoaded(true)}
                 />
               </div>
             </div>
           </motion.div>
 
-          {/* Floating Stats Card */}
+          {/* Floating Stats Card - simplified animation */}
           <motion.div
             style={{ y: floatingY2 }}
-            initial={{ opacity: 0, x: -80 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.35 }}
             className="absolute -left-4 md:left-8 top-1/3 hidden md:block"
           >
             <div className="relative">
@@ -243,12 +256,12 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* Floating Rating Badge */}
+          {/* Floating Rating Badge - simplified animation */}
           <motion.div
             style={{ y: floatingY1 }}
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.4 }}
             className="absolute left-1/2 -translate-x-1/2 -top-6 hidden lg:block"
           >
             <div className="bg-card/90 backdrop-blur-xl border border-border rounded-full px-5 py-3 shadow-xl flex items-center gap-2">
@@ -261,11 +274,11 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* Stacked Avatars - Social Proof */}
+          {/* Stacked Avatars - Social Proof - simplified animation */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.45 }}
             className="absolute right-4 md:right-12 top-8 hidden lg:block"
           >
             <div className="bg-card/90 backdrop-blur-xl border border-border rounded-2xl px-4 py-3 shadow-xl">
@@ -288,6 +301,8 @@ const Hero = () => {
       </div>
     </section>
   );
-};
+});
+
+Hero.displayName = 'Hero';
 
 export default Hero;
