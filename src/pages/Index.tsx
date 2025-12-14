@@ -43,31 +43,16 @@ const Index = () => {
         <Navbar />
         <Hero />
         <Logos />
+        {/* Single Suspense boundary for all lazy-loaded sections */}
         <Suspense fallback={<SectionLoader />}>
           <ProblemSolution />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
           <Features />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
           <HowItWorks />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
           <ProductShowcase />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
           <Pricing />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
           <Testimonials />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
           <FAQ />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
           <FinalCTA />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
           <Footer />
         </Suspense>
         <LeadForm />

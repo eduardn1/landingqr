@@ -9,7 +9,8 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   LayoutDashboard, 
@@ -151,18 +152,26 @@ const getStatusLabel = (status: string) => {
 };
 
 const Demo = () => {
-  const [activeSection, setActiveSection] = useState("dashboard");
+  const [searchParams] = useSearchParams();
+  const skipOnboarding = searchParams.get("skip") === "true";
+  const initialSection = searchParams.get("section") || "dashboard";
+  
+  const [activeSection, setActiveSection] = useState(initialSection);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [showOnboarding, setShowOnboarding] = useState(true);
+  const [showOnboarding, setShowOnboarding] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Check if first visit
+  // Check if first visit (skip if query param present)
   useEffect(() => {
-    const hasSeenOnboarding = localStorage.getItem("demo-onboarding-seen");
-    if (hasSeenOnboarding) {
+    if (skipOnboarding) {
       setShowOnboarding(false);
+      return;
     }
-  }, []);
+    const hasSeenOnboarding = localStorage.getItem("demo-onboarding-seen");
+    if (!hasSeenOnboarding) {
+      setShowOnboarding(true);
+    }
+  }, [skipOnboarding]);
 
   const handleCloseOnboarding = () => {
     setShowOnboarding(false);

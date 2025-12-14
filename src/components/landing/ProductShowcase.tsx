@@ -342,15 +342,9 @@ const ProductShowcase = memo(() => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
       <div className="absolute inset-0 grid-pattern opacity-[0.03]" />
       
-      {/* Floating Orbs */}
-      <motion.div 
-        style={{ y: y1 }}
-        className="absolute top-20 left-[5%] w-[400px] h-[400px] bg-gradient-to-br from-violet-500/15 to-purple-600/5 rounded-full blur-[100px]"
-      />
-      <motion.div 
-        style={{ y: y2 }}
-        className="absolute bottom-20 right-[5%] w-[500px] h-[500px] bg-gradient-to-br from-blue-500/10 to-cyan-500/5 rounded-full blur-[120px]"
-      />
+      {/* Floating Orbs - reduced blur for better performance */}
+      <div className="absolute top-20 left-[5%] w-[400px] h-[400px] bg-gradient-to-br from-violet-500/10 to-purple-600/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-[5%] w-[500px] h-[500px] bg-gradient-to-br from-blue-500/8 to-cyan-500/5 rounded-full blur-3xl" />
 
       <div className="container relative z-10">
         {/* Header */}
