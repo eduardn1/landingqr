@@ -2,13 +2,16 @@ import { motion, useInView } from "framer-motion";
 import { useRef, memo } from "react";
 import { TrendingUp, Users, Star, Zap } from "lucide-react";
 
-// Simulated client logos with gradient colors - diversified businesses
+// Simulated client logos with gradient colors - diversified hospitality businesses
 const clients = [
-  { name: "Pub The Oak", initials: "TO", gradient: "from-violet-500 to-purple-600" },
-  { name: "Bar Centrale", initials: "BC", gradient: "from-emerald-500 to-teal-600" },
-  { name: "Café Venezia", initials: "CV", gradient: "from-cyan-500 to-blue-600" },
-  { name: "Pizzeria Napoli", initials: "PN", gradient: "from-rose-500 to-pink-600" },
-  { name: "Cocktail Lab", initials: "CL", gradient: "from-amber-500 to-orange-600" },
+  { name: "Pub The Oak", initials: "TO", gradient: "from-violet-500 to-purple-600", type: "Pub" },
+  { name: "Bar Centrale", initials: "BC", gradient: "from-emerald-500 to-teal-600", type: "Bar" },
+  { name: "Caffè Venezia", initials: "CV", gradient: "from-cyan-500 to-blue-600", type: "Caffetteria" },
+  { name: "Pizzeria Bella Napoli", initials: "BN", gradient: "from-rose-500 to-pink-600", type: "Pizzeria" },
+  { name: "Cocktail Lab Milano", initials: "CL", gradient: "from-amber-500 to-orange-600", type: "Cocktail Bar" },
+  { name: "Osteria del Borgo", initials: "OB", gradient: "from-indigo-500 to-violet-600", type: "Ristorante" },
+  { name: "Wine Bar Tuscany", initials: "WT", gradient: "from-red-500 to-rose-600", type: "Enoteca" },
+  { name: "Gelateria Dolce Vita", initials: "DV", gradient: "from-pink-400 to-fuchsia-500", type: "Gelateria" },
 ];
 
 // Realistic startup stats
