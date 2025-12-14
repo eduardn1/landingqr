@@ -50,44 +50,28 @@ import {
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { OnboardingTutorial } from "@/components/demo/OnboardingTutorial";
-import { DeliveryContent } from "@/components/demo/DeliveryContent";
 import { AnalyticsContent } from "@/components/demo/AnalyticsContent";
 import { SettingsContent } from "@/components/demo/SettingsContent";
-import { MenuContent } from "@/components/demo/MenuContent";
-import { OrdersContent } from "@/components/demo/OrdersContent";
-import { ReservationsContent } from "@/components/demo/ReservationsContent";
-import { InteractiveCustomersContent } from "@/components/demo/InteractiveCustomersContent";
-import { LoyaltyContent } from "@/components/demo/LoyaltyContent";
 import { TemplatesContent } from "@/components/demo/TemplatesContent";
-import { PromoContent } from "@/components/demo/PromoContent";
-import { WhatsAppContent } from "@/components/demo/WhatsAppContent";
-import { StoriesContent } from "@/components/demo/StoriesContent";
-import { AllergensContent } from "@/components/demo/AllergensContent";
-import { MoodContent } from "@/components/demo/MoodContent";
-import { InstagramContent } from "@/components/demo/InstagramContent";
-import { EventsContent } from "@/components/demo/EventsContent";
-import { PushNotificationsContent } from "@/components/demo/PushNotificationsContent";
+import { MenuAllergensContent } from "@/components/demo/MenuAllergensContent";
+import { OrdersDeliveryContent } from "@/components/demo/OrdersDeliveryContent";
+import { ReservationsEventsContent } from "@/components/demo/ReservationsEventsContent";
+import { CustomersLoyaltyContent } from "@/components/demo/CustomersLoyaltyContent";
+import { PromoStoriesContent } from "@/components/demo/PromoStoriesContent";
+import { NotificationsContent } from "@/components/demo/NotificationsContent";
 
-// Sidebar navigation items - organized by category
+// Sidebar navigation items - grouped and optimized
 const sidebarItems = [
-  { icon: LayoutDashboard, label: "Dashboard", id: "dashboard", category: "main" },
-  { icon: UtensilsCrossed, label: "Menu", id: "menu", category: "main" },
-  { icon: ShoppingBag, label: "Ordini", id: "orders", category: "main" },
-  { icon: Calendar, label: "Prenotazioni", id: "reservations", category: "main" },
-  { icon: Truck, label: "Delivery", id: "delivery", category: "main" },
-  { icon: Users, label: "Clienti", id: "customers", category: "main" },
-  { icon: Trophy, label: "Loyalty", id: "loyalty", category: "engagement" },
-  { icon: Gift, label: "Promo", id: "promo", category: "engagement" },
-  { icon: Instagram, label: "Stories", id: "stories", category: "engagement" },
-  { icon: Sparkles, label: "Mood", id: "mood", category: "engagement" },
-  { icon: Filter, label: "Allergeni", id: "allergens", category: "tools" },
-  { icon: MessageCircle, label: "WhatsApp", id: "whatsapp", category: "tools" },
-  { icon: Bell, label: "Push", id: "push", category: "tools" },
-  { icon: Instagram, label: "Instagram", id: "instagram", category: "tools" },
-  { icon: Calendar, label: "Eventi", id: "events", category: "tools" },
-  { icon: Palette, label: "Template", id: "templates", category: "tools" },
-  { icon: BarChart3, label: "Analytics", id: "analytics", category: "tools" },
-  { icon: Settings, label: "Impostazioni", id: "settings", category: "tools" },
+  { icon: LayoutDashboard, label: "Dashboard", id: "dashboard" },
+  { icon: UtensilsCrossed, label: "Menu & Allergeni", id: "menu" },
+  { icon: ShoppingBag, label: "Ordini & Delivery", id: "orders" },
+  { icon: Calendar, label: "Prenotazioni & Eventi", id: "reservations" },
+  { icon: Users, label: "Clienti & Loyalty", id: "customers" },
+  { icon: Gift, label: "Promo & Stories", id: "promo" },
+  { icon: MessageCircle, label: "Notifiche", id: "notifications" },
+  { icon: Palette, label: "Temi", id: "templates" },
+  { icon: BarChart3, label: "Analytics", id: "analytics" },
+  { icon: Settings, label: "Impostazioni", id: "settings" },
 ];
 
 // Mock data for orders
@@ -181,33 +165,17 @@ const Demo = () => {
       case "dashboard":
         return <DashboardContent />;
       case "menu":
-        return <MenuContent />;
+        return <MenuAllergensContent />;
       case "orders":
-        return <OrdersContent />;
+        return <OrdersDeliveryContent />;
       case "reservations":
-        return <ReservationsContent />;
+        return <ReservationsEventsContent />;
       case "customers":
-        return <InteractiveCustomersContent />;
-      case "delivery":
-        return <DeliveryContent />;
-      case "loyalty":
-        return <LoyaltyContent />;
+        return <CustomersLoyaltyContent />;
       case "promo":
-        return <PromoContent />;
-      case "stories":
-        return <StoriesContent />;
-      case "mood":
-        return <MoodContent />;
-      case "allergens":
-        return <AllergensContent />;
-      case "whatsapp":
-        return <WhatsAppContent />;
-      case "push":
-        return <PushNotificationsContent />;
-      case "instagram":
-        return <InstagramContent />;
-      case "events":
-        return <EventsContent />;
+        return <PromoStoriesContent />;
+      case "notifications":
+        return <NotificationsContent />;
       case "templates":
         return <TemplatesContent />;
       case "analytics":
