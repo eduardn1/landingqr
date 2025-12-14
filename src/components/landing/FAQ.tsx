@@ -135,10 +135,10 @@ const FAQ = () => {
             <span className="text-sm font-semibold text-primary">Domande frequenti</span>
           </motion.div>
           
-          <h2 className="font-display text-display-sm md:text-display-md font-bold leading-tight text-foreground mb-4">
+          <h2 className="font-display text-display-sm sm:text-display-md md:text-display-lg font-bold leading-tight text-foreground mb-4 px-2">
             Hai domande?
           </h2>
-          <p className="text-body-lg text-muted-foreground">
+          <p className="text-body-md sm:text-body-lg text-muted-foreground px-4">
             Trova le risposte alle domande più comuni
           </p>
         </motion.div>
@@ -169,13 +169,13 @@ const FAQ = () => {
           )}
         </motion.div>
 
-        {/* Category Tabs */}
+        {/* Category Tabs - Mobile scroll */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-2 mb-10"
+          className="flex overflow-x-auto scrollbar-hide gap-2 mb-8 md:mb-10 pb-2 px-2 sm:px-0 sm:flex-wrap sm:justify-center"
         >
           {faqCategories.map((cat) => {
             const Icon = cat.icon;
@@ -188,7 +188,7 @@ const FAQ = () => {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap flex-shrink-0 ${
                   isActive
                     ? "bg-primary text-primary-foreground shadow-md"
                     : "bg-card border border-border text-muted-foreground hover:text-foreground hover:border-primary/30"

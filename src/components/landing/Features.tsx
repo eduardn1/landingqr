@@ -246,18 +246,18 @@ const Features = memo(() => {
             <span className="text-sm font-medium text-violet-500">Piattaforma Completa</span>
           </motion.div>
           
-          <h2 className="font-display text-display-sm md:text-display-md font-bold mb-6">
+          <h2 className="font-display text-display-sm sm:text-display-md md:text-display-lg font-bold mb-4 md:mb-6 px-2">
             <span className="text-foreground">Tutto quello che serve al tuo </span>
             <span className="gradient-text">ristorante digitale</span>
           </h2>
-          <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-body-md sm:text-body-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Menu QR, ordini, delivery, prenotazioni, loyalty, analytics. 
             Una dashboard all-in-one per gestire ogni aspetto del tuo locale.
           </p>
         </motion.div>
 
-        {/* Hero Features - Interactive Showcase */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-20">
+        {/* Hero Features - Interactive Showcase - Mobile stacked */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-16 md:mb-20">
           {/* Feature Navigation */}
           <motion.div 
             initial={{ opacity: 0, x: -40 }}
@@ -396,8 +396,8 @@ const Features = memo(() => {
             </p>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
+          {/* Category Tabs - Horizontal scroll on mobile */}
+          <div className="flex overflow-x-auto scrollbar-hide gap-2 mb-6 md:mb-8 pb-2 px-2 sm:px-0 sm:flex-wrap sm:justify-center">
             {featureCategories.map((cat) => {
               const Icon = cat.icon;
               const isActive = activeCategory === cat.id;
@@ -406,13 +406,13 @@ const Features = memo(() => {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap flex-shrink-0 ${
                     isActive
                       ? "bg-primary text-primary-foreground shadow-md"
                       : "bg-card border border-border text-muted-foreground hover:text-foreground hover:border-primary/30"
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   {cat.label}
                 </button>
               );

@@ -134,25 +134,25 @@ const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-10 md:mb-16"
         >
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-warning/10 border border-warning/20 mb-8"
+            className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-warning/10 border border-warning/20 mb-6 md:mb-8"
           >
-            <Star className="w-4 h-4 text-warning fill-warning" />
-            <span className="text-sm font-semibold text-warning">500+ ristoratori soddisfatti</span>
+            <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-warning fill-warning" />
+            <span className="text-xs sm:text-sm font-semibold text-warning">50+ ristoratori soddisfatti</span>
           </motion.div>
 
-          <h2 className="font-display text-display-sm md:text-display-md font-bold leading-tight mb-6">
+          <h2 className="font-display text-display-sm sm:text-display-md md:text-display-lg font-bold leading-tight mb-4 md:mb-6 px-2">
             <span className="text-foreground">Cosa dicono i </span>
             <span className="gradient-text">nostri clienti</span>
           </h2>
 
-          <p className="text-body-lg text-muted-foreground">
+          <p className="text-body-md sm:text-body-lg text-muted-foreground px-4">
             Ristoratori italiani che hanno già trasformato il loro business con Flavour
           </p>
         </motion.div>

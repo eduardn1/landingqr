@@ -77,33 +77,33 @@ const Hero = memo(() => {
             </div>
           </motion.div>
 
-          {/* Headline */}
+          {/* Headline - Mobile-first responsive */}
           <motion.h1
             {...fadeInUp}
             transition={{ duration: 0.3, delay: 0.05 }}
-            className="text-display-md md:text-display-lg lg:text-display-xl font-extrabold mb-8"
+            className="text-display-md sm:text-display-lg md:text-display-xl lg:text-[5.5rem] font-extrabold mb-6 md:mb-8 px-2"
           >
             <span className="text-foreground">Il tuo ristorante</span>
             <br />
             <span className="gradient-text">digitalizzato</span>
           </motion.h1>
 
-          {/* Subheading */}
+          {/* Subheading - Mobile-first */}
           <motion.p
             {...fadeInUp}
             transition={{ duration: 0.3, delay: 0.1 }}
-            className="text-body-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8"
+            className="text-body-md sm:text-body-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-6 md:mb-8 px-4"
           >
             Menu QR, prenotazioni, asporto e delivery.{" "}
             Tutto in una piattaforma.{" "}
             <span className="text-foreground font-semibold">Pronto in 10 minuti.</span>
           </motion.p>
 
-          {/* Feature Badges - Stile Creativable */}
+          {/* Feature Badges - Mobile-first responsive grid */}
           <motion.div
             {...fadeInUp}
             transition={{ duration: 0.3, delay: 0.15 }}
-            className="flex flex-wrap gap-3 justify-center mb-10"
+            className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 sm:gap-3 justify-center mb-8 md:mb-10 px-4 sm:px-0"
           >
             {featureBadges.map((badge) => (
               <div
@@ -111,52 +111,53 @@ const Hero = memo(() => {
                 className="group relative"
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${badge.color} rounded-full blur-lg opacity-40 group-hover:opacity-60 transition-opacity`} />
-                <div className="relative flex items-center gap-2 px-4 py-2.5 rounded-full bg-card/80 backdrop-blur-sm border border-border hover:border-primary/30 transition-all">
-                  <div className={`w-6 h-6 rounded-lg bg-gradient-to-br ${badge.color} flex items-center justify-center`}>
-                    <badge.icon className="w-3.5 h-3.5 text-white" />
+                <div className="relative flex items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-card/80 backdrop-blur-sm border border-border hover:border-primary/30 transition-all">
+                  <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-gradient-to-br ${badge.color} flex items-center justify-center`}>
+                    <badge.icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
                   </div>
-                  <span className="text-sm font-medium text-foreground">{badge.text}</span>
+                  <span className="text-xs sm:text-sm font-medium text-foreground">{badge.text}</span>
                 </div>
               </div>
             ))}
           </motion.div>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Mobile-first stacked */}
           <motion.div
             {...fadeInUp}
             transition={{ duration: 0.3, delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            className="flex flex-col gap-3 sm:flex-row sm:gap-4 justify-center mb-8 md:mb-12 px-4 sm:px-0"
           >
             <Button
               size="lg"
               onClick={() => openLeadForm("hero-cta")}
-              className="group text-base px-8 py-7 h-auto gradient-button rounded-2xl"
+              className="group text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-7 h-auto gradient-button rounded-xl sm:rounded-2xl w-full sm:w-auto"
             >
-              <Zap className="w-5 h-5 mr-2" />
+              <Zap className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
               Inizia gratis ora
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
 
             <a
               href="https://demo2.studiojem.it"
               target="_blank"
               rel="noopener noreferrer"
+              className="w-full sm:w-auto"
             >
               <Button
                 size="lg"
                 variant="outline"
-                className="text-base px-8 py-7 h-auto w-full sm:w-auto rounded-2xl border-border bg-card/50 hover:bg-card hover:border-primary/30 backdrop-blur-sm transition-all"
+                className="text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-7 h-auto w-full rounded-xl sm:rounded-2xl border-border bg-card/50 hover:bg-card hover:border-primary/30 backdrop-blur-sm transition-all"
               >
                 Guarda demo live
               </Button>
             </a>
           </motion.div>
 
-          {/* Trust Signals */}
+          {/* Trust Signals - Mobile-first */}
           <motion.div
             {...fadeInUp}
             transition={{ duration: 0.3, delay: 0.25 }}
-            className="flex flex-wrap gap-6 items-center justify-center text-sm text-muted-foreground"
+            className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-6 items-center justify-center text-xs sm:text-sm text-muted-foreground px-4"
           >
             {[
               "Nessuna carta richiesta",
@@ -164,8 +165,8 @@ const Hero = memo(() => {
               "Cancella quando vuoi",
             ].map((text) => (
               <span key={text} className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded-full bg-success/20 flex items-center justify-center">
-                  <Check className="w-3 h-3 text-success" />
+                <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-success/20 flex items-center justify-center">
+                  <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-success" />
                 </div>
                 {text}
               </span>

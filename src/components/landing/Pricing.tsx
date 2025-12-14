@@ -113,11 +113,11 @@ const Pricing = () => {
             <span className="text-sm font-semibold text-primary">Zero commissioni</span>
           </motion.div>
           
-          <h2 className="font-display text-display-sm md:text-display-md font-bold mb-6">
+          <h2 className="font-display text-display-sm sm:text-display-md md:text-display-lg font-bold mb-4 md:mb-6 px-2">
             <span className="text-foreground">Prezzi </span>
             <span className="gradient-text">trasparenti</span>
           </h2>
-          <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+          <p className="text-body-md sm:text-body-lg text-muted-foreground max-w-2xl mx-auto mb-8 md:mb-10 px-4">
             Nessun costo nascosto. Nessuna commissione sugli ordini. 
             Paga solo quello che usi, cancella quando vuoi.
           </p>
@@ -156,8 +156,8 @@ const Pricing = () => {
           </motion.div>
         </motion.div>
 
-        {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto mb-12">
+        {/* Pricing Cards - Mobile-first stacked layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto mb-12 px-2 sm:px-0">
           {plans.map((plan, index) => {
             const isHovered = hoveredPlan === plan.slug;
             const price = isYearly ? plan.yearlyPrice : plan.monthlyPrice;
