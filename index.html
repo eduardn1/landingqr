@@ -16,12 +16,20 @@
     
     <!-- Preconnect to font domains for faster loading -->
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
     
-    <!-- Premium Fonts: Fontshare - Only needed weights (400, 500, 700) with display=swap -->
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@500,700&display=swap" rel="stylesheet" />
+    <!-- Preload critical fonts for FCP optimization -->
+    <link 
+      rel="preload" 
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" 
+      as="style" 
+    />
     
-    <!-- Preload critical hero images (WebP for better performance) -->
-    <link rel="preload" as="image" href="/src/assets/dashboard-preview.webp" type="image/webp" />
+    <!-- Premium Fonts: Satoshi from Fontshare -->
+    <link 
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" 
+      rel="stylesheet" 
+    />
     
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     

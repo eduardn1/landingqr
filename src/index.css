@@ -2,8 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Fontshare fonts loaded in index.html */
+/* Satoshi font from Fontshare - loaded in index.html with preload for FCP */
 
+/* Force Satoshi as base font */
+html, body {
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
 @layer base {
   :root {
     /* Light Theme - Clean Modern */
