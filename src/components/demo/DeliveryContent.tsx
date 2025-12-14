@@ -107,13 +107,22 @@ const getMarkerColor = (status: string) => {
 
 // Interpolate position along route
 const getPositionAlongRoute = (route: { lat: number; lng: number }[], progress: number) => {
+  if (!route || route.length === 0) {
+    return { lat: 0, lng: 0 };
+  }
+  
+  if (route.length === 1) {
+    return { lat: route[0].lat, lng: route[0].lng };
+  }
+  
+  const clampedProgress = Math.max(0, Math.min(1, progress));
   const totalSegments = route.length - 1;
-  const segmentProgress = progress * totalSegments;
+  const segmentProgress = clampedProgress * totalSegments;
   const segmentIndex = Math.min(Math.floor(segmentProgress), totalSegments - 1);
   const segmentT = segmentProgress - segmentIndex;
   
   const start = route[segmentIndex];
-  const end = route[segmentIndex + 1] || route[segmentIndex];
+  const end = route[segmentIndex + 1] || start;
   
   return {
     lat: start.lat + (end.lat - start.lat) * segmentT,
