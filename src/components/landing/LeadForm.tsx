@@ -82,11 +82,15 @@ const LeadForm = () => {
     }));
   };
 
-  const nextStep = () => {
+  const nextStep = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (currentStep < 3) setCurrentStep(currentStep + 1);
   };
 
-  const prevStep = () => {
+  const prevStep = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (currentStep > 1) setCurrentStep(currentStep - 1);
   };
 
@@ -334,7 +338,7 @@ const LeadForm = () => {
                         <Button
                           type="button"
                           variant="ghost"
-                          onClick={prevStep}
+                          onClick={(e) => prevStep(e)}
                           className="gap-2"
                         >
                           <ArrowLeft className="w-4 h-4" />
@@ -347,7 +351,7 @@ const LeadForm = () => {
                       {currentStep < 3 ? (
                         <Button
                           type="button"
-                          onClick={nextStep}
+                          onClick={(e) => nextStep(e)}
                           disabled={!canProceed()}
                           className="gradient-button gap-2"
                         >

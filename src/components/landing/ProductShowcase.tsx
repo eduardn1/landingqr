@@ -25,10 +25,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-// Import device mockups
-import iphoneMockup from "@/assets/iphone-menu-mockup.png";
-import ipadMockup from "@/assets/ipad-dashboard-mockup.png";
-import dashboardPreview from "@/assets/dashboard-preview.png";
+// Import device mockups (WebP for better performance)
+import iphoneMockup from "@/assets/iphone-menu-mockup.webp";
+import ipadMockup from "@/assets/ipad-dashboard-mockup.webp";
+import dashboardPreview from "@/assets/dashboard-preview.webp";
 
 const showcaseItems = [
   {
