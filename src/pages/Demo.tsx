@@ -374,13 +374,14 @@ const Demo = () => {
               {/* Theme Toggle */}
               <ThemeToggle />
               
-              {/* Help Button */}
+              {/* Help Button - More visible */}
               <button 
                 onClick={() => setShowOnboarding(true)}
-                className="p-2 rounded-xl bg-muted hover:bg-muted/80 transition-colors"
-                title="Guida"
+                className="flex items-center gap-2 px-3 py-2 rounded-xl bg-gradient-to-r from-primary to-accent text-white hover:opacity-90 transition-all shadow-lg shadow-primary/25 animate-pulse hover:animate-none"
+                title="Come funziona"
               >
-                <HelpCircle className="w-5 h-5 text-foreground" />
+                <HelpCircle className="w-4 h-4" />
+                <span className="text-sm font-medium hidden sm:inline">Guida</span>
               </button>
 
               {/* Search - Desktop only */}

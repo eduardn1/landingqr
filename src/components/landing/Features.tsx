@@ -9,7 +9,7 @@
  */
 
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, memo } from "react";
 import { 
   UtensilsCrossed,
   Calendar, 
@@ -194,7 +194,7 @@ const featureCategories: FeatureCategory[] = [
   },
 ];
 
-const Features = () => {
+const Features = memo(() => {
   const containerRef = useRef<HTMLElement>(null);
   const [activeCategory, setActiveCategory] = useState("menu");
   const [activeFeature, setActiveFeature] = useState(0);
@@ -480,6 +480,8 @@ const Features = () => {
       </div>
     </section>
   );
-};
+});
+
+Features.displayName = 'Features';
 
 export default Features;

@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, memo } from "react";
 import { X, Check, TrendingUp, Users, Clock, Zap, ArrowRight } from "lucide-react";
 import { useLeadForm } from "@/hooks/useLeadForm";
 import { Button } from "@/components/ui/button";
@@ -32,7 +32,7 @@ const transformations = [
   },
 ];
 
-const ProblemSolution = () => {
+const ProblemSolution = memo(() => {
   const { openLeadForm } = useLeadForm();
   const containerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -159,6 +159,8 @@ const ProblemSolution = () => {
       </div>
     </section>
   );
-};
+});
+
+ProblemSolution.displayName = 'ProblemSolution';
 
 export default ProblemSolution;
