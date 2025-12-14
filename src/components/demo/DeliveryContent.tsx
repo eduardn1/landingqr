@@ -2,7 +2,6 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Truck, MapPin, Clock, Phone, User, Package, Navigation, AlertCircle, Play, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -230,15 +229,23 @@ export const DeliveryContent = () => {
   useEffect(() => {
     const fetchToken = async () => {
       try {
-        const { data, error } = await supabase.functions.invoke<{ token?: string }>("mapbox-token");
+        const baseUrl = import.meta.env.VITE_SUPABASE_URL;
+        if (!baseUrl) {
+          setMapError("URL backend non configurato");
+          return;
+        }
 
-        if (error) {
-          console.error("Errore dal backend mappa:", error);
+        const response = await fetch(`${baseUrl}/functions/v1/mapbox-token`);
+        if (!response.ok) {
+          console.error("Errore HTTP funzione mappa:", response.status, response.statusText);
           setMapError("Errore dal backend mappa");
           return;
         }
 
-        if (!data?.token) {
+        const data = await response.json() as { token?: string; error?: string };
+
+        if (!data.token) {
+          console.error("Risposta funzione mappa senza token:", data);
           setMapError("Token Mapbox non disponibile dal backend");
           return;
         }
