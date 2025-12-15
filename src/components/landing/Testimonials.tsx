@@ -186,26 +186,19 @@ const Testimonials = () => {
                     </div>
 
                     {/* Highlight Badge */}
-                    <motion.div 
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
+                    <div
                       className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r ${testimonial.gradient} text-white text-xs sm:text-sm font-semibold mb-4 sm:mb-5 md:mb-6 shadow-lg`}
                     >
                       {testimonial.highlight}
-                    </motion.div>
+                    </div>
 
                     {/* Stars */}
                     <div className="flex gap-0.5 sm:gap-1 mb-4 sm:mb-5 md:mb-6">
                       {Array.from({ length: testimonial.rating }).map((_, i) => (
-                        <motion.div
+                        <Star
                           key={i}
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.1 + i * 0.05 }}
-                        >
-                          <Star className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 fill-warning text-warning" />
-                        </motion.div>
+                          className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 fill-warning text-warning"
+                        />
                       ))}
                     </div>
 

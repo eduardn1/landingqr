@@ -8,7 +8,7 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Loader2, CheckCircle, ArrowRight, ArrowLeft, User, Mail, Phone, Building2, MessageSquare, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -38,6 +38,17 @@ const LeadForm = () => {
     restaurant_name: "",
     message: "",
   });
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLeadForm();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isOpen, closeLeadForm]);
 
   const validateStep = (step: number): boolean => {
     const newErrors: Record<string, string> = {};
@@ -163,7 +174,10 @@ const LeadForm = () => {
           />
 
           {/* Modal - wrapper for centering */}
-          <div className="fixed inset-0 z-[101] flex items-center justify-center p-4">
+          <div
+            className="fixed inset-0 z-[101] flex items-center justify-center p-4"
+            onClick={closeLeadForm}
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 40 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -178,6 +192,7 @@ const LeadForm = () => {
               
               {/* Close button */}
               <button
+                type="button"
                 onClick={closeLeadForm}
                 className="absolute top-6 right-6 p-2 rounded-full bg-muted hover:bg-muted/80 transition-colors z-10"
               >
