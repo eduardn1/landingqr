@@ -151,11 +151,15 @@ const Navbar = () => {
                   <button
                     key={link.id}
                     onClick={() => handleNavClick(link.href)}
-                    className={`relative px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
-                      isActive 
-                        ? 'text-primary' 
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
+                    className={`relative px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300 outline-none
+                      focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background
+                      after:absolute after:left-1/2 after:-bottom-0.5 after:h-px after:w-0 after:-translate-x-1/2 after:bg-primary after:opacity-0
+                      after:transition-all after:duration-300 after:ease-out hover:after:opacity-100 hover:after:w-[72%]
+                      ${
+                        isActive
+                          ? 'text-primary after:opacity-100 after:w-[72%]'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-primary/5 hover:shadow-[0_0_24px_hsl(var(--primary)/0.18)]'
+                      }`}
                   >
                     {isActive && (
                       <motion.div

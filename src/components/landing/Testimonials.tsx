@@ -8,8 +8,8 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Star, Quote, MapPin, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -89,17 +89,8 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
-  const containerRef = useRef<HTMLElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   // Auto-scroll carousel
   useEffect(() => {
@@ -122,16 +113,13 @@ const Testimonials = () => {
   const prevSlide = () => scrollToIndex((activeIndex - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section ref={containerRef} id="testimonials" className="section-padding relative overflow-hidden">
+    <section id="testimonials" className="section-padding relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
       <div className="absolute inset-0 grid-pattern opacity-[0.02]" />
-      
-      {/* Floating orb */}
-      <motion.div 
-        style={{ y }}
-        className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-primary/10 to-accent/5 rounded-full blur-[120px]"
-      />
+
+      {/* Subtle glow (static, performant) */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[520px] h-[520px] bg-gradient-to-br from-primary/10 to-accent/5 rounded-full blur-3xl opacity-40" />
       
       <div className="container relative z-10">
         {/* Heading */}
@@ -228,15 +216,12 @@ const Testimonials = () => {
 
                     {/* Author */}
                     <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-                      {/* Animated Avatar */}
-                      <motion.div 
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        className={`relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white font-bold text-sm sm:text-base md:text-lg shadow-lg flex-shrink-0`}
+                      {/* Avatar */}
+                      <div
+                        className={`relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white font-bold text-sm sm:text-base md:text-lg shadow-lg flex-shrink-0 transition-transform duration-300 hover:scale-105`}
                       >
                         {testimonial.avatar}
-                        {/* Pulse ring */}
-                        <div className={`absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br ${testimonial.gradient} animate-ping opacity-20`} />
-                      </motion.div>
+                      </div>
                       
                       <div className="flex-1 min-w-0">
                         <div className="font-bold text-foreground text-sm sm:text-base md:text-lg">
