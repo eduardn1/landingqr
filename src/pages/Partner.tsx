@@ -39,6 +39,7 @@ import {
   Globe,
   Gift,
   Send,
+  HelpCircle,
 } from "lucide-react";
 
 // Animation variants
@@ -237,6 +238,15 @@ const Partner = memo(() => {
                   </Link>
                 </Button>
               </div>
+
+              <Link 
+                to="/diventa-rivenditore/faq" 
+                className="inline-flex items-center gap-2 mt-6 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                <HelpCircle className="w-4 h-4" />
+                Leggi le FAQ sul programma partner
+                <ArrowRight className="w-3 h-3" />
+              </Link>
             </motion.div>
           </div>
         </section>
