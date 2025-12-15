@@ -3,15 +3,9 @@
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  */
 
-import { Moon, Sun, Sparkles } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
-
-const nextTheme = (current?: string) => {
-  const order = ["colorful", "dark", "light"] as const;
-  const idx = Math.max(0, order.indexOf((current as any) ?? "colorful"));
-  return order[(idx + 1) % order.length];
-};
 
 export const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
@@ -20,9 +14,9 @@ export const ThemeToggle = () => {
     <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      onClick={() => setTheme(nextTheme(theme))}
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="relative p-2 rounded-xl bg-muted hover:bg-muted/80 transition-colors overflow-hidden"
-      title="Cambia tema (Light / Dark / Colorful)"
+      title={theme === "dark" ? "Passa al tema chiaro" : "Passa al tema scuro"}
     >
       <div className="relative w-5 h-5">
         <motion.div
@@ -37,7 +31,6 @@ export const ThemeToggle = () => {
         >
           <Moon className="w-5 h-5 text-foreground" />
         </motion.div>
-
         <motion.div
           initial={false}
           animate={{
@@ -50,21 +43,7 @@ export const ThemeToggle = () => {
         >
           <Sun className="w-5 h-5 text-foreground" />
         </motion.div>
-
-        <motion.div
-          initial={false}
-          animate={{
-            scale: theme === "colorful" ? 1 : 0,
-            rotate: theme === "colorful" ? 0 : 90,
-            opacity: theme === "colorful" ? 1 : 0,
-          }}
-          transition={{ duration: 0.2 }}
-          className="absolute inset-0 flex items-center justify-center"
-        >
-          <Sparkles className="w-5 h-5 text-foreground" />
-        </motion.div>
       </div>
     </motion.button>
   );
 };
-

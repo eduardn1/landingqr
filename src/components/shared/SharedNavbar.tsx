@@ -46,9 +46,7 @@ const SharedNavbar = () => {
   }, [isExpanded]);
 
   const toggleTheme = () => {
-    const order = ["colorful", "dark", "light"] as const;
-    const idx = Math.max(0, order.indexOf((theme as any) ?? "colorful"));
-    setTheme(order[(idx + 1) % order.length]);
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   const handleIslandClick = () => {
@@ -169,14 +167,12 @@ const SharedNavbar = () => {
               <button
                 onClick={toggleTheme}
                 className="p-1.5 lg:p-2 rounded-lg hover:bg-muted/50 transition-colors"
-                aria-label="Cambia tema (Light / Dark / Colorful)"
+                aria-label="Toggle theme"
               >
                 {theme === "dark" ? (
-                  <Sun className="w-4 h-4 lg:w-5 lg:h-5 text-foreground" />
-                ) : theme === "light" ? (
-                  <Moon className="w-4 h-4 lg:w-5 lg:h-5 text-foreground" />
+                  <Sun className="w-4 h-4 lg:w-5 lg:h-5 text-yellow-500" />
                 ) : (
-                  <Sparkles className="w-4 h-4 lg:w-5 lg:h-5 text-foreground" />
+                  <Moon className="w-4 h-4 lg:w-5 lg:h-5 text-primary" />
                 )}
               </button>
             )}
