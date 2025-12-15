@@ -8,7 +8,7 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import { useState } from "react";
+import { useState, memo } from "react";
 import { Check, Star, Sparkles, Zap, ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLeadForm } from "@/hooks/useLeadForm";
@@ -77,7 +77,7 @@ const plans = [
   },
 ];
 
-const Pricing = () => {
+const Pricing = memo(() => {
   const { openLeadForm } = useLeadForm();
   const [isYearly, setIsYearly] = useState(true);
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
@@ -281,6 +281,8 @@ const Pricing = () => {
       />
     </section>
   );
-};
+});
+
+Pricing.displayName = 'Pricing';
 
 export default Pricing;

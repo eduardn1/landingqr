@@ -1,4 +1,15 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════════
+ * QRCODESTUDIOJEM - Pricing Comparison Modal
+ * 
+ * Sviluppato da Eduard Costin Udila @ studiojem.it
+ * Web Development & Digital Solutions
+ * 
+ * © 2024 StudioJEM - Tutti i diritti riservati
+ * ═══════════════════════════════════════════════════════════════════════════════
+ */
 
+import { memo, forwardRef } from "react";
 import { Check, X, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLeadForm } from "@/hooks/useLeadForm";
@@ -66,96 +77,100 @@ const renderValue = (value: boolean | string) => {
   return <span className="text-foreground font-medium text-sm">{value}</span>;
 };
 
-const PricingComparisonModal = ({ isOpen, onClose }: PricingComparisonModalProps) => {
-  const { openLeadForm } = useLeadForm();
+const PricingComparisonModal = memo(forwardRef<HTMLDivElement, PricingComparisonModalProps>(
+  ({ isOpen, onClose }, ref) => {
+    const { openLeadForm } = useLeadForm();
 
-  const handleSelectPlan = (slug: string) => {
-    onClose();
-    openLeadForm(`comparison-${slug}`);
-  };
+    const handleSelectPlan = (slug: string) => {
+      onClose();
+      openLeadForm(`comparison-${slug}`);
+    };
 
-  return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto bg-card border-border">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center text-foreground">
-            Confronta i piani
-          </DialogTitle>
-        </DialogHeader>
+    return (
+      <Dialog open={isOpen} onOpenChange={onClose}>
+        <DialogContent ref={ref} className="max-w-4xl max-h-[85vh] overflow-y-auto bg-card border-border">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-center text-foreground">
+              Confronta i piani
+            </DialogTitle>
+          </DialogHeader>
 
-        {/* Plan Headers */}
-        <div className="grid grid-cols-4 gap-2 mt-6 sticky top-0 bg-card z-10 pb-4 border-b border-border">
-          <div className="col-span-1" />
-          {plans.map((plan) => (
-            <div key={plan.slug} className="text-center">
-              {plan.featured && (
-                <div className="badge-primary text-xs mb-2 mx-auto">
-                  <Star className="w-3 h-3" />
-                  <span>Popolare</span>
-                </div>
-              )}
-              <h3 className="font-bold text-foreground">{plan.name}</h3>
-              <div className="text-sm text-muted-foreground">
-                {plan.price === "Custom" ? "Su misura" : `€${plan.price}/mese`}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Feature Categories */}
-        <div className="space-y-6 mt-4">
-          {featureCategories.map((category) => (
-            <div key={category.name}>
-              <h4 className="text-sm font-semibold text-foreground mb-3 pb-2 border-b border-border">
-                {category.name}
-              </h4>
-              <div className="space-y-2">
-                {category.features.map((feature) => (
-                  <div
-                    key={feature.name}
-                    className="grid grid-cols-4 gap-2 py-2 hover:bg-muted/50 rounded-lg transition-colors"
-                  >
-                    <div className="text-sm text-muted-foreground">
-                      {feature.name}
-                    </div>
-                    <div className="text-center">
-                      {renderValue(feature.starter)}
-                    </div>
-                    <div className="text-center">
-                      {renderValue(feature.pro)}
-                    </div>
-                    <div className="text-center">
-                      {renderValue(feature.enterprise)}
-                    </div>
+          {/* Plan Headers */}
+          <div className="grid grid-cols-4 gap-2 mt-6 sticky top-0 bg-card z-10 pb-4 border-b border-border">
+            <div className="col-span-1" />
+            {plans.map((plan) => (
+              <div key={plan.slug} className="text-center">
+                {plan.featured && (
+                  <div className="badge-primary text-xs mb-2 mx-auto">
+                    <Star className="w-3 h-3" />
+                    <span>Popolare</span>
                   </div>
-                ))}
+                )}
+                <h3 className="font-bold text-foreground">{plan.name}</h3>
+                <div className="text-sm text-muted-foreground">
+                  {plan.price === "Custom" ? "Su misura" : `€${plan.price}/mese`}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* CTA Row */}
-        <div className="grid grid-cols-4 gap-2 mt-8 pt-4 border-t border-border">
-          <div className="col-span-1" />
-          {plans.map((plan) => (
-            <div key={plan.slug} className="text-center">
-              <Button
-                onClick={() => handleSelectPlan(plan.slug)}
-                size="sm"
-                className={`w-full ${
-                  plan.featured
-                    ? "gradient-button"
-                    : "bg-secondary hover:bg-secondary/80 text-secondary-foreground"
-                }`}
-              >
-                Scegli
-              </Button>
-            </div>
-          ))}
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-};
+          {/* Feature Categories */}
+          <div className="space-y-6 mt-4">
+            {featureCategories.map((category) => (
+              <div key={category.name}>
+                <h4 className="text-sm font-semibold text-foreground mb-3 pb-2 border-b border-border">
+                  {category.name}
+                </h4>
+                <div className="space-y-2">
+                  {category.features.map((feature) => (
+                    <div
+                      key={feature.name}
+                      className="grid grid-cols-4 gap-2 py-2 hover:bg-muted/50 rounded-lg transition-colors"
+                    >
+                      <div className="text-sm text-muted-foreground">
+                        {feature.name}
+                      </div>
+                      <div className="text-center">
+                        {renderValue(feature.starter)}
+                      </div>
+                      <div className="text-center">
+                        {renderValue(feature.pro)}
+                      </div>
+                      <div className="text-center">
+                        {renderValue(feature.enterprise)}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA Row */}
+          <div className="grid grid-cols-4 gap-2 mt-8 pt-4 border-t border-border">
+            <div className="col-span-1" />
+            {plans.map((plan) => (
+              <div key={plan.slug} className="text-center">
+                <Button
+                  onClick={() => handleSelectPlan(plan.slug)}
+                  size="sm"
+                  className={`w-full ${
+                    plan.featured
+                      ? "gradient-button"
+                      : "bg-secondary hover:bg-secondary/80 text-secondary-foreground"
+                  }`}
+                >
+                  Scegli
+                </Button>
+              </div>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+));
+
+PricingComparisonModal.displayName = 'PricingComparisonModal';
 
 export default PricingComparisonModal;
