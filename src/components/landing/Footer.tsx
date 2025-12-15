@@ -25,7 +25,8 @@ import {
   MessageCircle,
   BookOpen,
   HelpCircle,
-  Sparkles
+  Sparkles,
+  Users
 } from "lucide-react";
 
 const footerLinks = {
@@ -34,6 +35,7 @@ const footerLinks = {
     { label: "Prezzi", href: "#pricing" },
     { label: "Demo Interattiva", href: "/demo", isRoute: true },
     { label: "Come funziona", href: "#howitworks" },
+    { label: "Diventa Rivenditore", href: "/diventa-rivenditore", isRoute: true },
   ],
   risorse: [
     { label: "Guide & Tutorial", href: "/guide", isRoute: true },
@@ -43,7 +45,7 @@ const footerLinks = {
   azienda: [
     { label: "Chi siamo", href: "/chi-siamo", isRoute: true },
     { label: "Contatti", href: "/contatti", isRoute: true },
-    { label: "Partner", href: "#" },
+    { label: "Partner", href: "/diventa-rivenditore", isRoute: true },
   ],
   legale: [
     { label: "Privacy Policy", href: "#" },
@@ -63,6 +65,7 @@ const badges = [
   { icon: Shield, label: "GDPR Compliant" },
   { icon: Lock, label: "SSL Sicuro" },
   { icon: CheckCircle, label: "Made in Italy" },
+  { icon: Users, label: "100+ Partner", isLink: true, href: "/diventa-rivenditore" },
 ];
 
 const Footer = memo(() => {
@@ -203,15 +206,35 @@ const Footer = memo(() => {
 
         {/* Trust Badges */}
         <div className="flex flex-wrap justify-center gap-3 mb-8 py-6 border-y border-border">
-          {badges.map((badge) => (
-            <div
-              key={badge.label}
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border"
-            >
-              <badge.icon className="w-4 h-4 text-success" />
-              <span className="text-xs font-medium text-foreground">{badge.label}</span>
-            </div>
-          ))}
+          {badges.map((badge) => {
+            const BadgeContent = (
+              <>
+                <badge.icon className="w-4 h-4 text-success" />
+                <span className="text-xs font-medium text-foreground">{badge.label}</span>
+              </>
+            );
+
+            if ('isLink' in badge && badge.isLink && 'href' in badge) {
+              return (
+                <Link
+                  key={badge.label}
+                  to={badge.href as string}
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-colors"
+                >
+                  {BadgeContent}
+                </Link>
+              );
+            }
+
+            return (
+              <div
+                key={badge.label}
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border"
+              >
+                {BadgeContent}
+              </div>
+            );
+          })}
         </div>
 
         {/* Bottom Bar */}
