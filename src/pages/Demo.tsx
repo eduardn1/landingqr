@@ -448,11 +448,11 @@ const Demo = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="fixed bottom-24 lg:bottom-6 right-4 lg:right-6 z-50"
+              className="fixed bottom-24 lg:bottom-6 left-1/2 -translate-x-1/2 z-50"
             >
               <Button className="gap-2 shadow-xl bg-primary hover:bg-primary/90 text-primary-foreground border-0">
                 <ArrowLeft className="w-4 h-4" />
-                <span className="font-semibold">Torna alle guide</span>
+                <span className="font-semibold">Torna alla pagina guide</span>
               </Button>
             </motion.div>
           </Link>
