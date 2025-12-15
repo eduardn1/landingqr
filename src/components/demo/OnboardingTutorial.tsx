@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronRight, ChevronLeft, Sparkles, LayoutDashboard, UtensilsCrossed, ShoppingBag, Calendar, Users, Gift, MessageCircle, Palette, BarChart3, Settings, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -114,10 +114,18 @@ interface OnboardingTutorialProps {
 export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTutorialProps) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isResuming, setIsResuming] = useState(false);
+  const hasInitialized = useRef(false);
+  const onNavigateRef = useRef(onNavigate);
   
-  // Load saved step on open
+  // Keep ref updated
   useEffect(() => {
-    if (isOpen) {
+    onNavigateRef.current = onNavigate;
+  }, [onNavigate]);
+  
+  // Load saved step on open - only once
+  useEffect(() => {
+    if (isOpen && !hasInitialized.current) {
+      hasInitialized.current = true;
       const savedStep = localStorage.getItem(STORAGE_KEY);
       if (savedStep) {
         const stepIndex = parseInt(savedStep, 10);
@@ -126,7 +134,7 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
           setIsResuming(true);
           // Navigate to the saved section
           if (steps[stepIndex].highlight) {
-            onNavigate(steps[stepIndex].highlight);
+            onNavigateRef.current(steps[stepIndex].highlight);
           }
         } else {
           setCurrentStep(0);
@@ -137,7 +145,11 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
         setIsResuming(false);
       }
     }
-  }, [isOpen, onNavigate]);
+    
+    if (!isOpen) {
+      hasInitialized.current = false;
+    }
+  }, [isOpen]);
 
   // Save step on change
   useEffect(() => {
