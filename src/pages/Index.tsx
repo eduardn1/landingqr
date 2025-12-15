@@ -14,7 +14,7 @@ import { lazy, Suspense } from "react";
 import { LeadFormProvider } from "@/hooks/useLeadForm";
 import LeadForm from "@/components/landing/LeadForm";
 import Navbar from "@/components/landing/Navbar";
-import { SEO } from "@/components/SEO";
+import DynamicSEO from "@/components/DynamicSEO";
 
 import Hero from "@/components/landing/Hero";
 import Logos from "@/components/landing/Logos";
@@ -40,10 +40,7 @@ const SectionLoader = () => (
 const Index = () => {
   return (
     <LeadFormProvider>
-      <SEO 
-        url="https://flavour.studiojem.it/"
-        description="Trasforma la tua attività con menu digitali QR, prenotazioni online, delivery e takeaway. Perfetto per bar, ristoranti, pub, cocktail bar e caffetterie. 30+ funzionalità, 5 lingue, 8 template. Pronto in 10 minuti. Zero commissioni."
-      />
+      <DynamicSEO />
       <div className="min-h-screen bg-background overflow-x-hidden">
         <Navbar />
         <Hero />

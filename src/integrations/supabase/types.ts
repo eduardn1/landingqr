@@ -98,6 +98,60 @@ export type Database = {
         }
         Relationships: []
       }
+      page_seo: {
+        Row: {
+          canonical_url: string | null
+          custom_schema: Json | null
+          description: string | null
+          id: string
+          keywords: string | null
+          nofollow: boolean | null
+          noindex: boolean | null
+          og_description: string | null
+          og_image: string | null
+          og_title: string | null
+          route: string
+          schema_type: string | null
+          title: string | null
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          canonical_url?: string | null
+          custom_schema?: Json | null
+          description?: string | null
+          id?: string
+          keywords?: string | null
+          nofollow?: boolean | null
+          noindex?: boolean | null
+          og_description?: string | null
+          og_image?: string | null
+          og_title?: string | null
+          route: string
+          schema_type?: string | null
+          title?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          canonical_url?: string | null
+          custom_schema?: Json | null
+          description?: string | null
+          id?: string
+          keywords?: string | null
+          nofollow?: boolean | null
+          noindex?: boolean | null
+          og_description?: string | null
+          og_image?: string | null
+          og_title?: string | null
+          route?: string
+          schema_type?: string | null
+          title?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string

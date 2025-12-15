@@ -34,7 +34,7 @@ import {
 } from "@/components/ui/accordion";
 import SharedNavbar from "@/components/shared/SharedNavbar";
 import Footer from "@/components/landing/Footer";
-import { SEO, createFAQSchema } from "@/components/SEO";
+import DynamicSEO from "@/components/DynamicSEO";
 
 interface FAQItem {
   question: string;
@@ -163,20 +163,9 @@ const FAQPage = () => {
     });
   }, [searchQuery, activeCategory]);
 
-  // Create FAQ structured data
-  const faqSchema = createFAQSchema(
-    faqs.map(f => ({ question: f.question, answer: f.answer }))
-  );
-
   return (
     <div className="min-h-screen bg-background">
-      <SEO 
-        title="FAQ - Domande Frequenti"
-        description="Trova risposte alle domande più comuni su Flavour: prezzi, funzionalità, supporto tecnico, integrazioni e molto altro. Centro assistenza completo."
-        url="https://flavour.studiojem.it/faq"
-        keywords="FAQ menu digitale, domande frequenti ristorante, supporto flavour, guida menu qr"
-        structuredData={faqSchema}
-      />
+      <DynamicSEO />
       {/* Dynamic Island Navigation */}
       <SharedNavbar />
 

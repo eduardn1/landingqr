@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SharedNavbar from "@/components/shared/SharedNavbar";
 import Footer from "@/components/landing/Footer";
-import { SEO } from "@/components/SEO";
+import DynamicSEO from "@/components/DynamicSEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -225,12 +225,7 @@ const Partner = memo(() => {
 
   return (
     <div className="min-h-screen bg-background overflow-hidden">
-      <SEO 
-        title="Diventa Rivenditore"
-        description="Unisciti al programma Partner Flavour: rivendi menu digitali QR con margini elevati, supporto dedicato e piattaforma white-label. Zero costi di ingresso."
-        url="https://flavour.studiojem.it/diventa-rivenditore"
-        keywords="diventa rivenditore menu digitale, partner flavour, reseller qr menu, white label hospitality"
-      />
+      <DynamicSEO />
       <SharedNavbar />
 
       <main className="pt-16">

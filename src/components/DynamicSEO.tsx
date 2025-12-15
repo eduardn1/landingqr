@@ -1,12 +1,16 @@
 /**
  * Dynamic SEO Component - Full SEO Integration from Database
+ * Supports both global settings and page-specific overrides
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  */
 
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
 import { useBrandSettings } from '@/hooks/useBrandSettings';
+import { usePageSEO } from '@/hooks/usePageSEO';
 
 interface DynamicSEOProps {
+  // Override props (highest priority)
   title?: string;
   description?: string;
   image?: string;
@@ -28,34 +32,56 @@ interface DynamicSEOProps {
 }
 
 const DynamicSEO = ({
-  title,
-  description,
-  image,
-  url,
+  title: propTitle,
+  description: propDescription,
+  image: propImage,
+  url: propUrl,
   type = 'website',
-  noindex = false,
+  noindex: propNoindex,
   article,
   product,
 }: DynamicSEOProps) => {
-  const { settings, isLoading } = useBrandSettings();
+  const location = useLocation();
+  const { settings, isLoading: brandLoading } = useBrandSettings();
+  const { pageSEO, isLoading: pageLoading } = usePageSEO(location.pathname);
 
-  if (isLoading) return null;
+  if (brandLoading || pageLoading) return null;
 
+  // Priority: Props > Page SEO > Brand Settings > Defaults
   const siteTitle = settings.site_title || 'Flavour';
-  const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
-  const metaDescription = description || settings.site_description || '';
-  const ogImage = image || settings.og_image_url || '';
-  const canonicalUrl = url || settings.canonical_url || typeof window !== 'undefined' ? window.location.href : '';
+  const pageTitle = propTitle || pageSEO?.title || siteTitle;
+  const fullTitle = pageTitle !== siteTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
+  
+  const metaDescription = propDescription || pageSEO?.description || settings.site_description || '';
+  const ogImage = propImage || pageSEO?.og_image || settings.og_image_url || '';
+  const canonicalUrl = propUrl || pageSEO?.canonical_url || (typeof window !== 'undefined' ? window.location.href : '');
   const twitterCard = settings.twitter_card_type || 'summary_large_image';
+  const noindex = propNoindex ?? pageSEO?.noindex ?? false;
+  const nofollow = pageSEO?.nofollow ?? false;
+  
+  const ogTitle = pageSEO?.og_title || settings.og_title || fullTitle;
+  const ogDescription = pageSEO?.og_description || settings.og_description || metaDescription;
+  const keywords = pageSEO?.keywords || settings.meta_keywords || '';
 
-  // Schema.org structured data
-  const schemaOrg = {
+  // Schema.org structured data based on page type
+  const schemaType = pageSEO?.schema_type || 'WebPage';
+  
+  const baseSchema = {
+    '@context': 'https://schema.org',
+    '@type': schemaType,
+    name: pageTitle,
+    description: metaDescription,
+    url: canonicalUrl,
+  };
+
+  // Organization schema
+  const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': settings.schema_org_type || 'Organization',
     name: settings.schema_org_name || siteTitle,
-    url: canonicalUrl,
+    url: typeof window !== 'undefined' ? window.location.origin : '',
     logo: settings.schema_org_logo || settings.logo_url,
-    description: metaDescription,
+    description: settings.site_description,
     ...(settings.schema_org_address && {
       address: {
         '@type': 'PostalAddress',
@@ -71,17 +97,40 @@ const DynamicSEO = ({
     ].filter(Boolean),
   };
 
-  // WebSite schema for search box
+  // WebSite schema for search
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: siteTitle,
-    url: canonicalUrl,
+    url: typeof window !== 'undefined' ? window.location.origin : '',
     potentialAction: {
       '@type': 'SearchAction',
-      target: `${canonicalUrl}?search={search_term_string}`,
+      target: `${typeof window !== 'undefined' ? window.location.origin : ''}?search={search_term_string}`,
       'query-input': 'required name=search_term_string',
     },
+  };
+
+  // BreadcrumbList schema
+  const pathParts = location.pathname.split('/').filter(Boolean);
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: typeof window !== 'undefined' ? window.location.origin : '',
+      },
+      ...pathParts.map((part, index) => ({
+        '@type': 'ListItem',
+        position: index + 2,
+        name: part.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+        item: typeof window !== 'undefined' 
+          ? `${window.location.origin}/${pathParts.slice(0, index + 1).join('/')}`
+          : '',
+      })),
+    ],
   };
 
   // Article schema
@@ -89,16 +138,13 @@ const DynamicSEO = ({
     ? {
         '@context': 'https://schema.org',
         '@type': 'Article',
-        headline: title,
+        headline: pageTitle,
         description: metaDescription,
         image: ogImage,
         datePublished: article.publishedTime,
         dateModified: article.modifiedTime,
-        author: {
-          '@type': 'Person',
-          name: article.author,
-        },
-        publisher: schemaOrg,
+        author: { '@type': 'Person', name: article.author },
+        publisher: organizationSchema,
       }
     : null;
 
@@ -107,7 +153,7 @@ const DynamicSEO = ({
     ? {
         '@context': 'https://schema.org',
         '@type': 'Product',
-        name: title,
+        name: pageTitle,
         description: metaDescription,
         image: ogImage,
         offers: {
@@ -119,29 +165,17 @@ const DynamicSEO = ({
       }
     : null;
 
-  // BreadcrumbList schema
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: canonicalUrl?.split('/').slice(0, 3).join('/'),
-      },
-      ...(title && title !== siteTitle
-        ? [
-            {
-              '@type': 'ListItem',
-              position: 2,
-              name: title,
-              item: canonicalUrl,
-            },
-          ]
-        : []),
-    ],
-  };
+  // Custom schema from database
+  const customSchema = pageSEO?.custom_schema;
+
+  // Robots directive
+  const robotsContent = [
+    noindex ? 'noindex' : 'index',
+    nofollow ? 'nofollow' : 'follow',
+    'max-image-preview:large',
+    'max-snippet:-1',
+    'max-video-preview:-1',
+  ].join(', ');
 
   return (
     <Helmet>
@@ -149,13 +183,13 @@ const DynamicSEO = ({
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
       <meta name="description" content={metaDescription} />
-      {settings.meta_keywords && <meta name="keywords" content={settings.meta_keywords} />}
+      {keywords && <meta name="keywords" content={keywords} />}
       <meta name="author" content={settings.schema_org_name || siteTitle} />
       
       {/* Robots */}
-      <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
-      <meta name="googlebot" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
-      <meta name="bingbot" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+      <meta name="robots" content={robotsContent} />
+      <meta name="googlebot" content={robotsContent} />
+      <meta name="bingbot" content={robotsContent} />
 
       {/* Canonical */}
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
@@ -171,8 +205,8 @@ const DynamicSEO = ({
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
       <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:title" content={settings.og_title || fullTitle} />
-      <meta property="og:description" content={settings.og_description || metaDescription} />
+      <meta property="og:title" content={ogTitle} />
+      <meta property="og:description" content={ogDescription} />
       <meta property="og:site_name" content={siteTitle} />
       {ogImage && <meta property="og:image" content={ogImage} />}
       {ogImage && <meta property="og:image:width" content="1200" />}
@@ -183,8 +217,8 @@ const DynamicSEO = ({
       {/* Twitter */}
       <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:url" content={canonicalUrl} />
-      <meta name="twitter:title" content={settings.og_title || fullTitle} />
-      <meta name="twitter:description" content={settings.og_description || metaDescription} />
+      <meta name="twitter:title" content={ogTitle} />
+      <meta name="twitter:description" content={ogDescription} />
       {ogImage && <meta name="twitter:image" content={ogImage} />}
       {settings.twitter_handle && <meta name="twitter:site" content={settings.twitter_handle} />}
       {settings.twitter_handle && <meta name="twitter:creator" content={settings.twitter_handle} />}
@@ -207,56 +241,42 @@ const DynamicSEO = ({
         <meta name="yandex-verification" content={settings.yandex_verification} />
       )}
 
-      {/* Preconnect for performance */}
+      {/* Preconnect */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       {settings.google_analytics_id && <link rel="preconnect" href="https://www.googletagmanager.com" />}
 
-      {/* DNS Prefetch */}
-      <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-      <link rel="dns-prefetch" href="//www.google-analytics.com" />
-
       {/* Structured Data */}
-      <script type="application/ld+json">{JSON.stringify(schemaOrg)}</script>
-      <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(baseSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+      {location.pathname === '/' && (
+        <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
+      )}
       <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       {articleSchema && <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>}
       {productSchema && <script type="application/ld+json">{JSON.stringify(productSchema)}</script>}
+      {customSchema && <script type="application/ld+json">{JSON.stringify(customSchema)}</script>}
 
-      {/* Analytics - Conditional based on cookie consent */}
+      {/* Analytics */}
       {settings.google_analytics_id && (
         <>
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${settings.google_analytics_id}`}
-          />
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${settings.google_analytics_id}`} />
           <script>
-            {`
-              window.dataLayer = window.dataLayer || [];
+            {`window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${settings.google_analytics_id}', {
-                page_path: window.location.pathname,
-              });
-            `}
+              gtag('config', '${settings.google_analytics_id}', {page_path: '${location.pathname}'});`}
           </script>
         </>
       )}
-
       {settings.facebook_pixel_id && (
         <script>
-          {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
+          {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+            n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '${settings.facebook_pixel_id}');
-            fbq('track', 'PageView');
-          `}
+            fbq('init','${settings.facebook_pixel_id}');fbq('track','PageView');`}
         </script>
       )}
     </Helmet>

@@ -36,7 +36,7 @@ import {
 import { Button } from "@/components/ui/button";
 import SharedNavbar from "@/components/shared/SharedNavbar";
 import Footer from "@/components/landing/Footer";
-import { SEO } from "@/components/SEO";
+import DynamicSEO from "@/components/DynamicSEO";
 
 const teamMembers = [
   {
@@ -143,12 +143,7 @@ const GlassCard = ({
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-background overflow-hidden">
-      <SEO 
-        title="Chi Siamo"
-        description="Scopri la storia di Flavour e StudioJEM: il team italiano che sta rivoluzionando i menu digitali per bar, ristoranti, pub e caffetterie."
-        url="https://flavour.studiojem.it/chi-siamo"
-        keywords="chi siamo flavour, team studiojem, eduard costin udila, startup italiana hospitality"
-      />
+      <DynamicSEO />
       <SharedNavbar />
 
       <main className="pt-16">

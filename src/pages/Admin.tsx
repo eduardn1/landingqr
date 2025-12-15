@@ -24,10 +24,12 @@ import {
   MessageSquare,
   Loader2,
   Palette,
-  Search
+  Search,
+  FileText
 } from 'lucide-react';
 import BrandSettingsEditor from '@/components/admin/BrandSettingsEditor';
 import SEOSettingsEditor from '@/components/admin/SEOSettingsEditor';
+import PageSEOEditor from '@/components/admin/PageSEOEditor';
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -98,7 +100,8 @@ const Admin = () => {
 
   const sections = [
     { id: 'brand', label: 'Brand', icon: Palette },
-    { id: 'seo', label: 'SEO Completo', icon: Search },
+    { id: 'seo', label: 'SEO Globale', icon: Search },
+    { id: 'pages', label: 'SEO Pagine', icon: FileText },
     { id: 'hero', label: 'Hero', icon: Sparkles },
     { id: 'features', label: 'Features', icon: LayoutGrid },
     { id: 'pricing', label: 'Pricing', icon: CreditCard },
@@ -151,6 +154,11 @@ const Admin = () => {
           {/* SEO Section */}
           <TabsContent value="seo">
             <SEOSettingsEditor />
+          </TabsContent>
+
+          {/* Pages SEO Section */}
+          <TabsContent value="pages">
+            <PageSEOEditor />
           </TabsContent>
 
           {/* Hero Section */}
