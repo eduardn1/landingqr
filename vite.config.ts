@@ -35,6 +35,9 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
+    modulePreload: {
+      polyfill: true, // Ensures modulepreload works in older browsers
+    },
     rollupOptions: {
       output: {
         manualChunks: {
@@ -44,5 +47,13 @@ export default defineConfig(({ mode }) => ({
         },
       },
     },
+    // Optimize chunk size warnings
+    chunkSizeWarningLimit: 1000,
+    // Enable source maps for production debugging
+    sourcemap: false,
+    // Minification
+    minify: "esbuild",
+    // Target modern browsers for smaller bundles
+    target: "esnext",
   },
 }));
