@@ -39,6 +39,8 @@ import Privacy from "./pages/Privacy";
 import CookiePolicy from "./pages/CookiePolicy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
+import Admin from "./pages/Admin";
+import AdminAuth from "./pages/AdminAuth";
 import CookieBanner from "./components/CookieBanner";
 
 const queryClient = new QueryClient();
@@ -62,6 +64,8 @@ const App = () => (
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/cookie-policy" element={<CookiePolicy />} />
               <Route path="/termini-servizio" element={<Terms />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/admin/login" element={<AdminAuth />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
