@@ -8,7 +8,7 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useMemo, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Loader2, CheckCircle, ArrowRight, ArrowLeft, User, Mail, Phone, Building2, MessageSquare, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -19,13 +19,14 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useLeadForm } from "@/hooks/useLeadForm";
 
+// Static steps - defined outside component
 const steps = [
   { id: 1, title: "Chi sei", icon: User },
   { id: 2, title: "Contatti", icon: Mail },
   { id: 3, title: "Dettagli", icon: Building2 },
-];
+] as const;
 
-const LeadForm = () => {
+const LeadForm = memo(() => {
   const { isOpen, closeLeadForm, source } = useLeadForm();
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -468,6 +469,8 @@ const LeadForm = () => {
       )}
     </AnimatePresence>
   );
-};
+});
+
+LeadForm.displayName = 'LeadForm';
 
 export default LeadForm;

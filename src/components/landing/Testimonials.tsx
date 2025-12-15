@@ -9,7 +9,7 @@
  */
 
 import { motion } from "framer-motion";
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect, memo, useCallback, useMemo } from "react";
 import { Star, Quote, MapPin, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -103,14 +103,34 @@ const Testimonials = memo(() => {
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
 
-  const scrollToIndex = (index: number) => {
+  const scrollToIndex = useCallback((index: number) => {
     setActiveIndex(index);
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
+  }, []);
 
-  const nextSlide = () => scrollToIndex((activeIndex + 1) % testimonials.length);
-  const prevSlide = () => scrollToIndex((activeIndex - 1 + testimonials.length) % testimonials.length);
+  const nextSlide = useCallback(() => {
+    setActiveIndex(prev => (prev + 1) % testimonials.length);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  }, []);
+  
+  const prevSlide = useCallback(() => {
+    setActiveIndex(prev => (prev - 1 + testimonials.length) % testimonials.length);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  }, []);
+
+  const toggleAutoPlay = useCallback(() => {
+    setIsAutoPlaying(prev => !prev);
+  }, []);
+
+  // Memoize spring transition
+  const carouselTransition = useMemo(() => ({ 
+    type: "spring", 
+    stiffness: 300, 
+    damping: 30 
+  }), []);
 
   return (
     <section id="testimonials" className="section-padding relative overflow-hidden">
@@ -172,7 +192,7 @@ const Testimonials = memo(() => {
             <motion.div 
               className="flex"
               animate={{ x: `-${activeIndex * 100}%` }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              transition={carouselTransition}
             >
               {testimonials.map((testimonial, index) => (
                 <div 
@@ -254,7 +274,7 @@ const Testimonials = memo(() => {
           {/* Auto-play indicator */}
           <div className="flex justify-center mt-3 sm:mt-4">
             <button
-              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+              onClick={toggleAutoPlay}
               className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm transition-colors ${
                 isAutoPlaying 
                   ? 'bg-primary/10 text-primary' 
