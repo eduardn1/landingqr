@@ -19,6 +19,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import {
@@ -41,7 +47,38 @@ import {
   Gift,
   Send,
   HelpCircle,
+  CreditCard,
+  Settings,
+  ChevronDown,
 } from "lucide-react";
+
+// FAQ Data
+const partnerFaqs = [
+  {
+    category: "Generale",
+    questions: [
+      { q: "Cos'è il Programma Partner Flavour?", a: "Il Programma Partner è pensato per agenzie web, consulenti IT, web agency e professionisti che vogliono offrire ai propri clienti soluzioni digitali per l'hospitality. Come partner, potrai rivendere i nostri servizi con condizioni economiche vantaggiose e supporto dedicato." },
+      { q: "Chi può diventare Partner?", a: "Il programma è aperto a web agency, sviluppatori freelance, consulenti digitali, agenzie di marketing e qualsiasi professionista che lavora con clienti nel settore hospitality." },
+      { q: "Ci sono requisiti minimi per aderire?", a: "Non ci sono requisiti minimi di volume o fatturato. Cerchiamo partner motivati e professionali che condividano la nostra visione." },
+    ],
+  },
+  {
+    category: "Economico",
+    questions: [
+      { q: "Quanto costa diventare Partner?", a: "L'adesione al programma è completamente gratuita. Non ci sono costi di attivazione, canoni mensili o fee nascoste." },
+      { q: "Come funziona il sistema di commissioni?", a: "Riceverai una commissione ricorrente su ogni cliente che attivi. Le percentuali variano in base al volume e al tipo di piano venduto." },
+      { q: "Posso impostare i miei prezzi?", a: "Sì, hai libertà di pricing. Puoi aggiungere il tuo markup ai nostri prezzi base." },
+    ],
+  },
+  {
+    category: "Tecnico",
+    questions: [
+      { q: "Devo avere competenze tecniche?", a: "No, non sono richieste competenze di programmazione. La piattaforma è progettata per essere configurata senza codice." },
+      { q: "Come funziona il White Label?", a: "Con l'opzione White Label puoi personalizzare completamente la piattaforma: logo, colori, dominio personalizzato. I tuoi clienti vedranno solo il tuo brand." },
+      { q: "Ricevo accesso anticipato alle nuove funzionalità?", a: "Sì, i partner hanno accesso alla beta delle nuove funzionalità prima del rilascio pubblico." },
+    ],
+  },
+];
 
 // Animation variants
 const containerVariants = {
@@ -318,20 +355,20 @@ const Partner = memo(() => {
                 ))}
               </motion.div>
 
-              {/* FAQ Link */}
+              {/* FAQ Link - scroll to section */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
               >
-                <Link 
-                  to="/diventa-rivenditore/faq" 
+                <button 
+                  onClick={() => document.getElementById('partner-faq')?.scrollIntoView({ behavior: 'smooth' })}
                   className="inline-flex items-center gap-2 mt-8 text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   <HelpCircle className="w-4 h-4" />
                   Leggi le FAQ sul programma partner
-                  <ArrowRight className="w-3 h-3" />
-                </Link>
+                  <ChevronDown className="w-3 h-3" />
+                </button>
               </motion.div>
             </div>
           </div>
@@ -655,6 +692,69 @@ const Partner = memo(() => {
                   </Link>
                 </div>
               </GlassCard>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* FAQ Section - Collapsible */}
+        <section id="partner-faq" className="py-16 md:py-20 border-t border-border bg-muted/20">
+          <div className="container">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-3xl mx-auto"
+            >
+              <div className="text-center mb-10">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
+                  <HelpCircle className="w-4 h-4 text-primary" />
+                  <span className="text-sm font-medium text-primary">FAQ</span>
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                  Domande frequenti
+                </h2>
+                <p className="text-muted-foreground">
+                  Tutto quello che devi sapere sul programma partner
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                {partnerFaqs.map((category) => (
+                  <div key={category.category} className="rounded-2xl bg-card/60 backdrop-blur-xl border border-border/50 overflow-hidden">
+                    <div className="p-4 border-b border-border/50 bg-muted/30">
+                      <h3 className="font-semibold text-foreground">{category.category}</h3>
+                    </div>
+                    <Accordion type="single" collapsible className="px-4">
+                      {category.questions.map((faq, index) => (
+                        <AccordionItem 
+                          key={index} 
+                          value={`${category.category}-${index}`}
+                          className="border-border/50"
+                        >
+                          <AccordionTrigger className="text-left hover:text-primary transition-colors py-4 text-sm">
+                            <span className="pr-4">{faq.q}</span>
+                          </AccordionTrigger>
+                          <AccordionContent className="text-muted-foreground pb-4 text-sm leading-relaxed">
+                            {faq.a}
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </div>
+                ))}
+              </div>
+
+              <div className="text-center mt-8">
+                <p className="text-sm text-muted-foreground mb-4">
+                  Hai altre domande?
+                </p>
+                <Link to="/contatti">
+                  <Button variant="outline" className="gap-2">
+                    Contattaci
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </Link>
+              </div>
             </motion.div>
           </div>
         </section>
