@@ -7,7 +7,7 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import { memo } from "react";
+import { memo, useState, useCallback } from "react";
 import { 
   Smartphone, 
   Monitor, 
@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const showcaseItems = [
   {
@@ -65,83 +66,104 @@ const showcaseItems = [
   },
 ];
 
-// Mobile Mockup with iframe
-const MobileMockup = memo(() => (
-  <div className="relative w-full max-w-[240px] mx-auto">
-    <div className="bg-card rounded-[2rem] p-1.5 border-4 border-muted shadow-xl">
-      <div className="bg-background rounded-[1.75rem] overflow-hidden">
-        <div className="flex justify-center py-1.5 bg-background">
-          <div className="w-16 h-4 bg-muted rounded-full" />
+// Mobile Mockup with iframe and skeleton
+const MobileMockup = memo(() => {
+  const [loaded, setLoaded] = useState(false);
+  const handleLoad = useCallback(() => setLoaded(true), []);
+  
+  return (
+    <div className="relative w-full max-w-[240px] mx-auto">
+      <div className="bg-card rounded-[2rem] p-1.5 border-4 border-muted shadow-xl">
+        <div className="bg-background rounded-[1.75rem] overflow-hidden">
+          <div className="flex justify-center py-1.5 bg-background">
+            <div className="w-16 h-4 bg-muted rounded-full" />
+          </div>
+          <div className="relative h-[320px] overflow-hidden">
+            {!loaded && <Skeleton className="absolute inset-0 rounded-none" />}
+            <iframe
+              src="/demo?skip=true&section=menu"
+              className={`absolute top-0 left-0 w-[700px] h-[500px] origin-top-left pointer-events-none transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+              style={{ transform: 'scale(0.34)', transformOrigin: 'top left' }}
+              title="Menu Preview"
+              loading="lazy"
+              onLoad={handleLoad}
+            />
+            <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+          </div>
         </div>
-        <div className="relative h-[320px] overflow-hidden">
+      </div>
+      <div className="absolute -inset-3 bg-gradient-to-br from-violet-500/15 to-purple-600/10 rounded-[2.5rem] blur-xl -z-10" />
+    </div>
+  );
+});
+MobileMockup.displayName = 'MobileMockup';
+
+// Tablet Mockup with iframe and skeleton
+const TabletMockup = memo(() => {
+  const [loaded, setLoaded] = useState(false);
+  const handleLoad = useCallback(() => setLoaded(true), []);
+  
+  return (
+    <div className="relative w-full max-w-[400px] mx-auto">
+      <div className="bg-card rounded-[1.5rem] p-2 border-4 border-muted shadow-xl">
+        <div className="bg-background rounded-[1.25rem] overflow-hidden">
+          <div className="relative h-[260px] overflow-hidden">
+            {!loaded && <Skeleton className="absolute inset-0 rounded-none" />}
+            <iframe
+              src="/demo?skip=true&section=analytics"
+              className={`absolute top-0 left-0 w-[1000px] h-[700px] origin-top-left pointer-events-none transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+              style={{ transform: 'scale(0.4)', transformOrigin: 'top left' }}
+              title="Analytics Preview"
+              loading="lazy"
+              onLoad={handleLoad}
+            />
+            <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+          </div>
+        </div>
+      </div>
+      <div className="absolute -inset-3 bg-gradient-to-br from-blue-500/12 to-cyan-500/8 rounded-[2rem] blur-xl -z-10" />
+    </div>
+  );
+});
+TabletMockup.displayName = 'TabletMockup';
+
+// Desktop Mockup with iframe and skeleton
+const DesktopMockup = memo(() => {
+  const [loaded, setLoaded] = useState(false);
+  const handleLoad = useCallback(() => setLoaded(true), []);
+  
+  return (
+    <div className="relative w-full">
+      <div className="bg-card rounded-lg border border-border shadow-xl overflow-hidden">
+        <div className="flex items-center gap-1.5 px-3 py-2 bg-muted/50 border-b border-border">
+          <div className="flex gap-1">
+            <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+            <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+          </div>
+          <div className="flex-1 mx-3">
+            <div className="h-5 bg-background rounded flex items-center px-2">
+              <span className="text-[10px] text-muted-foreground">app.flavour.io/ordini</span>
+            </div>
+          </div>
+        </div>
+        <div className="relative h-[280px] md:h-[320px] overflow-hidden bg-background">
+          {!loaded && <Skeleton className="absolute inset-0 rounded-none" />}
           <iframe
-            src="/demo?skip=true&section=menu"
-            className="absolute top-0 left-0 w-[700px] h-[500px] origin-top-left pointer-events-none"
-            style={{ transform: 'scale(0.34)', transformOrigin: 'top left' }}
-            title="Menu Preview"
+            src="/demo?skip=true&section=orders"
+            className={`absolute top-0 left-0 w-[1200px] h-[800px] origin-top-left pointer-events-none transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+            style={{ transform: 'scale(0.45)', transformOrigin: 'top left' }}
+            title="Orders Preview"
             loading="lazy"
+            onLoad={handleLoad}
           />
           <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background to-transparent pointer-events-none" />
         </div>
       </div>
+      <div className="absolute -inset-3 bg-gradient-to-br from-pink-500/8 to-rose-500/8 rounded-xl blur-xl -z-10" />
     </div>
-    <div className="absolute -inset-3 bg-gradient-to-br from-violet-500/15 to-purple-600/10 rounded-[2.5rem] blur-xl -z-10" />
-  </div>
-));
-MobileMockup.displayName = 'MobileMockup';
-
-// Tablet Mockup with iframe
-const TabletMockup = memo(() => (
-  <div className="relative w-full max-w-[400px] mx-auto">
-    <div className="bg-card rounded-[1.5rem] p-2 border-4 border-muted shadow-xl">
-      <div className="bg-background rounded-[1.25rem] overflow-hidden">
-        <div className="relative h-[260px] overflow-hidden">
-          <iframe
-            src="/demo?skip=true&section=analytics"
-            className="absolute top-0 left-0 w-[1000px] h-[700px] origin-top-left pointer-events-none"
-            style={{ transform: 'scale(0.4)', transformOrigin: 'top left' }}
-            title="Analytics Preview"
-            loading="lazy"
-          />
-          <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-background to-transparent pointer-events-none" />
-        </div>
-      </div>
-    </div>
-    <div className="absolute -inset-3 bg-gradient-to-br from-blue-500/12 to-cyan-500/8 rounded-[2rem] blur-xl -z-10" />
-  </div>
-));
-TabletMockup.displayName = 'TabletMockup';
-
-// Desktop Mockup with iframe
-const DesktopMockup = memo(() => (
-  <div className="relative w-full">
-    <div className="bg-card rounded-lg border border-border shadow-xl overflow-hidden">
-      <div className="flex items-center gap-1.5 px-3 py-2 bg-muted/50 border-b border-border">
-        <div className="flex gap-1">
-          <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
-          <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
-        </div>
-        <div className="flex-1 mx-3">
-          <div className="h-5 bg-background rounded flex items-center px-2">
-            <span className="text-[10px] text-muted-foreground">app.flavour.io/ordini</span>
-          </div>
-        </div>
-      </div>
-      <div className="relative h-[280px] md:h-[320px] overflow-hidden bg-background">
-        <iframe
-          src="/demo?skip=true&section=orders"
-          className="absolute top-0 left-0 w-[1200px] h-[800px] origin-top-left pointer-events-none"
-          style={{ transform: 'scale(0.45)', transformOrigin: 'top left' }}
-          title="Orders Preview"
-          loading="lazy"
-        />
-        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background to-transparent pointer-events-none" />
-      </div>
-    </div>
-    <div className="absolute -inset-3 bg-gradient-to-br from-pink-500/8 to-rose-500/8 rounded-xl blur-xl -z-10" />
-  </div>
-));
+  );
+});
 DesktopMockup.displayName = 'DesktopMockup';
 
 const mockupComponents = {
