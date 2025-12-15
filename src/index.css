@@ -181,84 +181,12 @@ html, body {
   }
 
   /* ═══════════════════════════════════════════════════════════════════════
-     COLORFUL THEME - Gradient & Vibrant (Original Style)
-     Uses purple/orange gradients with colored accents everywhere
+     COLORFUL THEME - Dark Vibrant with Purple/Blue Gradients
+     The original premium dark style with glow effects
      ═══════════════════════════════════════════════════════════════════════ */
   .colorful {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 8%;
-
-    /* Black transparencies for UI elements */
-    --foreground-90: 0 0% 0% / 0.9;
-    --foreground-80: 0 0% 0% / 0.8;
-    --foreground-70: 0 0% 0% / 0.7;
-    --foreground-60: 0 0% 0% / 0.6;
-    --foreground-50: 0 0% 0% / 0.5;
-    --foreground-40: 0 0% 0% / 0.4;
-    --foreground-30: 0 0% 0% / 0.3;
-    --foreground-20: 0 0% 0% / 0.2;
-    --foreground-15: 0 0% 0% / 0.15;
-    --foreground-10: 0 0% 0% / 0.1;
-    --foreground-05: 0 0% 0% / 0.05;
-    --foreground-03: 0 0% 0% / 0.03;
-
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 8%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
-
-    /* Primary = Vibrant purple gradient base */
-    --primary: 263 70% 50%;
-    --primary-foreground: 0 0% 100%;
-    --primary-light: 263 70% 60%;
-    --primary-dark: 263 70% 40%;
-
-    /* Colored accent - Purple/Orange */
-    --accent-color: 263 70% 58%;
-    --accent-color-light: 24 95% 53%;
-
-    /* Colorful secondary */
-    --secondary: 263 20% 96%;
-    --secondary-foreground: 263 70% 40%;
-
-    --muted: 263 20% 96%;
-    --muted-foreground: 0 0% 45%;
-
-    /* Accent backgrounds */
-    --accent: 263 70% 96%;
-    --accent-foreground: 263 70% 40%;
-
-    /* Status Colors */
-    --success: 142 76% 36%;
-    --success-foreground: 0 0% 100%;
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 0%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    /* Borders with purple tint */
-    --border: 263 20% 90%;
-    --border-subtle: 263 20% 94%;
-    --border-medium: 263 20% 85%;
-    --border-strong: 263 30% 75%;
-    
-    --input: 263 20% 94%;
-    --ring: 263 70% 50%;
-
-    /* Sidebar */
-    --sidebar-background: 263 20% 98%;
-    --sidebar-foreground: 0 0% 8%;
-    --sidebar-primary: 263 70% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 263 20% 94%;
-    --sidebar-accent-foreground: 263 70% 40%;
-    --sidebar-border: 263 20% 90%;
-    --sidebar-ring: 263 70% 50%;
-  }
-
-  .colorful.dark {
-    --background: 263 30% 6%;
+    /* Dark background with purple undertone */
+    --background: 250 30% 5%;
     --foreground: 0 0% 98%;
 
     /* White transparencies for UI elements */
@@ -275,59 +203,60 @@ html, body {
     --foreground-05: 0 0% 100% / 0.05;
     --foreground-03: 0 0% 100% / 0.03;
 
-    --card: 263 30% 10%;
+    /* Glass cards with purple tint */
+    --card: 250 30% 10%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 263 30% 10%;
+    --popover: 250 30% 10%;
     --popover-foreground: 0 0% 98%;
 
-    /* Primary = Vibrant purple */
-    --primary: 263 70% 60%;
+    /* Primary = Vibrant purple for CTAs */
+    --primary: 263 90% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 263 70% 70%;
-    --primary-dark: 263 70% 50%;
+    --primary-light: 263 90% 70%;
+    --primary-dark: 263 90% 50%;
 
-    /* Colored accent - Purple/Orange */
-    --accent-color: 263 70% 65%;
+    /* Colored accents - Purple and Orange */
+    --accent-color: 263 90% 65%;
     --accent-color-light: 24 95% 60%;
 
-    /* Colorful secondary */
-    --secondary: 263 30% 15%;
+    /* Secondary with purple tint */
+    --secondary: 250 30% 15%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 263 30% 12%;
+    --muted: 250 30% 12%;
     --muted-foreground: 0 0% 100% / 0.6;
 
     /* Accent backgrounds */
-    --accent: 263 30% 15%;
+    --accent: 263 50% 20%;
     --accent-foreground: 0 0% 98%;
 
-    /* Status Colors */
-    --success: 142 76% 42%;
+    /* Status Colors - Vibrant */
+    --success: 142 76% 45%;
     --success-foreground: 0 0% 100%;
     --warning: 38 92% 55%;
     --warning-foreground: 0 0% 0%;
     --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders with purple tint */
-    --border: 263 30% 18%;
-    --border-subtle: 263 30% 12%;
-    --border-medium: 263 30% 22%;
-    --border-strong: 263 30% 30%;
+    /* Borders with purple glow tint */
+    --border: 263 40% 25%;
+    --border-subtle: 263 30% 18%;
+    --border-medium: 263 40% 30%;
+    --border-strong: 263 50% 40%;
     
-    --input: 263 30% 15%;
-    --ring: 263 70% 60%;
+    --input: 250 30% 15%;
+    --ring: 263 90% 60%;
 
     /* Sidebar */
-    --sidebar-background: 263 30% 6%;
+    --sidebar-background: 250 30% 6%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 263 70% 60%;
+    --sidebar-primary: 263 90% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 263 30% 15%;
+    --sidebar-accent: 250 30% 15%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 263 30% 18%;
-    --sidebar-ring: 263 70% 60%;
+    --sidebar-border: 263 30% 20%;
+    --sidebar-ring: 263 90% 60%;
   }
 }
 

@@ -37,13 +37,10 @@ export function useThemeMode() {
     if (mode === "dark") {
       root.classList.add("dark");
     } else if (mode === "colorful") {
+      // Colorful is always dark vibrant purple theme
       root.classList.add("colorful");
-      // Check system preference for colorful dark variant
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      if (prefersDark) {
-        root.classList.add("dark");
-      }
     }
+    // Light mode = no classes (default)
     
     localStorage.setItem(THEME_KEY, mode);
   }, [mode, mounted]);
