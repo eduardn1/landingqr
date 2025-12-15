@@ -36,8 +36,8 @@ const footerLinks = {
     { label: "Come funziona", href: "#howitworks" },
   ],
   risorse: [
+    { label: "Guide & Tutorial", href: "/guide", isRoute: true },
     { label: "Centro Assistenza", href: "/faq", isRoute: true },
-    { label: "Guide & Tutorial", href: "/faq", isRoute: true },
     { label: "FAQ", href: "/faq", isRoute: true },
   ],
   azienda: [
