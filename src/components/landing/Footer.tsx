@@ -1,13 +1,32 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Footer Component (Monochrome + Glass Effects)
+ * QRCODESTUDIOJEM - Footer Component (Enhanced Design)
+ * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
+ * Web Development & Digital Solutions
+ * 
+ * © 2024 StudioJEM - Tutti i diritti riservati
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
 import { memo } from "react";
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, ExternalLink, Shield, Lock, CheckCircle, Instagram, Facebook, Linkedin, MessageCircle, BookOpen, HelpCircle, Sparkles } from "lucide-react";
+import { 
+  Mail, 
+  Phone, 
+  MapPin, 
+  ExternalLink, 
+  Shield, 
+  Lock, 
+  CheckCircle,
+  Instagram,
+  Facebook,
+  Linkedin,
+  MessageCircle,
+  BookOpen,
+  HelpCircle,
+  Sparkles
+} from "lucide-react";
 
 const footerLinks = {
   prodotto: [
@@ -48,36 +67,37 @@ const badges = [
 
 const Footer = memo(() => {
   return (
-    <footer className="border-t border-foreground-10 bg-foreground-03 pb-24 lg:pb-8">
+    <footer className="border-t border-border bg-muted/30 pb-24 lg:pb-8">
+      {/* Main Footer */}
       <div className="container px-4 sm:px-6 py-12 sm:py-16">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6 mb-12">
-          {/* Brand Column */}
+          {/* Brand Column - Spans 2 cols on lg */}
           <div className="col-span-2 space-y-5">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-xl bg-foreground flex items-center justify-center">
-                <span className="text-background font-bold">F</span>
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/25">
+                <span className="text-white font-bold">F</span>
               </div>
               <span className="font-bold text-xl tracking-tight text-foreground">Flavour</span>
             </Link>
             
-            <p className="text-foreground-50 text-sm leading-relaxed max-w-xs">
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               La piattaforma all-in-one per menu digitali, prenotazioni e ordini online per bar, ristoranti, pub e caffetterie.
             </p>
             
-            {/* Contact Info - Monochrome */}
+            {/* Contact Info */}
             <div className="space-y-2 text-sm">
-              <a href="mailto:info@studiojem.it" className="flex items-center gap-2 text-foreground-50 hover:text-foreground transition-colors">
+              <a href="mailto:info@studiojem.it" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
                 <Mail className="w-4 h-4" /> info@studiojem.it
               </a>
-              <a href="tel:+393533811359" className="flex items-center gap-2 text-foreground-50 hover:text-foreground transition-colors">
+              <a href="tel:+393533811359" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
                 <Phone className="w-4 h-4" /> +39 353 381 1359
               </a>
-              <div className="flex items-center gap-2 text-foreground-50">
+              <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="w-4 h-4" /> Cagliari, Italia
               </div>
             </div>
 
-            {/* Social Links - Monochrome with glass effect */}
+            {/* Social Links */}
             <div className="flex gap-2 pt-2">
               {socialLinks.map((social) => (
                 <a
@@ -85,7 +105,7 @@ const Footer = memo(() => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-card/60 backdrop-blur-sm border border-foreground-10 flex items-center justify-center text-foreground-50 hover:text-foreground hover:border-foreground-20 transition-all"
+                  className="w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
                   aria-label={social.label}
                 >
                   <social.icon className="w-4 h-4" />
@@ -97,16 +117,20 @@ const Footer = memo(() => {
           {/* Prodotto */}
           <div>
             <h4 className="font-semibold mb-4 text-sm text-foreground flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-foreground-50" />
+              <Sparkles className="w-4 h-4 text-primary" />
               Prodotto
             </h4>
             <ul className="space-y-2.5">
               {footerLinks.prodotto.map((link) => (
                 <li key={link.label}>
                   {link.isRoute ? (
-                    <Link to={link.href} className="text-sm text-foreground-50 hover:text-foreground transition-colors">{link.label}</Link>
+                    <Link to={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
+                    </Link>
                   ) : (
-                    <a href={link.href} className="text-sm text-foreground-50 hover:text-foreground transition-colors">{link.label}</a>
+                    <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
+                    </a>
                   )}
                 </li>
               ))}
@@ -116,16 +140,20 @@ const Footer = memo(() => {
           {/* Risorse */}
           <div>
             <h4 className="font-semibold mb-4 text-sm text-foreground flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-foreground-50" />
+              <BookOpen className="w-4 h-4 text-primary" />
               Risorse
             </h4>
             <ul className="space-y-2.5">
               {footerLinks.risorse.map((link) => (
                 <li key={link.label}>
                   {link.isRoute ? (
-                    <Link to={link.href} className="text-sm text-foreground-50 hover:text-foreground transition-colors">{link.label}</Link>
+                    <Link to={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
+                    </Link>
                   ) : (
-                    <a href={link.href} className="text-sm text-foreground-50 hover:text-foreground transition-colors">{link.label}</a>
+                    <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
+                    </a>
                   )}
                 </li>
               ))}
@@ -135,16 +163,20 @@ const Footer = memo(() => {
           {/* Azienda */}
           <div>
             <h4 className="font-semibold mb-4 text-sm text-foreground flex items-center gap-2">
-              <HelpCircle className="w-4 h-4 text-foreground-50" />
+              <HelpCircle className="w-4 h-4 text-primary" />
               Azienda
             </h4>
             <ul className="space-y-2.5">
               {footerLinks.azienda.map((link) => (
                 <li key={link.label}>
                   {link.isRoute ? (
-                    <Link to={link.href} className="text-sm text-foreground-50 hover:text-foreground transition-colors">{link.label}</Link>
+                    <Link to={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
+                    </Link>
                   ) : (
-                    <a href={link.href} className="text-sm text-foreground-50 hover:text-foreground transition-colors">{link.label}</a>
+                    <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
+                    </a>
                   )}
                 </li>
               ))}
@@ -154,32 +186,37 @@ const Footer = memo(() => {
           {/* Legale */}
           <div>
             <h4 className="font-semibold mb-4 text-sm text-foreground flex items-center gap-2">
-              <Shield className="w-4 h-4 text-foreground-50" />
+              <Shield className="w-4 h-4 text-primary" />
               Legale
             </h4>
             <ul className="space-y-2.5">
               {footerLinks.legale.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm text-foreground-50 hover:text-foreground transition-colors">{link.label}</a>
+                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        {/* Trust Badges - Glass effect */}
-        <div className="flex flex-wrap justify-center gap-3 mb-8 py-6 border-y border-foreground-10">
+        {/* Trust Badges */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8 py-6 border-y border-border">
           {badges.map((badge) => (
-            <div key={badge.label} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-foreground-10">
+            <div
+              key={badge.label}
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border"
+            >
               <badge.icon className="w-4 h-4 text-success" />
               <span className="text-xs font-medium text-foreground">{badge.label}</span>
             </div>
           ))}
         </div>
 
-        {/* Bottom Bar - Monochrome */}
+        {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs text-foreground-50">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs text-muted-foreground">
             <span>© {new Date().getFullYear()} Flavour. Tutti i diritti riservati.</span>
             <span className="hidden sm:inline">•</span>
             <span>P.IVA IT03883630927</span>
@@ -189,9 +226,9 @@ const Footer = memo(() => {
             href="https://studiojem.it" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-xs text-foreground-50 hover:text-foreground transition-colors group"
+            className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors group"
           >
-            Sviluppato da <span className="font-semibold text-foreground">Eduard Costin Udila</span> @ studiojem.it
+            Sviluppato da <span className="font-semibold text-foreground group-hover:text-primary">Eduard Costin Udila</span> @ studiojem.it
             <ExternalLink className="w-3 h-3" />
           </a>
         </div>
@@ -201,4 +238,5 @@ const Footer = memo(() => {
 });
 
 Footer.displayName = 'Footer';
+
 export default Footer;

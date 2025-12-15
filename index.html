@@ -31,22 +31,10 @@
       rel="stylesheet" 
     />
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     
-    <!-- Viewport - optimized for mobile -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-    
-    <!-- PWA Meta Tags -->
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Flavour" />
-    <meta name="application-name" content="Flavour" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-TileColor" content="#0a0a0f" />
-    <meta name="msapplication-tap-highlight" content="no" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- SEO Primary -->
     <title>Flavour | Menu Digitali QR per Bar, Ristoranti, Pub & Caffè - Zero Commissioni</title>
@@ -69,8 +57,7 @@
     <meta name="twitter:image" content="https://flavour.studiojem.it/og-image.png" />
     
     <!-- Theme -->
-    <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0a0f" />
     
     <!-- Canonical -->
     <link rel="canonical" href="https://flavour.studiojem.it/" />
@@ -78,16 +65,8 @@
     <!-- Critical CSS for above-fold content -->
     <style>
       /* Critical CSS - immediate render */
-      *, *::before, *::after { box-sizing: border-box; }
-      body { 
-        margin: 0; 
-        background: #0a0a0f; 
-        font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-rendering: optimizeLegibility;
-      }
-      #root { min-height: 100vh; min-height: 100dvh; }
+      body { margin: 0; background: #0a0a0f; font-family: 'Satoshi', sans-serif; }
+      #root { min-height: 100vh; }
       
       /* Loading spinner while app loads */
       .initial-loader {
@@ -101,30 +80,21 @@
       }
       .initial-loader::after {
         content: '';
-        width: 32px;
-        height: 32px;
-        border: 2px solid rgba(139, 92, 246, 0.2);
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(139, 92, 246, 0.2);
         border-top-color: #8b5cf6;
         border-radius: 50%;
-        animation: spin 0.6s linear infinite;
+        animation: spin 0.8s linear infinite;
       }
       @keyframes spin { to { transform: rotate(360deg); } }
       
       /* Hide loader when app is ready */
-      .app-loaded .initial-loader { 
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s ease-out;
-      }
-      
-      /* Reduce motion for accessibility */
-      @media (prefers-reduced-motion: reduce) {
-        .initial-loader::after { animation: none; }
-      }
+      .app-loaded .initial-loader { display: none; }
     </style>
   </head>
   <body>
-    <div class="initial-loader" aria-label="Caricamento..."></div>
+    <div class="initial-loader"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
@@ -134,13 +104,6 @@
           document.body.classList.add('app-loaded');
         });
       });
-      
-      // Register service worker
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {});
-        });
-      }
     </script>
   </body>
 </html>
