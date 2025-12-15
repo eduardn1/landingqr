@@ -159,7 +159,7 @@ const LeadForm = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeLeadForm}
-            className="fixed inset-0 bg-background/80 backdrop-blur-md z-50"
+            className="fixed inset-0 bg-background/80 backdrop-blur-md z-[100]"
           />
 
           {/* Modal */}
@@ -168,7 +168,7 @@ const LeadForm = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 40 }}
             transition={{ type: "spring", duration: 0.5, bounce: 0.2 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg z-50 p-4"
+            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg z-[101] p-4"
           >
             <div className="relative bg-card border border-border rounded-3xl p-8 shadow-2xl overflow-hidden">
               {/* Background gradient */}
