@@ -35,6 +35,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SharedNavbar from "@/components/shared/SharedNavbar";
+import Footer from "@/components/landing/Footer";
 
 const teamMembers = [
   {
@@ -386,6 +387,8 @@ const AboutPage = () => {
           </div>
         </section>
       </main>
+      
+      <Footer />
     </div>
   );
 };
