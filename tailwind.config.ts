@@ -42,12 +42,21 @@ export default {
         foreground: {
           DEFAULT: "hsl(var(--foreground))",
           90: "hsl(var(--foreground-90))",
+          80: "hsl(var(--foreground-80))",
           70: "hsl(var(--foreground-70))",
+          60: "hsl(var(--foreground-60))",
           50: "hsl(var(--foreground-50))",
+          40: "hsl(var(--foreground-40))",
           30: "hsl(var(--foreground-30))",
           20: "hsl(var(--foreground-20))",
+          15: "hsl(var(--foreground-15))",
           10: "hsl(var(--foreground-10))",
           "05": "hsl(var(--foreground-05))",
+          "03": "hsl(var(--foreground-03))",
+        },
+        "accent-color": {
+          DEFAULT: "hsl(var(--accent-color))",
+          light: "hsl(var(--accent-color-light))",
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",

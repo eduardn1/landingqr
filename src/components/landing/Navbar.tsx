@@ -109,13 +109,13 @@ const Navbar = () => {
           <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-foreground-05 via-transparent to-foreground-05 rounded-full" />
 
           {/* Notification Badge - Colored */}
-          <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-gradient-to-r from-rose-500 to-pink-500 animate-pulse shadow-lg shadow-rose-500/50 z-10" />
+          <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-accent-color animate-pulse shadow-lg z-10" />
 
           <div className="relative flex items-center gap-2 px-3 py-2.5 lg:px-5 lg:py-3 max-w-full overflow-hidden">
-            {/* Logo - Colored accent */}
+            {/* Logo - Monochrome primary (black/white) */}
             <a href="/" className="flex items-center gap-1.5 lg:gap-2 shrink-0">
-              <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-lg lg:rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center shadow-md shadow-primary/30">
-                <span className="text-primary-foreground font-bold text-[10px] lg:text-sm">F</span>
+              <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-lg lg:rounded-xl bg-foreground flex items-center justify-center">
+                <span className="text-background font-bold text-[10px] lg:text-sm">F</span>
               </div>
               <span className="font-bold text-xs lg:text-base tracking-tight text-foreground">Flavour</span>
             </a>
@@ -180,15 +180,15 @@ const Navbar = () => {
               </button>
             </div>
 
-            {/* Theme Toggle - Colored icons */}
+            {/* Theme Toggle - Monochrome icons */}
             {mounted && (
               <button onClick={toggleTheme} className="p-1.5 lg:p-2 rounded-lg hover:bg-foreground-05 transition-colors shrink-0">
-                {theme === "dark" ? <Sun className="w-4 h-4 lg:w-5 lg:h-5 text-yellow-500" /> : <Moon className="w-4 h-4 lg:w-5 lg:h-5 text-foreground-50" />}
+                {theme === "dark" ? <Sun className="w-4 h-4 lg:w-5 lg:h-5 text-foreground-70" /> : <Moon className="w-4 h-4 lg:w-5 lg:h-5 text-foreground-50" />}
               </button>
             )}
 
-            {/* CTA - Colored primary */}
-            <Button onClick={() => openLeadForm("dynamic_island")} size="sm" className="rounded-full px-3 lg:px-4 h-7 lg:h-9 text-[10px] lg:text-sm shadow-md shadow-primary/20 shrink-0">
+            {/* CTA - Primary monochrome */}
+            <Button onClick={() => openLeadForm("dynamic_island")} size="sm" className="rounded-full px-3 lg:px-4 h-7 lg:h-9 text-[10px] lg:text-sm shrink-0">
               <span className="hidden sm:inline">Inizia gratis</span>
               <Sparkles className="w-3.5 h-3.5 sm:hidden" />
             </Button>
