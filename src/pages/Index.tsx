@@ -25,7 +25,7 @@ const ProductShowcase = lazy(() => import("@/components/landing/ProductShowcase"
 const HowItWorks = lazy(() => import("@/components/landing/HowItWorks"));
 const Pricing = lazy(() => import("@/components/landing/Pricing"));
 const Testimonials = lazy(() => import("@/components/landing/Testimonials"));
-const FAQ = lazy(() => import("@/components/landing/FAQ"));
+const FAQCard = lazy(() => import("@/components/landing/FAQCard"));
 const FinalCTA = lazy(() => import("@/components/landing/FinalCTA"));
 const Footer = lazy(() => import("@/components/landing/Footer"));
 
@@ -51,7 +51,7 @@ const Index = () => {
           <ProductShowcase />
           <Pricing />
           <Testimonials />
-          <FAQ />
+          <FAQCard />
           <FinalCTA />
           <Footer />
         </Suspense>
