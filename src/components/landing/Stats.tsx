@@ -1,5 +1,13 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+/**
+ * ═══════════════════════════════════════════════════════════════════════════════
+ * QRCODESTUDIOJEM - Stats Section (Static/Optimized)
+ * 
+ * Sviluppato da Eduard Costin Udila @ studiojem.it
+ * Web Development & Digital Solutions
+ * ═══════════════════════════════════════════════════════════════════════════════
+ */
+
+import { memo } from "react";
 import { TrendingUp, Users, Zap, Star, ArrowUpRight } from "lucide-react";
 
 const stats = [
@@ -33,36 +41,24 @@ const stats = [
   },
 ];
 
-const Stats = () => {
-  const containerRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
-
+const Stats = memo(() => {
   return (
-    <section ref={containerRef} className="py-20 relative overflow-hidden">
+    <section className="py-16 md:py-20 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.02] to-background" />
       
-      <motion.div style={{ y }} className="container relative z-10">
+      <div className="container relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {stats.map((stat, index) => (
-            <motion.div
+          {stats.map((stat) => (
+            <div
               key={stat.label}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
               
               <div className="relative bento-card h-full text-center md:text-left">
                 {/* Icon */}
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/[0.05] border border-white/[0.08] mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-muted border border-border mb-4 group-hover:scale-105 transition-transform duration-200">
                   <stat.icon className="w-5 h-5 text-primary" />
                 </div>
 
@@ -82,12 +78,14 @@ const Stats = () => {
                   {stat.change}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
-};
+});
+
+Stats.displayName = 'Stats';
 
 export default Stats;

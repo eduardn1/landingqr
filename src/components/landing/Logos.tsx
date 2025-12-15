@@ -1,5 +1,13 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, memo } from "react";
+/**
+ * ═══════════════════════════════════════════════════════════════════════════════
+ * QRCODESTUDIOJEM - Logos Section (Static/Optimized)
+ * 
+ * Sviluppato da Eduard Costin Udila @ studiojem.it
+ * Web Development & Digital Solutions
+ * ═══════════════════════════════════════════════════════════════════════════════
+ */
+
+import { memo } from "react";
 import { TrendingUp, Users, Star, Zap } from "lucide-react";
 
 // Simulated client logos with gradient colors - diversified hospitality businesses
@@ -23,26 +31,18 @@ const stats = [
 ];
 
 const Logos = memo(() => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  
   // Duplicate for seamless loop
   const allClients = [...clients, ...clients];
 
   return (
-    <section ref={ref} className="py-10 md:py-14 overflow-hidden relative">
+    <section className="py-10 md:py-14 overflow-hidden relative">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
       
       <div className="container relative z-10 mb-8">
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.3 }}
-          className="text-center text-muted-foreground text-sm"
-        >
+        <p className="text-center text-muted-foreground text-sm">
           Usato da bar, ristoranti e pub in tutta Italia
-        </motion.p>
+        </p>
       </div>
 
       {/* Compact Marquee */}
@@ -51,7 +51,7 @@ const Logos = memo(() => {
         <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-        {/* Scrolling Logos - Smaller */}
+        {/* Scrolling Logos - CSS animation only */}
         <div className="flex animate-marquee">
           {allClients.map((client, index) => (
             <div
@@ -72,12 +72,7 @@ const Logos = memo(() => {
       </div>
 
       {/* Compact Stats - Single Row */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.4, delay: 0.1 }}
-        className="container"
-      >
+      <div className="container">
         <div className="flex flex-wrap justify-center gap-3 md:gap-4">
           {stats.map((stat) => {
             const Icon = stat.icon;
@@ -101,7 +96,7 @@ const Logos = memo(() => {
             );
           })}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 });
