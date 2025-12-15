@@ -7,7 +7,7 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import { useState, memo } from "react";
+import { useState, memo, useRef, useCallback } from "react";
 import { 
   UtensilsCrossed,
   Calendar, 
@@ -193,6 +193,20 @@ const featureCategories: FeatureCategory[] = [
 const Features = memo(() => {
   const [activeCategory, setActiveCategory] = useState("menu");
   const [activeFeature, setActiveFeature] = useState(0);
+  const featureDetailRef = useRef<HTMLDivElement>(null);
+
+  const handleFeatureClick = useCallback((index: number) => {
+    setActiveFeature(index);
+    // Auto-scroll to show content on mobile
+    setTimeout(() => {
+      if (featureDetailRef.current && window.innerWidth < 1024) {
+        featureDetailRef.current.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+      }
+    }, 100);
+  }, []);
 
   const activeFeatureData = heroFeatures[activeFeature];
   const ActiveIcon = activeFeatureData.icon;
@@ -234,7 +248,7 @@ const Features = memo(() => {
               return (
                 <div
                   key={feature.id}
-                  onClick={() => setActiveFeature(index)}
+                  onClick={() => handleFeatureClick(index)}
                   className={`relative p-3 rounded-xl cursor-pointer transition-all group ${
                     isActive 
                       ? "bg-card border-2 border-primary/30 shadow-md" 
@@ -265,7 +279,7 @@ const Features = memo(() => {
           </div>
 
           {/* Feature Detail Card */}
-          <div className="relative">
+          <div className="relative" ref={featureDetailRef}>
             <div className={`relative p-6 rounded-2xl bg-gradient-to-br ${activeFeatureData.gradient} overflow-hidden`}>
               {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
