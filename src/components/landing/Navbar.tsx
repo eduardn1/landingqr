@@ -9,7 +9,7 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo, memo } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Sparkles, CreditCard, HelpCircle, Play, Home, Grid3X3, X, BookOpen, MessageCircle, Users, ExternalLink } from "lucide-react";
@@ -17,16 +17,24 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { useLeadForm } from "@/hooks/useLeadForm";
 
-// Static pages menu
+// Static pages menu - defined outside component to prevent recreation
 const staticPages = [
   { label: "Chi siamo", href: "/chi-siamo", icon: Users },
   { label: "Contatti", href: "/contatti", icon: MessageCircle },
   { label: "Guide", href: "/guide", icon: BookOpen },
   { label: "FAQ", href: "/faq", icon: HelpCircle },
   { label: "Demo", href: "/demo", icon: Play },
-];
+] as const;
 
-const Navbar = () => {
+// Static nav links
+const navLinks = [
+  { id: "home", label: "Home", href: "#", icon: Home },
+  { id: "features", label: "Funzionalità", href: "#features", icon: Sparkles },
+  { id: "pricing", label: "Prezzi", href: "#pricing", icon: CreditCard },
+  { id: "faq", label: "FAQ", href: "#faq", icon: HelpCircle },
+] as const;
+
+const Navbar = memo(() => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isPagesMenuOpen, setIsPagesMenuOpen] = useState(false);
@@ -81,22 +89,15 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScrollForPages);
   }, [isPagesMenuOpen]);
 
-  const navLinks = [
-    { id: "home", label: "Home", href: "#", icon: Home },
-    { id: "features", label: "Funzionalità", href: "#features", icon: Sparkles },
-    { id: "pricing", label: "Prezzi", href: "#pricing", icon: CreditCard },
-    { id: "faq", label: "FAQ", href: "#faq", icon: HelpCircle },
-  ];
-
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setTheme(theme === "dark" ? "light" : "dark");
-  };
+  }, [theme, setTheme]);
 
-  const handleIslandClick = () => {
-    setIsExpanded(!isExpanded);
-  };
+  const handleIslandClick = useCallback(() => {
+    setIsExpanded(prev => !prev);
+  }, []);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = useCallback((href: string) => {
     if (href.startsWith("#")) {
       if (href === "#") {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -110,7 +111,16 @@ const Navbar = () => {
       window.location.href = href;
     }
     setIsExpanded(false);
-  };
+  }, []);
+
+  const handleMenuClose = useCallback(() => {
+    setIsExpanded(false);
+    setIsPagesMenuOpen(false);
+  }, []);
+
+  const togglePagesMenu = useCallback(() => {
+    setIsPagesMenuOpen(prev => !prev);
+  }, []);
 
   return (
     <>
@@ -229,7 +239,7 @@ const Navbar = () => {
             {/* Pages Menu Button */}
             <div className="relative shrink-0">
               <button
-                onClick={() => setIsPagesMenuOpen(!isPagesMenuOpen)}
+                onClick={togglePagesMenu}
                 className={`p-1.5 lg:p-2 rounded-lg transition-colors ${isPagesMenuOpen ? 'bg-primary/10 text-primary' : 'hover:bg-muted/50 text-muted-foreground hover:text-foreground'}`}
                 aria-label="Menu pagine"
               >
@@ -375,14 +385,13 @@ const Navbar = () => {
       {(isExpanded || isPagesMenuOpen) && (
         <div 
           className="fixed inset-0 z-40" 
-          onClick={() => {
-            setIsExpanded(false);
-            setIsPagesMenuOpen(false);
-          }}
+          onClick={handleMenuClose}
         />
       )}
     </>
   );
-};
+});
+
+Navbar.displayName = 'Navbar';
 
 export default Navbar;
