@@ -18,8 +18,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['"Urbanist"', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        display: ['"Urbanist"', 'sans-serif'],
+        sans: ['"Satoshi"', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        display: ['"Satoshi"', 'sans-serif'],
       },
       fontSize: {
         // Mobile-first Typography Scale
