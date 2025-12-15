@@ -162,15 +162,16 @@ const LeadForm = () => {
             className="fixed inset-0 bg-background/80 backdrop-blur-md z-[100]"
           />
 
-          {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 40 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 40 }}
-            transition={{ type: "spring", duration: 0.5, bounce: 0.2 }}
-            className="fixed inset-0 z-[101] flex items-center justify-center p-4"
-          >
-            <div className="w-full max-w-lg">
+          {/* Modal - wrapper for centering */}
+          <div className="fixed inset-0 z-[101] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 40 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 40 }}
+              transition={{ type: "spring", duration: 0.5, bounce: 0.2 }}
+              className="w-full max-w-lg"
+              onClick={(e) => e.stopPropagation()}
+            >
               <div className="relative bg-card border border-border rounded-3xl p-8 shadow-2xl overflow-hidden">
               {/* Background gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
@@ -446,8 +447,8 @@ const LeadForm = () => {
                 </div>
               )}
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </>
       )}
     </AnimatePresence>

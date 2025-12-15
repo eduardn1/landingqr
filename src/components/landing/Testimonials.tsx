@@ -179,7 +179,7 @@ const Testimonials = () => {
                   key={testimonial.name}
                   className="w-full flex-shrink-0 px-6 sm:px-8 md:px-2"
                 >
-                  <div className="relative p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl bg-card border border-border">
+                  <div className="relative p-4 sm:p-5 md:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-card border border-border">
                     {/* Quote Icon */}
                     <div className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8">
                       <Quote className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary/10" />
@@ -210,7 +210,7 @@ const Testimonials = () => {
                     </div>
 
                     {/* Quote */}
-                    <blockquote className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-foreground leading-relaxed mb-5 sm:mb-6 md:mb-8 pr-4 sm:pr-6">
+                    <blockquote className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-foreground leading-relaxed mb-4 sm:mb-5 md:mb-6 pr-4 sm:pr-6">
                       "{testimonial.quote}"
                     </blockquote>
 
