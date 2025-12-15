@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
  * QRCODESTUDIOJEM - About Page (Chi Siamo)
- * Pagina moderna con bento grid e design premium
+ * Pagina moderna con bento grid, animazioni e design premium
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -11,7 +11,7 @@
  */
 
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { 
   ArrowRight,
   Sparkles, 
@@ -31,10 +31,14 @@ import {
   CheckCircle,
   Star,
   Coffee,
-  Lightbulb
+  Lightbulb,
+  Linkedin,
+  Twitter,
+  Mail
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SharedNavbar from "@/components/shared/SharedNavbar";
+import { useRef } from "react";
 
 const stats = [
   { value: "500+", label: "Locali attivi", icon: Users },
@@ -99,93 +103,234 @@ const techStack = [
   "React", "TypeScript", "Tailwind CSS", "Supabase", "Framer Motion", "Vite"
 ];
 
+// Team members data with placeholder images
+const teamMembers = [
+  {
+    name: "Eduard Costin Udila",
+    role: "Founder & Lead Developer",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+    bio: "Full-stack developer con oltre 5 anni di esperienza. Fondatore di StudioJEM.",
+    gradient: "from-primary to-accent",
+    socials: { linkedin: "#", twitter: "#", email: "info@studiojem.it" }
+  },
+  {
+    name: "Marco Rossi",
+    role: "UX/UI Designer",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
+    bio: "Designer con passione per le interfacce intuitive e accessibili.",
+    gradient: "from-violet-500 to-purple-600",
+    socials: { linkedin: "#", twitter: "#", email: "#" }
+  },
+  {
+    name: "Giulia Ferrara",
+    role: "Product Manager",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face",
+    bio: "Esperta in product strategy con background nell'hospitality.",
+    gradient: "from-rose-500 to-pink-600",
+    socials: { linkedin: "#", twitter: "#", email: "#" }
+  },
+  {
+    name: "Alessandro Mura",
+    role: "Backend Developer",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    bio: "Specializzato in architetture scalabili e sicurezza.",
+    gradient: "from-emerald-500 to-teal-600",
+    socials: { linkedin: "#", twitter: "#", email: "#" }
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  },
+};
+
 const AboutPage = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
     <div className="min-h-screen bg-background overflow-hidden">
       {/* Dynamic Island Navigation */}
       <SharedNavbar />
 
       <main className="pt-16">
-        {/* Hero Section */}
-        <section className="relative py-16 md:py-24 overflow-hidden">
-          {/* Background Effects */}
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-          <div className="absolute top-20 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+        {/* Hero Section with Parallax */}
+        <section ref={heroRef} className="relative py-20 md:py-32 overflow-hidden">
+          {/* Animated Background */}
+          <motion.div 
+            className="absolute inset-0"
+            style={{ y: heroY }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+            <motion.div 
+              animate={{ 
+                scale: [1, 1.2, 1],
+                rotate: [0, 180, 360],
+              }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="absolute top-20 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl" 
+            />
+            <motion.div 
+              animate={{ 
+                scale: [1.2, 1, 1.2],
+                rotate: [360, 180, 0],
+              }}
+              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              className="absolute bottom-20 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" 
+            />
+          </motion.div>
           
           <div className="container relative">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              style={{ opacity: heroOpacity }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-center max-w-4xl mx-auto"
             >
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/20 mb-6">
+              <motion.div 
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/20 mb-6"
+              >
                 <Sparkles className="w-4 h-4 text-primary" />
                 <span className="text-sm font-semibold text-primary">
                   Chi Siamo
                 </span>
-              </div>
+              </motion.div>
 
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-foreground mb-6">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-foreground mb-6"
+              >
                 Dietro Flavour c'è una{" "}
-                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                <motion.span 
+                  initial={{ backgroundPosition: "0% 50%" }}
+                  animate={{ backgroundPosition: "100% 50%" }}
+                  transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+                  className="bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] bg-clip-text text-transparent"
+                >
                   passione italiana
-                </span>
-              </h1>
+                </motion.span>
+              </motion.h1>
               
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8"
+              >
                 Siamo un team di sviluppatori e designer che credono nel potere della tecnologia 
                 per trasformare l'esperienza della ristorazione italiana.
-              </p>
+              </motion.p>
 
-              {/* Location Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
-                <MapPin className="w-4 h-4 text-primary" />
+              {/* Location Badge with Animation */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.7, type: "spring" }}
+                whileHover={{ scale: 1.05 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border shadow-lg"
+              >
+                <motion.div
+                  animate={{ y: [0, -3, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <MapPin className="w-4 h-4 text-primary" />
+                </motion.div>
                 <span className="text-sm font-medium text-foreground">Cagliari, Sardegna</span>
                 <span className="text-muted-foreground">•</span>
                 <span className="text-sm text-muted-foreground">Made in Italy 🇮🇹</span>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </section>
 
-        {/* Stats Section */}
+        {/* Stats Section with Counter Animation */}
         <section className="py-12 border-y border-border bg-muted/30">
           <div className="container">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            >
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-center"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="text-center group cursor-pointer"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                  <motion.div 
+                    whileHover={{ rotate: [0, -10, 10, 0] }}
+                    transition={{ duration: 0.5 }}
+                    className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/20 transition-colors"
+                  >
                     <stat.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <p className="text-2xl md:text-3xl font-bold text-foreground">{stat.value}</p>
+                  </motion.div>
+                  <motion.p 
+                    className="text-2xl md:text-3xl font-bold text-foreground"
+                  >
+                    {stat.value}
+                  </motion.p>
                   <p className="text-sm text-muted-foreground">{stat.label}</p>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* Bento Grid - Values */}
+        {/* Bento Grid - Values with Staggered Animation */}
         <section className="py-16 md:py-24">
           <div className="container">
-            <div className="text-center mb-12">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                 I nostri valori
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto">
                 Principi che guidano ogni decisione e ogni linea di codice che scriviamo.
               </p>
-            </div>
+            </motion.div>
 
             {/* Bento Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto"
+            >
               {values.map((value, index) => {
                 const Icon = value.icon;
                 const isLarge = index === 0 || index === 3;
@@ -193,21 +338,49 @@ const AboutPage = () => {
                 return (
                   <motion.div
                     key={value.title}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className={`group relative bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-all ${
+                    variants={itemVariants}
+                    whileHover={{ 
+                      scale: 1.02, 
+                      y: -5,
+                      transition: { type: "spring", stiffness: 300 }
+                    }}
+                    className={`group relative bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-all cursor-pointer overflow-hidden ${
                       isLarge ? 'lg:col-span-2' : ''
                     }`}
                   >
-                    {/* Gradient Glow on Hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity`} />
+                    {/* Animated Gradient Glow on Hover */}
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileHover={{ opacity: 0.1, scale: 1.2 }}
+                      className={`absolute inset-0 bg-gradient-to-br ${value.gradient} rounded-2xl`}
+                    />
+                    
+                    {/* Floating particles effect */}
+                    <div className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity">
+                      {[...Array(3)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ y: 100, x: Math.random() * 100 }}
+                          animate={{ y: -20, x: Math.random() * 100 }}
+                          transition={{ 
+                            duration: 2 + Math.random(), 
+                            repeat: Infinity,
+                            delay: i * 0.5 
+                          }}
+                          className={`absolute w-2 h-2 rounded-full bg-gradient-to-br ${value.gradient} opacity-30`}
+                          style={{ left: `${20 + i * 30}%` }}
+                        />
+                      ))}
+                    </div>
                     
                     <div className="relative">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${value.gradient} flex items-center justify-center mb-4 shadow-lg`}>
+                      <motion.div 
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.5 }}
+                        className={`w-12 h-12 rounded-xl bg-gradient-to-br ${value.gradient} flex items-center justify-center mb-4 shadow-lg`}
+                      >
                         <Icon className="w-6 h-6 text-white" />
-                      </div>
+                      </motion.div>
                       
                       <h3 className="font-bold text-lg text-foreground mb-2">{value.title}</h3>
                       <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
@@ -215,16 +388,112 @@ const AboutPage = () => {
                   </motion.div>
                 );
               })}
-            </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Team Section */}
+        <section className="py-16 md:py-24 bg-muted/30">
+          <div className="container">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+                <Users className="w-4 h-4 text-primary" />
+                <span className="text-sm font-semibold text-primary">Il nostro team</span>
+              </div>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Le persone dietro Flavour
+              </h2>
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Un team appassionato che lavora ogni giorno per rendere la tecnologia accessibile a tutti.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
+            >
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={member.name}
+                  variants={itemVariants}
+                  whileHover={{ y: -10 }}
+                  className="group relative bg-card border border-border rounded-2xl overflow-hidden"
+                >
+                  {/* Image Container */}
+                  <div className="relative h-48 overflow-hidden">
+                    <motion.img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.4 }}
+                    />
+                    {/* Overlay gradient */}
+                    <div className={`absolute inset-0 bg-gradient-to-t ${member.gradient} opacity-0 group-hover:opacity-20 transition-opacity`} />
+                    
+                    {/* Social Links - appear on hover */}
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      whileHover={{ opacity: 1, y: 0 }}
+                      className="absolute bottom-3 left-0 right-0 flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <a 
+                        href={member.socials.linkedin}
+                        className="w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-foreground hover:bg-white transition-colors"
+                      >
+                        <Linkedin className="w-4 h-4" />
+                      </a>
+                      <a 
+                        href={member.socials.twitter}
+                        className="w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-foreground hover:bg-white transition-colors"
+                      >
+                        <Twitter className="w-4 h-4" />
+                      </a>
+                      <a 
+                        href={`mailto:${member.socials.email}`}
+                        className="w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-foreground hover:bg-white transition-colors"
+                      >
+                        <Mail className="w-4 h-4" />
+                      </a>
+                    </motion.div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-5">
+                    <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${member.gradient} bg-opacity-10 text-xs font-semibold mb-3`}>
+                      <span className="text-white mix-blend-difference">{member.role}</span>
+                    </div>
+                    <h3 className="font-bold text-lg text-foreground mb-1">{member.name}</h3>
+                    <p className="text-sm text-muted-foreground">{member.bio}</p>
+                  </div>
+                  
+                  {/* Decorative corner */}
+                  <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${member.gradient} opacity-10 blur-2xl`} />
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </section>
 
         {/* Story Section with Timeline */}
-        <section className="py-16 md:py-24 bg-muted/30">
+        <section className="py-16 md:py-24">
           <div className="container">
             <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
               {/* Left - Story */}
-              <div>
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
                   <Calendar className="w-4 h-4 text-primary" />
                   <span className="text-sm font-semibold text-primary">La nostra storia</span>
@@ -248,44 +517,62 @@ const AboutPage = () => {
                 </p>
 
                 {/* Features Pills */}
-                <div className="flex flex-wrap gap-2">
-                  {features.map((feature) => (
-                    <div
+                <motion.div 
+                  variants={containerVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="flex flex-wrap gap-2"
+                >
+                  {features.map((feature, i) => (
+                    <motion.div
                       key={feature.label}
-                      className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-border"
+                      variants={itemVariants}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-border cursor-pointer hover:border-primary/30 transition-colors"
                     >
                       <feature.icon className="w-3.5 h-3.5 text-primary" />
                       <span className="text-xs font-medium text-foreground">{feature.label}</span>
-                    </div>
+                    </motion.div>
                   ))}
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               {/* Right - Timeline */}
               <div className="space-y-6">
                 {timeline.map((item, index) => (
                   <motion.div
                     key={item.year}
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.15 }}
-                    className="relative flex gap-4"
+                    transition={{ delay: index * 0.15, duration: 0.5 }}
+                    whileHover={{ x: 5 }}
+                    className="relative flex gap-4 group"
                   >
                     {/* Timeline Line */}
                     {index < timeline.length - 1 && (
-                      <div className="absolute left-[23px] top-12 w-0.5 h-full bg-border" />
+                      <motion.div 
+                        initial={{ height: 0 }}
+                        whileInView={{ height: "100%" }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.2 + 0.3, duration: 0.5 }}
+                        className="absolute left-[23px] top-12 w-0.5 bg-gradient-to-b from-primary/50 to-border" 
+                      />
                     )}
                     
                     {/* Year Badge */}
-                    <div className="flex-shrink-0">
+                    <motion.div 
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="flex-shrink-0"
+                    >
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-primary/25">
                         {item.year.slice(2)}
                       </div>
-                    </div>
+                    </motion.div>
                     
                     {/* Content */}
-                    <div className="flex-1 bg-card border border-border rounded-xl p-4">
+                    <div className="flex-1 bg-card border border-border rounded-xl p-4 group-hover:border-primary/30 transition-colors">
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-xs font-semibold text-primary">{item.year}</span>
                       </div>
@@ -299,78 +586,15 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Team/Founder Section */}
-        <section className="py-16 md:py-24">
-          <div className="container">
-            <div className="max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="relative bg-card border border-border rounded-3xl p-8 md:p-12 overflow-hidden"
-              >
-                {/* Background Pattern */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-                
-                <div className="relative grid md:grid-cols-3 gap-8 items-center">
-                  {/* Avatar */}
-                  <div className="flex justify-center md:justify-start">
-                    <div className="relative">
-                      <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-2xl shadow-primary/25">
-                        <span className="text-4xl md:text-5xl font-bold text-white">EC</span>
-                      </div>
-                      <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-lg bg-success flex items-center justify-center">
-                        <CheckCircle className="w-5 h-5 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Info */}
-                  <div className="md:col-span-2 text-center md:text-left">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
-                      <Award className="w-3 h-3" />
-                      Fondatore & Lead Developer
-                    </div>
-                    
-                    <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
-                      Eduard Costin Udila
-                    </h3>
-                    
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                      Full-stack developer con oltre 5 anni di esperienza nello sviluppo di soluzioni 
-                      digitali per il mondo business. Fondatore di StudioJEM, agenzia specializzata 
-                      in web development e digital solutions.
-                    </p>
-                    
-                    <div className="flex flex-wrap justify-center md:justify-start gap-3">
-                      <a
-                        href="https://studiojem.it"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-muted text-foreground hover:bg-muted/80 transition-colors text-sm font-medium"
-                      >
-                        <Globe className="w-4 h-4" />
-                        studiojem.it
-                      </a>
-                      <Link to="/contatti">
-                        <Button size="sm" className="gap-2">
-                          Contattami
-                          <ArrowRight className="w-4 h-4" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
         {/* Tech Stack Section */}
-        <section className="py-16 md:py-20">
+        <section className="py-16 md:py-20 bg-muted/30">
           <div className="container">
-            <div className="max-w-4xl mx-auto text-center">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-4xl mx-auto text-center"
+            >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
                 <Code className="w-4 h-4 text-primary" />
                 <span className="text-sm font-semibold text-primary">Tech Stack</span>
@@ -383,46 +607,78 @@ const AboutPage = () => {
                 Stack moderno e performante per un'esperienza utente impeccabile
               </p>
               
-              <div className="flex flex-wrap justify-center gap-3">
-                {techStack.map((tech) => (
-                  <div
+              <motion.div 
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="flex flex-wrap justify-center gap-3"
+              >
+                {techStack.map((tech, i) => (
+                  <motion.div
                     key={tech}
-                    className="px-4 py-2 rounded-xl bg-card border border-border text-sm font-medium text-foreground hover:border-primary/30 transition-colors"
+                    variants={itemVariants}
+                    whileHover={{ 
+                      scale: 1.1, 
+                      y: -5,
+                      boxShadow: "0 10px 30px -10px rgba(var(--primary), 0.3)"
+                    }}
+                    className="px-4 py-2 rounded-xl bg-card border border-border text-sm font-medium text-foreground hover:border-primary/30 transition-all cursor-pointer"
                   >
                     {tech}
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 md:py-24 bg-muted/30">
+        <section className="py-16 md:py-24">
           <div className="container">
-            <div className="text-center max-w-2xl mx-auto">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Pronto a trasformare il tuo locale?
-              </h2>
-              <p className="text-muted-foreground mb-8">
-                Unisciti a centinaia di ristoratori che hanno già scelto Flavour 
-                per digitalizzare la loro attività.
-              </p>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="max-w-4xl mx-auto text-center relative"
+            >
+              {/* Background decoration */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 rounded-3xl blur-3xl" />
               
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link to="/demo">
-                  <Button size="lg" className="gap-2">
-                    Prova la demo
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </Link>
-                <Link to="/contatti">
-                  <Button variant="outline" size="lg">
-                    Contattaci
-                  </Button>
-                </Link>
+              <div className="relative bg-card border border-border rounded-3xl p-8 md:p-12">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+                  className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/25"
+                >
+                  <Rocket className="w-8 h-8 text-white" />
+                </motion.div>
+                
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+                  Pronto a trasformare il tuo locale?
+                </h2>
+                <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
+                  Unisciti a centinaia di locali che hanno già scelto Flavour per digitalizzare la loro esperienza.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <Link to="/demo">
+                    <Button size="lg" className="gap-2 rounded-full">
+                      <Coffee className="w-4 h-4" />
+                      Prova la demo
+                    </Button>
+                  </Link>
+                  <Link to="/contatti">
+                    <Button variant="outline" size="lg" className="gap-2 rounded-full">
+                      Contattaci
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
       </main>

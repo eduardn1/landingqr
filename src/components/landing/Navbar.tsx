@@ -12,7 +12,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Sparkles, CreditCard, HelpCircle, Play, Home, Menu, X, BookOpen, MessageCircle, Users, ExternalLink } from "lucide-react";
+import { Sun, Moon, Sparkles, CreditCard, HelpCircle, Play, Home, Grid3X3, X, BookOpen, MessageCircle, Users, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { useLeadForm } from "@/hooks/useLeadForm";
@@ -235,7 +235,7 @@ const Navbar = () => {
               {isPagesMenuOpen ? (
                 <X className="w-4 h-4 lg:w-5 lg:h-5" />
               ) : (
-                <Menu className="w-4 h-4 lg:w-5 lg:h-5" />
+                <Grid3X3 className="w-4 h-4 lg:w-5 lg:h-5" />
               )}
             </button>
 
