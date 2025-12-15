@@ -1,32 +1,20 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { ArrowRight, Check, Sparkles, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLeadForm } from "@/hooks/useLeadForm";
 
 const FinalCTA = () => {
   const { openLeadForm } = useLeadForm();
-  const containerRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const scale = useTransform(scrollYProgress, [0, 0.5], [0.95, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   return (
-    <section ref={containerRef} className="section-padding relative overflow-hidden">
+    <section className="section-padding relative overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
-      
-      {/* Animated Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] opacity-50" />
 
-      <motion.div 
-        style={{ scale, opacity }}
-        className="container relative z-10"
-      >
+      {/* Subtle Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] bg-primary/10 rounded-full blur-3xl opacity-40" />
+
+      <div className="container relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* CTA Card */}
           <div className="relative p-8 md:p-12 lg:p-16 rounded-3xl bg-gradient-to-br from-primary/10 via-card to-card border border-primary/20 overflow-hidden">
@@ -132,7 +120,7 @@ const FinalCTA = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
