@@ -25,15 +25,20 @@ const Navbar = () => {
 
   useEffect(() => {
     setMounted(true);
+    let lastScrollY = window.scrollY;
+    
     const handleScroll = () => {
-      const scrolled = window.scrollY > 80;
-      setIsScrolled(scrolled);
-      // Auto-expand when scrolled
-      if (scrolled && !isExpanded) {
-        setIsExpanded(true);
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 80);
+      
+      // Close on any scroll movement
+      if (Math.abs(currentScrollY - lastScrollY) > 10 && isExpanded) {
+        setIsExpanded(false);
       }
+      lastScrollY = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll);
+    
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isExpanded]);
 
