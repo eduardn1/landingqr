@@ -156,6 +156,7 @@ const Demo = () => {
   const skipOnboarding = searchParams.get("skip") === "true";
   const initialSection = searchParams.get("section") || "dashboard";
   const fromGuides = searchParams.get("from") === "guides";
+  const guideId = searchParams.get("guideId");
   
   const [activeSection, setActiveSection] = useState(initialSection);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -443,15 +444,15 @@ const Demo = () => {
 
         {/* Floating Back to Guides Button */}
         {fromGuides && (
-          <Link to="/guide">
+          <Link to={`/guide${guideId ? `?scrollTo=${guideId}` : ''}`}>
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               className="fixed bottom-24 lg:bottom-6 right-4 lg:right-6 z-50"
             >
-              <Button variant="outline" className="gap-2 shadow-lg bg-card border-border">
+              <Button className="gap-2 shadow-xl bg-primary hover:bg-primary/90 text-primary-foreground border-0">
                 <ArrowLeft className="w-4 h-4" />
-                Torna alle guide
+                <span className="font-semibold">Torna alle guide</span>
               </Button>
             </motion.div>
           </Link>
