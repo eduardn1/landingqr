@@ -22,34 +22,46 @@ html, body {
 @layer base {
   :root {
     /* ═══════════════════════════════════════════════════════════════════════
-       LIGHT THEME - Clean & Minimal
+       LIGHT THEME - Monochrome + Colored Accents (Cadence Style)
+       Base: Black with transparencies | Accents: Colored
        ═══════════════════════════════════════════════════════════════════════ */
     --background: 0 0% 100%;
-    --foreground: 0 0% 9%;
+    --foreground: 0 0% 5%;
 
-    --card: 0 0% 99%;
-    --card-foreground: 0 0% 9%;
+    /* Monochrome transparencies for text/UI */
+    --foreground-90: 0 0% 5% / 0.9;
+    --foreground-70: 0 0% 5% / 0.7;
+    --foreground-50: 0 0% 5% / 0.5;
+    --foreground-30: 0 0% 5% / 0.3;
+    --foreground-20: 0 0% 5% / 0.2;
+    --foreground-10: 0 0% 5% / 0.1;
+    --foreground-05: 0 0% 5% / 0.05;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 5%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 9%;
+    --popover-foreground: 0 0% 5%;
 
-    /* Single Accent Color - Violet */
+    /* Accent Color - Violet (ONLY for badges, CTAs, photos, icons) */
     --primary: 263 70% 58%;
     --primary-foreground: 0 0% 100%;
     --primary-light: 263 70% 68%;
     --primary-dark: 263 70% 48%;
     --primary-glow: 263 70% 58%;
 
+    /* Monochrome secondary */
     --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 9%;
+    --secondary-foreground: 0 0% 5%;
 
-    --muted: 0 0% 94%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
 
+    /* Accent backgrounds (subtle, for badges) */
     --accent: 263 70% 96%;
     --accent-foreground: 263 70% 48%;
 
-    /* Status Colors */
+    /* Status Colors - Keep colored */
     --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
 
@@ -59,35 +71,45 @@ html, body {
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Minimal Borders */
-    --border: 0 0% 90%;
-    --border-subtle: 0 0% 94%;
-    --border-medium: 0 0% 85%;
-    --border-strong: 0 0% 75%;
+    /* Monochrome Borders */
+    --border: 0 0% 92%;
+    --border-subtle: 0 0% 95%;
+    --border-medium: 0 0% 88%;
+    --border-strong: 0 0% 80%;
     --border-glow: 263 70% 58%;
     
-    --input: 0 0% 94%;
+    --input: 0 0% 96%;
     --ring: 263 70% 58%;
 
     --radius: 0.75rem;
 
     /* Sidebar */
-    --sidebar-background: 0 0% 99%;
-    --sidebar-foreground: 0 0% 9%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 5%;
     --sidebar-primary: 263 70% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 9%;
-    --sidebar-border: 0 0% 90%;
+    --sidebar-accent-foreground: 0 0% 5%;
+    --sidebar-border: 0 0% 92%;
     --sidebar-ring: 263 70% 58%;
   }
 
   .dark {
     /* ═══════════════════════════════════════════════════════════════════════
-       DARK THEME - Premium Minimal (Cadence/SocialLift style)
+       DARK THEME - Monochrome + Colored Accents (Cadence Style)
+       Base: White with transparencies | Accents: Colored
        ═══════════════════════════════════════════════════════════════════════ */
-    --background: 0 0% 4%;
+    --background: 0 0% 3%;
     --foreground: 0 0% 98%;
+
+    /* Monochrome transparencies for text/UI */
+    --foreground-90: 0 0% 98% / 0.9;
+    --foreground-70: 0 0% 98% / 0.7;
+    --foreground-50: 0 0% 98% / 0.5;
+    --foreground-30: 0 0% 98% / 0.3;
+    --foreground-20: 0 0% 98% / 0.2;
+    --foreground-10: 0 0% 98% / 0.1;
+    --foreground-05: 0 0% 98% / 0.05;
 
     --card: 0 0% 6%;
     --card-foreground: 0 0% 98%;
@@ -95,23 +117,25 @@ html, body {
     --popover: 0 0% 6%;
     --popover-foreground: 0 0% 98%;
 
-    /* Single Accent Color - Violet (slightly brighter for dark) */
+    /* Accent Color - Violet (ONLY for badges, CTAs, photos, icons) */
     --primary: 263 70% 65%;
     --primary-foreground: 0 0% 100%;
     --primary-light: 263 70% 75%;
     --primary-dark: 263 70% 55%;
     --primary-glow: 263 70% 65%;
 
+    /* Monochrome secondary */
     --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 98%;
 
     --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 55%;
+    --muted-foreground: 0 0% 60%;
 
+    /* Accent backgrounds (subtle, for badges) */
     --accent: 263 50% 15%;
     --accent-foreground: 263 70% 75%;
 
-    /* Status Colors */
+    /* Status Colors - Keep colored */
     --success: 142 76% 42%;
     --success-foreground: 0 0% 100%;
 
@@ -121,24 +145,24 @@ html, body {
     --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Subtle Borders */
-    --border: 0 0% 14%;
-    --border-subtle: 0 0% 10%;
-    --border-medium: 0 0% 20%;
-    --border-strong: 0 0% 28%;
+    /* Monochrome Borders */
+    --border: 0 0% 12%;
+    --border-subtle: 0 0% 8%;
+    --border-medium: 0 0% 18%;
+    --border-strong: 0 0% 25%;
     --border-glow: 263 70% 65%;
     
     --input: 0 0% 12%;
     --ring: 263 70% 65%;
 
     /* Sidebar */
-    --sidebar-background: 0 0% 4%;
+    --sidebar-background: 0 0% 3%;
     --sidebar-foreground: 0 0% 98%;
     --sidebar-primary: 263 70% 65%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 10%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 14%;
+    --sidebar-border: 0 0% 12%;
     --sidebar-ring: 263 70% 65%;
   }
 }

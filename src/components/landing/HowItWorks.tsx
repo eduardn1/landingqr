@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - How It Works Section (Minimal 2026 Design)
- * Clean timeline with subtle animations
+ * QRCODESTUDIOJEM - How It Works Section (Monochrome + Colored Accents)
+ * Inspired by Cadence AI
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * ═══════════════════════════════════════════════════════════════════════════════
@@ -44,17 +44,17 @@ const HowItWorks = memo(() => {
   return (
     <section className="section-padding-sm relative overflow-hidden">
       <div className="container relative z-10">
-        {/* Header */}
+        {/* Header - Monochrome text, colored badge */}
         <ScrollReveal animation="fadeUp" className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
             <Clock className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-primary">Setup in 10 minuti</span>
           </div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
             Da zero a online in 3 step
           </h2>
-          <p className="text-muted-foreground max-w-lg mx-auto">
+          <p className="text-foreground-50 max-w-lg mx-auto">
             Se sai usare WhatsApp, sai usare Flavour. Promesso.
           </p>
         </ScrollReveal>
@@ -62,8 +62,8 @@ const HowItWorks = memo(() => {
         {/* Steps */}
         <StaggerContainer className="max-w-4xl mx-auto mb-12">
           <div className="grid md:grid-cols-3 gap-6 relative">
-            {/* Connection Line - Desktop */}
-            <div className="hidden md:block absolute top-16 left-[16.67%] right-[16.67%] h-px bg-border">
+            {/* Connection Line - Colored gradient */}
+            <div className="hidden md:block absolute top-16 left-[16.67%] right-[16.67%] h-px bg-foreground-10">
               <div className="h-full w-full bg-gradient-to-r from-primary via-primary to-primary" />
             </div>
 
@@ -72,7 +72,7 @@ const HowItWorks = memo(() => {
               return (
                 <StaggerItem key={step.step}>
                   <div className="relative text-center">
-                    {/* Step Number + Icon */}
+                    {/* Step Number + Icon - Colored */}
                     <div className="relative inline-flex mb-6">
                       <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
                         <Icon className="w-7 h-7 text-primary" />
@@ -82,12 +82,12 @@ const HowItWorks = memo(() => {
                       </div>
                     </div>
 
-                    {/* Content */}
+                    {/* Content - Monochrome */}
                     <h3 className="text-lg font-bold text-foreground mb-2">{step.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-3">{step.description}</p>
+                    <p className="text-sm text-foreground-50 mb-3">{step.description}</p>
 
-                    {/* Time Badge */}
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-muted text-xs font-medium text-muted-foreground">
+                    {/* Time Badge - Monochrome */}
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-foreground-05 border border-foreground-10 text-xs font-medium text-foreground-50">
                       <Clock className="w-3 h-3" />
                       {step.time}
                     </div>
@@ -98,11 +98,11 @@ const HowItWorks = memo(() => {
           </div>
         </StaggerContainer>
 
-        {/* CTA */}
+        {/* CTA - Monochrome card, colored button */}
         <ScrollReveal animation="fadeIn" className="text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-4 rounded-2xl bg-card border border-border">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-4 rounded-2xl bg-foreground-05 border border-foreground-10">
             <div className="flex items-center gap-3">
-              <span className="text-muted-foreground">Tempo totale:</span>
+              <span className="text-foreground-50">Tempo totale:</span>
               <span className="text-2xl font-bold text-primary">~10 min</span>
             </div>
             <TapButton onClick={() => openLeadForm('how-it-works')} variant="primary">

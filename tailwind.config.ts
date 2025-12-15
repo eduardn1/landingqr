@@ -39,7 +39,16 @@ export default {
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        foreground: {
+          DEFAULT: "hsl(var(--foreground))",
+          90: "hsl(var(--foreground-90))",
+          70: "hsl(var(--foreground-70))",
+          50: "hsl(var(--foreground-50))",
+          30: "hsl(var(--foreground-30))",
+          20: "hsl(var(--foreground-20))",
+          10: "hsl(var(--foreground-10))",
+          "05": "hsl(var(--foreground-05))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

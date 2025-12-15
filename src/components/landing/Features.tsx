@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Features Section (Minimal 2026 Design)
- * Clean cards with single accent color
+ * QRCODESTUDIOJEM - Features Section (Monochrome + Colored Accents)
+ * Inspired by Cadence AI
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * ═══════════════════════════════════════════════════════════════════════════════
@@ -103,28 +103,28 @@ const Features = memo(() => {
 
   return (
     <section id="features" className="section-padding relative overflow-hidden">
-      {/* Subtle background */}
-      <div className="absolute inset-0 bg-glow" />
+      {/* Subtle background glow - Colored */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-gradient-to-b from-primary/8 via-primary/3 to-transparent rounded-full blur-3xl" />
       
       <div className="container relative z-10">
-        {/* Header - Minimal */}
+        {/* Header - Monochrome text, colored badge */}
         <ScrollReveal animation="fadeUp" className="text-center mb-16">
-          <div className="badge-primary mb-6">
-            <span>Piattaforma completa</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <span className="text-sm font-medium text-primary">Piattaforma completa</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
             Tutto in un'unica dashboard
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <p className="text-foreground-50 max-w-xl mx-auto">
             Menu, ordini, prenotazioni, loyalty e analytics. Una sola piattaforma.
           </p>
         </ScrollReveal>
 
-        {/* Feature Grid - 2 columns */}
+        {/* Feature Grid */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
           
-          {/* Left: Feature List */}
+          {/* Left: Feature List - Monochrome cards */}
           <StaggerContainer className="space-y-3">
             {features.map((feature, index) => {
               const Icon = feature.icon;
@@ -137,26 +137,28 @@ const Features = memo(() => {
                     className={`w-full text-left p-4 rounded-xl transition-all duration-200 ${
                       isActive 
                         ? "bg-primary/10 border-2 border-primary/30" 
-                        : "bg-card border border-border hover:border-primary/20"
+                        : "bg-foreground-05 border border-foreground-10 hover:border-foreground-20"
                     }`}
                   >
                     <div className="flex items-center gap-4">
+                      {/* Icon - Colored when active */}
                       <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
-                        isActive ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+                        isActive ? "bg-primary text-primary-foreground" : "bg-foreground-10 text-foreground-50"
                       }`}>
                         <Icon className="w-6 h-6" />
                       </div>
                       
                       <div className="flex-1 min-w-0">
                         <h4 className="font-semibold text-foreground">{feature.title}</h4>
-                        <p className="text-sm text-muted-foreground truncate">{feature.description}</p>
+                        <p className="text-sm text-foreground-50 truncate">{feature.description}</p>
                       </div>
                       
+                      {/* Stat - Colored when active */}
                       <div className="text-right">
                         <div className={`text-xl font-bold ${isActive ? "text-primary" : "text-foreground"}`}>
                           {feature.stat}
                         </div>
-                        <div className="text-xs text-muted-foreground">{feature.statLabel}</div>
+                        <div className="text-xs text-foreground-50">{feature.statLabel}</div>
                       </div>
                     </div>
                   </button>
@@ -165,13 +167,14 @@ const Features = memo(() => {
             })}
           </StaggerContainer>
 
-          {/* Right: Feature Detail */}
+          {/* Right: Feature Detail - Monochrome card, colored accents */}
           <ScrollReveal animation="fadeIn" className="lg:sticky lg:top-24 h-fit">
-            <div className="relative p-8 rounded-2xl bg-card border border-border overflow-hidden">
-              {/* Subtle gradient top */}
+            <div className="relative p-8 rounded-2xl bg-foreground-05 border border-foreground-10 overflow-hidden">
+              {/* Colored gradient top */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
               
               <div className="mb-6">
+                {/* Colored icon */}
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
                   <ActiveIcon className="w-8 h-8 text-primary" />
                 </div>
@@ -179,12 +182,12 @@ const Features = memo(() => {
                 <h3 className="text-2xl font-bold text-foreground mb-3">
                   {activeData.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-foreground-50 leading-relaxed">
                   {activeData.description}
                 </p>
               </div>
               
-              {/* Benefits */}
+              {/* Benefits - Colored checkmarks */}
               <div className="space-y-3 mb-8">
                 {activeData.benefits.map((benefit) => (
                   <div key={benefit} className="flex items-center gap-3">
@@ -196,16 +199,16 @@ const Features = memo(() => {
                 ))}
               </div>
               
-              {/* Stat highlight */}
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-muted">
+              {/* Stat highlight - Colored stat */}
+              <div className="flex items-center gap-4 p-4 rounded-xl bg-foreground-10">
                 <div className="text-4xl font-bold text-primary">{activeData.stat}</div>
-                <div className="text-muted-foreground">{activeData.statLabel}</div>
+                <div className="text-foreground-50">{activeData.statLabel}</div>
               </div>
             </div>
           </ScrollReveal>
         </div>
 
-        {/* CTA */}
+        {/* CTA - Colored button */}
         <ScrollReveal animation="fadeUp" className="text-center mt-16">
           <Link to="/demo">
             <TapButton variant="primary" size="lg">
