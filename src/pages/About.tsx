@@ -13,7 +13,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { 
-  ArrowLeft, 
   ArrowRight,
   Sparkles, 
   Target, 
@@ -30,9 +29,12 @@ import {
   MapPin,
   Calendar,
   CheckCircle,
-  Star
+  Star,
+  Coffee,
+  Lightbulb
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SharedNavbar from "@/components/shared/SharedNavbar";
 
 const stats = [
   { value: "500+", label: "Locali attivi", icon: Users },
@@ -93,29 +95,17 @@ const features = [
   { icon: Rocket, label: "Performance ottimizzate" },
 ];
 
+const techStack = [
+  "React", "TypeScript", "Tailwind CSS", "Supabase", "Framer Motion", "Vite"
+];
+
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-background overflow-hidden">
-      {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-              <ArrowLeft className="w-4 h-4 text-primary" />
-            </div>
-            <span className="font-medium text-foreground">Torna alla home</span>
-          </Link>
-          
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-white font-bold text-sm">F</span>
-            </div>
-            <span className="font-bold text-lg text-foreground">Flavour</span>
-          </Link>
-        </div>
-      </header>
+      {/* Dynamic Island Navigation */}
+      <SharedNavbar />
 
-      <main>
+      <main className="pt-16">
         {/* Hero Section */}
         <section className="relative py-16 md:py-24 overflow-hidden">
           {/* Background Effects */}
@@ -373,6 +363,36 @@ const AboutPage = () => {
                   </div>
                 </div>
               </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Tech Stack Section */}
+        <section className="py-16 md:py-20">
+          <div className="container">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+                <Code className="w-4 h-4 text-primary" />
+                <span className="text-sm font-semibold text-primary">Tech Stack</span>
+              </div>
+              
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+                Costruito con le migliori tecnologie
+              </h2>
+              <p className="text-muted-foreground mb-8">
+                Stack moderno e performante per un'esperienza utente impeccabile
+              </p>
+              
+              <div className="flex flex-wrap justify-center gap-3">
+                {techStack.map((tech) => (
+                  <div
+                    key={tech}
+                    className="px-4 py-2 rounded-xl bg-card border border-border text-sm font-medium text-foreground hover:border-primary/30 transition-colors"
+                  >
+                    {tech}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
