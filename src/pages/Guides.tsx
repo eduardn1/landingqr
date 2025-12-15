@@ -13,7 +13,6 @@
 import { memo, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import {
-  ArrowLeft,
   ArrowRight,
   BookOpen,
   Clock,
@@ -37,6 +36,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import SharedNavbar from "@/components/shared/SharedNavbar";
 
 interface Guide {
   id: string;
@@ -317,28 +317,13 @@ const GuidesPage = () => {
       }
     }
   }, [scrollToGuide]);
+  
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-              <ArrowLeft className="w-4 h-4 text-primary" />
-            </div>
-            <span className="font-medium text-foreground">Torna alla home</span>
-          </Link>
-          
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-white font-bold text-sm">F</span>
-            </div>
-            <span className="font-bold text-lg text-foreground">Flavour</span>
-          </Link>
-        </div>
-      </header>
+      {/* Dynamic Island Navigation */}
+      <SharedNavbar />
 
-      <main className="py-12 md:py-16">
+      <main className="pt-20 pb-12 md:pt-24 md:pb-16">
         <div className="container">
           {/* Page Header */}
           <div className="text-center mb-12">
