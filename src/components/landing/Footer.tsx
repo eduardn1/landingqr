@@ -42,7 +42,7 @@ const footerLinks = {
   ],
   azienda: [
     { label: "Chi siamo", href: "#" },
-    { label: "Contatti", href: "#" },
+    { label: "Contatti", href: "/contatti", isRoute: true },
     { label: "Partner", href: "#" },
   ],
   legale: [
@@ -169,9 +169,15 @@ const Footer = memo(() => {
             <ul className="space-y-2.5">
               {footerLinks.azienda.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    {link.label}
-                  </a>
+                  {link.isRoute ? (
+                    <Link to={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
