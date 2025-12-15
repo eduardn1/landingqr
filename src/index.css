@@ -54,9 +54,9 @@ html, body {
     --primary-light: 0 0% 20%;
     --primary-dark: 0 0% 0%;
 
-    /* Colored accent for special elements (badges, highlights) */
-    --accent-color: 263 70% 58%;
-    --accent-color-light: 263 70% 68%;
+    /* Colored accent for special elements (badges, highlights) - Orange */
+    --accent-color: 24 95% 53%;
+    --accent-color-light: 24 95% 63%;
 
     /* Monochrome secondary */
     --secondary: 0 0% 96%;
@@ -135,9 +135,9 @@ html, body {
     --primary-light: 0 0% 90%;
     --primary-dark: 0 0% 100%;
 
-    /* Colored accent for special elements (badges, highlights) */
-    --accent-color: 263 70% 68%;
-    --accent-color-light: 263 70% 78%;
+    /* Colored accent for special elements (badges, highlights) - Orange */
+    --accent-color: 24 95% 63%;
+    --accent-color-light: 24 95% 73%;
 
     /* Monochrome secondary */
     --secondary: 0 0% 100% / 0.08;
