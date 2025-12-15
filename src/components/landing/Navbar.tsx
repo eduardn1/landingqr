@@ -64,7 +64,6 @@ const Navbar = () => {
     { id: "home", label: "Home", href: "#", icon: Home },
     { id: "features", label: "Funzionalità", href: "#features", icon: Sparkles },
     { id: "pricing", label: "Prezzi", href: "#pricing", icon: CreditCard },
-    { id: "demo", label: "Demo", href: "/demo", icon: Play },
     { id: "faq", label: "FAQ", href: "#faq", icon: HelpCircle },
   ];
 
@@ -219,11 +218,22 @@ const Navbar = () => {
               </button>
             )}
 
+            {/* Demo Button (bordered) */}
+            <a href="/demo" className="hidden sm:block">
+              <Button 
+                variant="outline"
+                size="sm"
+                className="rounded-full px-4 h-8 lg:h-9 text-xs lg:text-sm border-border hover:border-primary/40"
+              >
+                Demo
+              </Button>
+            </a>
+
             {/* CTA Button */}
             <Button 
               onClick={() => openLeadForm("dynamic_island")}
               size="sm"
-              className="gradient-button rounded-full px-4 h-8 lg:h-9 text-xs lg:text-sm shadow-lg shadow-primary/25"
+              className="gradient-button rounded-full px-4 h-8 lg:h-9 text-xs lg:text-sm shadow-md shadow-primary/20"
             >
               <span className="hidden sm:inline">Inizia gratis</span>
               <Sparkles className="w-4 h-4 sm:hidden" />
