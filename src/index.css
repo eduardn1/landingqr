@@ -698,232 +698,100 @@ html, body {
    Blue primary, cyan-purple gradient text, multi-colored badges
    ═══════════════════════════════════════════════════════════════════════ */
 .colorful {
-  /* Gradient text for headlines - Cyan to Purple (original design) */
-  .text-foreground-50 {
-    background: linear-gradient(135deg, 
-      hsl(195 100% 60%) 0%, 
-      hsl(217 91% 60%) 30%,
-      hsl(270 85% 65%) 70%,
-      hsl(310 85% 60%) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  /* Primary CTA button - Bright BLUE (original design) */
-  .bg-primary {
-    background: hsl(217 91% 55%) !important;
-    box-shadow: 0 4px 25px -5px hsl(217 91% 50% / 0.5);
-  }
-  
-  .bg-primary:hover {
-    background: hsl(217 91% 60%) !important;
-    box-shadow: 0 8px 35px -5px hsl(217 91% 50% / 0.65);
-    transform: translateY(-1px);
-  }
-  
-  /* Logo badge - keep dark with border */
-  .bg-foreground {
-    background: hsl(230 25% 12%) !important;
-    border: 1px solid hsl(230 20% 20%) !important;
-  }
-  
-  /* Accent color - Blue */
-  .text-accent-color {
-    color: hsl(217 91% 65%) !important;
-  }
-  
-  .bg-accent-color\/10 {
-    background: hsl(217 70% 50% / 0.12) !important;
-    border-color: hsl(217 70% 50% / 0.25) !important;
-  }
-  
-  .border-accent-color\/20 {
-    border-color: hsl(217 70% 50% / 0.3) !important;
-  }
-  
-  /* Card backgrounds - Very dark blue */
-  .bg-card {
-    background: hsl(230 25% 8%) !important;
-  }
-  
-  .bg-card\/60, .bg-card\/80, .bg-card\/95 {
-    background: hsl(230 25% 10% / 0.9) !important;
-  }
-  
-  /* Foreground transparency backgrounds */
-  .bg-foreground-03 {
-    background: hsl(230 20% 10%) !important;
-  }
-  
-  .bg-foreground-05, .bg-foreground-10 {
-    background: hsl(230 20% 12%) !important;
-  }
-  
-  /* Borders - dark blue */
-  .border-foreground-10 {
-    border-color: hsl(230 20% 18%) !important;
-  }
-  
-  .border-foreground-20 {
-    border-color: hsl(230 25% 25%) !important;
-  }
-  
-  /* Hero section top glow - Blue/Purple */
-  main > section:first-child::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 900px;
-    height: 500px;
-    background: radial-gradient(ellipse at center top, 
-      hsl(217 91% 50% / 0.12) 0%, 
-      hsl(270 80% 50% / 0.08) 40%,
-      transparent 70%
-    );
-    pointer-events: none;
-  }
-  
-  /* Status colors - Vibrant */
-  .text-success {
-    color: hsl(160 84% 50%) !important;
-  }
-  
-  /* Navbar glass effect */
-  .backdrop-blur-xl {
-    background: hsl(230 25% 8% / 0.85) !important;
-    border-color: hsl(230 20% 18%) !important;
-  }
-  
-  /* Section backgrounds */
-  .border-t.border-foreground-10 {
-    background: hsl(230 25% 6%);
-  }
-  
-  /* Featured card - Purple gradient background (original Tutto-in-uno) */
-  .pricing-card-featured::before {
-    background: linear-gradient(180deg, 
-      hsl(270 60% 35% / 0.4) 0%, 
-      hsl(270 50% 25% / 0.2) 50%,
-      transparent 100%
-    ) !important;
-  }
-  
-  .pricing-card-featured {
-    border-color: hsl(270 50% 50% / 0.4) !important;
-    box-shadow: 0 0 40px hsl(270 60% 50% / 0.15);
-  }
-  
-  /* Gradient glow effects */
-  .blur-3xl, .blur-2xl {
-    opacity: 0.6;
-  }
-
   /* ═══════════════════════════════════════════════════════════════════════
-     FOOTER COLORFUL STYLES - Multi-colored links
+     COLORFUL THEME - Sobrio, elegante, non troppo pesante
+     Background scuro blu, testi bianchi normali, accenti blu/cyan
      ═══════════════════════════════════════════════════════════════════════ */
   
-  /* Footer description - Gradient text */
-  footer .text-foreground-50 {
-    background: linear-gradient(135deg, 
-      hsl(280 80% 65%) 0%, 
-      hsl(195 100% 60%) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  /* Base colors */
+  --background: 230 25% 7%;
+  --foreground: 220 20% 95%;
+  --card: 230 25% 10%;
+  --card-foreground: 220 20% 95%;
+  --primary: 217 91% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 230 20% 15%;
+  --secondary-foreground: 220 20% 90%;
+  --muted: 230 20% 18%;
+  --muted-foreground: 220 15% 65%;
+  --accent: 217 80% 50%;
+  --accent-foreground: 0 0% 100%;
+  --border: 230 20% 18%;
   
-  /* Footer contact links - Cyan */
-  footer a.text-foreground-50 {
-    background: none;
-    -webkit-text-fill-color: hsl(195 100% 60%);
-    color: hsl(195 100% 60%);
-  }
+  /* Foreground shades */
+  --foreground-03: 230 20% 12%;
+  --foreground-05: 230 20% 14%;
+  --foreground-10: 230 20% 16%;
+  --foreground-20: 230 20% 22%;
+  --foreground-50: 220 15% 75%;
+  --foreground-70: 220 15% 85%;
   
-  footer a.text-foreground-50:hover {
-    -webkit-text-fill-color: hsl(195 100% 70%);
-    color: hsl(195 100% 70%);
-  }
-  
-  /* Footer location text - Cyan */
-  footer div.text-foreground-50 {
-    background: none;
-    -webkit-text-fill-color: hsl(195 100% 60%);
-    color: hsl(195 100% 60%);
-  }
-  
-  /* Prodotto links - Cyan */
-  footer ul li a.text-foreground-50 {
-    background: none;
-    -webkit-text-fill-color: hsl(195 100% 60%);
-    color: hsl(195 100% 60%);
-  }
-  
-  /* Different colors per column - using nth-child to target columns */
-  footer .grid > div:nth-child(3) ul li a {
-    color: hsl(195 100% 60%) !important;
-    -webkit-text-fill-color: hsl(195 100% 60%) !important;
-  }
-  
-  footer .grid > div:nth-child(3) ul li a:hover {
-    color: hsl(195 100% 75%) !important;
-    -webkit-text-fill-color: hsl(195 100% 75%) !important;
-  }
-  
-  /* Risorse links - Purple */
-  footer .grid > div:nth-child(4) ul li a {
-    color: hsl(270 85% 65%) !important;
-    -webkit-text-fill-color: hsl(270 85% 65%) !important;
-  }
-  
-  footer .grid > div:nth-child(4) ul li a:hover {
-    color: hsl(270 85% 75%) !important;
-    -webkit-text-fill-color: hsl(270 85% 75%) !important;
-  }
-  
-  /* Azienda links - Teal/Green */
-  footer .grid > div:nth-child(5) ul li a {
-    color: hsl(160 80% 55%) !important;
-    -webkit-text-fill-color: hsl(160 80% 55%) !important;
-  }
-  
-  footer .grid > div:nth-child(5) ul li a:hover {
-    color: hsl(160 80% 70%) !important;
-    -webkit-text-fill-color: hsl(160 80% 70%) !important;
-  }
-  
-  /* Legale links - Pink/Magenta */
-  footer .grid > div:nth-child(6) ul li a {
-    color: hsl(330 85% 65%) !important;
-    -webkit-text-fill-color: hsl(330 85% 65%) !important;
-  }
-  
-  footer .grid > div:nth-child(6) ul li a:hover {
-    color: hsl(330 85% 75%) !important;
-    -webkit-text-fill-color: hsl(330 85% 75%) !important;
-  }
-  
-  /* Footer badges - Different icon colors */
-  footer .flex.flex-wrap.justify-center > div:nth-child(1) svg {
-    color: hsl(195 100% 50%) !important;
-  }
-  
-  footer .flex.flex-wrap.justify-center > div:nth-child(2) svg {
-    color: hsl(230 20% 50%) !important;
-  }
-  
-  footer .flex.flex-wrap.justify-center > div:nth-child(3) svg {
-    color: hsl(160 84% 50%) !important;
-  }
-  
-  /* Developer name highlight */
-  footer a span.font-semibold {
-    color: hsl(195 100% 60%) !important;
-    -webkit-text-fill-color: hsl(195 100% 60%) !important;
-  }
+  /* Accent color */
+  --accent-color: 217 91% 60%;
+}
+
+/* Colorful theme specific overrides */
+.colorful .bg-primary {
+  background: hsl(217 91% 55%) !important;
+  box-shadow: 0 4px 20px -5px hsl(217 91% 50% / 0.4);
+}
+
+.colorful .bg-primary:hover {
+  background: hsl(217 91% 60%) !important;
+  box-shadow: 0 6px 25px -5px hsl(217 91% 50% / 0.5);
+}
+
+/* Header/Navbar - VISIBLE! */
+.colorful nav,
+.colorful header,
+.colorful .backdrop-blur-xl,
+.colorful .backdrop-blur-md {
+  background: hsl(230 25% 10% / 0.95) !important;
+  border-color: hsl(230 20% 20%) !important;
+}
+
+/* Logo badge */
+.colorful .bg-foreground {
+  background: hsl(230 25% 15%) !important;
+  border: 1px solid hsl(230 20% 25%) !important;
+}
+
+/* Accent colors */
+.colorful .text-accent-color {
+  color: hsl(217 91% 65%) !important;
+}
+
+.colorful .bg-accent-color\/10 {
+  background: hsl(217 70% 50% / 0.1) !important;
+}
+
+/* Card backgrounds */
+.colorful .bg-card {
+  background: hsl(230 25% 10%) !important;
+}
+
+/* Status colors */
+.colorful .text-success {
+  color: hsl(160 84% 50%) !important;
+}
+
+/* Featured pricing card - Subtle purple glow */
+.colorful .pricing-card-featured {
+  border-color: hsl(270 50% 45% / 0.4) !important;
+  box-shadow: 0 0 30px hsl(270 60% 50% / 0.12);
+}
+
+/* Footer */
+.colorful footer {
+  background: hsl(230 25% 6%) !important;
+}
+
+.colorful footer a:hover {
+  color: hsl(217 91% 65%) !important;
+}
+
+/* Subtle glow effects */
+.colorful .blur-3xl,
+.colorful .blur-2xl {
+  opacity: 0.5;
 }
