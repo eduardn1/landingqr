@@ -103,14 +103,14 @@ const Features = memo(() => {
 
   return (
     <section id="features" className="section-padding relative overflow-hidden">
-      {/* Subtle background glow - Colored */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-gradient-to-b from-primary/8 via-primary/3 to-transparent rounded-full blur-3xl" />
+      {/* Subtle background glow - Monochrome */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-gradient-to-b from-foreground-05 via-foreground-03 to-transparent rounded-full blur-3xl" />
       
       <div className="container relative z-10">
         {/* Header - Monochrome text, colored badge */}
         <ScrollReveal animation="fadeUp" className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-            <span className="text-sm font-medium text-primary">Piattaforma completa</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-color/10 border border-accent-color/20 mb-6">
+            <span className="text-sm font-medium text-accent-color">Piattaforma completa</span>
           </div>
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
@@ -136,14 +136,14 @@ const Features = memo(() => {
                     onClick={() => handleFeatureClick(index)}
                     className={`w-full text-left p-4 rounded-xl transition-all duration-200 ${
                       isActive 
-                        ? "bg-primary/10 border-2 border-primary/30" 
-                        : "bg-foreground-05 border border-foreground-10 hover:border-foreground-20"
+                        ? "bg-foreground-10 border-2 border-foreground-30" 
+                        : "bg-foreground-03 border border-foreground-10 hover:border-foreground-20"
                     }`}
                   >
                     <div className="flex items-center gap-4">
-                      {/* Icon - Colored when active */}
+                      {/* Icon - Monochrome */}
                       <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
-                        isActive ? "bg-primary text-primary-foreground" : "bg-foreground-10 text-foreground-50"
+                        isActive ? "bg-foreground text-background" : "bg-foreground-10 text-foreground-50"
                       }`}>
                         <Icon className="w-6 h-6" />
                       </div>
@@ -153,9 +153,9 @@ const Features = memo(() => {
                         <p className="text-sm text-foreground-50 truncate">{feature.description}</p>
                       </div>
                       
-                      {/* Stat - Colored when active */}
+                      {/* Stat - Colored accent */}
                       <div className="text-right">
-                        <div className={`text-xl font-bold ${isActive ? "text-primary" : "text-foreground"}`}>
+                        <div className={`text-xl font-bold ${isActive ? "text-accent-color" : "text-foreground"}`}>
                           {feature.stat}
                         </div>
                         <div className="text-xs text-foreground-50">{feature.statLabel}</div>
@@ -167,16 +167,16 @@ const Features = memo(() => {
             })}
           </StaggerContainer>
 
-          {/* Right: Feature Detail - Monochrome card, colored accents */}
+          {/* Right: Feature Detail - Monochrome card, colored accents for important elements */}
           <ScrollReveal animation="fadeIn" className="lg:sticky lg:top-24 h-fit">
-            <div className="relative p-8 rounded-2xl bg-foreground-05 border border-foreground-10 overflow-hidden">
-              {/* Colored gradient top */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
+            <div className="relative p-8 rounded-2xl bg-foreground-03 border border-foreground-10 overflow-hidden">
+              {/* Monochrome gradient top */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-foreground-30 to-transparent" />
               
               <div className="mb-6">
-                {/* Colored icon */}
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                  <ActiveIcon className="w-8 h-8 text-primary" />
+                {/* Colored icon for highlight */}
+                <div className="w-16 h-16 rounded-2xl bg-accent-color/10 flex items-center justify-center mb-6">
+                  <ActiveIcon className="w-8 h-8 text-accent-color" />
                 </div>
                 
                 <h3 className="text-2xl font-bold text-foreground mb-3">
@@ -191,17 +191,17 @@ const Features = memo(() => {
               <div className="space-y-3 mb-8">
                 {activeData.benefits.map((benefit) => (
                   <div key={benefit} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
-                      <Check className="w-3 h-3 text-primary" />
+                    <div className="w-5 h-5 rounded-full bg-accent-color/20 flex items-center justify-center">
+                      <Check className="w-3 h-3 text-accent-color" />
                     </div>
                     <span className="text-sm text-foreground">{benefit}</span>
                   </div>
                 ))}
               </div>
               
-              {/* Stat highlight - Colored stat */}
+              {/* Stat highlight - Colored stat value */}
               <div className="flex items-center gap-4 p-4 rounded-xl bg-foreground-10">
-                <div className="text-4xl font-bold text-primary">{activeData.stat}</div>
+                <div className="text-4xl font-bold text-accent-color">{activeData.stat}</div>
                 <div className="text-foreground-50">{activeData.statLabel}</div>
               </div>
             </div>

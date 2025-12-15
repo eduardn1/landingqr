@@ -18,17 +18,17 @@ const Hero = memo(() => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      {/* Subtle Background Glow - Colored accent */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[500px] bg-gradient-to-b from-primary/10 via-primary/5 to-transparent rounded-full blur-3xl opacity-50" />
+      {/* Subtle Background Glow - Monochrome */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[500px] bg-gradient-to-b from-foreground-05 via-foreground-03 to-transparent rounded-full blur-3xl" />
       
       <div className="container relative z-10 py-24 md:py-32">
         <div className="max-w-4xl mx-auto text-center">
           
           {/* Badge - Colored accent */}
           <ScrollReveal animation="fadeIn" delay={0}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-medium text-primary">Menu digitali per bar, ristoranti e pub</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-color/10 border border-accent-color/20 mb-8">
+              <div className="w-2 h-2 rounded-full bg-accent-color animate-pulse" />
+              <span className="text-sm font-medium text-accent-color">Menu digitali per bar, ristoranti e pub</span>
             </div>
           </ScrollReveal>
 
@@ -37,7 +37,7 @@ const Hero = memo(() => {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-balance text-foreground">
               La tua attività,
               <br />
-              <span className="text-foreground-70">digitalizzata.</span>
+              <span className="text-foreground-50">digitalizzata.</span>
             </h1>
           </ScrollReveal>
 
@@ -49,14 +49,14 @@ const Hero = memo(() => {
             </p>
           </ScrollReveal>
 
-          {/* CTAs - Primary colored, secondary monochrome */}
+          {/* CTAs - Primary monochrome (black/white), secondary ghost */}
           <ScrollReveal animation="fadeUp" delay={0.3}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <TapButton
                 variant="primary"
                 size="lg"
                 onClick={() => openLeadForm("hero-cta")}
-                className="px-8 py-4 text-base font-semibold shadow-lg shadow-primary/25"
+                className="px-8 py-4 text-base font-semibold"
               >
                 Inizia gratis
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -66,7 +66,7 @@ const Hero = memo(() => {
                 variant="outline"
                 size="lg"
                 onClick={() => window.open("https://demo2.studiojem.it", "_blank")}
-                className="px-8 py-4 text-base border-foreground-20 text-foreground-70 hover:text-foreground hover:border-foreground-30"
+                className="px-8 py-4 text-base border-foreground-20 text-foreground-60 hover:text-foreground hover:border-foreground-40 hover:bg-foreground-05"
               >
                 <Play className="w-4 h-4 mr-2" />
                 Guarda demo
@@ -79,7 +79,7 @@ const Hero = memo(() => {
             <div className="flex flex-wrap gap-6 items-center justify-center text-sm text-foreground-50">
               {["14 giorni gratis", "Nessuna carta richiesta", "Cancella quando vuoi"].map((text) => (
                 <span key={text} className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary" />
+                  <Check className="w-4 h-4 text-accent-color" />
                   {text}
                 </span>
               ))}
@@ -87,20 +87,20 @@ const Hero = memo(() => {
           </ScrollReveal>
         </div>
 
-        {/* Product Preview - Monochrome cards, colored stats */}
+        {/* Product Preview - Monochrome cards */}
         <ScrollReveal animation="fadeUp" delay={0.5} className="mt-16 md:mt-24">
           <div className="relative max-w-5xl mx-auto">
-            {/* Subtle glow behind - Colored */}
-            <div className="absolute -inset-4 bg-gradient-to-b from-primary/8 to-transparent rounded-3xl blur-2xl opacity-50" />
+            {/* Subtle glow behind - Monochrome */}
+            <div className="absolute -inset-4 bg-gradient-to-b from-foreground-05 to-transparent rounded-3xl blur-2xl" />
             
             {/* Dashboard Preview */}
             <div className="relative rounded-2xl overflow-hidden border border-foreground-10 bg-card shadow-2xl">
               {/* Browser Chrome - Monochrome */}
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-foreground-10 bg-foreground-05">
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-foreground-10 bg-foreground-03">
                 <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-destructive/60" />
-                  <div className="w-3 h-3 rounded-full bg-warning/60" />
-                  <div className="w-3 h-3 rounded-full bg-success/60" />
+                  <div className="w-3 h-3 rounded-full bg-foreground-20" />
+                  <div className="w-3 h-3 rounded-full bg-foreground-15" />
+                  <div className="w-3 h-3 rounded-full bg-foreground-10" />
                 </div>
                 <div className="flex-1 flex justify-center">
                   <div className="px-4 py-1 rounded-md bg-foreground-05 text-xs text-foreground-50">
@@ -119,10 +119,10 @@ const Hero = memo(() => {
                     { label: "Clienti", value: "89", change: "+15%" },
                     { label: "Prenotazioni", value: "24", change: "+5%" },
                   ].map((stat) => (
-                    <div key={stat.label} className="p-4 rounded-xl bg-foreground-05 border border-foreground-10">
+                    <div key={stat.label} className="p-4 rounded-xl bg-foreground-03 border border-foreground-10">
                       <p className="text-xs text-foreground-50 mb-1">{stat.label}</p>
                       <p className="text-2xl font-bold text-foreground">{stat.value}</p>
-                      <span className="text-xs text-primary font-medium">{stat.change}</span>
+                      <span className="text-xs text-success font-medium">{stat.change}</span>
                     </div>
                   ))}
                 </div>
@@ -139,14 +139,14 @@ const Hero = memo(() => {
               <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-card to-transparent pointer-events-none" />
             </div>
 
-            {/* Floating Badge - Colored avatars, monochrome text */}
+            {/* Floating Badge - Colored avatars (photos remain colored) */}
             <div className="absolute -top-3 -right-3 md:top-4 md:right-4 hidden sm:block">
               <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-card border border-foreground-10 shadow-lg">
                 <div className="flex -space-x-1">
                   {[0, 1, 2, 3].map((i) => (
                     <div 
                       key={i} 
-                      className="w-6 h-6 rounded-full bg-primary/20 border-2 border-card flex items-center justify-center text-[10px] font-bold text-primary"
+                      className="w-6 h-6 rounded-full bg-accent-color/20 border-2 border-card flex items-center justify-center text-[10px] font-bold text-accent-color"
                     >
                       {String.fromCharCode(65 + i)}
                     </div>
