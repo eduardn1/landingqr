@@ -19,10 +19,6 @@ import {
   Shield, 
   Lock, 
   CheckCircle,
-  Instagram,
-  Facebook,
-  Linkedin,
-  MessageCircle,
   BookOpen,
   HelpCircle,
   Sparkles,
@@ -53,13 +49,6 @@ const footerLinks = {
     { label: "Cookie Policy", href: "/cookie-policy", isRoute: true },
   ],
 };
-
-const socialLinks = [
-  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-  { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: MessageCircle, href: "https://wa.me/393533811359", label: "WhatsApp" },
-];
 
 const badges = [
   { icon: Shield, label: "GDPR Compliant" },
@@ -98,22 +87,6 @@ const Footer = memo(() => {
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="w-4 h-4" /> Cagliari, Italia
               </div>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex gap-2 pt-2">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-4 h-4" />
-                </a>
-              ))}
             </div>
           </div>
 
