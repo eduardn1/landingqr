@@ -10,8 +10,8 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import { memo } from "react";
-import { Link } from "react-router-dom";
+import { memo, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import {
   ArrowLeft,
   ArrowRight,
@@ -235,7 +235,7 @@ const GuideCard = memo(({ guide }: { guide: Guide }) => {
   const Icon = guide.icon;
 
   return (
-    <div className="group relative bg-card border border-border rounded-xl overflow-hidden hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+    <div id={`guide-${guide.id}`} className="group relative bg-card border border-border rounded-xl overflow-hidden hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
       {/* Content */}
       <div className="p-5">
         {/* Header row */}
@@ -285,7 +285,7 @@ const GuideCard = memo(({ guide }: { guide: Guide }) => {
         </div>
 
         {/* CTA */}
-        <Link to={`/demo?skip=true&section=${guide.demoSection}&from=guides`}>
+        <Link to={`/demo?skip=true&section=${guide.demoSection}&from=guides&guideId=${guide.id}`}>
           <Button variant="outline" className="w-full gap-2 group/btn">
             <Play className="w-4 h-4" />
             Prova nella demo
@@ -300,6 +300,23 @@ const GuideCard = memo(({ guide }: { guide: Guide }) => {
 GuideCard.displayName = 'GuideCard';
 
 const GuidesPage = () => {
+  const [searchParams] = useSearchParams();
+  const scrollToGuide = searchParams.get("scrollTo");
+
+  useEffect(() => {
+    if (scrollToGuide) {
+      const element = document.getElementById(`guide-${scrollToGuide}`);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+          element.classList.add("ring-2", "ring-primary", "ring-offset-2");
+          setTimeout(() => {
+            element.classList.remove("ring-2", "ring-primary", "ring-offset-2");
+          }, 2000);
+        }, 100);
+      }
+    }
+  }, [scrollToGuide]);
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
