@@ -23,9 +23,11 @@ import {
   HelpCircle, 
   MessageSquare,
   Loader2,
-  Palette
+  Palette,
+  Search
 } from 'lucide-react';
 import BrandSettingsEditor from '@/components/admin/BrandSettingsEditor';
+import SEOSettingsEditor from '@/components/admin/SEOSettingsEditor';
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -95,7 +97,8 @@ const Admin = () => {
   }
 
   const sections = [
-    { id: 'brand', label: 'Brand & SEO', icon: Palette },
+    { id: 'brand', label: 'Brand', icon: Palette },
+    { id: 'seo', label: 'SEO Completo', icon: Search },
     { id: 'hero', label: 'Hero', icon: Sparkles },
     { id: 'features', label: 'Features', icon: LayoutGrid },
     { id: 'pricing', label: 'Pricing', icon: CreditCard },
@@ -140,9 +143,14 @@ const Admin = () => {
             ))}
           </TabsList>
 
-          {/* Brand & SEO Section */}
+          {/* Brand Section */}
           <TabsContent value="brand">
             <BrandSettingsEditor />
+          </TabsContent>
+
+          {/* SEO Section */}
+          <TabsContent value="seo">
+            <SEOSettingsEditor />
           </TabsContent>
 
           {/* Hero Section */}

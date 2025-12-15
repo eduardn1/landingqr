@@ -18,6 +18,37 @@ interface BrandSettings {
   og_image_url: string | null;
   brand_primary_color: string;
   brand_secondary_color: string;
+  // Advanced SEO
+  canonical_url: string | null;
+  robots_txt: string | null;
+  google_site_verification: string | null;
+  bing_site_verification: string | null;
+  yandex_verification: string | null;
+  // Social
+  facebook_app_id: string | null;
+  twitter_card_type: string;
+  instagram_handle: string | null;
+  linkedin_url: string | null;
+  // Schema.org
+  schema_org_type: string;
+  schema_org_name: string;
+  schema_org_logo: string | null;
+  schema_org_address: string | null;
+  schema_org_phone: string | null;
+  schema_org_email: string | null;
+  // PWA
+  theme_color: string;
+  background_color: string;
+  manifest_name: string;
+  manifest_short_name: string;
+  // Analytics
+  google_analytics_id: string | null;
+  facebook_pixel_id: string | null;
+  hotjar_id: string | null;
+  // Indexing
+  google_indexing_enabled: string;
+  last_sitemap_update: string | null;
+  indexed_pages: string;
 }
 
 const defaultSettings: BrandSettings = {
@@ -32,6 +63,31 @@ const defaultSettings: BrandSettings = {
   og_image_url: null,
   brand_primary_color: '#8B5CF6',
   brand_secondary_color: '#EC4899',
+  canonical_url: null,
+  robots_txt: null,
+  google_site_verification: null,
+  bing_site_verification: null,
+  yandex_verification: null,
+  facebook_app_id: null,
+  twitter_card_type: 'summary_large_image',
+  instagram_handle: null,
+  linkedin_url: null,
+  schema_org_type: 'Organization',
+  schema_org_name: 'Flavour',
+  schema_org_logo: null,
+  schema_org_address: null,
+  schema_org_phone: null,
+  schema_org_email: null,
+  theme_color: '#8B5CF6',
+  background_color: '#000000',
+  manifest_name: 'Flavour - Menu Digitali',
+  manifest_short_name: 'Flavour',
+  google_analytics_id: null,
+  facebook_pixel_id: null,
+  hotjar_id: null,
+  google_indexing_enabled: 'false',
+  last_sitemap_update: null,
+  indexed_pages: '[]',
 };
 
 export const useBrandSettings = () => {
