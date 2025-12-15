@@ -89,7 +89,9 @@ const Navbar = () => {
   ];
 
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    const order = ["colorful", "dark", "light"] as const;
+    const idx = Math.max(0, order.indexOf((theme as any) ?? "colorful"));
+    setTheme(order[(idx + 1) % order.length]);
   };
 
   const handleIslandClick = () => {
@@ -246,12 +248,14 @@ const Navbar = () => {
               <button
                 onClick={toggleTheme}
                 className="p-1.5 lg:p-2 rounded-lg hover:bg-muted/50 transition-colors shrink-0"
-                aria-label="Toggle theme"
+                aria-label="Cambia tema (Light / Dark / Colorful)"
               >
                 {theme === "dark" ? (
-                  <Sun className="w-4 h-4 lg:w-5 lg:h-5 text-yellow-500" />
+                  <Sun className="w-4 h-4 lg:w-5 lg:h-5 text-foreground" />
+                ) : theme === "light" ? (
+                  <Moon className="w-4 h-4 lg:w-5 lg:h-5 text-foreground" />
                 ) : (
-                  <Moon className="w-4 h-4 lg:w-5 lg:h-5 text-primary" />
+                  <Sparkles className="w-4 h-4 lg:w-5 lg:h-5 text-foreground" />
                 )}
               </button>
             )}
