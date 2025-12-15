@@ -30,6 +30,7 @@ const LeadForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -38,8 +39,36 @@ const LeadForm = () => {
     message: "",
   });
 
+  const validateStep = (step: number): boolean => {
+    const newErrors: Record<string, string> = {};
+    
+    if (step === 1) {
+      if (formData.name.trim().length < 2) {
+        newErrors.name = "Il nome deve avere almeno 2 caratteri";
+      }
+    }
+    if (step === 2) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        newErrors.email = "Inserisci un'email valida";
+      }
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Final validation before submit
+    if (currentStep < 3) {
+      if (validateStep(currentStep)) {
+        setCurrentStep(currentStep + 1);
+      }
+      return;
+    }
+    
     setIsSubmitting(true);
 
     try {
@@ -57,6 +86,7 @@ const LeadForm = () => {
         closeLeadForm();
         setIsSuccess(false);
         setCurrentStep(1);
+        setErrors({});
         setFormData({
           name: "",
           email: "",
@@ -76,16 +106,32 @@ const LeadForm = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && currentStep < 3) {
+      e.preventDefault();
+      if (validateStep(currentStep)) {
+        setCurrentStep(currentStep + 1);
+      }
+    }
   };
 
   const nextStep = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (currentStep < 3) setCurrentStep(currentStep + 1);
+    if (validateStep(currentStep) && currentStep < 3) {
+      setCurrentStep(currentStep + 1);
+    }
   };
 
   const prevStep = (e: React.MouseEvent) => {
@@ -95,8 +141,11 @@ const LeadForm = () => {
   };
 
   const canProceed = () => {
-    if (currentStep === 1) return formData.name.length >= 2;
-    if (currentStep === 2) return formData.email.includes("@");
+    if (currentStep === 1) return formData.name.trim().length >= 2;
+    if (currentStep === 2) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(formData.email);
+    }
     return true;
   };
 
@@ -213,10 +262,10 @@ const LeadForm = () => {
                       {currentStep === 1 && (
                         <motion.div
                           key="step1"
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -20 }}
-                          transition={{ duration: 0.3 }}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.2 }}
                           className="space-y-4"
                         >
                           <div className="space-y-2">
@@ -231,10 +280,14 @@ const LeadForm = () => {
                                 placeholder="Mario Rossi"
                                 value={formData.name}
                                 onChange={handleChange}
+                                onKeyDown={handleKeyDown}
                                 required
-                                className="pl-12 h-12 bg-muted/50 border-border focus:border-primary"
+                                className={`pl-12 h-12 bg-muted/50 border-border focus:border-primary ${errors.name ? 'border-destructive' : ''}`}
                               />
                             </div>
+                            {errors.name && (
+                              <p className="text-sm text-destructive">{errors.name}</p>
+                            )}
                           </div>
                         </motion.div>
                       )}
@@ -242,10 +295,10 @@ const LeadForm = () => {
                       {currentStep === 2 && (
                         <motion.div
                           key="step2"
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -20 }}
-                          transition={{ duration: 0.3 }}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.2 }}
                           className="space-y-4"
                         >
                           <div className="space-y-2">
@@ -261,10 +314,14 @@ const LeadForm = () => {
                                 placeholder="mario@ristorante.it"
                                 value={formData.email}
                                 onChange={handleChange}
+                                onKeyDown={handleKeyDown}
                                 required
-                                className="pl-12 h-12 bg-muted/50 border-border focus:border-primary"
+                                className={`pl-12 h-12 bg-muted/50 border-border focus:border-primary ${errors.email ? 'border-destructive' : ''}`}
                               />
                             </div>
+                            {errors.email && (
+                              <p className="text-sm text-destructive">{errors.email}</p>
+                            )}
                           </div>
                           <div className="space-y-2">
                             <Label htmlFor="phone" className="text-foreground">
@@ -279,6 +336,7 @@ const LeadForm = () => {
                                 placeholder="+39 333 1234567"
                                 value={formData.phone}
                                 onChange={handleChange}
+                                onKeyDown={handleKeyDown}
                                 className="pl-12 h-12 bg-muted/50 border-border focus:border-primary"
                               />
                             </div>
@@ -289,10 +347,10 @@ const LeadForm = () => {
                       {currentStep === 3 && (
                         <motion.div
                           key="step3"
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -20 }}
-                          transition={{ duration: 0.3 }}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.2 }}
                           className="space-y-4"
                         >
                           <div className="space-y-2">
