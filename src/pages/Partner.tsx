@@ -14,6 +14,7 @@ import { memo, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SharedNavbar from "@/components/shared/SharedNavbar";
+import Footer from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -658,6 +659,8 @@ const Partner = memo(() => {
           </div>
         </section>
       </main>
+      
+      <Footer />
     </div>
   );
 });

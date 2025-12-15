@@ -33,6 +33,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import SharedNavbar from "@/components/shared/SharedNavbar";
+import Footer from "@/components/landing/Footer";
 
 interface FAQItem {
   question: string;
@@ -318,14 +319,7 @@ const FAQPage = () => {
         </div>
       </main>
 
-      {/* Simple Footer */}
-      <footer className="border-t border-border py-8 bg-muted/30">
-        <div className="container text-center">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Flavour. Tutti i diritti riservati.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

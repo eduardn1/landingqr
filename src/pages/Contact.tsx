@@ -20,9 +20,6 @@ import {
   MessageCircle,
   Clock,
   CheckCircle,
-  Instagram,
-  Facebook,
-  Linkedin,
   Loader2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -32,6 +29,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import SharedNavbar from "@/components/shared/SharedNavbar";
+import Footer from "@/components/landing/Footer";
 
 const contactMethods = [
   {
@@ -62,12 +60,6 @@ const contactMethods = [
     href: null,
     description: "Sardegna",
   },
-];
-
-const socialLinks = [
-  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-  { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
 ];
 
 const ContactPage = () => {
@@ -211,24 +203,6 @@ const ContactPage = () => {
                 })}
               </div>
 
-              {/* Social Links */}
-              <div className="pt-4">
-                <p className="text-sm font-medium text-foreground mb-3">Seguici sui social</p>
-                <div className="flex gap-2">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
-                      aria-label={social.label}
-                    >
-                      <social.icon className="w-5 h-5" />
-                    </a>
-                  ))}
-                </div>
-              </div>
             </div>
 
             {/* Contact Form */}
@@ -366,6 +340,8 @@ const ContactPage = () => {
           </div>
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 };

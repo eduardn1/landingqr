@@ -37,6 +37,7 @@ import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import SharedNavbar from "@/components/shared/SharedNavbar";
+import Footer from "@/components/landing/Footer";
 
 interface Guide {
   id: string;
@@ -380,6 +381,8 @@ const GuidesPage = () => {
           </div>
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 };
