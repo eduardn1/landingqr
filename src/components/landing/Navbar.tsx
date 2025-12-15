@@ -94,93 +94,9 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Desktop Navigation */}
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-        className={`hidden lg:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-background/80 backdrop-blur-xl border-b border-border py-3"
-            : "bg-transparent py-5"
-        }`}
-      >
-        <div className="container flex items-center justify-between">
-          {/* Logo */}
-          <a href="/" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/25">
-              <span className="text-white font-bold text-base">F</span>
-            </div>
-            <span className="font-bold text-xl tracking-tight text-foreground">Flavour</span>
-          </a>
-
-          {/* Desktop Navigation */}
-          <div className="flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-
-          {/* Desktop CTA + Theme Toggle */}
-          <div className="flex items-center gap-3">
-            {/* Theme Toggle */}
-            {mounted && (
-              <button
-                onClick={toggleTheme}
-                className="p-2.5 rounded-xl bg-muted/50 hover:bg-muted border border-border transition-all duration-300 group"
-                aria-label="Toggle theme"
-              >
-                <AnimatePresence mode="wait">
-                  {theme === "dark" ? (
-                    <motion.div
-                      key="sun"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Sun className="w-4 h-4 text-yellow-500" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="moon"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Moon className="w-4 h-4 text-primary" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </button>
-            )}
-            
-            <a
-              href="https://demo2.studiojem.it"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-                Demo
-              </Button>
-            </a>
-            <Button size="sm" className="gradient-button rounded-full px-5">
-              Inizia gratis
-            </Button>
-          </div>
-        </div>
-      </motion.nav>
-
-      {/* Mobile "Dynamic Island" Header with Glass Effect */}
+      {/* Dynamic Island for ALL devices */}
       <div
-        className="lg:hidden fixed top-3 left-0 right-0 z-50 flex justify-center px-3"
+        className="fixed top-3 left-0 right-0 z-50 flex justify-center px-3"
         style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}
       >
         <motion.div
@@ -191,7 +107,7 @@ const Navbar = () => {
           onClick={handleIslandClick}
           className={`relative overflow-hidden transition-all duration-500 cursor-pointer ${
             isExpanded 
-              ? "w-full max-w-sm rounded-2xl" 
+              ? "w-full max-w-md rounded-2xl" 
               : "rounded-full"
           }`}
           style={{
@@ -219,30 +135,30 @@ const Navbar = () => {
           {/* Compact State */}
           <motion.div 
             layout
-            className={`relative flex items-center justify-center gap-3 px-4 py-2.5 ${isExpanded ? 'border-b border-border/30' : ''}`}
+            className={`relative flex items-center justify-center gap-3 px-5 py-3 ${isExpanded ? 'border-b border-border/30' : ''}`}
           >
             {/* Notification Badge */}
             <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-gradient-to-r from-rose-500 to-pink-500 animate-pulse shadow-lg shadow-rose-500/50" />
 
             {/* Logo */}
             <a href="/" className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md shadow-primary/30">
-                <span className="text-white font-bold text-xs">F</span>
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md shadow-primary/30">
+                <span className="text-white font-bold text-sm">F</span>
               </div>
-              <span className="font-bold text-sm tracking-tight text-foreground">Flavour</span>
+              <span className="font-bold text-base tracking-tight text-foreground">Flavour</span>
             </a>
 
-            <div className="w-px h-5 bg-border/50" />
+            <div className="w-px h-6 bg-border/50" />
 
             {/* Active Section Indicator */}
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-primary/10">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10">
               {(() => {
                 const activeLink = navLinks.find(l => l.id === activeSection);
                 const Icon = activeLink?.icon || Home;
                 return (
                   <>
-                    <Icon className="w-3 h-3 text-primary" />
-                    <span className="text-[10px] font-medium text-primary">{activeLink?.label || 'Home'}</span>
+                    <Icon className="w-4 h-4 text-primary" />
+                    <span className="text-xs font-medium text-primary">{activeLink?.label || 'Home'}</span>
                   </>
                 );
               })()}
@@ -255,13 +171,13 @@ const Navbar = () => {
                   e.stopPropagation();
                   toggleTheme();
                 }}
-                className="p-1.5 rounded-lg hover:bg-muted/50 transition-colors"
+                className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
                 aria-label="Toggle theme"
               >
                 {theme === "dark" ? (
-                  <Sun className="w-4 h-4 text-yellow-500" />
+                  <Sun className="w-5 h-5 text-yellow-500" />
                 ) : (
-                  <Moon className="w-4 h-4 text-primary" />
+                  <Moon className="w-5 h-5 text-primary" />
                 )}
               </button>
             )}
@@ -270,9 +186,9 @@ const Navbar = () => {
             <motion.div 
               animate={{ rotate: isExpanded ? 180 : 0 }}
               transition={{ duration: 0.3 }}
-              className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center"
+              className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center"
             >
-              <svg className="w-3 h-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </motion.div>
@@ -288,7 +204,7 @@ const Navbar = () => {
                 transition={{ duration: 0.25, ease: "easeOut" }}
                 className="overflow-hidden"
               >
-                <div className="p-3 grid grid-cols-5 gap-1">
+                <div className="p-4 flex justify-center gap-2">
                   {navLinks.map((link) => {
                     const IconComponent = link.icon;
                     const isActive = activeSection === link.id;
@@ -300,7 +216,7 @@ const Navbar = () => {
                           e.stopPropagation();
                           handleNavClick(link.href);
                         }}
-                        className={`relative flex flex-col items-center gap-1 p-2 rounded-xl transition-all ${
+                        className={`relative flex flex-col items-center gap-1.5 px-4 py-2.5 rounded-xl transition-all ${
                           isActive 
                             ? 'bg-primary/15' 
                             : 'hover:bg-muted/50'
@@ -314,7 +230,7 @@ const Navbar = () => {
                           />
                         )}
                         <IconComponent className={`w-5 h-5 relative z-10 ${isActive ? 'text-primary' : 'text-muted-foreground'}`} />
-                        <span className={`text-[9px] font-medium relative z-10 ${isActive ? 'text-primary' : 'text-muted-foreground'}`}>
+                        <span className={`text-xs font-medium relative z-10 ${isActive ? 'text-primary' : 'text-muted-foreground'}`}>
                           {link.label}
                         </span>
                       </button>
@@ -323,14 +239,14 @@ const Navbar = () => {
                 </div>
                 
                 {/* CTA Button */}
-                <div className="px-3 pb-3">
+                <div className="px-4 pb-4">
                   <Button 
                     onClick={(e) => {
                       e.stopPropagation();
-                      openLeadForm("mobile_island");
+                      openLeadForm("dynamic_island");
                       setIsExpanded(false);
                     }}
-                    className="w-full gradient-button rounded-xl h-10 text-sm shadow-lg shadow-primary/25"
+                    className="w-full gradient-button rounded-xl h-11 text-sm shadow-lg shadow-primary/25"
                   >
                     <Sparkles className="w-4 h-4 mr-2" />
                     Inizia gratis
