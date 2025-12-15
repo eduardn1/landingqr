@@ -12,122 +12,8 @@ html, body {
   text-rendering: optimizeLegibility;
 }
 @layer base {
-  /* Theme 1: LIGHT (bianco/nero) */
+  /* LIGHT Theme - Clean Modern with Colorful Accents (versione 1:14 PM) */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
-
-    --card: 0 0% 99%;
-    --card-foreground: 0 0% 0%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
-
-    /* Primary = nero */
-    --primary: 0 0% 0%;
-    --primary-foreground: 0 0% 100%;
-    --primary-light: 0 0% 15%;
-    --primary-dark: 0 0% 0%;
-    --primary-glow: 0 0% 0%;
-
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 0%;
-
-    --muted: 0 0% 94%;
-    --muted-foreground: 0 0% 45%;
-
-    /* Accent = colore attuale */
-    --accent: 185 94% 42%;
-    --accent-foreground: 0 0% 100%;
-
-    --success: 152 76% 38%;
-    --success-foreground: 0 0% 100%;
-
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 0%;
-
-    --destructive: 0 72% 50%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 0 0% 88%;
-    --border-subtle: 0 0% 92%;
-    --border-medium: 0 0% 82%;
-    --border-strong: 0 0% 75%;
-    --border-glow: 0 0% 0%;
-
-    --input: 0 0% 92%;
-    --ring: 0 0% 0%;
-
-    --radius: 0.75rem;
-
-    --sidebar-background: 0 0% 99%;
-    --sidebar-foreground: 0 0% 0%;
-    --sidebar-primary: 0 0% 0%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 0%;
-    --sidebar-border: 0 0% 88%;
-    --sidebar-ring: 0 0% 0%;
-  }
-
-  /* Theme 2: DARK (nero puro) */
-  .dark {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 100%;
-
-    --card: 0 0% 6%;
-    --card-foreground: 0 0% 100%;
-
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 100%;
-
-    /* Primary = bianco */
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
-    --primary-light: 0 0% 100%;
-    --primary-dark: 0 0% 85%;
-    --primary-glow: 0 0% 100%;
-
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 62%;
-
-    /* Accent = colore attuale */
-    --accent: 185 94% 52%;
-    --accent-foreground: 0 0% 0%;
-
-    --success: 152 76% 45%;
-    --success-foreground: 0 0% 100%;
-
-    --warning: 38 92% 55%;
-    --warning-foreground: 0 0% 0%;
-
-    --destructive: 0 72% 55%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 0 0% 16%;
-    --border-subtle: 0 0% 12%;
-    --border-medium: 0 0% 20%;
-    --border-strong: 0 0% 28%;
-    --border-glow: 0 0% 100%;
-
-    --input: 0 0% 12%;
-    --ring: 0 0% 100%;
-
-    --sidebar-background: 0 0% 4%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 0 0% 100%;
-    --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent: 0 0% 10%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 16%;
-    --sidebar-ring: 0 0% 100%;
-  }
-
-  /* Theme 3: COLORFUL (la base “colorata” precedente) */
-  .colorful {
     --background: 0 0% 100%;
     --foreground: 225 15% 10%;
 
@@ -183,8 +69,63 @@ html, body {
     --sidebar-border: 225 15% 88%;
     --sidebar-ring: 250 89% 58%;
   }
-}
 
+  /* DARK Theme - Premium Dark with Colorful Accents (versione 1:14 PM) */
+  .dark {
+    --background: 225 15% 3%;
+    --foreground: 0 0% 98%;
+
+    --card: 225 15% 5%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 225 15% 5%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Electric Indigo Primary */
+    --primary: 250 89% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 250 89% 75%;
+    --primary-dark: 250 89% 55%;
+    --primary-glow: 250 89% 65%;
+
+    --secondary: 225 15% 8%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 225 15% 10%;
+    --muted-foreground: 225 10% 55%;
+
+    /* Cyan Accent */
+    --accent: 185 94% 52%;
+    --accent-foreground: 0 0% 0%;
+
+    --success: 152 76% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 55%;
+    --warning-foreground: 0 0% 0%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 225 15% 12%;
+    --border-subtle: 225 15% 8%;
+    --border-medium: 225 15% 18%;
+    --border-strong: 225 15% 25%;
+    --border-glow: 250 89% 65%;
+
+    --input: 225 15% 10%;
+    --ring: 250 89% 65%;
+
+    --sidebar-background: 225 15% 3%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 250 89% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 225 15% 8%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 225 15% 12%;
+    --sidebar-ring: 250 89% 65%;
+  }
+}
 
 @layer base {
   * {
