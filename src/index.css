@@ -181,12 +181,12 @@ html, body {
   }
 
   /* ═══════════════════════════════════════════════════════════════════════
-     COLORFUL THEME - Dark Vibrant with Purple/Blue Gradients
-     The original premium dark style with glow effects
+     COLORFUL THEME - Original Premium Dark Design (1:14 PM version)
+     Dark vibrant with purple gradients, colorful badges, glow effects
      ═══════════════════════════════════════════════════════════════════════ */
   .colorful {
-    /* Dark background with purple undertone */
-    --background: 250 30% 5%;
+    /* Very dark background - almost black with blue undertone */
+    --background: 240 20% 4%;
     --foreground: 0 0% 98%;
 
     /* White transparencies for UI elements */
@@ -203,60 +203,60 @@ html, body {
     --foreground-05: 0 0% 100% / 0.05;
     --foreground-03: 0 0% 100% / 0.03;
 
-    /* Glass cards with purple tint */
-    --card: 250 30% 10%;
+    /* Dark cards */
+    --card: 240 15% 8%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 250 30% 10%;
+    --popover: 240 15% 10%;
     --popover-foreground: 0 0% 98%;
 
     /* Primary = Vibrant purple for CTAs */
-    --primary: 263 90% 60%;
+    --primary: 258 90% 66%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 263 90% 70%;
-    --primary-dark: 263 90% 50%;
+    --primary-light: 258 90% 75%;
+    --primary-dark: 258 90% 55%;
 
-    /* Colored accents - Purple and Orange */
-    --accent-color: 263 90% 65%;
-    --accent-color-light: 24 95% 60%;
+    /* Colored accents - Purple */
+    --accent-color: 258 90% 66%;
+    --accent-color-light: 330 90% 65%;
 
-    /* Secondary with purple tint */
-    --secondary: 250 30% 15%;
+    /* Secondary */
+    --secondary: 240 15% 13%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 250 30% 12%;
+    --muted: 240 15% 10%;
     --muted-foreground: 0 0% 100% / 0.6;
 
     /* Accent backgrounds */
-    --accent: 263 50% 20%;
+    --accent: 258 40% 15%;
     --accent-foreground: 0 0% 98%;
 
     /* Status Colors - Vibrant */
-    --success: 142 76% 45%;
+    --success: 160 84% 50%;
     --success-foreground: 0 0% 100%;
     --warning: 38 92% 55%;
     --warning-foreground: 0 0% 0%;
     --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders with purple glow tint */
-    --border: 263 40% 25%;
-    --border-subtle: 263 30% 18%;
-    --border-medium: 263 40% 30%;
-    --border-strong: 263 50% 40%;
+    /* Borders - subtle purple tint */
+    --border: 240 15% 15%;
+    --border-subtle: 240 15% 12%;
+    --border-medium: 258 30% 25%;
+    --border-strong: 258 50% 40%;
     
-    --input: 250 30% 15%;
-    --ring: 263 90% 60%;
+    --input: 240 15% 13%;
+    --ring: 258 90% 66%;
 
     /* Sidebar */
-    --sidebar-background: 250 30% 6%;
+    --sidebar-background: 240 20% 5%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 263 90% 60%;
+    --sidebar-primary: 258 90% 66%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 250 30% 15%;
+    --sidebar-accent: 240 15% 13%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 263 30% 20%;
-    --sidebar-ring: 263 90% 60%;
+    --sidebar-border: 240 15% 15%;
+    --sidebar-ring: 258 90% 66%;
   }
 }
 
@@ -698,157 +698,112 @@ html, body {
    Gradient backgrounds, glow effects, vibrant accents
    ═══════════════════════════════════════════════════════════════════════ */
 .colorful {
-  /* Gradient text for headlines */
-  .gradient-text {
+  /* ═══════════════════════════════════════════════════════════════════════
+     COLORFUL THEME COMPONENT STYLES - Original 1:14 PM Design
+     ═══════════════════════════════════════════════════════════════════════ */
+  
+  /* Gradient text for headlines - Purple to Pink */
+  .text-foreground-50 {
     background: linear-gradient(135deg, 
-      hsl(263 90% 70%) 0%, 
-      hsl(280 90% 75%) 25%,
-      hsl(300 80% 70%) 50%,
-      hsl(24 95% 65%) 75%,
-      hsl(263 90% 70%) 100%
+      hsl(258 90% 66%) 0%, 
+      hsl(280 85% 60%) 40%,
+      hsl(330 85% 60%) 70%,
+      hsl(280 85% 65%) 100%
     );
-    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   
-  /* Gradient CTA buttons */
-  .gradient-button {
-    background: linear-gradient(135deg, hsl(263 90% 60%) 0%, hsl(280 80% 55%) 100%);
-    color: white;
-    box-shadow: 0 4px 20px -4px hsl(263 90% 50% / 0.5);
-    transition: all 0.3s ease;
+  /* Primary CTA button - Purple gradient */
+  .bg-primary {
+    background: linear-gradient(135deg, hsl(258 90% 60%) 0%, hsl(270 85% 55%) 100%) !important;
+    box-shadow: 0 4px 25px -5px hsl(258 90% 50% / 0.5);
   }
   
-  .gradient-button:hover {
-    box-shadow: 0 8px 30px -4px hsl(263 90% 50% / 0.6);
-    transform: translateY(-2px);
+  .bg-primary:hover {
+    box-shadow: 0 8px 35px -5px hsl(258 90% 50% / 0.65);
+    transform: translateY(-1px);
   }
   
-  /* Glow effect for cards */
-  .glow-card {
-    position: relative;
+  /* Logo badge gradient */
+  .bg-foreground {
+    background: linear-gradient(135deg, hsl(258 90% 60%) 0%, hsl(280 85% 55%) 100%) !important;
   }
   
-  .glow-card::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    background: linear-gradient(135deg, hsl(263 90% 60% / 0.3) 0%, hsl(280 80% 60% / 0.2) 50%, hsl(24 95% 60% / 0.3) 100%);
-    border-radius: inherit;
-    z-index: -1;
-    filter: blur(8px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .glow-card:hover::before {
-    opacity: 1;
-  }
-  
-  /* Accent color becomes vibrant purple */
+  /* Accent color badges */
   .text-accent-color {
-    color: hsl(263 90% 70%);
+    color: hsl(258 90% 70%) !important;
   }
   
   .bg-accent-color\/10 {
-    background: hsl(263 90% 60% / 0.15);
+    background: hsl(258 70% 50% / 0.12) !important;
+    border-color: hsl(258 70% 50% / 0.25) !important;
   }
   
   .border-accent-color\/20 {
-    border-color: hsl(263 90% 60% / 0.25);
+    border-color: hsl(258 70% 50% / 0.3) !important;
   }
   
-  /* Background glow orbs */
-  .bg-glow-purple {
-    background: radial-gradient(ellipse at center, hsl(263 90% 50% / 0.2) 0%, transparent 70%);
+  /* Card backgrounds - Dark with subtle purple */
+  .bg-card {
+    background: hsl(240 20% 8%) !important;
   }
   
-  .bg-glow-orange {
-    background: radial-gradient(ellipse at center, hsl(24 95% 50% / 0.15) 0%, transparent 70%);
+  .bg-card\/60, .bg-card\/80, .bg-card\/95 {
+    background: hsl(240 20% 10% / 0.9) !important;
   }
   
-  .bg-glow-pink {
-    background: radial-gradient(ellipse at center, hsl(330 80% 50% / 0.15) 0%, transparent 70%);
+  /* Foreground transparency backgrounds */
+  .bg-foreground-03 {
+    background: hsl(240 15% 10%) !important;
   }
   
-  /* Vibrant borders */
-  .border-glow {
-    border-color: hsl(263 60% 40%);
+  .bg-foreground-05, .bg-foreground-10 {
+    background: hsl(240 15% 12%) !important;
   }
   
-  .border-glow:hover {
-    border-color: hsl(263 70% 50%);
+  /* Borders with purple tint */
+  .border-foreground-10 {
+    border-color: hsl(240 20% 18%) !important;
   }
   
-  /* Hero section gradient background */
-  .hero-gradient-bg {
-    background: 
-      radial-gradient(ellipse 80% 50% at 50% -20%, hsl(263 90% 50% / 0.25) 0%, transparent 50%),
-      radial-gradient(ellipse 60% 40% at 80% 60%, hsl(280 80% 50% / 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse 50% 30% at 20% 80%, hsl(24 95% 50% / 0.1) 0%, transparent 50%);
+  .border-foreground-20 {
+    border-color: hsl(258 30% 30%) !important;
   }
   
-  /* Section divider glow */
-  .section-glow-top {
-    position: relative;
-  }
-  
-  .section-glow-top::before {
+  /* Hero section top glow */
+  main > section:first-child::before {
     content: '';
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 60%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, hsl(263 90% 60% / 0.5) 50%, transparent 100%);
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse at center top, hsl(258 90% 50% / 0.15) 0%, transparent 70%);
+    pointer-events: none;
   }
   
-  /* Auto-apply gradient background to main sections */
-  main > section:first-child {
-    background: 
-      radial-gradient(ellipse 80% 50% at 50% 0%, hsl(263 90% 50% / 0.2) 0%, transparent 50%),
-      radial-gradient(ellipse 60% 40% at 100% 50%, hsl(280 80% 50% / 0.1) 0%, transparent 50%),
-      radial-gradient(ellipse 50% 30% at 0% 80%, hsl(24 95% 50% / 0.08) 0%, transparent 50%);
+  /* Status colors - Vibrant */
+  .text-success {
+    color: hsl(160 84% 50%) !important;
   }
   
-  /* Primary button becomes gradient */
-  .bg-primary {
-    background: linear-gradient(135deg, hsl(263 90% 55%) 0%, hsl(280 80% 50%) 100%) !important;
-    box-shadow: 0 4px 20px -4px hsl(263 90% 50% / 0.5);
+  /* Navbar glass effect */
+  .backdrop-blur-xl {
+    background: hsl(240 20% 8% / 0.85) !important;
+    border-color: hsl(240 20% 18%) !important;
   }
   
-  .bg-primary:hover {
-    box-shadow: 0 8px 30px -4px hsl(263 90% 50% / 0.6);
+  /* Section backgrounds */
+  .border-t.border-foreground-10 {
+    background: hsl(240 20% 6%);
   }
   
-  /* Card backgrounds get subtle purple tint */
-  .bg-card {
-    background: hsl(250 30% 10% / 0.8);
-  }
-  
-  .bg-card\/60, .bg-card\/80 {
-    background: hsl(250 30% 12% / 0.6);
-  }
-  
-  /* Foreground backgrounds get purple tint */
-  .bg-foreground-03, .bg-foreground-05 {
-    background: hsl(263 30% 15% / 0.3);
-  }
-  
-  /* Badge accent colors */
-  .bg-accent-color\/10 {
-    background: linear-gradient(135deg, hsl(263 90% 60% / 0.15) 0%, hsl(280 80% 60% / 0.1) 100%);
-  }
-  
-  /* Border glows */
-  .border-foreground-10 {
-    border-color: hsl(263 50% 30%);
-  }
-  
-  .border-foreground-20 {
-    border-color: hsl(263 50% 40%);
+  /* Gradient glow effects */
+  .blur-3xl, .blur-2xl {
+    opacity: 0.6;
   }
 }
