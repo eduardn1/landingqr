@@ -14,7 +14,7 @@ import { lazy, Suspense } from "react";
 import { LeadFormProvider } from "@/hooks/useLeadForm";
 import LeadForm from "@/components/landing/LeadForm";
 import Navbar from "@/components/landing/Navbar";
-import MobileNav from "@/components/landing/MobileNav";
+
 import Hero from "@/components/landing/Hero";
 import Logos from "@/components/landing/Logos";
 
@@ -56,7 +56,6 @@ const Index = () => {
           <Footer />
         </Suspense>
         <LeadForm />
-        <MobileNav />
       </div>
     </LeadFormProvider>
   );
