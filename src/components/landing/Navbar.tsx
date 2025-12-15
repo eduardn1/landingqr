@@ -140,20 +140,20 @@ const Navbar = () => {
       </motion.nav>
 
       {/* Mobile "Dynamic Island" Header */}
-      <motion.div
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.4, delay: 0.1 }}
-        className="lg:hidden fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-24px)] max-w-md"
+      <div
+        className="lg:hidden fixed top-3 left-0 right-0 z-50 flex justify-center px-3"
         style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}
       >
-        <motion.div 
+        <motion.div
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           layout
           onClick={handleIslandClick}
-          className={`mx-auto overflow-hidden transition-all duration-300 ${
+          className={`overflow-hidden transition-all duration-300 ${
             isExpanded 
-              ? "bg-card/95 backdrop-blur-xl border border-border shadow-xl shadow-black/15 rounded-2xl" 
-              : "bg-card/90 backdrop-blur-lg border border-border/50 rounded-full w-fit"
+              ? "bg-card/95 backdrop-blur-xl border border-border shadow-xl shadow-black/15 rounded-2xl w-full max-w-sm" 
+              : "bg-card/90 backdrop-blur-lg border border-border/50 rounded-full"
           }`}
         >
           {/* Compact State */}
@@ -254,7 +254,7 @@ const Navbar = () => {
             )}
           </AnimatePresence>
         </motion.div>
-      </motion.div>
+      </div>
     </>
   );
 };
