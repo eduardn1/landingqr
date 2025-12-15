@@ -22,8 +22,10 @@ import {
   CreditCard, 
   HelpCircle, 
   MessageSquare,
-  Loader2
+  Loader2,
+  Palette
 } from 'lucide-react';
+import BrandSettingsEditor from '@/components/admin/BrandSettingsEditor';
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -93,6 +95,7 @@ const Admin = () => {
   }
 
   const sections = [
+    { id: 'brand', label: 'Brand & SEO', icon: Palette },
     { id: 'hero', label: 'Hero', icon: Sparkles },
     { id: 'features', label: 'Features', icon: LayoutGrid },
     { id: 'pricing', label: 'Pricing', icon: CreditCard },
@@ -123,8 +126,8 @@ const Admin = () => {
 
       {/* Content */}
       <main className="container mx-auto px-4 py-8">
-        <Tabs defaultValue="hero" className="space-y-6">
-          <TabsList className="bg-card border border-border">
+        <Tabs defaultValue="brand" className="space-y-6">
+          <TabsList className="bg-card border border-border flex-wrap">
             {sections.map((section) => (
               <TabsTrigger 
                 key={section.id} 
@@ -136,6 +139,11 @@ const Admin = () => {
               </TabsTrigger>
             ))}
           </TabsList>
+
+          {/* Brand & SEO Section */}
+          <TabsContent value="brand">
+            <BrandSettingsEditor />
+          </TabsContent>
 
           {/* Hero Section */}
           <TabsContent value="hero">
