@@ -8,9 +8,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Sparkles, CreditCard, HelpCircle, Play, Home, Grid3X3, X, BookOpen, MessageCircle, Users, ExternalLink } from "lucide-react";
+import { Sparkles, CreditCard, HelpCircle, Play, Home, Grid3X3, X, BookOpen, MessageCircle, Users, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "next-themes";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useLeadForm } from "@/hooks/useLeadForm";
 
 const staticPages = [
@@ -26,12 +26,9 @@ const Navbar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isPagesMenuOpen, setIsPagesMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const { openLeadForm } = useLeadForm();
 
   useEffect(() => {
-    setMounted(true);
     let lastScrollY = window.scrollY;
     
     const handleScroll = () => {
@@ -79,7 +76,6 @@ const Navbar = () => {
     { id: "faq", label: "FAQ", href: "#faq", icon: HelpCircle },
   ];
 
-  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
   const handleIslandClick = () => setIsExpanded(!isExpanded);
 
   const handleNavClick = (href: string) => {
@@ -180,12 +176,8 @@ const Navbar = () => {
               </button>
             </div>
 
-            {/* Theme Toggle - Monochrome icons */}
-            {mounted && (
-              <button onClick={toggleTheme} className="p-1.5 lg:p-2 rounded-lg hover:bg-foreground-05 transition-colors shrink-0">
-                {theme === "dark" ? <Sun className="w-4 h-4 lg:w-5 lg:h-5 text-foreground-70" /> : <Moon className="w-4 h-4 lg:w-5 lg:h-5 text-foreground-50" />}
-              </button>
-            )}
+            {/* Theme Toggle - Cycles light/dark/colorful */}
+            <ThemeToggle />
 
             {/* CTA - Primary monochrome */}
             <Button onClick={() => openLeadForm("dynamic_island")} size="sm" className="rounded-full px-3 lg:px-4 h-7 lg:h-9 text-[10px] lg:text-sm shrink-0">
