@@ -10,20 +10,30 @@
  */
 
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Sparkles, CreditCard, HelpCircle, Play, Home } from "lucide-react";
+import { Sun, Moon, Sparkles, CreditCard, HelpCircle, Play, Home, Menu, X, BookOpen, MessageCircle, Users, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { useLeadForm } from "@/hooks/useLeadForm";
 
+// Static pages menu
+const staticPages = [
+  { label: "Chi siamo", href: "/chi-siamo", icon: Users },
+  { label: "Contatti", href: "/contatti", icon: MessageCircle },
+  { label: "Guide", href: "/guide", icon: BookOpen },
+  { label: "FAQ", href: "/faq", icon: HelpCircle },
+  { label: "Demo", href: "/demo", icon: Play },
+];
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isPagesMenuOpen, setIsPagesMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const { openLeadForm } = useLeadForm();
-
   useEffect(() => {
     setMounted(true);
     let lastScrollY = window.scrollY;
@@ -58,7 +68,18 @@ const Navbar = () => {
     
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isExpanded]);
+  }, [isExpanded, isPagesMenuOpen]);
+
+  // Close pages menu on scroll
+  useEffect(() => {
+    const handleScrollForPages = () => {
+      if (isPagesMenuOpen) {
+        setIsPagesMenuOpen(false);
+      }
+    };
+    window.addEventListener("scroll", handleScrollForPages, { passive: true });
+    return () => window.removeEventListener("scroll", handleScrollForPages);
+  }, [isPagesMenuOpen]);
 
   const navLinks = [
     { id: "home", label: "Home", href: "#", icon: Home },
@@ -205,6 +226,19 @@ const Navbar = () => {
 
             <div className="w-px h-5 lg:h-6 bg-border/50 mx-1" />
 
+            {/* Pages Menu Button */}
+            <button
+              onClick={() => setIsPagesMenuOpen(!isPagesMenuOpen)}
+              className={`p-1.5 lg:p-2 rounded-lg transition-colors ${isPagesMenuOpen ? 'bg-primary/10 text-primary' : 'hover:bg-muted/50 text-muted-foreground hover:text-foreground'}`}
+              aria-label="Menu pagine"
+            >
+              {isPagesMenuOpen ? (
+                <X className="w-4 h-4 lg:w-5 lg:h-5" />
+              ) : (
+                <Menu className="w-4 h-4 lg:w-5 lg:h-5" />
+              )}
+            </button>
+
             {/* Theme Toggle */}
             {mounted && (
               <button
@@ -219,17 +253,6 @@ const Navbar = () => {
                 )}
               </button>
             )}
-
-            {/* Demo Button (bordered) */}
-            <a href="/demo" className="hidden sm:block">
-              <Button 
-                variant="outline"
-                size="sm"
-                className="rounded-full px-4 h-8 lg:h-9 text-xs lg:text-sm border-border hover:border-primary/40"
-              >
-                Demo
-              </Button>
-            </a>
 
             {/* CTA Button */}
             <Button 
@@ -298,13 +321,62 @@ const Navbar = () => {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Pages Menu Dropdown */}
+        <AnimatePresence>
+          {isPagesMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="absolute top-full right-3 mt-2 rounded-2xl overflow-hidden min-w-[200px]"
+              style={{
+                background: theme === 'dark' 
+                  ? 'linear-gradient(135deg, rgba(30,30,40,0.9) 0%, rgba(20,20,30,0.95) 100%)'
+                  : 'linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(245,245,250,0.85) 100%)',
+                backdropFilter: 'blur(24px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                border: '1px solid',
+                borderColor: theme === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.7)',
+                boxShadow: theme === 'dark'
+                  ? '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)'
+                  : '0 8px 32px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.9)',
+              }}
+            >
+              <div className="p-2">
+                <div className="px-3 py-1.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
+                  Pagine
+                </div>
+                {staticPages.map((page) => {
+                  const IconComponent = page.icon;
+                  return (
+                    <Link
+                      key={page.href}
+                      to={page.href}
+                      onClick={() => setIsPagesMenuOpen(false)}
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-all"
+                    >
+                      <IconComponent className="w-4 h-4" />
+                      <span>{page.label}</span>
+                      <ExternalLink className="w-3 h-3 ml-auto text-muted-foreground" />
+                    </Link>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
-      {/* Click outside to close mobile menu */}
-      {isExpanded && (
+      {/* Click outside to close menus */}
+      {(isExpanded || isPagesMenuOpen) && (
         <div 
-          className="md:hidden fixed inset-0 z-40" 
-          onClick={() => setIsExpanded(false)}
+          className="fixed inset-0 z-40" 
+          onClick={() => {
+            setIsExpanded(false);
+            setIsPagesMenuOpen(false);
+          }}
         />
       )}
     </>
