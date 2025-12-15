@@ -146,10 +146,18 @@ const AboutPage = () => {
       <main className="pt-16">
         {/* Hero Section */}
         <section className="relative py-16 md:py-24 overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-[120px]" />
-            <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-accent/15 rounded-full blur-[120px]" />
-          </div>
+          {/* Radial Gradient Background */}
+          <div className="absolute inset-0 radial-gradient" />
+          
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 grid-pattern opacity-30" />
+          
+          {/* Noise Overlay */}
+          <div className="absolute inset-0 noise-overlay" />
+
+          {/* Static Orbs */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
           
           <div className="container relative">
             <motion.div
