@@ -106,22 +106,24 @@ const Navbar = () => {
           className="relative overflow-hidden rounded-full"
           style={{
             background: theme === 'dark' 
-              ? 'linear-gradient(135deg, rgba(30,30,40,0.85) 0%, rgba(20,20,30,0.9) 100%)'
-              : 'linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(245,245,250,0.9) 100%)',
-            backdropFilter: 'blur(20px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+              ? 'linear-gradient(135deg, rgba(30,30,40,0.8) 0%, rgba(20,20,30,0.85) 100%)'
+              : 'linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(240,240,250,0.7) 100%)',
+            backdropFilter: 'blur(24px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(180%)',
             border: '1px solid',
-            borderColor: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)',
+            borderColor: theme === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.6)',
             boxShadow: theme === 'dark'
-              ? '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)'
-              : '0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.8)',
+              ? '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)'
+              : '0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.9)',
           }}
         >
           {/* Liquid glass shine effect */}
           <div 
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%, rgba(255,255,255,0.05) 100%)',
+              background: theme === 'dark'
+                ? 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(255,255,255,0.03) 100%)'
+                : 'linear-gradient(135deg, rgba(255,255,255,0.8) 0%, transparent 40%, rgba(255,255,255,0.2) 100%)',
               borderRadius: 'inherit',
             }}
           />
@@ -252,15 +254,15 @@ const Navbar = () => {
               className="md:hidden absolute top-full left-3 right-3 mt-2 rounded-2xl overflow-hidden"
               style={{
                 background: theme === 'dark' 
-                  ? 'linear-gradient(135deg, rgba(30,30,40,0.95) 0%, rgba(20,20,30,0.98) 100%)'
-                  : 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(245,245,250,0.98) 100%)',
-                backdropFilter: 'blur(20px) saturate(180%)',
-                WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                  ? 'linear-gradient(135deg, rgba(30,30,40,0.9) 0%, rgba(20,20,30,0.95) 100%)'
+                  : 'linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(245,245,250,0.85) 100%)',
+                backdropFilter: 'blur(24px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
                 border: '1px solid',
-                borderColor: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)',
+                borderColor: theme === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.7)',
                 boxShadow: theme === 'dark'
-                  ? '0 8px 32px rgba(0,0,0,0.4)'
-                  : '0 8px 32px rgba(0,0,0,0.12)',
+                  ? '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)'
+                  : '0 8px 32px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.9)',
               }}
             >
               <div className="p-3 grid grid-cols-5 gap-1">
