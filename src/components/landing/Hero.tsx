@@ -34,10 +34,10 @@ const Hero = memo(() => {
 
           {/* Headline - Monochrome */}
           <ScrollReveal animation="fadeUp" delay={0.1}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-balance">
-              <span className="text-foreground">La tua attività,</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-balance text-foreground">
+              La tua attività,
               <br />
-              <span className="text-foreground-50">digitalizzata.</span>
+              <span className="text-foreground-70">digitalizzata.</span>
             </h1>
           </ScrollReveal>
 
