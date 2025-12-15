@@ -14,6 +14,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Home, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 
 const NotFound = memo(() => {
   const location = useLocation();
@@ -24,6 +25,11 @@ const NotFound = memo(() => {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center relative overflow-hidden">
+      <SEO 
+        title="Pagina non trovata - 404"
+        description="La pagina che stai cercando non esiste o è stata spostata."
+        noindex={true}
+      />
       {/* Background */}
       <div className="absolute inset-0 radial-gradient" />
       <div className="absolute inset-0 grid-pattern opacity-30" />

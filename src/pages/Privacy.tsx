@@ -13,6 +13,7 @@ import { memo } from "react";
 import { Link } from "react-router-dom";
 import SharedNavbar from "@/components/shared/SharedNavbar";
 import Footer from "@/components/landing/Footer";
+import { SEO } from "@/components/SEO";
 import { Shield, Mail, Calendar, FileText, Lock, Eye, Database, Globe, UserCheck, AlertCircle } from "lucide-react";
 
 const sections = [
@@ -174,6 +175,12 @@ Ti invitiamo a consultare periodicamente questa pagina per verificare eventuali 
 const Privacy = memo(() => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Privacy Policy"
+        description="Informativa sulla privacy di Flavour: scopri come trattiamo i tuoi dati personali in conformità al GDPR. Trasparenza e sicurezza garantite."
+        url="https://flavour.studiojem.it/privacy"
+        keywords="privacy policy flavour, gdpr ristorante, protezione dati menu digitale"
+      />
       <SharedNavbar />
       
       {/* Hero Section */}

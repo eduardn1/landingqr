@@ -13,6 +13,7 @@ import { memo } from "react";
 import { Link } from "react-router-dom";
 import SharedNavbar from "@/components/shared/SharedNavbar";
 import Footer from "@/components/landing/Footer";
+import { SEO } from "@/components/SEO";
 import { FileText, UserCheck, CreditCard, Shield, AlertTriangle, Scale, Mail, Clock, Ban, RefreshCw } from "lucide-react";
 
 const sections = [
@@ -168,6 +169,12 @@ Per i consumatori si applicano le norme del Codice del Consumo (D.Lgs. 206/2005)
 const Terms = memo(() => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Termini di Servizio"
+        description="Termini e condizioni di utilizzo della piattaforma Flavour per menu digitali, prenotazioni e ordini online. Leggi prima di utilizzare il servizio."
+        url="https://flavour.studiojem.it/termini-servizio"
+        keywords="termini servizio flavour, condizioni utilizzo menu digitale, contratto saas hospitality"
+      />
       <SharedNavbar />
       
       {/* Hero Section */}
