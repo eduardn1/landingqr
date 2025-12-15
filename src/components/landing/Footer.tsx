@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Footer Component (Monochrome + Glass Effect)
+ * QRCODESTUDIOJEM - Footer Component (Monochrome + Glass Effects)
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * ═══════════════════════════════════════════════════════════════════════════════
  */
@@ -48,15 +48,14 @@ const badges = [
 
 const Footer = memo(() => {
   return (
-    <footer className="border-t border-foreground-10 bg-foreground-05 pb-24 lg:pb-8">
-      {/* Glass card effect */}
+    <footer className="border-t border-foreground-10 bg-foreground-03 pb-24 lg:pb-8">
       <div className="container px-4 sm:px-6 py-12 sm:py-16">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6 mb-12">
           {/* Brand Column */}
           <div className="col-span-2 space-y-5">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center shadow-lg shadow-primary/25">
-                <span className="text-primary-foreground font-bold">F</span>
+              <div className="w-9 h-9 rounded-xl bg-foreground flex items-center justify-center">
+                <span className="text-background font-bold">F</span>
               </div>
               <span className="font-bold text-xl tracking-tight text-foreground">Flavour</span>
             </Link>
@@ -78,7 +77,7 @@ const Footer = memo(() => {
               </div>
             </div>
 
-            {/* Social Links - Monochrome with colored hover */}
+            {/* Social Links - Monochrome with glass effect */}
             <div className="flex gap-2 pt-2">
               {socialLinks.map((social) => (
                 <a
@@ -86,7 +85,7 @@ const Footer = memo(() => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-foreground-05 border border-foreground-10 flex items-center justify-center text-foreground-50 hover:text-primary hover:border-primary/30 transition-all"
+                  className="w-9 h-9 rounded-lg bg-card/60 backdrop-blur-sm border border-foreground-10 flex items-center justify-center text-foreground-50 hover:text-foreground hover:border-foreground-20 transition-all"
                   aria-label={social.label}
                 >
                   <social.icon className="w-4 h-4" />
@@ -95,10 +94,10 @@ const Footer = memo(() => {
             </div>
           </div>
 
-          {/* Prodotto - Colored icon */}
+          {/* Prodotto */}
           <div>
             <h4 className="font-semibold mb-4 text-sm text-foreground flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-primary" />
+              <Sparkles className="w-4 h-4 text-foreground-50" />
               Prodotto
             </h4>
             <ul className="space-y-2.5">
@@ -114,10 +113,10 @@ const Footer = memo(() => {
             </ul>
           </div>
 
-          {/* Risorse - Colored icon */}
+          {/* Risorse */}
           <div>
             <h4 className="font-semibold mb-4 text-sm text-foreground flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-primary" />
+              <BookOpen className="w-4 h-4 text-foreground-50" />
               Risorse
             </h4>
             <ul className="space-y-2.5">
@@ -133,10 +132,10 @@ const Footer = memo(() => {
             </ul>
           </div>
 
-          {/* Azienda - Colored icon */}
+          {/* Azienda */}
           <div>
             <h4 className="font-semibold mb-4 text-sm text-foreground flex items-center gap-2">
-              <HelpCircle className="w-4 h-4 text-primary" />
+              <HelpCircle className="w-4 h-4 text-foreground-50" />
               Azienda
             </h4>
             <ul className="space-y-2.5">
@@ -152,10 +151,10 @@ const Footer = memo(() => {
             </ul>
           </div>
 
-          {/* Legale - Colored icon */}
+          {/* Legale */}
           <div>
             <h4 className="font-semibold mb-4 text-sm text-foreground flex items-center gap-2">
-              <Shield className="w-4 h-4 text-primary" />
+              <Shield className="w-4 h-4 text-foreground-50" />
               Legale
             </h4>
             <ul className="space-y-2.5">
@@ -171,7 +170,7 @@ const Footer = memo(() => {
         {/* Trust Badges - Glass effect */}
         <div className="flex flex-wrap justify-center gap-3 mb-8 py-6 border-y border-foreground-10">
           {badges.map((badge) => (
-            <div key={badge.label} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-sm border border-foreground-10">
+            <div key={badge.label} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-foreground-10">
               <badge.icon className="w-4 h-4 text-success" />
               <span className="text-xs font-medium text-foreground">{badge.label}</span>
             </div>
@@ -190,9 +189,9 @@ const Footer = memo(() => {
             href="https://studiojem.it" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-xs text-foreground-50 hover:text-primary transition-colors group"
+            className="flex items-center gap-2 text-xs text-foreground-50 hover:text-foreground transition-colors group"
           >
-            Sviluppato da <span className="font-semibold text-foreground group-hover:text-primary">Eduard Costin Udila</span> @ studiojem.it
+            Sviluppato da <span className="font-semibold text-foreground">Eduard Costin Udila</span> @ studiojem.it
             <ExternalLink className="w-3 h-3" />
           </a>
         </div>

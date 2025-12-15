@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Testimonials Section (Monochrome + Colored Accents)
+ * QRCODESTUDIOJEM - Testimonials Section (Monochrome + Glass Effects)
  * Inspired by Cadence AI
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
@@ -79,15 +79,15 @@ const Testimonials = memo(() => {
 
   return (
     <section id="testimonials" className="section-padding relative overflow-hidden">
-      {/* Subtle background glow - Colored */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-gradient-to-b from-warning/8 via-warning/3 to-transparent rounded-full blur-3xl" />
+      {/* Subtle background glow - Monochrome */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-gradient-to-b from-foreground-05 via-foreground-03 to-transparent rounded-full blur-3xl" />
       
       <div className="container relative z-10">
         {/* Header - Monochrome text, colored badge */}
         <ScrollReveal animation="fadeUp" className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-warning/10 border border-warning/20 mb-6">
-            <Star className="w-4 h-4 text-warning fill-warning" />
-            <span className="text-sm font-medium text-warning">500+ locali soddisfatti</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-color/10 border border-accent-color/20 mb-6 backdrop-blur-sm">
+            <Star className="w-4 h-4 text-accent-color fill-accent-color" />
+            <span className="text-sm font-medium text-accent-color">500+ locali soddisfatti</span>
           </div>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
@@ -98,58 +98,63 @@ const Testimonials = memo(() => {
           </p>
         </ScrollReveal>
 
-        {/* Testimonial Card - Monochrome card */}
+        {/* Testimonial Card - Glass effect */}
         <div className="max-w-3xl mx-auto mb-8">
           <div className="relative">
-            {/* Navigation - Monochrome */}
+            {/* Navigation - Glass buttons */}
             <button 
               onClick={prev}
-              className="absolute left-0 md:-left-16 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-foreground-05 border border-foreground-10 flex items-center justify-center hover:border-foreground-20 transition-colors"
+              className="absolute left-0 md:-left-16 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card/80 backdrop-blur-md border border-foreground-10 flex items-center justify-center hover:border-foreground-20 hover:bg-card transition-all"
             >
               <ChevronLeft className="w-5 h-5 text-foreground" />
             </button>
             <button 
               onClick={next}
-              className="absolute right-0 md:-right-16 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-foreground-05 border border-foreground-10 flex items-center justify-center hover:border-foreground-20 transition-colors"
+              className="absolute right-0 md:-right-16 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card/80 backdrop-blur-md border border-foreground-10 flex items-center justify-center hover:border-foreground-20 hover:bg-card transition-all"
             >
               <ChevronRight className="w-5 h-5 text-foreground" />
             </button>
 
-            {/* Card - Monochrome with colored accents */}
-            <div className="p-8 md:p-12 rounded-2xl bg-foreground-05 border border-foreground-10 text-center">
-              <Quote className="w-10 h-10 text-foreground-20 mx-auto mb-6" />
+            {/* Card - Glass effect with colored accents */}
+            <div className="p-8 md:p-12 rounded-2xl bg-card/60 backdrop-blur-xl border border-foreground-10 text-center relative overflow-hidden">
+              {/* Glass shine effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-foreground-05 via-transparent to-foreground-03 pointer-events-none" />
               
-              {/* Highlight Badge - Colored */}
-              <div className="inline-flex px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
-                {current.highlight}
-              </div>
-
-              {/* Stars - Colored */}
-              <div className="flex gap-1 justify-center mb-6">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star key={i} className="w-5 h-5 fill-warning text-warning" />
-                ))}
-              </div>
-
-              {/* Quote - Monochrome */}
-              <blockquote className="text-xl md:text-2xl font-medium text-foreground leading-relaxed mb-8">
-                "{current.quote}"
-              </blockquote>
-
-              {/* Author - Colored avatar, monochrome text */}
-              <div className="flex items-center justify-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
-                  {current.avatar}
+              <div className="relative z-10">
+                <Quote className="w-10 h-10 text-foreground-15 mx-auto mb-6" />
+                
+                {/* Highlight Badge - Colored */}
+                <div className="inline-flex px-4 py-2 rounded-full bg-accent-color/10 text-accent-color text-sm font-semibold mb-6 backdrop-blur-sm border border-accent-color/20">
+                  {current.highlight}
                 </div>
-                <div className="text-left">
-                  <div className="font-semibold text-foreground">{current.name}</div>
-                  <div className="text-sm text-foreground-50">{current.role}</div>
+
+                {/* Stars - Colored */}
+                <div className="flex gap-1 justify-center mb-6">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star key={i} className="w-5 h-5 fill-accent-color text-accent-color" />
+                  ))}
+                </div>
+
+                {/* Quote - Monochrome */}
+                <blockquote className="text-xl md:text-2xl font-medium text-foreground leading-relaxed mb-8">
+                  "{current.quote}"
+                </blockquote>
+
+                {/* Author - Glass avatar, monochrome text */}
+                <div className="flex items-center justify-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-foreground-10 backdrop-blur-sm border border-foreground-10 flex items-center justify-center text-foreground-70 font-bold">
+                    {current.avatar}
+                  </div>
+                  <div className="text-left">
+                    <div className="font-semibold text-foreground">{current.name}</div>
+                    <div className="text-sm text-foreground-50">{current.role}</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Dots - Colored active, monochrome inactive */}
+          {/* Dots - Monochrome */}
           <div className="flex justify-center gap-2 mt-6">
             {testimonials.map((_, index) => (
               <button
@@ -157,7 +162,7 @@ const Testimonials = memo(() => {
                 onClick={() => goTo(index)}
                 className={`h-2 rounded-full transition-all ${
                   activeIndex === index 
-                    ? 'w-8 bg-primary' 
+                    ? 'w-8 bg-foreground' 
                     : 'w-2 bg-foreground-20 hover:bg-foreground-30'
                 }`}
               />
@@ -165,12 +170,12 @@ const Testimonials = memo(() => {
           </div>
         </div>
 
-        {/* Rating Summary - Monochrome card, colored stars */}
+        {/* Rating Summary - Glass card */}
         <ScrollReveal animation="fadeIn" className="flex justify-center">
-          <div className="flex items-center gap-4 px-6 py-3 rounded-full bg-foreground-05 border border-foreground-10">
+          <div className="flex items-center gap-4 px-6 py-3 rounded-full bg-card/60 backdrop-blur-xl border border-foreground-10">
             <div className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((i) => (
-                <Star key={i} className="w-4 h-4 text-warning fill-warning" />
+                <Star key={i} className="w-4 h-4 text-accent-color fill-accent-color" />
               ))}
             </div>
             <div className="h-4 w-px bg-foreground-20" />

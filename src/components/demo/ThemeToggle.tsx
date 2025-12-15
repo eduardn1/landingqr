@@ -15,7 +15,7 @@ export const ThemeToggle = () => {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="relative p-2 rounded-xl bg-muted hover:bg-muted/80 transition-colors overflow-hidden"
+      className="relative p-2 rounded-xl bg-foreground-05 hover:bg-foreground-10 border border-foreground-10 transition-colors overflow-hidden"
       title={theme === "dark" ? "Passa al tema chiaro" : "Passa al tema scuro"}
     >
       <div className="relative w-5 h-5">

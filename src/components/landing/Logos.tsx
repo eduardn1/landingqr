@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Logos Section (Monochrome + Colored Accents)
+ * QRCODESTUDIOJEM - Logos Section (Monochrome + Glass Effects)
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * ═══════════════════════════════════════════════════════════════════════════════
  */
@@ -42,11 +42,11 @@ const Logos = memo(() => {
         <div className="flex animate-marquee">
           {allClients.map((client, index) => (
             <div key={`${client.name}-${index}`} className="flex-shrink-0 mx-3">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-foreground-05 border border-foreground-10">
-                <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <span className="text-primary font-semibold text-xs">{client.initials}</span>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-foreground-10">
+                <div className="w-7 h-7 rounded-lg bg-foreground-10 flex items-center justify-center">
+                  <span className="text-foreground-60 font-semibold text-xs">{client.initials}</span>
                 </div>
-                <span className="text-foreground-70 font-medium text-sm whitespace-nowrap">{client.name}</span>
+                <span className="text-foreground-60 font-medium text-sm whitespace-nowrap">{client.name}</span>
               </div>
             </div>
           ))}
@@ -59,9 +59,9 @@ const Logos = memo(() => {
             {stats.map((stat) => {
               const Icon = stat.icon;
               return (
-                <div key={stat.label} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-foreground-05 border border-foreground-10">
-                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Icon className="w-4 h-4 text-primary" />
+                <div key={stat.label} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-card/60 backdrop-blur-sm border border-foreground-10">
+                  <div className="w-9 h-9 rounded-lg bg-foreground-10 flex items-center justify-center">
+                    <Icon className="w-4 h-4 text-foreground-60" />
                   </div>
                   <div>
                     <div className="text-lg font-bold text-foreground leading-tight">{stat.value}</div>
