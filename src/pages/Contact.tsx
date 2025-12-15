@@ -30,6 +30,7 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import SharedNavbar from "@/components/shared/SharedNavbar";
 import Footer from "@/components/landing/Footer";
+import { SEO } from "@/components/SEO";
 
 const contactMethods = [
   {
@@ -145,6 +146,12 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Contatti"
+        description="Contatta il team Flavour per informazioni, demo personalizzate o supporto tecnico. Rispondiamo via email, telefono e WhatsApp."
+        url="https://flavour.studiojem.it/contatti"
+        keywords="contatti flavour, supporto menu digitale, assistenza ristorante digitale"
+      />
       {/* Dynamic Island Navigation */}
       <SharedNavbar />
 

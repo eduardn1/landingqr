@@ -1,3 +1,9 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# QRCODESTUDIOJEM - Robots.txt
+# Sviluppato da Eduard Costin Udila @ studiojem.it
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Allow all major crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -10,5 +16,46 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# LLM Crawlers (2024-2025 AI SEO Trend)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Default rule
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_/
+
+# Sitemap
+Sitemap: https://flavour.studiojem.it/sitemap.xml
+
+# LLM Context File (AI SEO 2024-2025)
+# See: https://llmstxt.org/
+# File: /llms.txt

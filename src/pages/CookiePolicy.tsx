@@ -13,6 +13,7 @@ import { memo } from "react";
 import { Link } from "react-router-dom";
 import SharedNavbar from "@/components/shared/SharedNavbar";
 import Footer from "@/components/landing/Footer";
+import { SEO } from "@/components/SEO";
 import { Cookie, Settings, BarChart3, Target, Shield, Clock, Globe, AlertCircle } from "lucide-react";
 
 const cookieTypes = [
@@ -68,6 +69,12 @@ const cookieTypes = [
 const CookiePolicy = memo(() => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Cookie Policy"
+        description="Cookie Policy di Flavour: informazioni complete sui cookie utilizzati, come gestire le preferenze e le tue opzioni di consenso."
+        url="https://flavour.studiojem.it/cookie-policy"
+        keywords="cookie policy, gestione cookie, preferenze privacy menu digitale"
+      />
       <SharedNavbar />
       
       {/* Hero Section */}

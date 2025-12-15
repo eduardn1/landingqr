@@ -38,6 +38,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import SharedNavbar from "@/components/shared/SharedNavbar";
 import Footer from "@/components/landing/Footer";
+import { SEO } from "@/components/SEO";
 
 interface Guide {
   id: string;
@@ -321,6 +322,12 @@ const GuidesPage = () => {
   
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Guide & Tutorial"
+        description="Tutorial passo-passo per configurare menu digitali, prenotazioni, delivery e tutte le funzionalità di Flavour. Impara in pochi minuti."
+        url="https://flavour.studiojem.it/guide"
+        keywords="tutorial menu digitale, guida flavour, come creare menu qr, configurare prenotazioni online"
+      />
       {/* Dynamic Island Navigation */}
       <SharedNavbar />
 

@@ -1,0 +1,108 @@
+# Flavour - Menu Digitali QR per l'Hospitality
+
+> Piattaforma all-in-one per menu digitali, prenotazioni e ordini online per bar, ristoranti, pub e caffetterie.
+
+## Informazioni Azienda
+
+Flavour è una piattaforma SaaS italiana sviluppata da StudioJEM per la digitalizzazione del settore hospitality.
+
+- **Sito Web**: https://flavour.studiojem.it
+- **Azienda**: StudioJEM
+- **Fondatore**: Eduard Costin Udila
+- **Sede**: Cagliari, Italia
+- **P.IVA**: IT03883630927
+- **Contatto**: info@studiojem.it | +39 353 381 1359
+
+## Prodotto
+
+Flavour offre una soluzione completa per bar, ristoranti, pub, cocktail bar, caffetterie, gelaterie, enoteche e altre attività del settore hospitality.
+
+### Funzionalità Principali
+
+1. **Menu Digitale QR**
+   - Menu consultabile via QR code
+   - Aggiornamenti in tempo reale
+   - Gestione allergeni e intolleranze
+   - Multi-lingua (5 lingue supportate)
+   - 8 template homepage personalizzabili
+
+2. **Prenotazioni Online**
+   - Sistema di prenotazione tavoli
+   - Gestione eventi
+   - Promemoria automatici WhatsApp
+   - Calendario integrato
+
+3. **Ordini e Delivery**
+   - Takeaway senza commissioni
+   - Delivery con tracking driver
+   - Pagamenti online integrati
+   - Notifiche push
+
+4. **CRM e Loyalty**
+   - Database clienti
+   - Programma fedeltà
+   - Promozioni personalizzate
+   - Analytics e reportistica
+
+5. **Marketing Automation**
+   - WhatsApp automation
+   - Notifiche push
+   - Stories e promozioni
+   - Instagram integration
+
+### Piani e Prezzi
+
+- **Starter**: €29/mese - Per piccole attività
+- **Pro**: €49/mese - Per attività in crescita (più popolare)
+- **Enterprise**: €79/mese - Per catene e multi-sede
+
+Tutti i piani includono:
+- Zero commissioni sugli ordini
+- Aggiornamenti illimitati al menu
+- Supporto tecnico italiano
+- Setup guidato
+
+## Pagine Principali
+
+- Homepage: https://flavour.studiojem.it/
+- Demo Interattiva: https://flavour.studiojem.it/demo
+- Prezzi: https://flavour.studiojem.it/#pricing
+- FAQ: https://flavour.studiojem.it/faq
+- Guide: https://flavour.studiojem.it/guide
+- Chi Siamo: https://flavour.studiojem.it/chi-siamo
+- Contatti: https://flavour.studiojem.it/contatti
+- Diventa Partner: https://flavour.studiojem.it/diventa-rivenditore
+
+## Target Clienti
+
+- Bar e cocktail bar
+- Ristoranti e trattorie
+- Pub e birrerie
+- Caffetterie e pasticcerie
+- Gelaterie
+- Enoteche
+- Hotel (servizio in camera)
+- Food truck
+- Catene ristorative
+
+## Vantaggi Competitivi
+
+1. **Zero Commissioni**: A differenza delle piattaforme di delivery, nessuna commissione sugli ordini
+2. **Made in Italy**: Supporto in italiano, compliance GDPR
+3. **All-in-One**: Una sola piattaforma per menu, prenotazioni, ordini e marketing
+4. **Semplicità**: Setup in 10 minuti, interfaccia intuitiva
+5. **Personalizzazione**: 8 template, colori e logo personalizzabili
+
+## Contesto Tecnico
+
+- Applicazione web moderna (React, TypeScript)
+- Cloud hosting affidabile
+- API RESTful
+- Integrazione WhatsApp Business
+- Pagamenti sicuri (Stripe-ready)
+- GDPR compliant
+- SSL/TLS encryption
+
+## Keywords SEO Rilevanti
+
+menu digitale qr, menu qr code ristorante, menu digitale bar, prenotazioni ristorante online, delivery senza commissioni, takeaway ristorante, gestione allergeni menu, menu multilingua, software gestione ristorante, digitalizzazione ristorante, qr code menu gratuito, piattaforma ordini online

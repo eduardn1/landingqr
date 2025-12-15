@@ -27,6 +27,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
+import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import Demo from "./pages/Demo";
 import FAQ from "./pages/FAQ";
@@ -43,31 +44,33 @@ import CookieBanner from "./components/CookieBanner";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/demo" element={<Demo />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/guide" element={<Guides />} />
-            <Route path="/contatti" element={<Contact />} />
-            <Route path="/chi-siamo" element={<About />} />
-            <Route path="/diventa-rivenditore" element={<Partner />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/cookie-policy" element={<CookiePolicy />} />
-            <Route path="/termini-servizio" element={<Terms />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <CookieBanner />
-        </BrowserRouter>
-      </TooltipProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/demo" element={<Demo />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/guide" element={<Guides />} />
+              <Route path="/contatti" element={<Contact />} />
+              <Route path="/chi-siamo" element={<About />} />
+              <Route path="/diventa-rivenditore" element={<Partner />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/cookie-policy" element={<CookiePolicy />} />
+              <Route path="/termini-servizio" element={<Terms />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <CookieBanner />
+          </BrowserRouter>
+        </TooltipProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;
