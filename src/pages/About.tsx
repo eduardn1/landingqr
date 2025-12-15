@@ -68,6 +68,37 @@ const stats = [
   { value: "4.9/5", label: "Rating", icon: Award },
 ];
 
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 30,
+    scale: 0.95,
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    transition: { 
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+      mass: 0.8,
+    }
+  },
+};
+
 // Glass Card Component
 const GlassCard = ({ 
   children, 
@@ -86,15 +117,19 @@ const GlassCard = ({
 
   return (
     <motion.div
-      whileHover={{ y: -2 }}
-      transition={{ duration: 0.2 }}
+      variants={cardVariants}
+      whileHover={{ 
+        y: -4, 
+        scale: 1.02,
+        transition: { duration: 0.2 }
+      }}
       className={`
         relative rounded-2xl
         bg-card/60 backdrop-blur-xl
         border border-border/50
         shadow-xl shadow-black/5
         ${glowClasses[glowColor]}
-        transition-all duration-300
+        transition-colors duration-300
         ${className}
       `}
     >
@@ -153,7 +188,13 @@ const AboutPage = () => {
         {/* Unified Bento Grid */}
         <section className="py-12 md:py-20">
           <div className="container">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto"
+            >
               
               {/* Missione - Large Card */}
               <GlassCard className="lg:col-span-2 lg:row-span-2 p-8" glowColor="primary">
@@ -293,7 +334,7 @@ const AboutPage = () => {
                 </div>
               </GlassCard>
 
-            </div>
+            </motion.div>
           </div>
         </section>
 
