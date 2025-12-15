@@ -182,11 +182,11 @@ html, body {
 
   /* ═══════════════════════════════════════════════════════════════════════
      COLORFUL THEME - Original Premium Dark Design (1:14 PM version)
-     Dark vibrant with purple gradients, colorful badges, glow effects
+     Dark vibrant with BLUE primary, colorful badges, glow effects
      ═══════════════════════════════════════════════════════════════════════ */
   .colorful {
     /* Very dark background - almost black with blue undertone */
-    --background: 240 20% 4%;
+    --background: 230 25% 5%;
     --foreground: 0 0% 98%;
 
     /* White transparencies for UI elements */
@@ -203,32 +203,32 @@ html, body {
     --foreground-05: 0 0% 100% / 0.05;
     --foreground-03: 0 0% 100% / 0.03;
 
-    /* Dark cards */
-    --card: 240 15% 8%;
+    /* Dark cards with blue undertone */
+    --card: 230 25% 8%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 15% 10%;
+    --popover: 230 25% 10%;
     --popover-foreground: 0 0% 98%;
 
-    /* Primary = Vibrant purple for CTAs */
-    --primary: 258 90% 66%;
+    /* Primary = Bright BLUE for CTAs (original design) */
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 258 90% 75%;
-    --primary-dark: 258 90% 55%;
+    --primary-light: 217 91% 70%;
+    --primary-dark: 217 91% 50%;
 
-    /* Colored accents - Purple */
-    --accent-color: 258 90% 66%;
-    --accent-color-light: 330 90% 65%;
+    /* Colored accent - Multiple colors for badges */
+    --accent-color: 217 91% 60%;
+    --accent-color-light: 280 85% 65%;
 
     /* Secondary */
-    --secondary: 240 15% 13%;
+    --secondary: 230 25% 13%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 15% 10%;
+    --muted: 230 25% 10%;
     --muted-foreground: 0 0% 100% / 0.6;
 
     /* Accent backgrounds */
-    --accent: 258 40% 15%;
+    --accent: 217 40% 15%;
     --accent-foreground: 0 0% 98%;
 
     /* Status Colors - Vibrant */
@@ -239,24 +239,24 @@ html, body {
     --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders - subtle purple tint */
-    --border: 240 15% 15%;
-    --border-subtle: 240 15% 12%;
-    --border-medium: 258 30% 25%;
-    --border-strong: 258 50% 40%;
+    /* Borders - subtle blue tint */
+    --border: 230 20% 15%;
+    --border-subtle: 230 20% 12%;
+    --border-medium: 217 30% 25%;
+    --border-strong: 217 50% 40%;
     
-    --input: 240 15% 13%;
-    --ring: 258 90% 66%;
+    --input: 230 25% 13%;
+    --ring: 217 91% 60%;
 
     /* Sidebar */
-    --sidebar-background: 240 20% 5%;
+    --sidebar-background: 230 25% 5%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 258 90% 66%;
+    --sidebar-primary: 217 91% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 15% 13%;
+    --sidebar-accent: 230 25% 13%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 240 15% 15%;
-    --sidebar-ring: 258 90% 66%;
+    --sidebar-border: 230 20% 15%;
+    --sidebar-ring: 217 91% 60%;
   }
 }
 
@@ -694,85 +694,83 @@ html, body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   COLORFUL THEME SPECIFIC STYLES
-   Gradient backgrounds, glow effects, vibrant accents
+   COLORFUL THEME SPECIFIC STYLES - Original 1:14 PM Design
+   Blue primary, cyan-purple gradient text, multi-colored badges
    ═══════════════════════════════════════════════════════════════════════ */
 .colorful {
-  /* ═══════════════════════════════════════════════════════════════════════
-     COLORFUL THEME COMPONENT STYLES - Original 1:14 PM Design
-     ═══════════════════════════════════════════════════════════════════════ */
-  
-  /* Gradient text for headlines - Purple to Pink */
+  /* Gradient text for headlines - Cyan to Purple (original design) */
   .text-foreground-50 {
     background: linear-gradient(135deg, 
-      hsl(258 90% 66%) 0%, 
-      hsl(280 85% 60%) 40%,
-      hsl(330 85% 60%) 70%,
-      hsl(280 85% 65%) 100%
+      hsl(195 100% 60%) 0%, 
+      hsl(217 91% 60%) 30%,
+      hsl(270 85% 65%) 70%,
+      hsl(310 85% 60%) 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   
-  /* Primary CTA button - Purple gradient */
+  /* Primary CTA button - Bright BLUE (original design) */
   .bg-primary {
-    background: linear-gradient(135deg, hsl(258 90% 60%) 0%, hsl(270 85% 55%) 100%) !important;
-    box-shadow: 0 4px 25px -5px hsl(258 90% 50% / 0.5);
+    background: hsl(217 91% 55%) !important;
+    box-shadow: 0 4px 25px -5px hsl(217 91% 50% / 0.5);
   }
   
   .bg-primary:hover {
-    box-shadow: 0 8px 35px -5px hsl(258 90% 50% / 0.65);
+    background: hsl(217 91% 60%) !important;
+    box-shadow: 0 8px 35px -5px hsl(217 91% 50% / 0.65);
     transform: translateY(-1px);
   }
   
-  /* Logo badge gradient */
+  /* Logo badge - keep dark with border */
   .bg-foreground {
-    background: linear-gradient(135deg, hsl(258 90% 60%) 0%, hsl(280 85% 55%) 100%) !important;
+    background: hsl(230 25% 12%) !important;
+    border: 1px solid hsl(230 20% 20%) !important;
   }
   
-  /* Accent color badges */
+  /* Accent color - Blue */
   .text-accent-color {
-    color: hsl(258 90% 70%) !important;
+    color: hsl(217 91% 65%) !important;
   }
   
   .bg-accent-color\/10 {
-    background: hsl(258 70% 50% / 0.12) !important;
-    border-color: hsl(258 70% 50% / 0.25) !important;
+    background: hsl(217 70% 50% / 0.12) !important;
+    border-color: hsl(217 70% 50% / 0.25) !important;
   }
   
   .border-accent-color\/20 {
-    border-color: hsl(258 70% 50% / 0.3) !important;
+    border-color: hsl(217 70% 50% / 0.3) !important;
   }
   
-  /* Card backgrounds - Dark with subtle purple */
+  /* Card backgrounds - Very dark blue */
   .bg-card {
-    background: hsl(240 20% 8%) !important;
+    background: hsl(230 25% 8%) !important;
   }
   
   .bg-card\/60, .bg-card\/80, .bg-card\/95 {
-    background: hsl(240 20% 10% / 0.9) !important;
+    background: hsl(230 25% 10% / 0.9) !important;
   }
   
   /* Foreground transparency backgrounds */
   .bg-foreground-03 {
-    background: hsl(240 15% 10%) !important;
+    background: hsl(230 20% 10%) !important;
   }
   
   .bg-foreground-05, .bg-foreground-10 {
-    background: hsl(240 15% 12%) !important;
+    background: hsl(230 20% 12%) !important;
   }
   
-  /* Borders with purple tint */
+  /* Borders - dark blue */
   .border-foreground-10 {
-    border-color: hsl(240 20% 18%) !important;
+    border-color: hsl(230 20% 18%) !important;
   }
   
   .border-foreground-20 {
-    border-color: hsl(258 30% 30%) !important;
+    border-color: hsl(230 25% 25%) !important;
   }
   
-  /* Hero section top glow */
+  /* Hero section top glow - Blue/Purple */
   main > section:first-child::before {
     content: '';
     position: absolute;
@@ -780,9 +778,13 @@ html, body {
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    max-width: 800px;
-    height: 400px;
-    background: radial-gradient(ellipse at center top, hsl(258 90% 50% / 0.15) 0%, transparent 70%);
+    max-width: 900px;
+    height: 500px;
+    background: radial-gradient(ellipse at center top, 
+      hsl(217 91% 50% / 0.12) 0%, 
+      hsl(270 80% 50% / 0.08) 40%,
+      transparent 70%
+    );
     pointer-events: none;
   }
   
@@ -793,13 +795,27 @@ html, body {
   
   /* Navbar glass effect */
   .backdrop-blur-xl {
-    background: hsl(240 20% 8% / 0.85) !important;
-    border-color: hsl(240 20% 18%) !important;
+    background: hsl(230 25% 8% / 0.85) !important;
+    border-color: hsl(230 20% 18%) !important;
   }
   
   /* Section backgrounds */
   .border-t.border-foreground-10 {
-    background: hsl(240 20% 6%);
+    background: hsl(230 25% 6%);
+  }
+  
+  /* Featured card - Purple gradient background (original Tutto-in-uno) */
+  .pricing-card-featured::before {
+    background: linear-gradient(180deg, 
+      hsl(270 60% 35% / 0.4) 0%, 
+      hsl(270 50% 25% / 0.2) 50%,
+      transparent 100%
+    ) !important;
+  }
+  
+  .pricing-card-featured {
+    border-color: hsl(270 50% 50% / 0.4) !important;
+    box-shadow: 0 0 40px hsl(270 60% 50% / 0.15);
   }
   
   /* Gradient glow effects */
