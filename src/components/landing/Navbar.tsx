@@ -286,21 +286,21 @@ const Navbar = memo(() => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="lg:hidden absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-2xl overflow-hidden w-[calc(100%-24px)] max-w-md"
+              className="lg:hidden fixed top-16 left-3 right-3 rounded-2xl overflow-hidden max-w-sm mx-auto z-50"
               style={{
                 background: theme === 'dark' 
-                  ? 'linear-gradient(135deg, rgba(30,30,40,0.9) 0%, rgba(20,20,30,0.95) 100%)'
-                  : 'linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(245,245,250,0.85) 100%)',
+                  ? 'linear-gradient(135deg, rgba(30,30,40,0.95) 0%, rgba(20,20,30,0.98) 100%)'
+                  : 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(245,245,250,0.98) 100%)',
                 backdropFilter: 'blur(24px) saturate(180%)',
                 WebkitBackdropFilter: 'blur(24px) saturate(180%)',
                 border: '1px solid',
-                borderColor: theme === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.7)',
+                borderColor: theme === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)',
                 boxShadow: theme === 'dark'
-                  ? '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)'
-                  : '0 8px 32px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.9)',
+                  ? '0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)'
+                  : '0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.9)',
               }}
             >
-              <div className="p-3 grid grid-cols-5 gap-1">
+              <div className="p-3 grid grid-cols-4 gap-2">
                 {navLinks.map((link) => {
                   const IconComponent = link.icon;
                   const isActive = activeSection === link.id;
@@ -342,18 +342,18 @@ const Navbar = memo(() => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-3 mt-2 rounded-2xl overflow-hidden min-w-[200px]"
+              className="fixed top-16 left-3 right-3 sm:left-auto sm:right-3 sm:w-56 rounded-2xl overflow-hidden z-50"
               style={{
                 background: theme === 'dark' 
-                  ? 'linear-gradient(135deg, rgba(30,30,40,0.9) 0%, rgba(20,20,30,0.95) 100%)'
-                  : 'linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(245,245,250,0.85) 100%)',
+                  ? 'linear-gradient(135deg, rgba(30,30,40,0.95) 0%, rgba(20,20,30,0.98) 100%)'
+                  : 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(245,245,250,0.98) 100%)',
                 backdropFilter: 'blur(24px) saturate(180%)',
                 WebkitBackdropFilter: 'blur(24px) saturate(180%)',
                 border: '1px solid',
-                borderColor: theme === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.7)',
+                borderColor: theme === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)',
                 boxShadow: theme === 'dark'
-                  ? '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)'
-                  : '0 8px 32px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.9)',
+                  ? '0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)'
+                  : '0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.9)',
               }}
             >
               <div className="p-2">
