@@ -347,3 +347,6 @@ const FAQPage = () => {
 };
 
 export default FAQPage;
+
+// Also export as FAQ for compatibility
+export { FAQPage as FAQ };
