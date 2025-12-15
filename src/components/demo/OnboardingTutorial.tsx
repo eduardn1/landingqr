@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronRight, ChevronLeft, Sparkles, LayoutDashboard, UtensilsCrossed, ShoppingBag, Calendar, Users, Gift, MessageCircle, Palette, BarChart3, Settings, Truck, MapPin, Bell, Star, Instagram, FileText, Shield, Smartphone } from "lucide-react";
+import { X, ChevronRight, ChevronLeft, Sparkles, LayoutDashboard, UtensilsCrossed, ShoppingBag, Calendar, Users, Gift, MessageCircle, Palette, BarChart3, Settings, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface OnboardingStep {
@@ -103,6 +103,8 @@ const steps: OnboardingStep[] = [
   },
 ];
 
+const STORAGE_KEY = "demo-onboarding-step";
+
 interface OnboardingTutorialProps {
   isOpen: boolean;
   onClose: () => void;
@@ -111,8 +113,41 @@ interface OnboardingTutorialProps {
 
 export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTutorialProps) => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [isResuming, setIsResuming] = useState(false);
   
+  // Load saved step on open
+  useEffect(() => {
+    if (isOpen) {
+      const savedStep = localStorage.getItem(STORAGE_KEY);
+      if (savedStep) {
+        const stepIndex = parseInt(savedStep, 10);
+        if (stepIndex > 0 && stepIndex < steps.length) {
+          setCurrentStep(stepIndex);
+          setIsResuming(true);
+          // Navigate to the saved section
+          if (steps[stepIndex].highlight) {
+            onNavigate(steps[stepIndex].highlight);
+          }
+        } else {
+          setCurrentStep(0);
+          setIsResuming(false);
+        }
+      } else {
+        setCurrentStep(0);
+        setIsResuming(false);
+      }
+    }
+  }, [isOpen, onNavigate]);
+
+  // Save step on change
+  useEffect(() => {
+    if (isOpen && currentStep > 0) {
+      localStorage.setItem(STORAGE_KEY, currentStep.toString());
+    }
+  }, [currentStep, isOpen]);
+
   const handleNext = () => {
+    setIsResuming(false);
     if (currentStep < steps.length - 1) {
       const nextStep = currentStep + 1;
       setCurrentStep(nextStep);
@@ -120,11 +155,14 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
         onNavigate(steps[nextStep].highlight);
       }
     } else {
+      // Complete the tutorial
+      localStorage.removeItem(STORAGE_KEY);
       onClose();
     }
   };
 
   const handlePrev = () => {
+    setIsResuming(false);
     if (currentStep > 0) {
       const prevStep = currentStep - 1;
       setCurrentStep(prevStep);
@@ -135,14 +173,15 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
   };
 
   const handleSkip = () => {
+    // Keep progress saved when skipping
     onClose();
   };
 
-  useEffect(() => {
-    if (isOpen) {
-      setCurrentStep(0);
-    }
-  }, [isOpen]);
+  const handleRestart = () => {
+    setIsResuming(false);
+    setCurrentStep(0);
+    localStorage.removeItem(STORAGE_KEY);
+  };
 
   const step = steps[currentStep];
   const Icon = step.icon;
@@ -160,14 +199,14 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
             onClick={handleSkip}
           />
 
-          {/* Modal - Centered and responsive */}
+          {/* Modal - Centered in viewport */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="fixed left-4 right-4 top-1/2 -translate-y-1/2 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-50 w-auto sm:w-full max-w-md mx-auto"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div className="relative bg-card/95 backdrop-blur-xl border border-border rounded-3xl shadow-2xl overflow-hidden">
+            <div className="relative bg-card/95 backdrop-blur-xl border border-border rounded-3xl shadow-2xl overflow-hidden w-full max-w-md">
               {/* Gradient Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
               
@@ -181,6 +220,35 @@ export const OnboardingTutorial = ({ isOpen, onClose, onNavigate }: OnboardingTu
 
               {/* Content */}
               <div className="relative p-5 sm:p-8">
+                {/* Resume Banner */}
+                {isResuming && currentStep > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-4 p-3 rounded-xl bg-primary/10 border border-primary/20"
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                          <RotateCcw className="w-4 h-4 text-primary" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium text-foreground">Sei rimasto qui!</p>
+                          <p className="text-xs text-muted-foreground">Continua da dove hai lasciato</p>
+                        </div>
+                      </div>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={handleRestart}
+                        className="text-xs text-muted-foreground hover:text-foreground"
+                      >
+                        Ricomincia
+                      </Button>
+                    </div>
+                  </motion.div>
+                )}
+
                 {/* Progress Bar */}
                 <div className="mb-5">
                   <div className="h-1.5 bg-muted rounded-full overflow-hidden">
