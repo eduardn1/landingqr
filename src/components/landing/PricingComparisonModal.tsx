@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+
 import { Check, X, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLeadForm } from "@/hooks/useLeadForm";
