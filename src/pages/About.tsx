@@ -40,37 +40,26 @@ import { Button } from "@/components/ui/button";
 import SharedNavbar from "@/components/shared/SharedNavbar";
 import { useRef } from "react";
 
-const stats = [
-  { value: "500+", label: "Locali attivi", icon: Users },
-  { value: "50k+", label: "Menu visualizzati", icon: TrendingUp },
-  { value: "99.9%", label: "Uptime garantito", icon: Shield },
-  { value: "4.9/5", label: "Valutazione clienti", icon: Star },
-];
-
 const values = [
   {
     icon: Target,
     title: "Missione",
     description: "Democratizzare la tecnologia per l'hospitality, rendendo accessibile a ogni locale strumenti digitali potenti e facili da usare.",
-    gradient: "from-violet-500 to-purple-600",
   },
   {
     icon: Heart,
     title: "Passione",
     description: "Amiamo il nostro lavoro e lo facciamo con dedizione. Ogni feature nasce dall'ascolto delle esigenze reali dei nostri clienti.",
-    gradient: "from-rose-500 to-pink-600",
   },
   {
     icon: Zap,
     title: "Innovazione",
     description: "Siamo sempre al passo con le ultime tecnologie per offrire soluzioni all'avanguardia che fanno la differenza.",
-    gradient: "from-amber-500 to-orange-600",
   },
   {
     icon: Globe,
     title: "Accessibilità",
     description: "Crediamo che ogni locale, grande o piccolo, meriti strumenti professionali senza costi proibitivi.",
-    gradient: "from-emerald-500 to-teal-600",
   },
 ];
 
@@ -109,32 +98,24 @@ const teamMembers = [
     name: "Eduard Costin Udila",
     role: "Founder & Lead Developer",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    bio: "Full-stack developer con oltre 5 anni di esperienza. Fondatore di StudioJEM.",
-    gradient: "from-primary to-accent",
     socials: { linkedin: "#", twitter: "#", email: "info@studiojem.it" }
   },
   {
     name: "Marco Rossi",
     role: "UX/UI Designer",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
-    bio: "Designer con passione per le interfacce intuitive e accessibili.",
-    gradient: "from-violet-500 to-purple-600",
     socials: { linkedin: "#", twitter: "#", email: "#" }
   },
   {
     name: "Giulia Ferrara",
     role: "Product Manager",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face",
-    bio: "Esperta in product strategy con background nell'hospitality.",
-    gradient: "from-rose-500 to-pink-600",
     socials: { linkedin: "#", twitter: "#", email: "#" }
   },
   {
     name: "Alessandro Mura",
     role: "Backend Developer",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-    bio: "Specializzato in architetture scalabili e sicurezza.",
-    gradient: "from-emerald-500 to-teal-600",
     socials: { linkedin: "#", twitter: "#", email: "#" }
   },
 ];
@@ -270,44 +251,8 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Stats Section with Counter Animation */}
-        <section className="py-12 border-y border-border bg-muted/30">
-          <div className="container">
-            <motion.div 
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6"
-            >
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="text-center group cursor-pointer"
-                >
-                  <motion.div 
-                    whileHover={{ rotate: [0, -10, 10, 0] }}
-                    transition={{ duration: 0.5 }}
-                    className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/20 transition-colors"
-                  >
-                    <stat.icon className="w-6 h-6 text-primary" />
-                  </motion.div>
-                  <motion.p 
-                    className="text-2xl md:text-3xl font-bold text-foreground"
-                  >
-                    {stat.value}
-                  </motion.p>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Bento Grid - Values with Staggered Animation */}
-        <section className="py-16 md:py-24">
+        {/* Bento Grid - Values - Modern Minimal */}
+        <section className="py-16 md:py-24 border-t border-border">
           <div className="container">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -323,68 +268,33 @@ const AboutPage = () => {
               </p>
             </motion.div>
 
-            {/* Bento Grid */}
+            {/* Modern Minimal Grid */}
             <motion.div 
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto"
+              className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto"
             >
               {values.map((value, index) => {
                 const Icon = value.icon;
-                const isLarge = index === 0 || index === 3;
                 
                 return (
                   <motion.div
                     key={value.title}
                     variants={itemVariants}
-                    whileHover={{ 
-                      scale: 1.02, 
-                      y: -5,
-                      transition: { type: "spring", stiffness: 300 }
-                    }}
-                    className={`group relative bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-all cursor-pointer overflow-hidden ${
-                      isLarge ? 'lg:col-span-2' : ''
-                    }`}
+                    whileHover={{ y: -5 }}
+                    className="group relative bg-card border border-border rounded-2xl p-6 hover:border-primary/40 transition-all"
                   >
-                    {/* Animated Gradient Glow on Hover */}
                     <motion.div 
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileHover={{ opacity: 0.1, scale: 1.2 }}
-                      className={`absolute inset-0 bg-gradient-to-br ${value.gradient} rounded-2xl`}
-                    />
+                      whileHover={{ scale: 1.1 }}
+                      className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-4 group-hover:bg-primary/10 transition-colors"
+                    >
+                      <Icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                    </motion.div>
                     
-                    {/* Floating particles effect */}
-                    <div className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity">
-                      {[...Array(3)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ y: 100, x: Math.random() * 100 }}
-                          animate={{ y: -20, x: Math.random() * 100 }}
-                          transition={{ 
-                            duration: 2 + Math.random(), 
-                            repeat: Infinity,
-                            delay: i * 0.5 
-                          }}
-                          className={`absolute w-2 h-2 rounded-full bg-gradient-to-br ${value.gradient} opacity-30`}
-                          style={{ left: `${20 + i * 30}%` }}
-                        />
-                      ))}
-                    </div>
-                    
-                    <div className="relative">
-                      <motion.div 
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.5 }}
-                        className={`w-12 h-12 rounded-xl bg-gradient-to-br ${value.gradient} flex items-center justify-center mb-4 shadow-lg`}
-                      >
-                        <Icon className="w-6 h-6 text-white" />
-                      </motion.div>
-                      
-                      <h3 className="font-bold text-lg text-foreground mb-2">{value.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
-                    </div>
+                    <h3 className="font-semibold text-lg text-foreground mb-2">{value.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
                   </motion.div>
                 );
               })}
@@ -392,7 +302,7 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Team Section */}
+        {/* Team Section - Clean & Simple */}
         <section className="py-16 md:py-24 bg-muted/30">
           <div className="container">
             <motion.div 
@@ -418,65 +328,52 @@ const AboutPage = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
+              className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto"
             >
-              {teamMembers.map((member, index) => (
+              {teamMembers.map((member) => (
                 <motion.div
                   key={member.name}
                   variants={itemVariants}
-                  whileHover={{ y: -10 }}
-                  className="group relative bg-card border border-border rounded-2xl overflow-hidden"
+                  whileHover={{ y: -5 }}
+                  className="group text-center"
                 >
-                  {/* Image Container */}
-                  <div className="relative h-48 overflow-hidden">
-                    <motion.img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.4 }}
-                    />
-                    {/* Overlay gradient */}
-                    <div className={`absolute inset-0 bg-gradient-to-t ${member.gradient} opacity-0 group-hover:opacity-20 transition-opacity`} />
-                    
-                    {/* Social Links - appear on hover */}
+                  {/* Avatar */}
+                  <div className="relative w-24 h-24 mx-auto mb-4">
                     <motion.div 
-                      initial={{ opacity: 0, y: 20 }}
-                      whileHover={{ opacity: 1, y: 0 }}
-                      className="absolute bottom-3 left-0 right-0 flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      whileHover={{ scale: 1.05 }}
+                      className="w-full h-full rounded-full overflow-hidden border-2 border-border group-hover:border-primary/40 transition-colors"
+                    >
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </motion.div>
+                    
+                    {/* Social links on hover */}
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileHover={{ opacity: 1, scale: 1 }}
+                      className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity"
                     >
                       <a 
                         href={member.socials.linkedin}
-                        className="w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-foreground hover:bg-white transition-colors"
+                        className="w-6 h-6 rounded-full bg-card border border-border flex items-center justify-center hover:border-primary/40 transition-colors"
                       >
-                        <Linkedin className="w-4 h-4" />
-                      </a>
-                      <a 
-                        href={member.socials.twitter}
-                        className="w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-foreground hover:bg-white transition-colors"
-                      >
-                        <Twitter className="w-4 h-4" />
+                        <Linkedin className="w-3 h-3 text-muted-foreground" />
                       </a>
                       <a 
                         href={`mailto:${member.socials.email}`}
-                        className="w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-foreground hover:bg-white transition-colors"
+                        className="w-6 h-6 rounded-full bg-card border border-border flex items-center justify-center hover:border-primary/40 transition-colors"
                       >
-                        <Mail className="w-4 h-4" />
+                        <Mail className="w-3 h-3 text-muted-foreground" />
                       </a>
                     </motion.div>
                   </div>
                   
-                  {/* Content */}
-                  <div className="p-5">
-                    <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${member.gradient} bg-opacity-10 text-xs font-semibold mb-3`}>
-                      <span className="text-white mix-blend-difference">{member.role}</span>
-                    </div>
-                    <h3 className="font-bold text-lg text-foreground mb-1">{member.name}</h3>
-                    <p className="text-sm text-muted-foreground">{member.bio}</p>
-                  </div>
-                  
-                  {/* Decorative corner */}
-                  <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${member.gradient} opacity-10 blur-2xl`} />
+                  {/* Info */}
+                  <h3 className="font-semibold text-foreground mb-1">{member.name}</h3>
+                  <p className="text-sm text-muted-foreground">{member.role}</p>
                 </motion.div>
               ))}
             </motion.div>
