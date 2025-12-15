@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
  * QRCODESTUDIOJEM - Guides Page
- * Tutorial e guide organizzate per livello con link alla demo interattiva
+ * Tutorial e guide con link alla demo interattiva
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -10,24 +10,17 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import { useState, memo } from "react";
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowLeft,
   ArrowRight,
   BookOpen,
-  Check,
   Clock,
-  ExternalLink,
-  Filter,
   GraduationCap,
-  MessageCircle,
   Play,
   Rocket,
-  Sparkles,
   Star,
-  Trophy,
-  Zap,
   UtensilsCrossed,
   ShoppingBag,
   Calendar,
@@ -37,63 +30,31 @@ import {
   Settings,
   Bell,
   Truck,
-  Languages,
+  Filter,
   Palette,
+  Trophy,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-
-type DifficultyLevel = "base" | "intermedio" | "avanzato" | "all";
 
 interface Guide {
   id: string;
   title: string;
   description: string;
   duration: string;
-  level: "base" | "intermedio" | "avanzato";
   icon: LucideIcon;
   demoSection: string;
   steps: string[];
-  gradient: string;
   popular?: boolean;
 }
 
-const levelConfig = {
-  base: {
-    label: "Base",
-    icon: Sparkles,
-    color: "text-emerald-500",
-    bgColor: "bg-emerald-500/10",
-    borderColor: "border-emerald-500/20",
-    description: "Perfetto per iniziare. Impara le funzionalità essenziali.",
-  },
-  intermedio: {
-    label: "Intermedio",
-    icon: Zap,
-    color: "text-blue-500",
-    bgColor: "bg-blue-500/10",
-    borderColor: "border-blue-500/20",
-    description: "Approfondisci le funzionalità e ottimizza il tuo workflow.",
-  },
-  avanzato: {
-    label: "Avanzato",
-    icon: Trophy,
-    color: "text-purple-500",
-    bgColor: "bg-purple-500/10",
-    borderColor: "border-purple-500/20",
-    description: "Sblocca tutto il potenziale con le funzioni avanzate.",
-  },
-};
-
 const guides: Guide[] = [
-  // BASE
   {
     id: "primo-menu",
     title: "Crea il tuo primo menu",
     description: "Impara ad aggiungere piatti, categorie e prezzi. Il primo passo per digitalizzare il tuo locale.",
     duration: "5 min",
-    level: "base",
     icon: UtensilsCrossed,
     demoSection: "menu",
     steps: [
@@ -103,7 +64,6 @@ const guides: Guide[] = [
       "Carica le foto dei piatti",
       "Pubblica il menu",
     ],
-    gradient: "from-violet-500 to-purple-600",
     popular: true,
   },
   {
@@ -111,7 +71,6 @@ const guides: Guide[] = [
     title: "Gestire gli ordini",
     description: "Come ricevere, confermare e gestire gli ordini dei clienti in tempo reale.",
     duration: "4 min",
-    level: "base",
     icon: ShoppingBag,
     demoSection: "orders",
     steps: [
@@ -120,14 +79,12 @@ const guides: Guide[] = [
       "Cambia lo stato (In preparazione, Pronto, ecc.)",
       "Gestisci le notifiche al cliente",
     ],
-    gradient: "from-orange-500 to-red-500",
   },
   {
     id: "prenotazioni-base",
     title: "Prenotazioni tavoli",
     description: "Configura il sistema di prenotazioni e gestisci le richieste dei clienti.",
     duration: "5 min",
-    level: "base",
     icon: Calendar,
     demoSection: "reservations",
     steps: [
@@ -136,14 +93,12 @@ const guides: Guide[] = [
       "Ricevi e conferma le prenotazioni",
       "Gestisci le cancellazioni",
     ],
-    gradient: "from-emerald-500 to-teal-600",
   },
   {
     id: "impostazioni-locale",
     title: "Configura il tuo locale",
     description: "Personalizza le informazioni del tuo locale: nome, logo, orari, contatti.",
     duration: "3 min",
-    level: "base",
     icon: Settings,
     demoSection: "settings",
     steps: [
@@ -152,16 +107,12 @@ const guides: Guide[] = [
       "Imposta gli orari di apertura",
       "Aggiungi i contatti e social",
     ],
-    gradient: "from-slate-500 to-gray-600",
   },
-
-  // INTERMEDIO
   {
     id: "allergeni-traduzioni",
     title: "Allergeni e traduzioni",
     description: "Configura i 14 allergeni obbligatori e attiva le traduzioni automatiche in 5 lingue.",
     duration: "6 min",
-    level: "intermedio",
     icon: Filter,
     demoSection: "menu",
     steps: [
@@ -171,7 +122,6 @@ const guides: Guide[] = [
       "Verifica e modifica le traduzioni",
       "Testa la visualizzazione multi-lingua",
     ],
-    gradient: "from-cyan-500 to-blue-600",
     popular: true,
   },
   {
@@ -179,7 +129,6 @@ const guides: Guide[] = [
     title: "Delivery e tracking GPS",
     description: "Configura le zone di consegna, assegna i driver e monitora le consegne in tempo reale.",
     duration: "8 min",
-    level: "intermedio",
     icon: Truck,
     demoSection: "delivery",
     steps: [
@@ -189,14 +138,12 @@ const guides: Guide[] = [
       "Assegna le consegne",
       "Monitora il tracking GPS live",
     ],
-    gradient: "from-blue-500 to-indigo-600",
   },
   {
     id: "clienti-crm",
     title: "CRM e gestione clienti",
     description: "Visualizza lo storico ordini dei clienti, aggiungi note e gestisci i contatti.",
     duration: "5 min",
-    level: "intermedio",
     icon: Users,
     demoSection: "customers",
     steps: [
@@ -205,14 +152,12 @@ const guides: Guide[] = [
       "Aggiungi note e preferenze",
       "Invia offerte personalizzate",
     ],
-    gradient: "from-pink-500 to-rose-600",
   },
   {
     id: "notifiche-whatsapp",
     title: "Notifiche WhatsApp",
     description: "Configura le notifiche automatiche via WhatsApp per ordini e prenotazioni.",
     duration: "4 min",
-    level: "intermedio",
     icon: Bell,
     demoSection: "notifications",
     steps: [
@@ -221,16 +166,12 @@ const guides: Guide[] = [
       "Attiva le notifiche automatiche",
       "Testa l'invio",
     ],
-    gradient: "from-green-500 to-emerald-600",
   },
-
-  // AVANZATO
   {
     id: "loyalty-gamification",
     title: "Loyalty e gamification",
     description: "Crea un programma fedeltà con punti, livelli, badge e sfide per fidelizzare i clienti.",
     duration: "10 min",
-    level: "avanzato",
     icon: Trophy,
     demoSection: "loyalty",
     steps: [
@@ -241,7 +182,6 @@ const guides: Guide[] = [
       "Configura la gamification (confetti, animazioni)",
       "Imposta il referral program",
     ],
-    gradient: "from-amber-500 to-orange-600",
     popular: true,
   },
   {
@@ -249,7 +189,6 @@ const guides: Guide[] = [
     title: "Promozioni e Stories",
     description: "Crea codici sconto, flash sales e stories stile Instagram per promuovere il tuo locale.",
     duration: "7 min",
-    level: "avanzato",
     icon: Gift,
     demoSection: "promo",
     steps: [
@@ -259,14 +198,12 @@ const guides: Guide[] = [
       "Programma la pubblicazione",
       "Monitora le performance",
     ],
-    gradient: "from-fuchsia-500 to-pink-600",
   },
   {
     id: "analytics-avanzati",
     title: "Analytics e report",
     description: "Analizza fatturato, piatti più venduti, orari di punta e genera report dettagliati.",
     duration: "8 min",
-    level: "avanzato",
     icon: BarChart3,
     demoSection: "analytics",
     steps: [
@@ -276,14 +213,12 @@ const guides: Guide[] = [
       "Scopri gli orari di punta",
       "Esporta i report",
     ],
-    gradient: "from-indigo-500 to-violet-600",
   },
   {
     id: "temi-personalizzazione",
     title: "Temi e branding",
     description: "Personalizza completamente l'aspetto del menu: colori, font, layout e template.",
     duration: "6 min",
-    level: "avanzato",
     icon: Palette,
     demoSection: "templates",
     steps: [
@@ -293,52 +228,41 @@ const guides: Guide[] = [
       "Aggiungi elementi custom",
       "Anteprima e pubblica",
     ],
-    gradient: "from-rose-500 to-red-600",
   },
 ];
 
 const GuideCard = memo(({ guide }: { guide: Guide }) => {
   const Icon = guide.icon;
-  const levelInfo = levelConfig[guide.level];
-  const LevelIcon = levelInfo.icon;
 
   return (
-    <div className="group relative bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/30 transition-all duration-300">
-      {/* Popular badge */}
-      {guide.popular && (
-        <div className="absolute top-3 right-3 z-10">
-          <Badge className="bg-primary text-primary-foreground text-[10px] gap-1">
-            <Star className="w-3 h-3" />
-            Popolare
-          </Badge>
-        </div>
-      )}
-
-      {/* Header with gradient */}
-      <div className={`relative p-5 bg-gradient-to-br ${guide.gradient}`}>
-        <div className="absolute inset-0 bg-black/10" />
-        <div className="relative z-10 flex items-start justify-between">
-          <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-            <Icon className="w-6 h-6 text-white" />
-          </div>
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-sm">
-            <Clock className="w-3.5 h-3.5 text-white" />
-            <span className="text-xs font-medium text-white">{guide.duration}</span>
-          </div>
-        </div>
-      </div>
-
+    <div className="group relative bg-card border border-border rounded-xl overflow-hidden hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
       {/* Content */}
       <div className="p-5">
-        {/* Level badge */}
-        <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full ${levelInfo.bgColor} ${levelInfo.borderColor} border mb-3`}>
-          <LevelIcon className={`w-3.5 h-3.5 ${levelInfo.color}`} />
-          <span className={`text-xs font-medium ${levelInfo.color}`}>{levelInfo.label}</span>
+        {/* Header row */}
+        <div className="flex items-start justify-between gap-3 mb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+              <Icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-1">
+                {guide.title}
+              </h3>
+              <div className="flex items-center gap-2 mt-0.5">
+                <Clock className="w-3 h-3 text-muted-foreground" />
+                <span className="text-xs text-muted-foreground">{guide.duration}</span>
+              </div>
+            </div>
+          </div>
+          {guide.popular && (
+            <Badge variant="secondary" className="text-[10px] gap-1 shrink-0">
+              <Star className="w-3 h-3" />
+              Popolare
+            </Badge>
+          )}
         </div>
 
-        <h3 className="font-bold text-lg text-foreground mb-2 group-hover:text-primary transition-colors">
-          {guide.title}
-        </h3>
+        {/* Description */}
         <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
           {guide.description}
         </p>
@@ -348,7 +272,7 @@ const GuideCard = memo(({ guide }: { guide: Guide }) => {
           {guide.steps.slice(0, 3).map((step, index) => (
             <div key={index} className="flex items-start gap-2 text-xs text-muted-foreground">
               <div className="w-4 h-4 rounded-full bg-muted flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-[10px] font-semibold">{index + 1}</span>
+                <span className="text-[10px] font-medium">{index + 1}</span>
               </div>
               <span className="line-clamp-1">{step}</span>
             </div>
@@ -361,8 +285,8 @@ const GuideCard = memo(({ guide }: { guide: Guide }) => {
         </div>
 
         {/* CTA */}
-        <Link to={`/demo?skip=true&section=${guide.demoSection}`}>
-          <Button className="w-full gradient-button gap-2 group/btn">
+        <Link to={`/demo?skip=true&section=${guide.demoSection}&from=guides`}>
+          <Button variant="outline" className="w-full gap-2 group/btn">
             <Play className="w-4 h-4" />
             Prova nella demo
             <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
@@ -376,18 +300,6 @@ const GuideCard = memo(({ guide }: { guide: Guide }) => {
 GuideCard.displayName = 'GuideCard';
 
 const GuidesPage = () => {
-  const [activeLevel, setActiveLevel] = useState<DifficultyLevel>("all");
-
-  const filteredGuides = activeLevel === "all" 
-    ? guides 
-    : guides.filter(g => g.level === activeLevel);
-
-  const groupedGuides = {
-    base: filteredGuides.filter(g => g.level === "base"),
-    intermedio: filteredGuides.filter(g => g.level === "intermedio"),
-    avanzato: filteredGuides.filter(g => g.level === "avanzato"),
-  };
-
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -429,7 +341,7 @@ const GuidesPage = () => {
             </p>
 
             {/* Quick stats */}
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <div className="flex flex-wrap justify-center gap-4">
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
                 <GraduationCap className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium text-foreground">{guides.length} guide</span>
@@ -445,136 +357,27 @@ const GuidesPage = () => {
             </div>
           </div>
 
-          {/* Level Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
-            <button
-              onClick={() => setActiveLevel("all")}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                activeLevel === "all"
-                  ? "bg-primary text-primary-foreground shadow-md"
-                  : "bg-card border border-border text-muted-foreground hover:text-foreground hover:border-primary/30"
-              }`}
-            >
-              <Sparkles className="w-4 h-4" />
-              Tutte le guide
-              <span className={`text-xs px-1.5 py-0.5 rounded-full ${activeLevel === "all" ? "bg-white/20" : "bg-muted"}`}>
-                {guides.length}
-              </span>
-            </button>
-            {(Object.keys(levelConfig) as Array<keyof typeof levelConfig>).map((level) => {
-              const config = levelConfig[level];
-              const Icon = config.icon;
-              const count = guides.filter(g => g.level === level).length;
-              
-              return (
-                <button
-                  key={level}
-                  onClick={() => setActiveLevel(level)}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                    activeLevel === level
-                      ? `${config.bgColor} ${config.color} border ${config.borderColor}`
-                      : "bg-card border border-border text-muted-foreground hover:text-foreground hover:border-primary/30"
-                  }`}
-                >
-                  <Icon className="w-4 h-4" />
-                  {config.label}
-                  <span className={`text-xs px-1.5 py-0.5 rounded-full ${activeLevel === level ? "bg-white/20" : "bg-muted"}`}>
-                    {count}
-                  </span>
-                </button>
-              );
-            })}
+          {/* Guides Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {guides.map((guide) => (
+              <GuideCard key={guide.id} guide={guide} />
+            ))}
           </div>
 
-          {/* Guides by Level */}
-          {activeLevel === "all" ? (
-            // Show all grouped by level
-            <div className="space-y-12">
-              {(Object.keys(levelConfig) as Array<keyof typeof levelConfig>).map((level) => {
-                const config = levelConfig[level];
-                const Icon = config.icon;
-                const levelGuides = groupedGuides[level];
-                
-                if (levelGuides.length === 0) return null;
-                
-                return (
-                  <div key={level}>
-                    {/* Level Header */}
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className={`w-10 h-10 rounded-xl ${config.bgColor} flex items-center justify-center`}>
-                        <Icon className={`w-5 h-5 ${config.color}`} />
-                      </div>
-                      <div>
-                        <h2 className="font-bold text-xl text-foreground">{config.label}</h2>
-                        <p className="text-sm text-muted-foreground">{config.description}</p>
-                      </div>
-                    </div>
-
-                    {/* Guides Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                      {levelGuides.map((guide) => (
-                        <GuideCard key={guide.id} guide={guide} />
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            // Show filtered guides
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-              {filteredGuides.map((guide) => (
-                <GuideCard key={guide.id} guide={guide} />
-              ))}
-            </div>
-          )}
-
-          {/* Help CTA */}
-          <div className="mt-16">
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-primary/10 via-card to-accent/5 border border-primary/20 overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
-
-              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                <div className="text-center md:text-left">
-                  <h3 className="font-display text-xl font-bold text-foreground mb-2">
-                    Hai bisogno di aiuto?
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Il nostro team è pronto ad assisterti via WhatsApp
-                  </p>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link to="/faq">
-                    <Button variant="outline" className="gap-2 rounded-xl">
-                      Vedi FAQ
-                      <ExternalLink className="w-4 h-4" />
-                    </Button>
-                  </Link>
-                  <a
-                    href="https://wa.me/393533811359"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button className="gradient-button gap-2 rounded-xl">
-                      <MessageCircle className="w-4 h-4" />
-                      Contattaci
-                    </Button>
-                  </a>
-                </div>
-              </div>
-            </div>
+          {/* Bottom CTA */}
+          <div className="mt-16 text-center">
+            <p className="text-muted-foreground mb-4">
+              Hai bisogno di aiuto? Il nostro team è sempre disponibile.
+            </p>
+            <Link to="/#contact">
+              <Button variant="outline" className="gap-2">
+                Contattaci
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </main>
-
-      {/* Simple Footer */}
-      <footer className="border-t border-border py-8 bg-muted/30">
-        <div className="container text-center">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Flavour. Tutti i diritti riservati.
-          </p>
-        </div>
-      </footer>
     </div>
   );
 };

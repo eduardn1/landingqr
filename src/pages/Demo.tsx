@@ -155,6 +155,7 @@ const Demo = () => {
   const [searchParams] = useSearchParams();
   const skipOnboarding = searchParams.get("skip") === "true";
   const initialSection = searchParams.get("section") || "dashboard";
+  const fromGuides = searchParams.get("from") === "guides";
   
   const [activeSection, setActiveSection] = useState(initialSection);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -439,6 +440,22 @@ const Demo = () => {
             </motion.div>
           </AnimatePresence>
         </div>
+
+        {/* Floating Back to Guides Button */}
+        {fromGuides && (
+          <Link to="/guide">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="fixed bottom-24 lg:bottom-6 right-4 lg:right-6 z-50"
+            >
+              <Button variant="outline" className="gap-2 shadow-lg bg-card border-border">
+                <ArrowLeft className="w-4 h-4" />
+                Torna alle guide
+              </Button>
+            </motion.div>
+          </Link>
+        )}
       </main>
 
       {/* Bottom Navigation - Mobile */}
