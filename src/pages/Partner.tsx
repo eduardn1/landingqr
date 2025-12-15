@@ -189,65 +189,150 @@ const Partner = memo(() => {
       <SharedNavbar />
 
       <main className="pt-16">
-        {/* Hero Section */}
-        <section className="relative py-16 md:py-24 overflow-hidden">
-          {/* Background Effects */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-[120px]" />
-            <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-accent/15 rounded-full blur-[120px]" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-rose-500/10 rounded-full blur-[150px]" />
-          </div>
+        {/* Hero Section - Landing Style */}
+        <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-background">
+          {/* Radial Gradient Background */}
+          <div className="absolute inset-0 radial-gradient" />
+          
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 grid-pattern opacity-30" />
+          
+          {/* Noise Overlay */}
+          <div className="absolute inset-0 noise-overlay" />
 
-          <div className="container relative">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-center max-w-3xl mx-auto"
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                <Handshake className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium text-primary">Programma Partner</span>
-              </div>
+          {/* Static Orbs */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-rose-500/10 rounded-full blur-3xl" />
 
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-foreground mb-6">
-                Diventa un Partner{" "}
-                <span className="bg-gradient-to-r from-primary via-accent to-rose-500 bg-clip-text text-transparent">
-                  Flavour
-                </span>
-              </h1>
-              
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-                Unisciti ad oltre <strong className="text-foreground">100 rivenditori</strong> in Italia e offri ai tuoi clienti 
-                le migliori soluzioni digitali per l'hospitality.
-              </p>
+          <div className="container relative z-10 py-16">
+            <div className="max-w-5xl mx-auto text-center">
+              {/* Badge */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6 inline-flex"
+              >
+                <div className="badge-primary">
+                  <Handshake className="w-4 h-4" />
+                  <span>Programma Partner Flavour</span>
+                  <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
+                </div>
+              </motion.div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
+              {/* Headline */}
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-display-md sm:text-display-lg md:text-display-xl lg:text-[5rem] font-extrabold mb-6 px-2"
+              >
+                <span className="text-foreground">Diventa un</span>
+                <br />
+                <span className="gradient-text">Partner</span>
+              </motion.h1>
+
+              {/* Subheading */}
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-body-md sm:text-body-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8 px-4"
+              >
+                Unisciti ad oltre{" "}
+                <span className="text-foreground font-semibold">100 rivenditori</span>{" "}
+                in Italia. Rivendi soluzioni digitali per l'hospitality con{" "}
+                <span className="text-foreground font-semibold">commissioni competitive</span>.
+              </motion.p>
+
+              {/* Feature Badges */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 sm:gap-3 justify-center mb-8 px-4 sm:px-0"
+              >
+                {[
+                  { icon: Award, text: "Zero costi", color: "from-emerald-500 to-teal-600" },
+                  { icon: Palette, text: "White Label", color: "from-violet-500 to-purple-600" },
+                  { icon: Headphones, text: "Supporto 24h", color: "from-blue-500 to-cyan-500" },
+                  { icon: TrendingUp, text: "Commissioni", color: "from-orange-500 to-red-500" },
+                ].map((badge) => (
+                  <div key={badge.text} className="group relative">
+                    <div className={`absolute inset-0 bg-gradient-to-r ${badge.color} rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-opacity`} />
+                    <div className="relative flex items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-card/80 backdrop-blur-sm border border-border hover:border-primary/30 transition-all">
+                      <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-gradient-to-br ${badge.color} flex items-center justify-center`}>
+                        <badge.icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
+                      </div>
+                      <span className="text-xs sm:text-sm font-medium text-foreground">{badge.text}</span>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+
+              {/* CTA Buttons */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="flex flex-col gap-3 sm:flex-row sm:gap-4 justify-center mb-8 px-4 sm:px-0"
+              >
+                <Button
                   size="lg"
-                  className="gap-2 rounded-full"
                   onClick={() => document.getElementById('partner-form')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="group text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-7 h-auto gradient-button rounded-xl sm:rounded-2xl w-full sm:w-auto"
                 >
-                  <Send className="w-4 h-4" />
-                  Invia richiesta
+                  <Send className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                  Candidati ora
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button variant="outline" size="lg" className="gap-2 rounded-full" asChild>
+
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-7 h-auto w-full sm:w-auto rounded-xl sm:rounded-2xl border-border bg-card/50 hover:bg-card hover:border-primary/30 backdrop-blur-sm transition-all"
+                  asChild
+                >
                   <Link to="/demo">
-                    <Sparkles className="w-4 h-4" />
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                     Prova la demo
                   </Link>
                 </Button>
-              </div>
+              </motion.div>
 
-              <Link 
-                to="/diventa-rivenditore/faq" 
-                className="inline-flex items-center gap-2 mt-6 text-sm text-muted-foreground hover:text-primary transition-colors"
+              {/* Trust Signals */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-6 items-center justify-center text-xs sm:text-sm text-muted-foreground px-4"
               >
-                <HelpCircle className="w-4 h-4" />
-                Leggi le FAQ sul programma partner
-                <ArrowRight className="w-3 h-3" />
-              </Link>
-            </motion.div>
+                {["Nessun costo di attivazione", "Formazione inclusa", "Supporto dedicato"].map((text) => (
+                  <span key={text} className="flex items-center gap-2">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-success/20 flex items-center justify-center">
+                      <CheckCircle className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-success" />
+                    </div>
+                    {text}
+                  </span>
+                ))}
+              </motion.div>
+
+              {/* FAQ Link */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+              >
+                <Link 
+                  to="/diventa-rivenditore/faq" 
+                  className="inline-flex items-center gap-2 mt-8 text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <HelpCircle className="w-4 h-4" />
+                  Leggi le FAQ sul programma partner
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+              </motion.div>
+            </div>
           </div>
         </section>
 
