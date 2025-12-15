@@ -41,7 +41,7 @@ const footerLinks = {
     { label: "FAQ", href: "/faq", isRoute: true },
   ],
   azienda: [
-    { label: "Chi siamo", href: "#" },
+    { label: "Chi siamo", href: "/chi-siamo", isRoute: true },
     { label: "Contatti", href: "/contatti", isRoute: true },
     { label: "Partner", href: "#" },
   ],
