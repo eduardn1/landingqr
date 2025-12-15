@@ -57,7 +57,7 @@ import { ThemeToggle } from "@/components/demo/ThemeToggle";
 import { SettingsContent } from "@/components/demo/SettingsContent";
 import { TemplatesContent } from "@/components/demo/TemplatesContent";
 import { NotificationsContent } from "@/components/demo/NotificationsContent";
-import { SEO } from "@/components/SEO";
+import DynamicSEO from "@/components/DynamicSEO";
 
 // Lazy load heavy components for performance
 const AnalyticsContent = lazy(() => import("@/components/demo/AnalyticsContent").then(m => ({ default: m.AnalyticsContent })));
@@ -225,13 +225,7 @@ const Demo = () => {
 
   return (
     <div className="min-h-screen bg-background flex">
-      <SEO 
-        title="Demo Interattiva"
-        description="Prova gratis la demo interattiva di Flavour: esplora menu digitali, prenotazioni, delivery, analytics e tutte le funzionalità senza impegno."
-        url="https://flavour.studiojem.it/demo"
-        keywords="demo menu digitale, prova gratuita flavour, test piattaforma ristorante"
-        noindex={true}
-      />
+      <DynamicSEO noindex={true} />
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
