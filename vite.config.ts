@@ -51,8 +51,15 @@ export default defineConfig(({ mode }) => ({
     chunkSizeWarningLimit: 1000,
     // Enable source maps for production debugging
     sourcemap: false,
-    // Minification
+    // Minification - aggressive settings
     minify: "esbuild",
+    esbuild: {
+      drop: ["console", "debugger"],
+      legalComments: "none",
+      minifyIdentifiers: true,
+      minifySyntax: true,
+      minifyWhitespace: true,
+    },
     // Target modern browsers for smaller bundles
     target: "esnext",
   },
