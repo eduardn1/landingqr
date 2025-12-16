@@ -38,10 +38,9 @@
       rel="stylesheet" 
     />
     
-    <!-- Favicon Multi-format for cross-browser compatibility -->
+    <!-- Favicon - SVG primary for transparency support -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -93,7 +92,7 @@
       body { margin: 0; background: #0a0a0f; font-family: 'Satoshi', sans-serif; }
       #root { min-height: 100vh; }
       
-      /* Loading spinner while app loads */
+      /* Loading with logo while app loads */
       .initial-loader {
         position: fixed;
         inset: 0;
@@ -103,23 +102,24 @@
         background: #0a0a0f;
         z-index: 9999;
       }
-      .initial-loader::after {
-        content: '';
-        width: 40px;
-        height: 40px;
-        border: 3px solid rgba(56, 239, 125, 0.2);
-        border-top-color: #38EF7D;
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
+      .initial-loader img {
+        width: 48px;
+        height: 48px;
+        animation: logoPulse 1.5s ease-in-out infinite;
       }
-      @keyframes spin { to { transform: rotate(360deg); } }
+      @keyframes logoPulse {
+        0%, 100% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(1.05); opacity: 1; }
+      }
       
       /* Hide loader when app is ready */
       .app-loaded .initial-loader { display: none; }
     </style>
   </head>
   <body>
-    <div class="initial-loader"></div>
+    <div class="initial-loader">
+      <img src="/favicon.svg" alt="Nestify" />
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
