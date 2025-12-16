@@ -122,6 +122,7 @@ const Navbar = memo(() => {
     setIsPagesMenuOpen(prev => !prev);
   }, []);
 
+
   return (
     <>
       {/* Dynamic Island Navigation */}
@@ -133,31 +134,10 @@ const Navbar = memo(() => {
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          layout
-          className="relative overflow-hidden rounded-full"
-          style={{
-            background: theme === 'dark' 
-              ? 'linear-gradient(135deg, rgba(30,30,40,0.8) 0%, rgba(20,20,30,0.85) 100%)'
-              : 'linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(240,240,250,0.7) 100%)',
-            backdropFilter: 'blur(24px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-            border: '1px solid',
-            borderColor: theme === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.6)',
-            boxShadow: theme === 'dark'
-              ? '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)'
-              : '0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.9)',
-          }}
+          className="relative overflow-hidden rounded-full dynamic-island-glass"
         >
           {/* Liquid glass shine effect */}
-          <div 
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: theme === 'dark'
-                ? 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(255,255,255,0.03) 100%)'
-                : 'linear-gradient(135deg, rgba(255,255,255,0.8) 0%, transparent 40%, rgba(255,255,255,0.2) 100%)',
-              borderRadius: 'inherit',
-            }}
-          />
+          <div className="absolute inset-0 pointer-events-none dynamic-island-shine" />
 
           {/* Notification Badge */}
           <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-gradient-to-r from-rose-500 to-pink-500 animate-pulse shadow-lg shadow-rose-500/50 z-10" />
@@ -193,13 +173,6 @@ const Navbar = memo(() => {
                           : 'text-muted-foreground hover:text-foreground hover:bg-primary/5'
                       }`}
                   >
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeNavPill"
-                        className="absolute inset-0 bg-primary/10 rounded-full"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
                     <span className="relative z-10">{link.label}</span>
                   </button>
                 );
@@ -288,19 +261,7 @@ const Navbar = memo(() => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="lg:hidden fixed top-16 left-3 right-3 rounded-2xl overflow-hidden max-w-sm mx-auto z-50"
-              style={{
-                background: theme === 'dark' 
-                  ? 'linear-gradient(135deg, rgba(30,30,40,0.95) 0%, rgba(20,20,30,0.98) 100%)'
-                  : 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(245,245,250,0.98) 100%)',
-                backdropFilter: 'blur(24px) saturate(180%)',
-                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-                border: '1px solid',
-                borderColor: theme === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)',
-                boxShadow: theme === 'dark'
-                  ? '0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)'
-                  : '0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.9)',
-              }}
+              className="lg:hidden fixed top-16 left-3 right-3 rounded-2xl overflow-hidden max-w-sm mx-auto z-50 dynamic-island-dropdown"
             >
               <div className="p-3 grid grid-cols-4 gap-2">
                 {navLinks.map((link) => {
@@ -311,21 +272,14 @@ const Navbar = memo(() => {
                     <button
                       key={link.id}
                       onClick={() => handleNavClick(link.href)}
-                      className={`relative flex flex-col items-center gap-1 p-2 rounded-xl transition-all ${
+                      className={`relative flex flex-col items-center gap-1 p-2 rounded-xl transition-colors ${
                         isActive 
                           ? 'bg-primary/15' 
                           : 'hover:bg-muted/50'
                       }`}
                     >
-                      {isActive && (
-                        <motion.div
-                          layoutId="activeMobileTab"
-                          className="absolute inset-0 bg-primary/10 rounded-xl"
-                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                        />
-                      )}
-                      <IconComponent className={`w-5 h-5 relative z-10 ${isActive ? 'text-primary' : 'text-muted-foreground'}`} />
-                      <span className={`text-[9px] font-medium relative z-10 ${isActive ? 'text-primary' : 'text-muted-foreground'}`}>
+                      <IconComponent className={`w-5 h-5 ${isActive ? 'text-primary' : 'text-muted-foreground'}`} />
+                      <span className={`text-[9px] font-medium ${isActive ? 'text-primary' : 'text-muted-foreground'}`}>
                         {link.label}
                       </span>
                     </button>
@@ -344,19 +298,7 @@ const Navbar = memo(() => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="fixed top-16 left-3 right-3 sm:left-auto sm:right-3 sm:w-56 rounded-2xl overflow-hidden z-50"
-              style={{
-                background: theme === 'dark' 
-                  ? 'linear-gradient(135deg, rgba(30,30,40,0.95) 0%, rgba(20,20,30,0.98) 100%)'
-                  : 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(245,245,250,0.98) 100%)',
-                backdropFilter: 'blur(24px) saturate(180%)',
-                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-                border: '1px solid',
-                borderColor: theme === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)',
-                boxShadow: theme === 'dark'
-                  ? '0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)'
-                  : '0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.9)',
-              }}
+              className="fixed top-16 left-3 right-3 sm:left-auto sm:right-3 sm:w-56 rounded-2xl overflow-hidden z-50 dynamic-island-dropdown"
             >
               <div className="p-2">
                 <div className="px-3 py-1.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
