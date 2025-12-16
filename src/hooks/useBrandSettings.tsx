@@ -52,8 +52,8 @@ interface BrandSettings {
 }
 
 const defaultSettings: BrandSettings = {
-  site_title: 'Nestify - Menu Digitali',
-  site_description: 'La nuova era dei menu digitali per bar, ristoranti e pub',
+  site_title: 'Nestify - Digital tools for Hospitality',
+  site_description: 'Digital tools for Hospitality - Menu digitali, prenotazioni e ordini per bar, ristoranti e pub',
   meta_keywords: 'menu digitale, QR code, ristorante, bar, pub',
   og_title: 'Nestify - Menu Digitali',
   og_description: 'Trasforma il tuo locale con menu digitali interattivi',

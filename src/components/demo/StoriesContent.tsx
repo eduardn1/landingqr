@@ -98,9 +98,9 @@ const mockStories = [
 ];
 
 const storyTypes = [
-  { id: "promo", label: "Promozione", color: "from-orange-500 to-red-500" },
-  { id: "new", label: "Novità", color: "from-green-500 to-emerald-500" },
-  { id: "event", label: "Evento", color: "from-violet-500 to-purple-500" },
+  { id: "promo", label: "Promozione", color: "from-amber-500/70 to-orange-600/70" },
+  { id: "new", label: "Novità", color: "from-emerald-500/70 to-teal-600/70" },
+  { id: "event", label: "Evento", color: "from-sky-500/70 to-blue-600/70" },
 ];
 
 export const StoriesContent = () => {

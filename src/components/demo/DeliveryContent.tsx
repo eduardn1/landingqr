@@ -526,10 +526,10 @@ export const DeliveryContent = () => {
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
-          { label: "Driver attivi", value: drivers.length.toString(), icon: User, color: "from-blue-500 to-cyan-500" },
-          { label: "In consegna", value: activeDelivering.toString(), icon: Truck, color: "from-warning to-orange-500" },
-          { label: "Consegne oggi", value: "47", icon: Package, color: "from-emerald-500 to-teal-600" },
-          { label: "Tempo medio", value: "18 min", icon: Clock, color: "from-violet-500 to-purple-600" },
+          { label: "Driver attivi", value: drivers.length.toString(), icon: User, color: "from-sky-500/60 to-blue-600/60" },
+          { label: "In consegna", value: activeDelivering.toString(), icon: Truck, color: "from-amber-500/60 to-orange-600/60" },
+          { label: "Consegne oggi", value: "47", icon: Package, color: "from-emerald-500/60 to-teal-600/60" },
+          { label: "Tempo medio", value: "18 min", icon: Clock, color: "from-cyan-500/60 to-teal-600/60" },
         ].map((stat, i) => {
           const Icon = stat.icon;
           return (

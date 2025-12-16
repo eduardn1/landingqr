@@ -12,22 +12,22 @@ import { TrendingUp, Users, Star, Zap } from "lucide-react";
 
 // Simulated client logos with gradient colors - diversified hospitality businesses
 const clients = [
-  { name: "Pub The Oak", initials: "TO", gradient: "from-violet-500 to-purple-600", type: "Pub" },
-  { name: "Bar Centrale", initials: "BC", gradient: "from-emerald-500 to-teal-600", type: "Bar" },
-  { name: "Caffè Venezia", initials: "CV", gradient: "from-cyan-500 to-blue-600", type: "Caffetteria" },
-  { name: "Pizzeria Bella Napoli", initials: "BN", gradient: "from-rose-500 to-pink-600", type: "Pizzeria" },
-  { name: "Cocktail Lab Milano", initials: "CL", gradient: "from-amber-500 to-orange-600", type: "Cocktail Bar" },
-  { name: "Osteria del Borgo", initials: "OB", gradient: "from-indigo-500 to-violet-600", type: "Ristorante" },
-  { name: "Wine Bar Tuscany", initials: "WT", gradient: "from-red-500 to-rose-600", type: "Enoteca" },
-  { name: "Gelateria Dolce Vita", initials: "DV", gradient: "from-pink-400 to-fuchsia-500", type: "Gelateria" },
+  { name: "Pub The Oak", initials: "TO", gradient: "from-emerald-500/70 to-teal-600/70", type: "Pub" },
+  { name: "Bar Centrale", initials: "BC", gradient: "from-sky-500/70 to-blue-600/70", type: "Bar" },
+  { name: "Caffè Venezia", initials: "CV", gradient: "from-cyan-500/70 to-teal-600/70", type: "Caffetteria" },
+  { name: "Pizzeria Bella Napoli", initials: "BN", gradient: "from-rose-500/70 to-pink-600/70", type: "Pizzeria" },
+  { name: "Cocktail Lab Milano", initials: "CL", gradient: "from-amber-500/70 to-orange-600/70", type: "Cocktail Bar" },
+  { name: "Osteria del Borgo", initials: "OB", gradient: "from-teal-500/70 to-emerald-600/70", type: "Ristorante" },
+  { name: "Wine Bar Tuscany", initials: "WT", gradient: "from-red-500/70 to-rose-600/70", type: "Enoteca" },
+  { name: "Gelateria Dolce Vita", initials: "DV", gradient: "from-pink-400/70 to-rose-500/70", type: "Gelateria" },
 ];
 
 // Realistic startup stats
 const stats = [
-  { value: "500+", label: "Locali", icon: Users, gradient: "from-violet-500 to-purple-600" },
-  { value: "2M+", label: "Menu views", icon: Zap, gradient: "from-blue-500 to-cyan-600" },
-  { value: "95%", label: "Soddisfatti", icon: TrendingUp, gradient: "from-emerald-500 to-teal-600" },
-  { value: "4.9★", label: "Rating", icon: Star, gradient: "from-amber-500 to-orange-600" },
+  { value: "500+", label: "Locali", icon: Users, gradient: "from-emerald-500/70 to-teal-600/70" },
+  { value: "2M+", label: "Menu views", icon: Zap, gradient: "from-sky-500/70 to-blue-600/70" },
+  { value: "95%", label: "Soddisfatti", icon: TrendingUp, gradient: "from-cyan-500/70 to-teal-600/70" },
+  { value: "4.9★", label: "Rating", icon: Star, gradient: "from-amber-500/70 to-orange-600/70" },
 ];
 
 const Logos = memo(() => {

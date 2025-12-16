@@ -86,10 +86,10 @@ const mockCustomers = [
 
 const getLoyaltyColor = (loyalty: string) => {
   switch (loyalty) {
-    case "Platinum": return "bg-violet-500/20 text-violet-500 border-violet-500/30";
+    case "Platinum": return "bg-emerald-500/20 text-emerald-600 border-emerald-500/30";
     case "Gold": return "bg-yellow-500/20 text-yellow-600 border-yellow-500/30";
     case "Silver": return "bg-gray-400/20 text-gray-500 border-gray-400/30";
-    case "Bronze": return "bg-orange-700/20 text-orange-700 border-orange-700/30";
+    case "Bronze": return "bg-orange-600/20 text-orange-600 border-orange-600/30";
     default: return "bg-muted text-muted-foreground";
   }
 };
@@ -108,10 +108,10 @@ export const CustomersContent = () => {
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
-          { label: "Clienti totali", value: "1,234", icon: Users, color: "from-blue-500 to-cyan-500", change: "+12%" },
-          { label: "Clienti attivi", value: "892", icon: Heart, color: "from-pink-500 to-rose-500", change: "+8%" },
-          { label: "Tasso fidelizzazione", value: "78%", icon: TrendingUp, color: "from-emerald-500 to-teal-600", change: "+5%" },
-          { label: "Valore medio", value: "€42.50", icon: ShoppingBag, color: "from-violet-500 to-purple-600", change: "+15%" },
+          { label: "Clienti totali", value: "1,234", icon: Users, color: "from-sky-500/60 to-blue-600/60", change: "+12%" },
+          { label: "Clienti attivi", value: "892", icon: Heart, color: "from-rose-500/60 to-pink-600/60", change: "+8%" },
+          { label: "Tasso fidelizzazione", value: "78%", icon: TrendingUp, color: "from-emerald-500/60 to-teal-600/60", change: "+5%" },
+          { label: "Valore medio", value: "€42.50", icon: ShoppingBag, color: "from-cyan-500/60 to-teal-600/60", change: "+15%" },
         ].map((stat, i) => {
           const Icon = stat.icon;
           return (

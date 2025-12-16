@@ -36,10 +36,10 @@ import { Switch } from "@/components/ui/switch";
 
 // Event types
 const eventTypes = [
-  { id: "music", label: "Live Music", icon: Music, color: "from-violet-500 to-purple-600" },
-  { id: "tasting", label: "Degustazione", icon: Wine, color: "from-amber-500 to-orange-500" },
-  { id: "dinner", label: "Cena Tematica", icon: Utensils, color: "from-rose-500 to-pink-600" },
-  { id: "course", label: "Corso Cucina", icon: GraduationCap, color: "from-emerald-500 to-teal-600" },
+  { id: "music", label: "Live Music", icon: Music, color: "from-sky-500/70 to-blue-600/70" },
+  { id: "tasting", label: "Degustazione", icon: Wine, color: "from-amber-500/70 to-orange-600/70" },
+  { id: "dinner", label: "Cena Tematica", icon: Utensils, color: "from-rose-500/70 to-pink-600/70" },
+  { id: "course", label: "Corso Cucina", icon: GraduationCap, color: "from-emerald-500/70 to-teal-600/70" },
 ];
 
 // Mock events
@@ -127,10 +127,10 @@ const mockEvents = [
 ];
 
 const stats = [
-  { label: "Eventi Attivi", value: "5", icon: Calendar, color: "from-violet-500 to-purple-600" },
-  { label: "Prenotazioni", value: "222", icon: Users, color: "from-emerald-500 to-teal-600" },
-  { label: "Posti Rimanenti", value: "40", icon: Check, color: "from-blue-500 to-cyan-500" },
-  { label: "Revenue Previsto", value: "€15.8K", icon: Star, color: "from-amber-500 to-orange-500" },
+  { label: "Eventi Attivi", value: "5", icon: Calendar, color: "from-emerald-500/60 to-teal-600/60" },
+  { label: "Prenotazioni", value: "222", icon: Users, color: "from-sky-500/60 to-blue-600/60" },
+  { label: "Posti Rimanenti", value: "40", icon: Check, color: "from-cyan-500/60 to-teal-600/60" },
+  { label: "Revenue Previsto", value: "€15.8K", icon: Star, color: "from-amber-500/60 to-orange-600/60" },
 ];
 
 export const EventsContent = () => {

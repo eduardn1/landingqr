@@ -121,10 +121,10 @@ const triggers = [
 ];
 
 const stats = [
-  { label: "Iscritti Push", value: "2,340", icon: Users, color: "from-violet-500 to-purple-600" },
-  { label: "Inviate Oggi", value: "156", icon: Send, color: "from-blue-500 to-cyan-500" },
-  { label: "Tasso Apertura", value: "72%", icon: Eye, color: "from-emerald-500 to-teal-600" },
-  { label: "Conversione", value: "18%", icon: TrendingUp, color: "from-amber-500 to-orange-500" },
+  { label: "Iscritti Push", value: "2,340", icon: Users, color: "from-emerald-500/60 to-teal-600/60" },
+  { label: "Inviate Oggi", value: "156", icon: Send, color: "from-sky-500/60 to-blue-600/60" },
+  { label: "Tasso Apertura", value: "72%", icon: Eye, color: "from-cyan-500/60 to-teal-600/60" },
+  { label: "Conversione", value: "18%", icon: TrendingUp, color: "from-amber-500/60 to-orange-600/60" },
 ];
 
 export const PushNotificationsContent = () => {

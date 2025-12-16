@@ -23,7 +23,7 @@ const testimonials = [
     rating: 5,
     quote: "Da quando usiamo Nestify, gli ordini di birre artigianali e cocktail sono aumentati del 52%. I clienti adorano ordinare dal tavolo senza aspettare al bancone.",
     highlight: "+52% ordini",
-    gradient: "from-violet-500 to-purple-600",
+    gradient: "from-emerald-500/70 to-teal-600/70",
     avatar: "MR",
   },
   {
@@ -35,7 +35,7 @@ const testimonials = [
     rating: 5,
     quote: "Finalmente posso aggiornare i prezzi delle pizze in tempo reale! Prima ogni modifica costava €150 di ristampa. Ora è gratis e immediato.",
     highlight: "€150 risparmiati",
-    gradient: "from-emerald-500 to-teal-600",
+    gradient: "from-sky-500/70 to-blue-600/70",
     avatar: "GB",
   },
   {
@@ -47,7 +47,7 @@ const testimonials = [
     rating: 5,
     quote: "I turisti stranieri ora capiscono tutto grazie alle 5 lingue automatiche. Le vendite del pranzo sono aumentate del 35%!",
     highlight: "+35% vendite",
-    gradient: "from-orange-500 to-red-500",
+    gradient: "from-amber-500/70 to-orange-600/70",
     avatar: "AC",
   },
   {
@@ -59,7 +59,7 @@ const testimonials = [
     rating: 5,
     quote: "Setup facilissimo per il nostro bar caffetteria, in 15 minuti eravamo online. I clienti ordinano cappuccini e cornetti direttamente dal telefono!",
     highlight: "15 min setup",
-    gradient: "from-blue-500 to-cyan-500",
+    gradient: "from-cyan-500/70 to-teal-600/70",
     avatar: "FM",
   },
   {
@@ -71,7 +71,7 @@ const testimonials = [
     rating: 5,
     quote: "Gestiamo prenotazioni e ordini cocktail da un unico pannello. Il delivery dei nostri drink signature è decollato, meglio di qualsiasi aggregatore!",
     highlight: "3x delivery",
-    gradient: "from-pink-500 to-rose-500",
+    gradient: "from-rose-500/70 to-pink-600/70",
     avatar: "RD",
   },
   {
@@ -83,7 +83,7 @@ const testimonials = [
     rating: 5,
     quote: "Il menu digitale con descrizioni dei vini e abbinamenti ha trasformato la nostra enoteca. I clienti esplorano la carta vini e ordinano con un tap!",
     highlight: "+40% retention",
-    gradient: "from-amber-500 to-orange-500",
+    gradient: "from-amber-600/70 to-yellow-600/70",
     avatar: "EF",
   },
 ];

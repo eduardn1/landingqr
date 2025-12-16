@@ -71,7 +71,7 @@ const heroFeatures: HeroFeature[] = [
     subtitle: "Gestione piatti completa con filtri allergeni",
     description: "Editor drag & drop per piatti, categorie, prezzi. 14 allergeni con badge visibili. Traduzioni automatiche in 5 lingue.",
     benefits: ["Editor drag & drop", "14 filtri allergeni", "5 lingue AI", "Import Excel"],
-    gradient: "from-violet-500 to-purple-600",
+    gradient: "from-emerald-500/70 to-teal-600/70",
     stat: "∞",
     statLabel: "Piatti"
   },
