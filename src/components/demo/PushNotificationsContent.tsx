@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Push Notifications Demo
+ * NESTIFY - Push Notifications Demo
  * Sistema notifiche push per engagement clienti
- * 
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * 

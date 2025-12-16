@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - SEO Component
+ * NESTIFY - SEO Component
  * Dynamic meta tags, Open Graph, Twitter Cards, and JSON-LD structured data
- * 
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * ═══════════════════════════════════════════════════════════════════════════════

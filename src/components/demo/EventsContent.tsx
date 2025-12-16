@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Events & News Demo
+ * NESTIFY - Events & News Demo
  * Sistema eventi e novità del ristorante
- * 
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * 

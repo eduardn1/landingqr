@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - FAQ Section (2026 Design)
+ * NESTIFY - FAQ Section (2026 Design)
  * Accordion con search + categorie (versione light, più performante)
  *
  * Sviluppato da Eduard Costin Udila @ studiojem.it

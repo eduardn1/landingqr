@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Final CTA Section (Static/Optimized)
- * 
+ * NESTIFY - Final CTA Section (Static/Optimized)
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * ═══════════════════════════════════════════════════════════════════════════════

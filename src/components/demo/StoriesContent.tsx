@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Stories Instagram-Style Demo
+ * NESTIFY - Stories Instagram-Style Demo
  * Sistema di stories per promozioni e novità
- * 
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * 

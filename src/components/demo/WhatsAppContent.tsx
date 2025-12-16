@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - WhatsApp Automation Demo
+ * NESTIFY - WhatsApp Automation Demo
  * Sistema di notifiche automatiche via WhatsApp
- * 
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * 

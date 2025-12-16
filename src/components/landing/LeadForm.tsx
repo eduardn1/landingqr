@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Multi-Step Lead Form (2026 Design)
+ * NESTIFY - Multi-Step Lead Form (2026 Design)
  * Form moderno a step con animazioni fluide
- * 
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * ═══════════════════════════════════════════════════════════════════════════════

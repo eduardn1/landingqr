@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Pricing Section (Performance Optimized)
+ * NESTIFY - Pricing Section (Performance Optimized)
  * Cards moderne con toggle annuale/mensile
  *
  * Sviluppato da Eduard Costin Udila @ studiojem.it

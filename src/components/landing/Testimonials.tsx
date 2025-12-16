@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Testimonials Section (2026 Design)
+ * NESTIFY - Testimonials Section (2026 Design)
  * Cards scorrevoli con avatar animati e rating stars
- * 
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * ═══════════════════════════════════════════════════════════════════════════════

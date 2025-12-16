@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Shared Navbar for Internal Pages
+ * NESTIFY - Shared Navbar for Internal Pages
  * Dynamic Island navigation per tutte le pagine interne
- * 
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * 

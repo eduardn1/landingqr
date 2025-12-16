@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Features Section (Static/Subtle Animations)
- * 
+ * NESTIFY - Features Section (Static/Subtle Animations)
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * ═══════════════════════════════════════════════════════════════════════════════

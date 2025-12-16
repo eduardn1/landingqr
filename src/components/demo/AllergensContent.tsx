@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Allergens Filter Demo
+ * NESTIFY - Allergens Filter Demo
  * Gestione filtri allergeni per sicurezza alimentare
- * 
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * 

@@ -1,5 +1,5 @@
 # ═══════════════════════════════════════════════════════════════════════════════
-# QRCODESTUDIOJEM - Robots.txt
+# NESTIFY - Robots.txt
 # Sviluppato da Eduard Costin Udila @ studiojem.it
 # ═══════════════════════════════════════════════════════════════════════════════
 

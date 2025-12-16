@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - About Page (Chi Siamo)
+ * NESTIFY - About Page (Chi Siamo)
  * Stile Cadence: glass cards, bento grid asimmetrico unificato
- * 
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * 
