@@ -43,6 +43,7 @@ import Admin from "./pages/Admin";
 import AdminAuth from "./pages/AdminAuth";
 import CookieBanner from "./components/CookieBanner";
 import ScrollToTop from "./components/ScrollToTop";
+import BackToTop from "./components/BackToTop";
 
 const queryClient = new QueryClient();
 
@@ -72,6 +73,7 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
             <CookieBanner />
+            <BackToTop />
           </BrowserRouter>
         </TooltipProvider>
       </ThemeProvider>
