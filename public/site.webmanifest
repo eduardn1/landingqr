@@ -1,7 +1,7 @@
 {
   "name": "Nestify",
   "short_name": "Nestify",
-  "description": "Digital tools for Hospitality - Menu digitali, prenotazioni e ordini online",
+  "description": "Digital tools for Hospitality - Menu digitali intelligenti per bar, ristoranti e pub",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
@@ -11,8 +11,12 @@
     {
       "src": "/favicon.svg",
       "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon-16.png",
+      "sizes": "16x16",
+      "type": "image/png"
     },
     {
       "src": "/favicon-32.png",
@@ -20,14 +24,15 @@
       "type": "image/png"
     },
     {
-      "src": "/favicon-32.png",
-      "sizes": "192x192",
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src": "/favicon-32.png",
+      "src": "/apple-touch-icon.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
