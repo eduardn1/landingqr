@@ -8,7 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const LandingPageSkeleton = memo(() => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background animate-pulse">
       {/* Navbar Skeleton */}
       <div className="fixed top-3 left-0 right-0 z-50 flex justify-center px-3">
         <div className="flex items-center gap-3 px-4 py-3 rounded-full bg-card/80 backdrop-blur-sm border border-border">
