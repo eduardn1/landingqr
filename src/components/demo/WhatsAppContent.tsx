@@ -130,10 +130,10 @@ const messageLogs = [
 ];
 
 const stats = [
-  { label: "Messaggi Oggi", value: "47", icon: Send, color: "from-green-500 to-emerald-600" },
-  { label: "Tasso Consegna", value: "98.5%", icon: CheckCheck, color: "from-blue-500 to-cyan-600" },
-  { label: "Template Attivi", value: "7", icon: MessageCircle, color: "from-violet-500 to-purple-600" },
-  { label: "Risparmiati", value: "€120", icon: Zap, color: "from-amber-500 to-orange-500" },
+  { label: "Messaggi Oggi", value: "47", icon: Send, color: "from-green-500/60 to-emerald-600/60" },
+  { label: "Tasso Consegna", value: "98.5%", icon: CheckCheck, color: "from-sky-500/60 to-blue-600/60" },
+  { label: "Template Attivi", value: "7", icon: MessageCircle, color: "from-emerald-500/60 to-teal-600/60" },
+  { label: "Risparmiati", value: "€120", icon: Zap, color: "from-amber-500/60 to-orange-600/60" },
 ];
 
 export const WhatsAppContent = () => {

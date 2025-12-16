@@ -106,10 +106,10 @@ const promoCategories = [
 ];
 
 const promoStats = [
-  { label: "Codici Attivi", value: "4", icon: Tag, color: "from-violet-500 to-purple-600" },
-  { label: "Utilizzi Totali", value: "576", icon: TrendingUp, color: "from-emerald-500 to-teal-600" },
-  { label: "Risparmio Clienti", value: "€2,340", icon: Heart, color: "from-pink-500 to-rose-600" },
-  { label: "Tasso Conversione", value: "23%", icon: Zap, color: "from-amber-500 to-orange-500" },
+  { label: "Codici Attivi", value: "4", icon: Tag, color: "from-emerald-500/60 to-teal-600/60" },
+  { label: "Utilizzi Totali", value: "576", icon: TrendingUp, color: "from-sky-500/60 to-blue-600/60" },
+  { label: "Risparmio Clienti", value: "€2,340", icon: Heart, color: "from-rose-500/60 to-pink-600/60" },
+  { label: "Tasso Conversione", value: "23%", icon: Zap, color: "from-amber-500/60 to-orange-600/60" },
 ];
 
 export const PromoContent = () => {
@@ -241,8 +241,8 @@ export const PromoContent = () => {
                 <div className="flex items-center gap-4 flex-1">
                   <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${
                     promo.type === "percentage" 
-                      ? "bg-gradient-to-br from-violet-500 to-purple-600" 
-                      : "bg-gradient-to-br from-emerald-500 to-teal-600"
+                      ? "bg-gradient-to-br from-emerald-500/60 to-teal-600/60" 
+                      : "bg-gradient-to-br from-sky-500/60 to-blue-600/60"
                   }`}>
                     {promo.type === "percentage" ? (
                       <Percent className="w-6 h-6 text-white" />

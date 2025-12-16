@@ -13,10 +13,10 @@ import { Button } from "@/components/ui/button";
 import { useLeadForm } from "@/hooks/useLeadForm";
 
 const featureBadges = [
-  { icon: QrCode, text: "Menu QR", color: "from-violet-500 to-purple-600" },
-  { icon: CalendarCheck, text: "Prenotazioni", color: "from-emerald-500 to-teal-600" },
-  { icon: Truck, text: "Delivery", color: "from-orange-500 to-red-500" },
-  { icon: BarChart3, text: "Analytics", color: "from-blue-500 to-cyan-500" },
+  { icon: QrCode, text: "Menu QR", color: "from-emerald-500/80 to-teal-600/80" },
+  { icon: CalendarCheck, text: "Prenotazioni", color: "from-sky-500/80 to-blue-600/80" },
+  { icon: Truck, text: "Delivery", color: "from-amber-500/80 to-orange-600/80" },
+  { icon: BarChart3, text: "Analytics", color: "from-cyan-500/80 to-teal-600/80" },
 ];
 
 const Hero = memo(() => {
@@ -43,7 +43,7 @@ const Hero = memo(() => {
           <div className="mb-6 inline-flex animate-fade-in">
             <div className="badge-primary">
               <Sparkles className="w-4 h-4" />
-              <span>La nuova era dei menu digitali per bar, ristoranti e pub</span>
+              <span>Digital tools for Hospitality</span>
               <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
             </div>
           </div>
@@ -154,10 +154,10 @@ const Hero = memo(() => {
                 {/* Stats Cards */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 mb-4">
                   {[
-                    { icon: ShoppingBag, label: "Ordini", value: "127", color: "from-violet-500 to-purple-600", change: "+12%" },
-                    { icon: TrendingUp, label: "Ricavi", value: "€2.4k", color: "from-emerald-500 to-teal-600", change: "+8%" },
-                    { icon: Users, label: "Clienti", value: "89", color: "from-blue-500 to-cyan-500", change: "+15%" },
-                    { icon: Calendar, label: "Prenotazioni", value: "24", color: "from-orange-500 to-red-500", change: "+5%" },
+                    { icon: ShoppingBag, label: "Ordini", value: "127", color: "from-emerald-500/70 to-teal-600/70", change: "+12%" },
+                    { icon: TrendingUp, label: "Ricavi", value: "€2.4k", color: "from-sky-500/70 to-blue-600/70", change: "+8%" },
+                    { icon: Users, label: "Clienti", value: "89", color: "from-cyan-500/70 to-teal-600/70", change: "+15%" },
+                    { icon: Calendar, label: "Prenotazioni", value: "24", color: "from-amber-500/70 to-orange-600/70", change: "+5%" },
                   ].map((stat) => (
                     <div key={stat.label} className="bg-muted/50 rounded-lg p-3 border border-border">
                       <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center mb-2`}>
@@ -220,7 +220,7 @@ const Hero = memo(() => {
             <div className="bg-card/90 backdrop-blur-xl border border-border rounded-xl px-3 py-2 shadow-lg">
               <div className="flex items-center gap-2">
                 <div className="flex -space-x-2">
-                  {['bg-gradient-to-br from-pink-500 to-rose-500', 'bg-gradient-to-br from-blue-500 to-cyan-500', 'bg-gradient-to-br from-green-500 to-emerald-500', 'bg-gradient-to-br from-purple-500 to-violet-500'].map((gradient, i) => (
+                  {['bg-gradient-to-br from-emerald-500/70 to-teal-600/70', 'bg-gradient-to-br from-sky-500/70 to-blue-600/70', 'bg-gradient-to-br from-amber-500/70 to-orange-600/70', 'bg-gradient-to-br from-cyan-500/70 to-teal-600/70'].map((gradient, i) => (
                     <div key={i} className={`w-6 h-6 rounded-full ${gradient} border-2 border-card flex items-center justify-center text-white text-[10px] font-bold`}>
                       {String.fromCharCode(65 + i)}
                     </div>

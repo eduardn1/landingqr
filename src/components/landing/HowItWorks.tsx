@@ -20,7 +20,7 @@ const steps = [
     title: "Crea il menu",
     description: "Aggiungi piatti, prezzi, foto. Importa da Excel o inizia da un template.",
     time: "5 min",
-    gradient: "from-violet-500 to-purple-600",
+    gradient: "from-emerald-500/70 to-teal-600/70",
   },
   {
     step: 2,
@@ -72,7 +72,7 @@ const HowItWorks = memo(() => {
           <div className="hidden md:grid md:grid-cols-3 gap-4 relative">
             {/* Progress Line - Behind cards */}
             <div className="absolute top-[52px] left-[16.67%] right-[16.67%] h-1 bg-border rounded-full z-0">
-              <div className="h-full w-full bg-gradient-to-r from-violet-500 via-blue-500 to-emerald-500 rounded-full" />
+              <div className="h-full w-full bg-gradient-to-r from-emerald-500/70 via-sky-500/70 to-teal-500/70 rounded-full" />
             </div>
             
             {steps.map((step, index) => {
@@ -113,7 +113,7 @@ const HowItWorks = memo(() => {
           {/* Mobile Layout - Vertical */}
           <div className="md:hidden space-y-4 relative">
             {/* Vertical Progress Line */}
-            <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-gradient-to-b from-violet-500 via-blue-500 to-emerald-500 rounded-full" />
+            <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-gradient-to-b from-emerald-500/70 via-sky-500/70 to-teal-500/70 rounded-full" />
             
             {steps.map((step) => {
               const Icon = step.icon;

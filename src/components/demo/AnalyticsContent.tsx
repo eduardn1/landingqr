@@ -49,10 +49,10 @@ export const AnalyticsContent = () => (
     {/* Top Stats */}
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {[
-        { label: "Fatturato mensile", value: "€12,847", change: "+12.5%", up: true, icon: DollarSign, color: "from-emerald-500 to-teal-600" },
-        { label: "Ordini totali", value: "487", change: "+8.2%", up: true, icon: ShoppingBag, color: "from-violet-500 to-purple-600" },
-        { label: "Clienti nuovi", value: "64", change: "+23%", up: true, icon: Users, color: "from-blue-500 to-cyan-500" },
-        { label: "Tempo medio ordine", value: "18 min", change: "-2 min", up: true, icon: Clock, color: "from-orange-500 to-red-500" },
+        { label: "Fatturato mensile", value: "€12,847", change: "+12.5%", up: true, icon: DollarSign, color: "from-emerald-500/60 to-teal-600/60" },
+        { label: "Ordini totali", value: "487", change: "+8.2%", up: true, icon: ShoppingBag, color: "from-sky-500/60 to-blue-600/60" },
+        { label: "Clienti nuovi", value: "64", change: "+23%", up: true, icon: Users, color: "from-cyan-500/60 to-teal-600/60" },
+        { label: "Tempo medio ordine", value: "18 min", change: "-2 min", up: true, icon: Clock, color: "from-amber-500/60 to-orange-600/60" },
       ].map((stat, i) => {
         const Icon = stat.icon;
         return (

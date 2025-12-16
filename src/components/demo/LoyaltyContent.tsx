@@ -23,10 +23,10 @@ import { Progress } from "@/components/ui/progress";
 
 // Mock loyalty program data
 const loyaltyLevels = [
-  { id: 1, name: "Bronze", minPoints: 0, maxPoints: 500, icon: Medal, color: "from-amber-600 to-amber-700", perks: ["5% sconto", "Accesso anticipato offerte"] },
-  { id: 2, name: "Silver", minPoints: 500, maxPoints: 1500, icon: Award, color: "from-slate-400 to-slate-500", perks: ["10% sconto", "Consegna gratuita", "Dolce omaggio compleanno"] },
-  { id: 3, name: "Gold", minPoints: 1500, maxPoints: 3000, icon: Trophy, color: "from-yellow-500 to-amber-500", perks: ["15% sconto", "Priority delivery", "Eventi VIP", "Menu segreto"] },
-  { id: 4, name: "Platinum", minPoints: 3000, maxPoints: 999999, icon: Crown, color: "from-violet-500 to-purple-600", perks: ["20% sconto", "Chef's table", "Concierge dedicato", "Tutto Gold"] },
+  { id: 1, name: "Bronze", minPoints: 0, maxPoints: 500, icon: Medal, color: "from-amber-600/70 to-amber-700/70", perks: ["5% sconto", "Accesso anticipato offerte"] },
+  { id: 2, name: "Silver", minPoints: 500, maxPoints: 1500, icon: Award, color: "from-slate-400/70 to-slate-500/70", perks: ["10% sconto", "Consegna gratuita", "Dolce omaggio compleanno"] },
+  { id: 3, name: "Gold", minPoints: 1500, maxPoints: 3000, icon: Trophy, color: "from-yellow-500/70 to-amber-500/70", perks: ["15% sconto", "Priority delivery", "Eventi VIP", "Menu segreto"] },
+  { id: 4, name: "Platinum", minPoints: 3000, maxPoints: 999999, icon: Crown, color: "from-emerald-500/70 to-teal-600/70", perks: ["20% sconto", "Chef's table", "Concierge dedicato", "Tutto Gold"] },
 ];
 
 const mockCustomerLoyalty = {
@@ -141,7 +141,7 @@ export const LoyaltyContent = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:col-span-2 p-6 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 text-white relative overflow-hidden"
+          className="md:col-span-2 p-6 rounded-2xl bg-gradient-to-br from-emerald-500/70 to-teal-600/70 text-white relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
           <div className="relative z-10">
