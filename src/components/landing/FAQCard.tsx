@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - FAQ Card CTA (Landing Page)
+ * NESTIFY - FAQ Card CTA (Landing Page)
  * Card compatta che linka alla pagina FAQ dedicata
- * 
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * ═══════════════════════════════════════════════════════════════════════════════

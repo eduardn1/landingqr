@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Diventa Rivenditore / Partner Page
+ * NESTIFY - Diventa Rivenditore / Partner Page
  * Stile Cadence: glass cards, bento grid, animazioni stagger
- * 
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * 

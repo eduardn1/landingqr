@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Instagram Feed Demo
+ * NESTIFY - Instagram Feed Demo
  * Integrazione feed Instagram nel menu digitale
- * 
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * 

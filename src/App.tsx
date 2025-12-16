@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - App Root Component
+ * NESTIFY - App Root Component
  * Piattaforma completa per la digitalizzazione del ristorante
- * 
+ *
  * Features:
  * - Menu Digitale QR (30+ funzionalità)
  * - Multi-Lingua (5 lingue)

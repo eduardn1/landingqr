@@ -31,7 +31,7 @@ Deno.serve(async (req) => {
 
   try {
     const url = new URL(req.url);
-    const baseUrl = url.searchParams.get('baseUrl') || 'https://flavour.menu';
+    const baseUrl = url.searchParams.get('baseUrl') || 'https://nestify.menu';
     const format = url.searchParams.get('format') || 'xml';
 
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;

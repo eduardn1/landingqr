@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Landing Page
+ * NESTIFY - Landing Page
  * Piattaforma completa per la digitalizzazione di bar, ristoranti, pub e caffè
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
