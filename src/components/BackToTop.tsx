@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArrowUp } from "lucide-react";
+import { ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const BackToTop = () => {
@@ -26,19 +26,22 @@ const BackToTop = () => {
       onClick={scrollToTop}
       aria-label="Torna su"
       className={cn(
-        "fixed bottom-6 right-6 z-50 p-3 rounded-full",
-        "bg-primary/90 text-primary-foreground shadow-lg",
-        "backdrop-blur-sm border border-primary/20",
-        "hover:bg-primary hover:scale-110 hover:shadow-xl",
+        "fixed bottom-6 right-6 z-50",
+        "w-10 h-10 rounded-full",
+        "bg-background/60 backdrop-blur-md",
+        "border border-border/50",
+        "text-muted-foreground hover:text-foreground",
+        "hover:bg-background/80 hover:border-border",
         "active:scale-95",
         "transition-all duration-300 ease-out",
-        "focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background",
+        "flex items-center justify-center",
+        "focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2 focus:ring-offset-background",
         isVisible
           ? "opacity-100 translate-y-0 pointer-events-auto"
           : "opacity-0 translate-y-4 pointer-events-none"
       )}
     >
-      <ArrowUp className="w-5 h-5" />
+      <ChevronUp className="w-5 h-5" strokeWidth={1.5} />
     </button>
   );
 };
