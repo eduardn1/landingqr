@@ -50,7 +50,7 @@ const Index = () => {
   return (
     <LeadFormProvider>
       <DynamicSEO />
-      <div className="min-h-screen bg-background overflow-x-hidden">
+      <div className="min-h-screen bg-background overflow-x-hidden animate-content-show">
         <Navbar />
         <Hero />
         <Logos />
