@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - SEO Component
+ * NESTIFY - SEO Component
  * Dynamic meta tags, Open Graph, Twitter Cards, and JSON-LD structured data
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
@@ -21,18 +21,18 @@ interface SEOProps {
   structuredData?: object;
 }
 
-const BASE_URL = 'https://flavour.studiojem.it';
+const BASE_URL = 'https://nestify.studiojem.it';
 const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
-const SITE_NAME = 'Flavour';
+const SITE_NAME = 'Nestify';
 
 // Organization structured data
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Flavour by StudioJEM",
+  "name": "Nestify by StudioJEM",
   "url": BASE_URL,
   "logo": `${BASE_URL}/favicon.ico`,
-  "description": "Piattaforma all-in-one per menu digitali QR, prenotazioni e ordini online per bar, ristoranti, pub e caffetterie.",
+  "description": "Piattaforma all-in-one per la gestione immobiliare intelligente.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Cagliari",
@@ -56,7 +56,7 @@ const organizationSchema = {
 const softwareSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Flavour",
+  "name": "Nestify",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
   "offers": {
@@ -72,21 +72,21 @@ const softwareSchema = {
     "reviewCount": "500"
   },
   "featureList": [
-    "Menu digitale QR",
+    "Gestione immobili",
     "Prenotazioni online",
-    "Delivery e takeaway",
-    "Gestione allergeni",
+    "Channel manager",
+    "Automazione check-in",
     "Multi-lingua",
     "Analytics dashboard",
-    "WhatsApp automation",
-    "Loyalty program"
+    "Comunicazione ospiti",
+    "Revenue management"
   ]
 };
 
 export const SEO = ({
   title,
-  description = "Trasforma la tua attività con menu digitali QR, prenotazioni online, delivery e takeaway. Perfetto per bar, ristoranti, pub, cocktail bar e caffetterie. 30+ funzionalità, 5 lingue, 8 template. Pronto in 10 minuti. Zero commissioni.",
-  keywords = "menu digitale, menu qr, ristorante digitale, bar digitale, pub menu qr, caffetteria digitale, prenotazioni online, delivery ristorante, takeaway, ordini online",
+  description = "Piattaforma all-in-one per la gestione immobiliare intelligente. Gestisci prenotazioni, comunicazioni e operazioni da un'unica dashboard.",
+  keywords = "gestione immobiliare, property management, affitti brevi, airbnb management, booking management, channel manager",
   image = DEFAULT_IMAGE,
   url = BASE_URL,
   type = 'website',
@@ -95,7 +95,7 @@ export const SEO = ({
 }: SEOProps) => {
   const fullTitle = title 
     ? `${title} | ${SITE_NAME}` 
-    : `${SITE_NAME} | Menu Digitali QR per Bar, Ristoranti, Pub & Caffè`;
+    : `${SITE_NAME} | Gestione Immobiliare Intelligente`;
 
   const schemas = [
     organizationSchema,
@@ -126,7 +126,7 @@ export const SEO = ({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
-      <meta property="og:image:alt" content={`${SITE_NAME} - Menu Digitali`} />
+      <meta property="og:image:alt" content={`${SITE_NAME} - Gestione Immobiliare`} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="it_IT" />
       
