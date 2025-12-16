@@ -43,7 +43,7 @@ const allergens = [
   { id: "sesame", name: "Sesamo", icon: Leaf, description: "Semi di sesamo", color: "from-yellow-600 to-amber-600" },
   { id: "celery", name: "Sedano", icon: Leaf, description: "Sedano e derivati", color: "from-green-400 to-lime-500" },
   { id: "mustard", name: "Senape", icon: Leaf, description: "Senape e derivati", color: "from-yellow-500 to-orange-400" },
-  { id: "lupins", name: "Lupini", icon: Leaf, description: "Lupini e derivati", color: "from-purple-400 to-violet-500" },
+  { id: "lupins", name: "Lupini", icon: Leaf, description: "Lupini e derivati", color: "from-amber-400 to-orange-500" },
   { id: "molluscs", name: "Molluschi", icon: Shell, description: "Molluschi e derivati", color: "from-slate-400 to-zinc-500" },
   { id: "sulphites", name: "Solfiti", icon: AlertTriangle, description: "Anidride solforosa > 10mg/kg", color: "from-red-400 to-pink-500" },
   { id: "peanuts", name: "Arachidi", icon: Nut, description: "Arachidi e derivati", color: "from-orange-400 to-amber-500" },

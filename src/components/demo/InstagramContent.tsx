@@ -105,7 +105,7 @@ export const InstagramContent = () => {
           </div>
           <div>
             <h2 className="text-2xl font-bold text-foreground">Instagram Feed</h2>
-            <p className="text-muted-foreground">@ristorante_flavour</p>
+            <p className="text-muted-foreground">@ristorante_nestify</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -269,7 +269,7 @@ export const InstagramContent = () => {
                       <Instagram className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <p className="font-medium text-foreground">ristorante_flavour</p>
+                      <p className="font-medium text-foreground">ristorante_nestify</p>
                       <p className="text-xs text-muted-foreground">{selectedPost.date}</p>
                     </div>
                   </div>

@@ -15,8 +15,8 @@ interface OnboardingStep {
 const steps: OnboardingStep[] = [
   {
     id: "welcome",
-    title: "Benvenuto in Flavour! 🎉",
-    description: "Scopri come gestire il tuo ristorante in modo semplice e intuitivo. Ti guideremo attraverso le sezioni principali della piattaforma.",
+    title: "Benvenuto in Nestify! 🎉",
+    description: "Scopri come gestire il tuo locale in modo semplice e intuitivo. Ti guideremo attraverso le sezioni principali della piattaforma.",
     icon: Sparkles,
     highlight: "",
     features: ["Gestione completa del ristorante", "Interfaccia intuitiva", "Tutto in un'unica dashboard"],

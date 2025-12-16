@@ -53,7 +53,7 @@ const plans = [
     cta: "Inizia la prova gratuita",
     featured: true,
     slug: "pro",
-    gradient: "from-violet-500 to-purple-600",
+    gradient: "from-emerald-500/70 to-teal-600/70",
   },
   {
     name: "Enterprise",

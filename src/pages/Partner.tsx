@@ -58,7 +58,7 @@ const partnerFaqs = [
   {
     category: "Generale",
     questions: [
-      { q: "Cos'è il Programma Partner Flavour?", a: "Il Programma Partner è pensato per agenzie web, consulenti IT, web agency e professionisti che vogliono offrire ai propri clienti soluzioni digitali per l'hospitality. Come partner, potrai rivendere i nostri servizi con condizioni economiche vantaggiose e supporto dedicato." },
+      { q: "Cos'è il Programma Partner Nestify?", a: "Il Programma Partner è pensato per agenzie web, consulenti IT, web agency e professionisti che vogliono offrire ai propri clienti soluzioni digitali per l'hospitality. Come partner, potrai rivendere i nostri servizi con condizioni economiche vantaggiose e supporto dedicato." },
       { q: "Chi può diventare Partner?", a: "Il programma è aperto a web agency, sviluppatori freelance, consulenti digitali, agenzie di marketing e qualsiasi professionista che lavora con clienti nel settore hospitality." },
       { q: "Ci sono requisiti minimi per aderire?", a: "Non ci sono requisiti minimi di volume o fatturato. Cerchiamo partner motivati e professionali che condividano la nostra visione." },
     ],
@@ -255,7 +255,7 @@ const Partner = memo(() => {
               >
                 <div className="badge-primary">
                   <Handshake className="w-4 h-4" />
-                  <span>Programma Partner Flavour</span>
+                  <span>Programma Partner Nestify</span>
                   <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
                 </div>
               </motion.div>
@@ -294,7 +294,7 @@ const Partner = memo(() => {
               >
                 {[
                   { icon: Award, text: "Zero costi", color: "from-emerald-500 to-teal-600" },
-                  { icon: Palette, text: "White Label", color: "from-violet-500 to-purple-600" },
+                  { icon: Palette, text: "White Label", color: "from-emerald-500/70 to-teal-600/70" },
                   { icon: Headphones, text: "Supporto 24h", color: "from-blue-500 to-cyan-500" },
                   { icon: TrendingUp, text: "Commissioni", color: "from-orange-500 to-red-500" },
                 ].map((badge) => (
@@ -674,7 +674,7 @@ const Partner = memo(() => {
                   Pronto a far crescere il tuo business?
                 </h2>
                 <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-                  Unisciti alla rete di partner Flavour e inizia a offrire soluzioni digitali ai tuoi clienti.
+                  Unisciti alla rete di partner Nestify e inizia a offrire soluzioni digitali ai tuoi clienti.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">

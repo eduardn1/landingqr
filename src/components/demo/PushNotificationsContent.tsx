@@ -173,7 +173,7 @@ export const PushNotificationsContent = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/70 to-teal-600/70 flex items-center justify-center">
             <Bell className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -434,18 +434,18 @@ const CampaignCard = ({
         <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
           campaign.status === "completed" ? "bg-green-500/20" :
           campaign.status === "scheduled" ? "bg-blue-500/20" :
-          "bg-violet-500/20"
+          "bg-emerald-500/20"
         }`}>
           {campaign.status === "completed" ? <Check className="w-5 h-5 text-green-500" /> :
            campaign.status === "scheduled" ? <Calendar className="w-5 h-5 text-blue-500" /> :
-           <Zap className="w-5 h-5 text-violet-500" />}
+           <Zap className="w-5 h-5 text-emerald-500" />}
         </div>
         
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <h4 className="font-bold text-foreground">{campaign.title}</h4>
             {isAuto && (
-              <span className="px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-500 text-xs">
+              <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-500 text-xs">
                 Auto
               </span>
             )}

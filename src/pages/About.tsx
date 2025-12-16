@@ -175,7 +175,7 @@ const AboutPage = () => {
               </div>
 
               <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-foreground mb-6">
-                Dietro Flavour c'è una{" "}
+                Dietro Nestify c'è una{" "}
                 <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                   passione italiana
                 </span>
@@ -367,7 +367,7 @@ const AboutPage = () => {
                   Pronto a trasformare il tuo locale?
                 </h2>
                 <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-                  Unisciti a centinaia di locali che hanno già scelto Flavour.
+                  Unisciti a centinaia di locali che hanno già scelto Nestify.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">

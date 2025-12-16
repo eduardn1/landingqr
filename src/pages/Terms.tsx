@@ -21,7 +21,7 @@ const sections = [
     id: "accettazione",
     icon: UserCheck,
     title: "1. Accettazione dei Termini",
-    content: `Utilizzando la piattaforma Flavour ("Servizio"), accetti di essere vincolato dai presenti Termini di Servizio ("Termini"). Se non accetti questi Termini, non potrai utilizzare il Servizio.
+    content: `Utilizzando la piattaforma Nestify ("Servizio"), accetti di essere vincolato dai presenti Termini di Servizio ("Termini"). Se non accetti questi Termini, non potrai utilizzare il Servizio.
 
 Il Servizio è fornito da **StudioJEM di Eduard Costin Udila**, con sede in Cagliari, Italia, P.IVA IT03883630927 ("Fornitore", "noi", "nostro").
 
@@ -31,7 +31,7 @@ Ci riserviamo il diritto di modificare questi Termini in qualsiasi momento. Le m
     id: "descrizione",
     icon: FileText,
     title: "2. Descrizione del Servizio",
-    content: `Flavour è una piattaforma SaaS (Software as a Service) che offre:
+    content: `Nestify è una piattaforma SaaS (Software as a Service) che offre:
 
 - Menu digitali accessibili tramite QR code
 - Sistema di prenotazioni online
@@ -194,7 +194,7 @@ const Terms = memo(() => {
             </h1>
             
             <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              Condizioni generali di utilizzo della piattaforma Flavour. Leggi attentamente prima di utilizzare il servizio.
+              Condizioni generali di utilizzo della piattaforma Nestify. Leggi attentamente prima di utilizzare il servizio.
             </p>
           </div>
         </div>

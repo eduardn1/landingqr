@@ -48,7 +48,7 @@ const DynamicSEO = ({
   if (brandLoading || pageLoading) return null;
 
   // Priority: Props > Page SEO > Brand Settings > Defaults
-  const siteTitle = settings.site_title || 'Flavour';
+  const siteTitle = settings.site_title || 'Nestify';
   const pageTitle = propTitle || pageSEO?.title || siteTitle;
   const fullTitle = pageTitle !== siteTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
   
