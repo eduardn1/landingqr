@@ -45,47 +45,54 @@ const Navbar = memo(() => {
   useEffect(() => {
     setMounted(true);
     let lastScrollY = window.scrollY;
+    let ticking = false;
     
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setIsScrolled(currentScrollY > 80);
+      if (ticking) return;
       
-      // Close on any scroll movement
-      if (Math.abs(currentScrollY - lastScrollY) > 10 && isExpanded) {
-        setIsExpanded(false);
-      }
-      lastScrollY = currentScrollY;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        setIsScrolled(currentScrollY > 80);
+        
+        // Close on any scroll movement
+        if (Math.abs(currentScrollY - lastScrollY) > 10 && isExpanded) {
+          setIsExpanded(false);
+        }
+        lastScrollY = currentScrollY;
 
-      // Detect active section
-      const sections = ["features", "pricing", "faq"];
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 200 && rect.bottom >= 200) {
-            setActiveSection(section);
-            return;
+        // Detect active section - only check if near top or scrolling significantly
+        if (currentScrollY < 100) {
+          setActiveSection("home");
+        } else {
+          const sections = ["features", "pricing", "faq"];
+          for (const section of sections) {
+            const element = document.getElementById(section);
+            if (element) {
+              const rect = element.getBoundingClientRect();
+              if (rect.top <= 200 && rect.bottom >= 200) {
+                setActiveSection(section);
+                break;
+              }
+            }
           }
         }
-      }
-      
-      if (currentScrollY < 100) {
-        setActiveSection("home");
-      }
+        
+        ticking = false;
+      });
     };
     
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isExpanded, isPagesMenuOpen]);
+  }, [isExpanded]);
 
-  // Close pages menu on scroll
   useEffect(() => {
+    if (!isPagesMenuOpen) return;
+    
     const handleScrollForPages = () => {
-      if (isPagesMenuOpen) {
-        setIsPagesMenuOpen(false);
-      }
+      setIsPagesMenuOpen(false);
     };
-    window.addEventListener("scroll", handleScrollForPages, { passive: true });
+    window.addEventListener("scroll", handleScrollForPages, { passive: true, once: true });
     return () => window.removeEventListener("scroll", handleScrollForPages);
   }, [isPagesMenuOpen]);
 
