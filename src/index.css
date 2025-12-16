@@ -12,7 +12,7 @@ html, body {
   text-rendering: optimizeLegibility;
 }
 @layer base {
-  /* LIGHT Theme - Clean Modern with Colorful Accents (versione 1:14 PM) */
+  /* LIGHT Theme - Clean Modern with Nestify Green */
   :root {
     --background: 0 0% 100%;
     --foreground: 225 15% 10%;
@@ -23,12 +23,12 @@ html, body {
     --popover: 0 0% 100%;
     --popover-foreground: 225 15% 10%;
 
-    /* Electric Indigo Primary */
-    --primary: 250 89% 58%;
-    --primary-foreground: 0 0% 100%;
-    --primary-light: 250 89% 68%;
-    --primary-dark: 250 89% 48%;
-    --primary-glow: 250 89% 58%;
+    /* Nestify Green Primary */
+    --primary: 145 84% 58%;
+    --primary-foreground: 225 15% 10%;
+    --primary-light: 145 84% 68%;
+    --primary-dark: 142 50% 51%;
+    --primary-glow: 145 84% 58%;
 
     --secondary: 225 15% 96%;
     --secondary-foreground: 225 15% 10%;
@@ -36,11 +36,11 @@ html, body {
     --muted: 225 15% 94%;
     --muted-foreground: 225 10% 45%;
 
-    /* Cyan Accent */
-    --accent: 185 94% 42%;
+    /* Emerald Accent */
+    --accent: 142 50% 51%;
     --accent-foreground: 0 0% 100%;
 
-    --success: 152 76% 38%;
+    --success: 145 84% 40%;
     --success-foreground: 0 0% 100%;
 
     --warning: 38 92% 50%;
@@ -53,24 +53,24 @@ html, body {
     --border-subtle: 225 15% 92%;
     --border-medium: 225 15% 82%;
     --border-strong: 225 15% 75%;
-    --border-glow: 250 89% 58%;
+    --border-glow: 145 84% 58%;
 
     --input: 225 15% 92%;
-    --ring: 250 89% 58%;
+    --ring: 145 84% 58%;
 
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 99%;
     --sidebar-foreground: 225 15% 10%;
-    --sidebar-primary: 250 89% 58%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 145 84% 58%;
+    --sidebar-primary-foreground: 225 15% 10%;
     --sidebar-accent: 225 15% 96%;
     --sidebar-accent-foreground: 225 15% 10%;
     --sidebar-border: 225 15% 88%;
-    --sidebar-ring: 250 89% 58%;
+    --sidebar-ring: 145 84% 58%;
   }
 
-  /* DARK Theme - Premium Dark with Colorful Accents (versione 1:14 PM) */
+  /* DARK Theme - Premium Dark with Nestify Green */
   .dark {
     --background: 225 15% 3%;
     --foreground: 0 0% 98%;
@@ -81,12 +81,12 @@ html, body {
     --popover: 225 15% 5%;
     --popover-foreground: 0 0% 98%;
 
-    /* Electric Indigo Primary */
-    --primary: 250 89% 65%;
-    --primary-foreground: 0 0% 100%;
-    --primary-light: 250 89% 75%;
-    --primary-dark: 250 89% 55%;
-    --primary-glow: 250 89% 65%;
+    /* Nestify Green Primary */
+    --primary: 145 84% 55%;
+    --primary-foreground: 225 15% 5%;
+    --primary-light: 145 84% 65%;
+    --primary-dark: 142 50% 45%;
+    --primary-glow: 145 84% 55%;
 
     --secondary: 225 15% 8%;
     --secondary-foreground: 0 0% 98%;
@@ -94,11 +94,11 @@ html, body {
     --muted: 225 15% 10%;
     --muted-foreground: 225 10% 55%;
 
-    /* Cyan Accent */
-    --accent: 185 94% 52%;
+    /* Emerald Accent */
+    --accent: 142 50% 55%;
     --accent-foreground: 0 0% 0%;
 
-    --success: 152 76% 45%;
+    --success: 145 84% 45%;
     --success-foreground: 0 0% 100%;
 
     --warning: 38 92% 55%;
@@ -111,19 +111,19 @@ html, body {
     --border-subtle: 225 15% 8%;
     --border-medium: 225 15% 18%;
     --border-strong: 225 15% 25%;
-    --border-glow: 250 89% 65%;
+    --border-glow: 145 84% 55%;
 
     --input: 225 15% 10%;
-    --ring: 250 89% 65%;
+    --ring: 145 84% 55%;
 
     --sidebar-background: 225 15% 3%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 250 89% 65%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 145 84% 55%;
+    --sidebar-primary-foreground: 225 15% 5%;
     --sidebar-accent: 225 15% 8%;
     --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border: 225 15% 12%;
-    --sidebar-ring: 250 89% 65%;
+    --sidebar-ring: 145 84% 55%;
   }
 }
 
