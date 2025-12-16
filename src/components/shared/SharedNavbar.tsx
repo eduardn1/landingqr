@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
  * NESTIFY - Shared Navbar for Internal Pages
- * Dynamic Island navigation per tutte le pagine interne
+ * Digital tools for Hospitality
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -17,6 +17,7 @@ import { Sun, Moon, Sparkles, Home, MessageCircle, HelpCircle, Users } from "luc
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { useLeadForm } from "@/hooks/useLeadForm";
+import logoShort from "@/assets/logo-short.svg";
 
 const navLinks = [
   { id: "home", label: "Home", href: "/", icon: Home },
@@ -101,9 +102,7 @@ const SharedNavbar = () => {
           <div className="relative flex items-center gap-2 px-4 py-2.5 lg:px-5 lg:py-3">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-lg lg:rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md shadow-primary/30">
-                <span className="text-white font-bold text-xs lg:text-sm">N</span>
-              </div>
+              <img src={logoShort} alt="Nestify" className="w-7 h-7 lg:w-8 lg:h-8" />
               <span className="font-bold text-sm lg:text-base tracking-tight text-foreground">Nestify</span>
             </Link>
 
