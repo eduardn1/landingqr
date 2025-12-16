@@ -134,6 +134,15 @@ export default {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
         },
+        "logo-spin": {
+          "0%": { transform: "scale(1) rotate(0deg)", opacity: "0.8" },
+          "50%": { transform: "scale(1.1) rotate(180deg)", opacity: "1" },
+          "100%": { transform: "scale(1) rotate(360deg)", opacity: "0.8" },
+        },
+        "logo-pulse": {
+          "0%, 100%": { transform: "scale(1)", opacity: "0.9" },
+          "50%": { transform: "scale(1.05)", opacity: "1" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -144,6 +153,8 @@ export default {
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "shimmer": "shimmer 2s linear infinite",
         "marquee": "marquee 30s linear infinite",
+        "logo-spin": "logo-spin 2s ease-in-out infinite",
+        "logo-pulse": "logo-pulse 1.5s ease-in-out infinite",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
