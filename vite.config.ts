@@ -40,10 +40,27 @@ export default defineConfig(({ mode }) => ({
     },
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ["react", "react-dom", "react-router-dom"],
-          ui: ["framer-motion", "lucide-react"],
-          charts: ["recharts"],
+        manualChunks(id) {
+          // Isolate recharts completely - only load when demo uses it
+          if (id.includes('recharts')) {
+            return 'charts';
+          }
+          // Core vendor bundle
+          if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
+            return 'vendor-react';
+          }
+          // Router separate
+          if (id.includes('react-router')) {
+            return 'vendor-router';
+          }
+          // UI libraries
+          if (id.includes('framer-motion') || id.includes('lucide-react')) {
+            return 'ui';
+          }
+          // Radix UI components
+          if (id.includes('@radix-ui')) {
+            return 'ui-radix';
+          }
         },
       },
     },
