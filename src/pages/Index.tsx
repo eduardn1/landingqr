@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Landing Page
- * Piattaforma completa per la digitalizzazione di bar, ristoranti, pub e caffè
+ * NESTIFY - Landing Page
+ * Piattaforma per la gestione immobiliare intelligente
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -24,7 +24,6 @@ import Logos from "@/components/landing/Logos";
 // Lazy load below-the-fold components for better initial load performance
 const ProblemSolution = lazy(() => import("@/components/landing/ProblemSolution"));
 const Features = lazy(() => import("@/components/landing/Features"));
-const ProductShowcase = lazy(() => import("@/components/landing/ProductShowcase"));
 const HowItWorks = lazy(() => import("@/components/landing/HowItWorks"));
 const Pricing = lazy(() => import("@/components/landing/Pricing"));
 const Testimonials = lazy(() => import("@/components/landing/Testimonials"));
@@ -59,7 +58,6 @@ const Index = () => {
           <ProblemSolution />
           <Features />
           <HowItWorks />
-          <ProductShowcase />
           <Pricing />
           <Testimonials />
           <FAQCard />

@@ -1,18 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - App Root Component
- * Piattaforma completa per la digitalizzazione del ristorante
- * 
- * Features:
- * - Menu Digitale QR (30+ funzionalità)
- * - Multi-Lingua (5 lingue)
- * - 8 Template Homepage
- * - Asporto & Delivery (zero commissioni)
- * - Prenotazioni Smart
- * - Loyalty & Gamification
- * - WhatsApp Automation
- * - Analytics Dashboard
- * - E molto altro...
+ * NESTIFY - App Root Component
+ * Piattaforma per la gestione immobiliare
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -35,10 +24,8 @@ import CookieBanner from "./components/CookieBanner";
 import ScrollToTop from "./components/ScrollToTop";
 import BackToTop from "./components/BackToTop";
 
-// Lazy load pages to prevent recharts bundle from loading on landing page
-const Demo = lazy(() => import("./pages/Demo"));
+// Lazy load pages
 const FAQ = lazy(() => import("./pages/FAQ"));
-const Guides = lazy(() => import("./pages/Guides"));
 const Contact = lazy(() => import("./pages/Contact"));
 const About = lazy(() => import("./pages/About"));
 const Partner = lazy(() => import("./pages/Partner"));
@@ -68,9 +55,7 @@ const App = () => (
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/demo" element={<Suspense fallback={<PageLoader />}><Demo /></Suspense>} />
               <Route path="/faq" element={<Suspense fallback={<PageLoader />}><FAQ /></Suspense>} />
-              <Route path="/guide" element={<Suspense fallback={<PageLoader />}><Guides /></Suspense>} />
               <Route path="/contatti" element={<Suspense fallback={<PageLoader />}><Contact /></Suspense>} />
               <Route path="/chi-siamo" element={<Suspense fallback={<PageLoader />}><About /></Suspense>} />
               <Route path="/diventa-rivenditore" element={<Suspense fallback={<PageLoader />}><Partner /></Suspense>} />

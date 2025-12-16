@@ -62,7 +62,7 @@ const HowItWorks = memo(() => {
           </h2>
 
           <p className="text-muted-foreground">
-            Non serve essere esperti di tecnologia. Se sai usare WhatsApp, sai usare Flavour. Promesso.
+            Non serve essere esperti di tecnologia. Se sai usare WhatsApp, sai usare Nestify. Promesso.
           </p>
         </div>
 

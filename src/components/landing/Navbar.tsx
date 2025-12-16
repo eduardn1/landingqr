@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Navigation Bar
+ * NESTIFY - Navigation Bar
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -12,7 +12,7 @@
 import { useState, useEffect, useCallback, useMemo, memo } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Sparkles, CreditCard, HelpCircle, Play, Home, Grid3X3, X, BookOpen, MessageCircle, Users, ExternalLink } from "lucide-react";
+import { Sun, Moon, Sparkles, CreditCard, HelpCircle, Home, Grid3X3, X, MessageCircle, Users, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { useLeadForm } from "@/hooks/useLeadForm";
@@ -21,9 +21,7 @@ import { useLeadForm } from "@/hooks/useLeadForm";
 const staticPages = [
   { label: "Chi siamo", href: "/chi-siamo", icon: Users },
   { label: "Contatti", href: "/contatti", icon: MessageCircle },
-  { label: "Guide", href: "/guide", icon: BookOpen },
   { label: "FAQ", href: "/faq", icon: HelpCircle },
-  { label: "Demo", href: "/demo", icon: Play },
 ] as const;
 
 // Static nav links
@@ -174,9 +172,9 @@ const Navbar = memo(() => {
             {/* Logo */}
             <a href="/" className="flex items-center gap-1.5 lg:gap-2 shrink-0">
               <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-lg lg:rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md shadow-primary/30">
-                <span className="text-white font-bold text-[10px] lg:text-sm">F</span>
+                <span className="text-white font-bold text-[10px] lg:text-sm">N</span>
               </div>
-              <span className="font-bold text-xs lg:text-base tracking-tight text-foreground">Flavour</span>
+              <span className="font-bold text-xs lg:text-base tracking-tight text-foreground">Nestify</span>
             </a>
 
             <div className="w-px h-4 lg:h-6 bg-border/50 mx-0.5 lg:mx-1 shrink-0" />
