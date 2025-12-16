@@ -249,9 +249,11 @@ const Demo = () => {
       >
         {/* Logo */}
         <div className="p-4 border-b border-border flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/25 flex-shrink-0">
-            <span className="text-white font-bold">F</span>
-          </div>
+          <img 
+            src="/logo-short.svg" 
+            alt="Nestify" 
+            className="w-10 h-10 flex-shrink-0"
+          />
           {!sidebarCollapsed && (
             <span className="font-bold text-lg text-foreground">Nestify</span>
           )}
@@ -303,9 +305,11 @@ const Demo = () => {
             {/* Logo + Close */}
             <div className="p-4 border-b border-border flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/25">
-                  <span className="text-white font-bold">F</span>
-                </div>
+                <img 
+                  src="/logo-short.svg" 
+                  alt="Nestify" 
+                  className="w-10 h-10"
+                />
                 <span className="font-bold text-lg text-foreground">Nestify</span>
               </div>
               <button
