@@ -50,7 +50,7 @@ const FinalCTA = memo(() => {
 
               {/* Subheading */}
               <p className="text-muted-foreground max-w-2xl mx-auto mb-10">
-                Unisciti a centinaia di locali che hanno già scelto Flavour 
+                Unisciti a centinaia di locali che hanno già scelto Nestify 
                 per digitalizzare la loro attività.
               </p>
 

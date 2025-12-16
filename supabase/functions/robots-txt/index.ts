@@ -10,7 +10,7 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const defaultRobotsTxt = `# Robots.txt - Flavour Menu Digitali
+const defaultRobotsTxt = `# Robots.txt - Nestify Menu Digitali
 # Sviluppato da Eduard Costin Udila @ studiojem.it
 
 User-agent: *
@@ -19,7 +19,7 @@ Disallow: /admin
 Disallow: /admin/
 
 # Sitemap
-Sitemap: https://flavour.menu/sitemap.xml
+Sitemap: https://nestify.studiojem.it/sitemap.xml
 
 # Crawl delay
 Crawl-delay: 1

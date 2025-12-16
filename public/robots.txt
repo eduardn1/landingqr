@@ -54,7 +54,7 @@ Disallow: /api/
 Disallow: /_/
 
 # Sitemap
-Sitemap: https://flavour.studiojem.it/sitemap.xml
+Sitemap: https://nestify.studiojem.it/sitemap.xml
 
 # LLM Context File (AI SEO 2024-2025)
 # See: https://llmstxt.org/

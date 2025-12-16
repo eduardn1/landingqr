@@ -166,10 +166,12 @@ const Navbar = memo(() => {
           <div className="relative flex items-center gap-2 px-3 py-2.5 lg:px-5 lg:py-3 max-w-full overflow-hidden">
             {/* Logo */}
             <a href="/" className="flex items-center gap-1.5 lg:gap-2 shrink-0">
-              <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-lg lg:rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md shadow-primary/30">
-                <span className="text-white font-bold text-[10px] lg:text-sm">F</span>
-              </div>
-              <span className="font-bold text-xs lg:text-base tracking-tight text-foreground">Flavour</span>
+              <img 
+                src="/logo-short.svg" 
+                alt="Nestify Logo" 
+                className="w-6 h-6 lg:w-8 lg:h-8"
+              />
+              <span className="font-bold text-xs lg:text-base tracking-tight text-foreground">Nestify</span>
             </a>
 
             <div className="w-px h-4 lg:h-6 bg-border/50 mx-0.5 lg:mx-1 shrink-0" />
