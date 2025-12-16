@@ -32,10 +32,10 @@ const showcaseItems = [
     title: "Menu Mobile-First",
     description: "I clienti scansionano il QR e accedono al menu ottimizzato per smartphone.",
     badges: [
-      { text: "QR Code", icon: QrCode, color: "from-violet-500 to-purple-600" },
+      { text: "QR Code", icon: QrCode, color: "from-emerald-500/70 to-teal-600/70" },
       { text: "Ordini", icon: ShoppingBag, color: "from-orange-500 to-red-500" },
     ],
-    gradient: "from-violet-500/20 to-purple-600/20",
+    gradient: "from-emerald-500/20 to-teal-600/20",
     demoSection: "menu"
   },
   {
@@ -92,7 +92,7 @@ const MobileMockup = memo(() => {
           </div>
         </div>
       </div>
-      <div className="absolute -inset-3 bg-gradient-to-br from-violet-500/15 to-purple-600/10 rounded-[2.5rem] blur-xl -z-10" />
+      <div className="absolute -inset-3 bg-gradient-to-br from-emerald-500/15 to-teal-600/10 rounded-[2.5rem] blur-xl -z-10" />
     </div>
   );
 });
@@ -179,8 +179,8 @@ const ProductShowcase = memo(() => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
       
       {/* Static Orbs */}
-      <div className="absolute top-20 left-[5%] w-[300px] h-[300px] bg-gradient-to-br from-violet-500/8 to-purple-600/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-[5%] w-[350px] h-[350px] bg-gradient-to-br from-blue-500/6 to-cyan-500/4 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-[5%] w-[300px] h-[300px] bg-gradient-to-br from-emerald-500/8 to-teal-600/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-[5%] w-[350px] h-[350px] bg-gradient-to-br from-sky-500/6 to-cyan-500/4 rounded-full blur-3xl" />
 
       <div className="container relative z-10">
         {/* Header */}

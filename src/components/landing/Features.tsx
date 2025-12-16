@@ -217,15 +217,15 @@ const Features = memo(() => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />
       
       {/* Static orbs */}
-      <div className="absolute top-20 left-[10%] w-72 h-72 bg-gradient-to-br from-violet-500/10 to-purple-600/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-gradient-to-br from-orange-500/8 to-rose-600/5 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-[10%] w-72 h-72 bg-gradient-to-br from-emerald-500/10 to-teal-600/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-gradient-to-br from-orange-500/8 to-amber-600/5 rounded-full blur-3xl" />
       
       <div className="container relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-violet-500/10 to-purple-600/10 border border-violet-500/20 mb-4">
-            <Zap className="w-4 h-4 text-violet-500" />
-            <span className="text-sm font-medium text-violet-500">Piattaforma Completa</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 mb-4">
+            <Zap className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Piattaforma Completa</span>
           </div>
           
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-4 px-2">
