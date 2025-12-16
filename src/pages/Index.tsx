@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
  * NESTIFY - Landing Page
- * Piattaforma per la gestione immobiliare intelligente
- * 
+ * Digital tools for Hospitality
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * 

@@ -58,88 +58,70 @@ const faqCategories: FAQCategory[] = [
 
 const faqs: FAQItem[] = [
   {
-    question: "Come funziona il white-label per agenzie?",
+    question: "Che cos'è Nestify?",
     answer:
-      "Con il piano Enterprise puoi rivendere Nestify con il tuo brand. I tuoi clienti non vedranno mai il nostro logo. Hai accesso a un pannello multi-tenant per gestire tutti gli immobili, fatturazione separata e margini personalizzabili.",
-    category: "pricing",
-  },
-  {
-    question: "Ci sono commissioni sulle prenotazioni?",
-    answer:
-      "Assolutamente no! Non prendiamo commissioni sulle prenotazioni come fanno altri portali. Paghi solo l'abbonamento mensile, tutto incluso. Zero sorprese.",
-    category: "pricing",
-  },
-  {
-    question: "Funziona per appartamenti, B&B e case vacanza?",
-    answer:
-      "Certamente! Nestify è perfetto per ogni tipo di struttura ricettiva: appartamenti, B&B, case vacanza, ville, residence, agriturismi, glamping. Gestisci qualsiasi tipologia di immobile da un'unica dashboard.",
+      "Nestify è una piattaforma all-in-one per bar, ristoranti, pub e caffetterie: menu QR, ordini asporto e delivery, prenotazioni, loyalty e analytics in un'unica dashboard.",
     category: "features",
   },
   {
-    question: "Posso migrare da un'altra piattaforma?",
+    question: "In quanto tempo posso essere online?",
     answer:
-      "Certo! Offriamo migrazione gratuita assistita per tutti i piani a pagamento. Importiamo i tuoi immobili e prenotazioni da altre piattaforme. Il nostro team ti guida in ogni step.",
+      "In media in 10 minuti: carichi il menu (anche da Excel), scegli un tema e generi il tuo QR. Se vuoi, ti aiutiamo noi nel setup.",
     category: "technical",
   },
   {
-    question: "Le comunicazioni sono tradotte automaticamente?",
+    question: "Ci sono commissioni sugli ordini?",
     answer:
-      "Sì! Nestify supporta 5 lingue (Italiano, Inglese, Tedesco, Spagnolo, Francese). Puoi scegliere la traduzione automatica AI oppure inserire traduzioni manuali per un controllo totale. Perfetto per host con ospiti internazionali.",
+      "No: Nestify non prende commissioni sugli ordini. Paghi solo il piano scelto, senza costi nascosti.",
+    category: "pricing",
+  },
+  {
+    question: "Posso gestire prenotazioni e eventi?",
+    answer:
+      "Sì: calendario prenotazioni, conferma automatica (anche via WhatsApp) e gestione eventi speciali con capienza, sale e note.",
+    category: "features",
+  },
+  {
+    question: "Gestite allergeni e diete?",
+    answer:
+      "Sì: puoi impostare gli allergeni per ogni piatto e mostrare badge chiari sul menu. Ideale anche per opzioni vegane/vegetariane e senza glutine.",
+    category: "features",
+  },
+  {
+    question: "Delivery con tracking GPS: come funziona?",
+    answer:
+      "Puoi gestire consegne interne e assegnare driver. I clienti vedono lo stato dell'ordine e, dove previsto, il tracking in tempo reale.",
+    category: "technical",
+  },
+  {
+    question: "Supportate più sedi?",
+    answer:
+      "Sì: con i piani Pro/Enterprise puoi gestire più sedi con menu, ordini e analytics separati o aggregati.",
+    category: "features",
+  },
+  {
+    question: "Il menu è multi-lingua?",
+    answer:
+      "Sì: puoi offrire il menu in più lingue. Utile per locali turistici; puoi usare traduzioni automatiche o inserire testi manuali.",
     category: "international",
   },
   {
-    question: "Funziona offline?",
+    question: "Posso personalizzare grafica e branding?",
     answer:
-      "Nestify è una PWA (Progressive Web App). Una volta caricato, funziona anche con connessione instabile. Puoi installarlo come app sul telefono senza passare dagli store.",
-    category: "technical",
-  },
-  {
-    question: "Posso gestire più proprietà?",
-    answer:
-      "Sì! Con i piani Pro e Enterprise puoi gestire più immobili da un unico pannello. Calendar sincronizzati, analytics aggregati, gestione centralizzata. Perfetto per property manager professionisti.",
-    category: "features",
-  },
-  {
-    question: "Come funziona il channel manager?",
-    answer:
-      "Il channel manager sincronizza automaticamente disponibilità e prezzi con Airbnb, Booking.com, Vrbo e altri portali. Eviti overbooking e gestisci tutto da un'unica dashboard.",
-    category: "features",
-  },
-  {
-    question: "Qual è la differenza con i grandi portali?",
-    answer:
-      "I portali prendono fino al 15-20% di commissioni. Noi zero commissioni. Nestify è tuo: i clienti sono tuoi, i dati sono tuoi, il profitto è 100% tuo. E offri un'esperienza migliore e personalizzata.",
-    category: "pricing",
-  },
-  {
-    question: "Supportate pagamenti internazionali?",
-    answer:
-      "Sì! Integriamo Stripe, PayPal, bonifico bancario e altri metodi. I tuoi ospiti internazionali pagano come preferiscono, nella loro valuta.",
-    category: "international",
-  },
-  {
-    question: "Quanto tempo serve per configurare Nestify?",
-    answer:
-      "Mediamente 10-15 minuti per aggiungere un immobile. Puoi importare dati esistenti o iniziare da zero. Il nostro team offre setup assistito gratuito per i piani Pro e Enterprise.",
-    category: "technical",
-  },
-  {
-    question: "Posso cambiare piano in qualsiasi momento?",
-    answer:
-      "Sì! Puoi fare upgrade o downgrade del piano in qualsiasi momento. L'upgrade è immediato, il downgrade avviene alla fine del periodo di fatturazione corrente.",
-    category: "pricing",
-  },
-  {
-    question: "Come funziona il check-in automatico?",
-    answer:
-      "Invii automaticamente istruzioni di check-in, codici smart lock, indicazioni stradali. Gli ospiti ricevono tutto via email e WhatsApp. Zero chiamate, zero problemi.",
+      "Certo: scegli temi e colori, carichi il logo e personalizzi lo stile del menu per renderlo coerente con il tuo brand.",
     category: "features",
   },
   {
     question: "Nestify è GDPR compliant?",
     answer:
-      "Assolutamente sì. I dati sono conservati in server EU, offriamo export/cancellazione dati su richiesta, cookie banner integrato, informativa privacy personalizzabile. Siamo conformi a tutte le normative europee sulla privacy.",
+      "Sì: gestione cookie e privacy, data retention e protezione dei dati secondo le normative europee. Possiamo supportarti con l'informativa.",
     category: "technical",
+  },
+  {
+    question: "Posso cambiare piano quando voglio?",
+    answer:
+      "Sì: puoi fare upgrade o downgrade in qualsiasi momento. L'upgrade è immediato, il downgrade a fine periodo di fatturazione.",
+    category: "pricing",
   },
 ];
 
@@ -184,7 +166,7 @@ const FAQPage = () => {
               Domande Frequenti
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Trova risposte alle domande più comuni su Nestify, i nostri piani e le funzionalità
+              Trova risposte alle domande più comuni su Nestify, i piani e le funzionalità per il tuo locale
             </p>
           </div>
 
