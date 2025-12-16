@@ -42,6 +42,7 @@ import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
 import AdminAuth from "./pages/AdminAuth";
 import CookieBanner from "./components/CookieBanner";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/demo" element={<Demo />} />
