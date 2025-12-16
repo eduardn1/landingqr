@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * NESTIFY - Product Showcase Section (Static Images)
+ * NESTIFY - Product Showcase Section (Static/Compact)
  *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -22,11 +22,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-
-// Import static mockup images
-import mockupMobile from "@/assets/mockup-mobile.png";
-import mockupTablet from "@/assets/mockup-tablet.png";
-import mockupDesktop from "@/assets/mockup-desktop.png";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const showcaseItems = [
   {
@@ -40,7 +36,7 @@ const showcaseItems = [
       { text: "Ordini", icon: ShoppingBag, color: "from-orange-500 to-red-500" },
     ],
     gradient: "from-emerald-500/20 to-teal-600/20",
-    image: mockupMobile
+    demoSection: "menu"
   },
   {
     id: "tablet",
@@ -53,7 +49,7 @@ const showcaseItems = [
       { text: "Report", icon: Calendar, color: "from-emerald-500 to-teal-600" },
     ],
     gradient: "from-blue-500/20 to-cyan-500/20",
-    image: mockupTablet
+    demoSection: "analytics"
   },
   {
     id: "desktop",
@@ -66,54 +62,115 @@ const showcaseItems = [
       { text: "CRM", icon: Users, color: "from-amber-500 to-orange-500" },
     ],
     gradient: "from-pink-500/20 to-rose-500/20",
-    image: mockupDesktop
+    demoSection: "orders"
   },
 ];
 
-// Static Image Mockup Component
-const MockupImage = memo(({ 
-  src, 
-  alt, 
-  type 
-}: { 
-  src: string; 
-  alt: string; 
-  type: 'mobile' | 'tablet' | 'desktop';
-}) => {
+// Mobile Mockup with iframe and skeleton
+const MobileMockup = memo(() => {
   const [loaded, setLoaded] = useState(false);
   const handleLoad = useCallback(() => setLoaded(true), []);
-
-  const containerStyles = {
-    mobile: "w-full max-w-[260px] mx-auto",
-    tablet: "w-full max-w-[420px] mx-auto",
-    desktop: "w-full"
-  };
-
-  const glowStyles = {
-    mobile: "from-emerald-500/15 to-teal-600/10",
-    tablet: "from-blue-500/12 to-cyan-500/8",
-    desktop: "from-pink-500/8 to-rose-500/8"
-  };
-
+  
   return (
-    <div className={`relative ${containerStyles[type]}`}>
-      <div className="relative rounded-xl overflow-hidden shadow-2xl border border-border/50">
-        <div 
-          className={`absolute inset-0 bg-muted/50 transition-opacity duration-300 ${loaded ? 'opacity-0' : 'opacity-100'}`} 
-        />
-        <img
-          src={src}
-          alt={alt}
-          loading="lazy"
-          onLoad={handleLoad}
-          className={`w-full h-auto transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
-        />
+    <div className="relative w-full max-w-[240px] mx-auto">
+      <div className="bg-card rounded-[2rem] p-1.5 border-4 border-muted shadow-xl">
+        <div className="bg-background rounded-[1.75rem] overflow-hidden">
+          <div className="flex justify-center py-1.5 bg-background">
+            <div className="w-16 h-4 bg-muted rounded-full" />
+          </div>
+          <div className="relative h-[320px] overflow-hidden">
+            {!loaded && <Skeleton className="absolute inset-0 rounded-none" />}
+            <iframe
+              src="/demo?skip=true&section=menu"
+              className={`absolute top-0 left-0 w-[700px] h-[500px] origin-top-left pointer-events-none transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+              style={{ transform: 'scale(0.34)', transformOrigin: 'top left' }}
+              title="Menu Preview"
+              loading="lazy"
+              onLoad={handleLoad}
+            />
+            <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+          </div>
+        </div>
       </div>
-      <div className={`absolute -inset-4 bg-gradient-to-br ${glowStyles[type]} rounded-2xl blur-2xl -z-10`} />
+      <div className="absolute -inset-3 bg-gradient-to-br from-emerald-500/15 to-teal-600/10 rounded-[2.5rem] blur-xl -z-10" />
     </div>
   );
 });
-MockupImage.displayName = 'MockupImage';
+MobileMockup.displayName = 'MobileMockup';
+
+// Tablet Mockup with iframe and skeleton
+const TabletMockup = memo(() => {
+  const [loaded, setLoaded] = useState(false);
+  const handleLoad = useCallback(() => setLoaded(true), []);
+  
+  return (
+    <div className="relative w-full max-w-[400px] mx-auto">
+      <div className="bg-card rounded-[1.5rem] p-2 border-4 border-muted shadow-xl">
+        <div className="bg-background rounded-[1.25rem] overflow-hidden">
+          <div className="relative h-[260px] overflow-hidden">
+            {!loaded && <Skeleton className="absolute inset-0 rounded-none" />}
+            <iframe
+              src="/demo?skip=true&section=analytics"
+              className={`absolute top-0 left-0 w-[1000px] h-[700px] origin-top-left pointer-events-none transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+              style={{ transform: 'scale(0.4)', transformOrigin: 'top left' }}
+              title="Analytics Preview"
+              loading="lazy"
+              onLoad={handleLoad}
+            />
+            <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+          </div>
+        </div>
+      </div>
+      <div className="absolute -inset-3 bg-gradient-to-br from-blue-500/12 to-cyan-500/8 rounded-[2rem] blur-xl -z-10" />
+    </div>
+  );
+});
+TabletMockup.displayName = 'TabletMockup';
+
+// Desktop Mockup with iframe and skeleton
+const DesktopMockup = memo(() => {
+  const [loaded, setLoaded] = useState(false);
+  const handleLoad = useCallback(() => setLoaded(true), []);
+  
+  return (
+    <div className="relative w-full">
+      <div className="bg-card rounded-lg border border-border shadow-xl overflow-hidden">
+        <div className="flex items-center gap-1.5 px-3 py-2 bg-muted/50 border-b border-border">
+          <div className="flex gap-1">
+            <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+            <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+          </div>
+          <div className="flex-1 mx-3">
+            <div className="h-5 bg-background rounded flex items-center px-2">
+              <span className="text-[10px] text-muted-foreground">app.nestify.io/ordini</span>
+            </div>
+          </div>
+        </div>
+        <div className="relative h-[280px] md:h-[320px] overflow-hidden bg-background">
+          {!loaded && <Skeleton className="absolute inset-0 rounded-none" />}
+          <iframe
+            src="/demo?skip=true&section=orders"
+            className={`absolute top-0 left-0 w-[1200px] h-[800px] origin-top-left pointer-events-none transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+            style={{ transform: 'scale(0.45)', transformOrigin: 'top left' }}
+            title="Orders Preview"
+            loading="lazy"
+            onLoad={handleLoad}
+          />
+          <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+        </div>
+      </div>
+      <div className="absolute -inset-3 bg-gradient-to-br from-pink-500/8 to-rose-500/8 rounded-xl blur-xl -z-10" />
+    </div>
+  );
+});
+DesktopMockup.displayName = 'DesktopMockup';
+
+const mockupComponents = {
+  mobile: MobileMockup,
+  tablet: TabletMockup,
+  desktop: DesktopMockup,
+};
 
 const ProductShowcase = memo(() => {
   return (
@@ -166,12 +223,16 @@ const ProductShowcase = memo(() => {
                       </div>
                     </div>
 
-                    {/* Static Image Mockup */}
-                    <MockupImage 
-                      src={item.image} 
-                      alt={item.title}
-                      type={item.id as 'mobile' | 'tablet' | 'desktop'}
-                    />
+                    {/* Device Mockup Component */}
+                    <div className={`relative ${
+                      item.id === 'mobile' ? 'max-w-[240px] mx-auto' : 
+                      item.id === 'tablet' ? 'max-w-[400px] mx-auto' : ''
+                    }`}>
+                      {(() => {
+                        const MockupComponent = mockupComponents[item.id as keyof typeof mockupComponents];
+                        return MockupComponent ? <MockupComponent /> : null;
+                      })()}
+                    </div>
 
                     {/* Floating feature badges */}
                     <div className={`absolute ${isEven ? '-right-2 md:-right-6' : '-left-2 md:-left-6'} top-1/2 -translate-y-1/2 space-y-2`}>
