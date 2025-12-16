@@ -363,7 +363,7 @@ export const DeliveryContent = () => {
             .setPopup(
               new mapboxgl.Popup({ offset: 25 }).setHTML(`
                 <div style="padding: 12px; min-width: 180px;">
-                  <h3 style="font-weight: bold; margin-bottom: 4px; font-size: 14px;">🍕 Flavour Restaurant</h3>
+                  <h3 style="font-weight: bold; margin-bottom: 4px; font-size: 14px;">🍕 Nestify Restaurant</h3>
                   <p style="font-size: 12px; color: #666;">Sede centrale</p>
                   <p style="font-size: 11px; color: #999; margin-top: 4px;">Via del Corso 123, Roma</p>
                 </div>

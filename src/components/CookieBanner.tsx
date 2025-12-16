@@ -23,8 +23,8 @@ interface CookiePreferences {
   functional: boolean;
 }
 
-const COOKIE_CONSENT_KEY = "flavour_cookie_consent";
-const COOKIE_PREFERENCES_KEY = "flavour_cookie_preferences";
+const COOKIE_CONSENT_KEY = "nestify_cookie_consent";
+const COOKIE_PREFERENCES_KEY = "nestify_cookie_preferences";
 
 const defaultPreferences: CookiePreferences = {
   necessary: true,

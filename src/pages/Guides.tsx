@@ -338,7 +338,7 @@ const GuidesPage = () => {
             </div>
 
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-foreground mb-4">
-              Impara Flavour
+              Impara Nestify
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               Tutorial passo-passo per sfruttare al massimo tutte le funzionalità. 

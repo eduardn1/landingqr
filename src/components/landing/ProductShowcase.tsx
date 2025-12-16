@@ -143,7 +143,7 @@ const DesktopMockup = memo(() => {
           </div>
           <div className="flex-1 mx-3">
             <div className="h-5 bg-background rounded flex items-center px-2">
-              <span className="text-[10px] text-muted-foreground">app.flavour.io/ordini</span>
+              <span className="text-[10px] text-muted-foreground">app.nestify.io/ordini</span>
             </div>
           </div>
         </div>

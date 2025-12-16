@@ -21,15 +21,15 @@ interface SEOProps {
   structuredData?: object;
 }
 
-const BASE_URL = 'https://flavour.studiojem.it';
+const BASE_URL = 'https://nestify.studiojem.it';
 const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
-const SITE_NAME = 'Flavour';
+const SITE_NAME = 'Nestify';
 
 // Organization structured data
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Flavour by StudioJEM",
+  "name": "Nestify by StudioJEM",
   "url": BASE_URL,
   "logo": `${BASE_URL}/favicon.ico`,
   "description": "Piattaforma all-in-one per menu digitali QR, prenotazioni e ordini online per bar, ristoranti, pub e caffetterie.",
@@ -56,7 +56,7 @@ const organizationSchema = {
 const softwareSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Flavour",
+  "name": "Nestify",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
   "offers": {

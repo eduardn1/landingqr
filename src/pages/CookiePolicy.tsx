@@ -24,10 +24,10 @@ const cookieTypes = [
     required: true,
     description: "Essenziali per il funzionamento del sito. Non possono essere disattivati.",
     cookies: [
-      { name: "session_id", purpose: "Gestione della sessione utente", duration: "Sessione", provider: "Flavour" },
-      { name: "csrf_token", purpose: "Protezione da attacchi CSRF", duration: "Sessione", provider: "Flavour" },
-      { name: "cookie_consent", purpose: "Memorizza le preferenze cookie", duration: "12 mesi", provider: "Flavour" },
-      { name: "theme", purpose: "Preferenza tema chiaro/scuro", duration: "12 mesi", provider: "Flavour" },
+      { name: "session_id", purpose: "Gestione della sessione utente", duration: "Sessione", provider: "Nestify" },
+      { name: "csrf_token", purpose: "Protezione da attacchi CSRF", duration: "Sessione", provider: "Nestify" },
+      { name: "cookie_consent", purpose: "Memorizza le preferenze cookie", duration: "12 mesi", provider: "Nestify" },
+      { name: "theme", purpose: "Preferenza tema chiaro/scuro", duration: "12 mesi", provider: "Nestify" },
     ]
   },
   {
@@ -60,8 +60,8 @@ const cookieTypes = [
     required: false,
     description: "Permettono funzionalità avanzate e personalizzazione.",
     cookies: [
-      { name: "lang", purpose: "Memorizza la preferenza lingua", duration: "12 mesi", provider: "Flavour" },
-      { name: "recent_searches", purpose: "Cronologia ricerche recenti", duration: "30 giorni", provider: "Flavour" },
+      { name: "lang", purpose: "Memorizza la preferenza lingua", duration: "12 mesi", provider: "Nestify" },
+      { name: "recent_searches", purpose: "Cronologia ricerche recenti", duration: "30 giorni", provider: "Nestify" },
     ]
   }
 ];

@@ -66,10 +66,12 @@ const Footer = memo(() => {
           {/* Brand Column - Spans 2 cols on lg */}
           <div className="col-span-2 space-y-5">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/25">
-                <span className="text-white font-bold">F</span>
-              </div>
-              <span className="font-bold text-xl tracking-tight text-foreground">Flavour</span>
+              <img 
+                src="/logo-short.svg" 
+                alt="Nestify Logo" 
+                className="w-9 h-9"
+              />
+              <span className="font-bold text-xl tracking-tight text-foreground">Nestify</span>
             </Link>
             
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
@@ -219,7 +221,7 @@ const Footer = memo(() => {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs text-muted-foreground">
-            <span>© {new Date().getFullYear()} Flavour. Tutti i diritti riservati.</span>
+            <span>© {new Date().getFullYear()} Nestify. Tutti i diritti riservati.</span>
             <span className="hidden sm:inline">•</span>
             <span>P.IVA IT03883630927</span>
           </div>

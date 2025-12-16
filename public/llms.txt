@@ -1,12 +1,12 @@
-# Flavour - Menu Digitali QR per l'Hospitality
+# Nestify - Menu Digitali QR per l'Hospitality
 
 > Piattaforma all-in-one per menu digitali, prenotazioni e ordini online per bar, ristoranti, pub e caffetterie.
 
 ## Informazioni Azienda
 
-Flavour è una piattaforma SaaS italiana sviluppata da StudioJEM per la digitalizzazione del settore hospitality.
+Nestify è una piattaforma SaaS italiana sviluppata da StudioJEM per la digitalizzazione del settore hospitality.
 
-- **Sito Web**: https://flavour.studiojem.it
+- **Sito Web**: https://nestify.studiojem.it
 - **Azienda**: StudioJEM
 - **Fondatore**: Eduard Costin Udila
 - **Sede**: Cagliari, Italia
@@ -15,7 +15,7 @@ Flavour è una piattaforma SaaS italiana sviluppata da StudioJEM per la digitali
 
 ## Prodotto
 
-Flavour offre una soluzione completa per bar, ristoranti, pub, cocktail bar, caffetterie, gelaterie, enoteche e altre attività del settore hospitality.
+Nestify offre una soluzione completa per bar, ristoranti, pub, cocktail bar, caffetterie, gelaterie, enoteche e altre attività del settore hospitality.
 
 ### Funzionalità Principali
 
@@ -64,14 +64,14 @@ Tutti i piani includono:
 
 ## Pagine Principali
 
-- Homepage: https://flavour.studiojem.it/
-- Demo Interattiva: https://flavour.studiojem.it/demo
-- Prezzi: https://flavour.studiojem.it/#pricing
-- FAQ: https://flavour.studiojem.it/faq
-- Guide: https://flavour.studiojem.it/guide
-- Chi Siamo: https://flavour.studiojem.it/chi-siamo
-- Contatti: https://flavour.studiojem.it/contatti
-- Diventa Partner: https://flavour.studiojem.it/diventa-rivenditore
+- Homepage: https://nestify.studiojem.it/
+- Demo Interattiva: https://nestify.studiojem.it/demo
+- Prezzi: https://nestify.studiojem.it/#pricing
+- FAQ: https://nestify.studiojem.it/faq
+- Guide: https://nestify.studiojem.it/guide
+- Chi Siamo: https://nestify.studiojem.it/chi-siamo
+- Contatti: https://nestify.studiojem.it/contatti
+- Diventa Partner: https://nestify.studiojem.it/diventa-rivenditore
 
 ## Target Clienti
 

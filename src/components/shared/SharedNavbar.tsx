@@ -101,10 +101,12 @@ const SharedNavbar = () => {
           <div className="relative flex items-center gap-2 px-4 py-2.5 lg:px-5 lg:py-3">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-lg lg:rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md shadow-primary/30">
-                <span className="text-white font-bold text-xs lg:text-sm">F</span>
-              </div>
-              <span className="font-bold text-sm lg:text-base tracking-tight text-foreground">Flavour</span>
+              <img 
+                src="/logo-short.svg" 
+                alt="Nestify Logo" 
+                className="w-7 h-7 lg:w-8 lg:h-8"
+              />
+              <span className="font-bold text-sm lg:text-base tracking-tight text-foreground">Nestify</span>
             </Link>
 
             <div className="w-px h-5 lg:h-6 bg-border/50 mx-1" />
