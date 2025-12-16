@@ -38,7 +38,7 @@ const moods = [
   { id: "sweet", name: "Dolce", icon: Cookie, description: "Dessert e dolci", color: "from-pink-400 to-rose-400", emoji: "🍰" },
   { id: "spicy", name: "Piccante", icon: Flame, description: "Per chi ama il fuoco", color: "from-orange-500 to-red-500", emoji: "🌶️" },
   { id: "traditional", name: "Tradizionale", icon: Clock, description: "Ricette della nonna", color: "from-amber-500 to-orange-500", emoji: "🍝" },
-  { id: "innovative", name: "Innovativo", icon: Sparkles, description: "Creazioni dello chef", color: "from-violet-500 to-purple-500", emoji: "✨" },
+  { id: "innovative", name: "Innovativo", icon: Sparkles, description: "Creazioni dello chef", color: "from-emerald-500/70 to-teal-600/70", emoji: "✨" },
   { id: "romantic", name: "Romantico", icon: Heart, description: "Per una serata speciale", color: "from-rose-400 to-pink-500", emoji: "💕" },
 ];
 
@@ -134,7 +134,7 @@ export const MoodContent = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/70 to-teal-600/70 flex items-center justify-center">
             <Sparkles className="w-6 h-6 text-white" />
           </div>
           <div>

@@ -165,7 +165,7 @@ const ContactPage = () => {
               Parliamo del tuo progetto
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Hai domande su Flavour? Vuoi una demo personalizzata? 
+              Hai domande su Nestify? Vuoi una demo personalizzata? 
               Siamo qui per aiutarti a digitalizzare il tuo locale.
             </p>
           </div>

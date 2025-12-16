@@ -118,7 +118,7 @@ const mockReservations = [
 
 // Mock stats
 const stats = [
-  { label: "Ordini oggi", value: "47", change: "+12%", icon: ShoppingBag, color: "from-violet-500 to-purple-600" },
+  { label: "Ordini oggi", value: "47", change: "+12%", icon: ShoppingBag, color: "from-emerald-500/70 to-teal-600/70" },
   { label: "Fatturato", value: "€1,234", change: "+8%", icon: TrendingUp, color: "from-emerald-500 to-teal-600" },
   { label: "Prenotazioni", value: "18", change: "+5%", icon: Calendar, color: "from-blue-500 to-cyan-500" },
   { label: "Clienti attivi", value: "234", change: "+15%", icon: Users, color: "from-orange-500 to-red-500" },
@@ -253,7 +253,7 @@ const Demo = () => {
             <span className="text-white font-bold">F</span>
           </div>
           {!sidebarCollapsed && (
-            <span className="font-bold text-lg text-foreground">Flavour</span>
+            <span className="font-bold text-lg text-foreground">Nestify</span>
           )}
         </div>
 
@@ -306,7 +306,7 @@ const Demo = () => {
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/25">
                   <span className="text-white font-bold">F</span>
                 </div>
-                <span className="font-bold text-lg text-foreground">Flavour</span>
+                <span className="font-bold text-lg text-foreground">Nestify</span>
               </div>
               <button
                 onClick={() => setMobileMenuOpen(false)}

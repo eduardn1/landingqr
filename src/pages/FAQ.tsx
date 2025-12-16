@@ -60,7 +60,7 @@ const faqs: FAQItem[] = [
   {
     question: "Come funziona il white-label per agenzie?",
     answer:
-      "Con il piano Enterprise puoi rivendere Flavour con il tuo brand. I tuoi clienti non vedranno mai il nostro logo. Hai accesso a un pannello multi-tenant per gestire tutti i locali, fatturazione separata e margini personalizzabili.",
+      "Con il piano Enterprise puoi rivendere Nestify con il tuo brand. I tuoi clienti non vedranno mai il nostro logo. Hai accesso a un pannello multi-tenant per gestire tutti i locali, fatturazione separata e margini personalizzabili.",
     category: "pricing",
   },
   {
@@ -72,7 +72,7 @@ const faqs: FAQItem[] = [
   {
     question: "Funziona per bar, pub e caffetterie?",
     answer:
-      "Certamente! Flavour è perfetto per ogni tipo di locale: bar, pub, cocktail bar, wine bar, caffetterie, bistrot, pizzerie, osterie, gelaterie, ristoranti. Personalizza il menu con qualsiasi categoria: cocktail, birre artigianali, caffè, pasticceria, piatti, aperitivi, vini.",
+      "Certamente! Nestify è perfetto per ogni tipo di locale: bar, pub, cocktail bar, wine bar, caffetterie, bistrot, pizzerie, osterie, gelaterie, ristoranti. Personalizza il menu con qualsiasi categoria: cocktail, birre artigianali, caffè, pasticceria, piatti, aperitivi, vini.",
     category: "features",
   },
   {
@@ -84,13 +84,13 @@ const faqs: FAQItem[] = [
   {
     question: "I menu sono tradotti automaticamente?",
     answer:
-      "Sì! Flavour supporta 5 lingue (Italiano, Inglese, Tedesco, Spagnolo, Francese). Puoi scegliere la traduzione automatica AI oppure inserire traduzioni manuali per un controllo totale. Perfetto per bar turistici, pub internazionali e locali in zone turistiche.",
+      "Sì! Nestify supporta 5 lingue (Italiano, Inglese, Tedesco, Spagnolo, Francese). Puoi scegliere la traduzione automatica AI oppure inserire traduzioni manuali per un controllo totale. Perfetto per bar turistici, pub internazionali e locali in zone turistiche.",
     category: "international",
   },
   {
     question: "Funziona offline?",
     answer:
-      "Flavour è una PWA (Progressive Web App). Una volta caricato, funziona anche con connessione instabile. I clienti possono installarlo come app sul telefono senza passare dagli store.",
+      "Nestify è una PWA (Progressive Web App). Una volta caricato, funziona anche con connessione instabile. I clienti possono installarlo come app sul telefono senza passare dagli store.",
     category: "technical",
   },
   {
@@ -108,7 +108,7 @@ const faqs: FAQItem[] = [
   {
     question: "Qual è la differenza con Just Eat o Deliveroo?",
     answer:
-      "Loro prendono fino al 30% di commissioni su ogni ordine. Noi zero. Flavour è tuo: i clienti sono tuoi, i dati sono tuoi, il profitto è 100% tuo. E offri un'esperienza migliore e personalizzata.",
+      "Loro prendono fino al 30% di commissioni su ogni ordine. Noi zero. Nestify è tuo: i clienti sono tuoi, i dati sono tuoi, il profitto è 100% tuo. E offri un'esperienza migliore e personalizzata.",
     category: "pricing",
   },
   {
@@ -118,7 +118,7 @@ const faqs: FAQItem[] = [
     category: "international",
   },
   {
-    question: "Quanto tempo serve per configurare Flavour?",
+    question: "Quanto tempo serve per configurare Nestify?",
     answer:
       "Mediamente 10-15 minuti per un menu base. Puoi importare menu esistenti da Excel o iniziare da un template. Il nostro team offre setup assistito gratuito per i piani Pro e Enterprise.",
     category: "technical",
@@ -136,7 +136,7 @@ const faqs: FAQItem[] = [
     category: "features",
   },
   {
-    question: "Flavour è GDPR compliant?",
+    question: "Nestify è GDPR compliant?",
     answer:
       "Assolutamente sì. I dati sono conservati in server EU, offriamo export/cancellazione dati su richiesta, cookie banner integrato, informativa privacy personalizzabile. Siamo conformi a tutte le normative europee sulla privacy.",
     category: "technical",
@@ -184,7 +184,7 @@ const FAQPage = () => {
               Domande Frequenti
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Trova risposte alle domande più comuni su Flavour, i nostri piani e le funzionalità
+              Trova risposte alle domande più comuni su Nestify, i nostri piani e le funzionalità
             </p>
           </div>
 
