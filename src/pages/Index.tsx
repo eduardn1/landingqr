@@ -12,9 +12,11 @@
 
 import { lazy, Suspense } from "react";
 import { LeadFormProvider } from "@/hooks/useLeadForm";
+import { useBrandSettings } from "@/hooks/useBrandSettings";
 import LeadForm from "@/components/landing/LeadForm";
 import Navbar from "@/components/landing/Navbar";
 import DynamicSEO from "@/components/DynamicSEO";
+import LandingPageSkeleton from "@/components/landing/LandingPageSkeleton";
 
 import Hero from "@/components/landing/Hero";
 import Logos from "@/components/landing/Logos";
@@ -30,7 +32,7 @@ const FAQCard = lazy(() => import("@/components/landing/FAQCard"));
 const FinalCTA = lazy(() => import("@/components/landing/FinalCTA"));
 const Footer = lazy(() => import("@/components/landing/Footer"));
 
-// Minimal loading fallback
+// Minimal loading fallback for lazy sections
 const SectionLoader = () => (
   <div className="min-h-[200px] flex items-center justify-center">
     <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
@@ -38,6 +40,13 @@ const SectionLoader = () => (
 );
 
 const Index = () => {
+  const { isLoading } = useBrandSettings();
+
+  // Show skeleton while initial data is loading
+  if (isLoading) {
+    return <LandingPageSkeleton />;
+  }
+
   return (
     <LeadFormProvider>
       <DynamicSEO />
