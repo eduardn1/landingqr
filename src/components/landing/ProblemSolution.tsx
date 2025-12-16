@@ -103,7 +103,7 @@ const ProblemSolution = memo(() => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 p-4 rounded-xl bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10 border border-primary/20">
           {/* Stacked Avatars */}
           <div className="flex -space-x-2">
-            {['from-pink-500 to-rose-500', 'from-blue-500 to-cyan-500', 'from-green-500 to-emerald-500', 'from-purple-500 to-violet-500'].map((gradient, i) => (
+            {['from-emerald-500/70 to-teal-500/70', 'from-sky-500/70 to-cyan-500/70', 'from-amber-500/70 to-orange-500/70', 'from-rose-500/70 to-pink-500/70'].map((gradient, i) => (
               <div 
                 key={i} 
                 className={`w-7 h-7 rounded-full bg-gradient-to-br ${gradient} border-2 border-card flex items-center justify-center text-white text-[10px] font-bold`}

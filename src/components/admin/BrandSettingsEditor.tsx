@@ -227,7 +227,7 @@ const BrandSettingsEditor = () => {
         className="card-glass p-6 rounded-2xl"
       >
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-violet-500 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/70 to-teal-600/70 flex items-center justify-center">
             <Image className="w-5 h-5 text-white" />
           </div>
           <div>
@@ -392,7 +392,7 @@ const BrandSettingsEditor = () => {
             <div className="flex items-center gap-3">
               <input
                 type="color"
-                value={formData.brand_primary_color || '#8B5CF6'}
+                value={formData.brand_primary_color || '#38EF7D'}
                 onChange={(e) =>
                   setFormData((prev) => ({
                     ...prev,
@@ -402,7 +402,7 @@ const BrandSettingsEditor = () => {
                 className="w-12 h-12 rounded-xl border border-border cursor-pointer"
               />
               <Input
-                value={formData.brand_primary_color || '#8B5CF6'}
+                value={formData.brand_primary_color || '#38EF7D'}
                 onChange={(e) =>
                   setFormData((prev) => ({
                     ...prev,
@@ -419,7 +419,7 @@ const BrandSettingsEditor = () => {
             <div className="flex items-center gap-3">
               <input
                 type="color"
-                value={formData.brand_secondary_color || '#EC4899'}
+                value={formData.brand_secondary_color || '#44C171'}
                 onChange={(e) =>
                   setFormData((prev) => ({
                     ...prev,
@@ -429,7 +429,7 @@ const BrandSettingsEditor = () => {
                 className="w-12 h-12 rounded-xl border border-border cursor-pointer"
               />
               <Input
-                value={formData.brand_secondary_color || '#EC4899'}
+                value={formData.brand_secondary_color || '#44C171'}
                 onChange={(e) =>
                   setFormData((prev) => ({
                     ...prev,
