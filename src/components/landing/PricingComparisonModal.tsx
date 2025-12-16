@@ -9,7 +9,7 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
-import { memo } from "react";
+import { memo, forwardRef } from "react";
 import { Check, X, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLeadForm } from "@/hooks/useLeadForm";
@@ -77,17 +77,18 @@ const renderValue = (value: boolean | string) => {
   return <span className="text-foreground font-medium text-sm">{value}</span>;
 };
 
-const PricingComparisonModal = memo(({ isOpen, onClose }: PricingComparisonModalProps) => {
-  const { openLeadForm } = useLeadForm();
+const PricingComparisonModal = memo(forwardRef<HTMLDivElement, PricingComparisonModalProps>(
+  ({ isOpen, onClose }, ref) => {
+    const { openLeadForm } = useLeadForm();
 
-  const handleSelectPlan = (slug: string) => {
-    onClose();
-    openLeadForm(`comparison-${slug}`);
-  };
+    const handleSelectPlan = (slug: string) => {
+      onClose();
+      openLeadForm(`comparison-${slug}`);
+    };
 
-  return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto bg-card border-border">
+    return (
+      <Dialog open={isOpen} onOpenChange={onClose}>
+        <DialogContent ref={ref} className="max-w-4xl max-h-[85vh] overflow-y-auto bg-card border-border">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-center text-foreground">
               Confronta i piani
@@ -168,7 +169,7 @@ const PricingComparisonModal = memo(({ isOpen, onClose }: PricingComparisonModal
       </Dialog>
     );
   }
-);
+));
 
 PricingComparisonModal.displayName = 'PricingComparisonModal';
 

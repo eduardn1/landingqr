@@ -50,7 +50,8 @@ const FinalCTA = memo(() => {
 
               {/* Subheading */}
               <p className="text-muted-foreground max-w-2xl mx-auto mb-10">
-                Porta menu QR, ordini, delivery e prenotazioni in un unico posto. Setup in 10 minuti.
+                Unisciti a centinaia di locali che hanno già scelto Flavour 
+                per digitalizzare la loro attività.
               </p>
 
               {/* CTA Buttons */}
@@ -61,18 +62,23 @@ const FinalCTA = memo(() => {
                   className="group text-base px-10 py-7 h-auto gradient-button rounded-2xl"
                 >
                   <Zap className="w-5 h-5 mr-2" />
-                  Richiedi una demo
+                  Inizia la prova gratuita
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
 
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-                  className="text-base px-10 py-7 h-auto w-full sm:w-auto rounded-2xl border-border bg-card/50 hover:bg-card text-foreground"
+                <a
+                  href="https://demo2.studiojem.it"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Vedi i prezzi
-                </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="text-base px-10 py-7 h-auto w-full sm:w-auto rounded-2xl border-border bg-card/50 hover:bg-card text-foreground"
+                  >
+                    Vedi la demo live
+                  </Button>
+                </a>
               </div>
 
               {/* Trust Signals */}

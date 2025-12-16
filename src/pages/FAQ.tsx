@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * NESTIFY - FAQ Page
- * Centro Assistenza e Domande Frequenti
+ * QRCODESTUDIOJEM - FAQ Page
+ * Pagina dedicata alle domande frequenti
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -58,70 +58,88 @@ const faqCategories: FAQCategory[] = [
 
 const faqs: FAQItem[] = [
   {
-    question: "Che cos'è Nestify?",
+    question: "Come funziona il white-label per agenzie?",
     answer:
-      "Nestify è una piattaforma all-in-one per bar, ristoranti, pub e caffetterie: menu QR, ordini asporto e delivery, prenotazioni, loyalty e analytics in un'unica dashboard.",
-    category: "features",
-  },
-  {
-    question: "In quanto tempo posso essere online?",
-    answer:
-      "In media in 10 minuti: carichi il menu (anche da Excel), scegli un tema e generi il tuo QR. Se vuoi, ti aiutiamo noi nel setup.",
-    category: "technical",
+      "Con il piano Enterprise puoi rivendere Flavour con il tuo brand. I tuoi clienti non vedranno mai il nostro logo. Hai accesso a un pannello multi-tenant per gestire tutti i locali, fatturazione separata e margini personalizzabili.",
+    category: "pricing",
   },
   {
     question: "Ci sono commissioni sugli ordini?",
     answer:
-      "No: Nestify non prende commissioni sugli ordini. Paghi solo il piano scelto, senza costi nascosti.",
+      "Assolutamente no! Non prendiamo commissioni sugli ordini come fanno i grandi aggregatori. Paghi solo l'abbonamento mensile, tutto incluso. Zero sorprese.",
     category: "pricing",
   },
   {
-    question: "Posso gestire prenotazioni e eventi?",
+    question: "Funziona per bar, pub e caffetterie?",
     answer:
-      "Sì: calendario prenotazioni, conferma automatica (anche via WhatsApp) e gestione eventi speciali con capienza, sale e note.",
+      "Certamente! Flavour è perfetto per ogni tipo di locale: bar, pub, cocktail bar, wine bar, caffetterie, bistrot, pizzerie, osterie, gelaterie, ristoranti. Personalizza il menu con qualsiasi categoria: cocktail, birre artigianali, caffè, pasticceria, piatti, aperitivi, vini.",
     category: "features",
   },
   {
-    question: "Gestite allergeni e diete?",
+    question: "Posso migrare da un'altra piattaforma?",
     answer:
-      "Sì: puoi impostare gli allergeni per ogni piatto e mostrare badge chiari sul menu. Ideale anche per opzioni vegane/vegetariane e senza glutine.",
-    category: "features",
-  },
-  {
-    question: "Delivery con tracking GPS: come funziona?",
-    answer:
-      "Puoi gestire consegne interne e assegnare driver. I clienti vedono lo stato dell'ordine e, dove previsto, il tracking in tempo reale.",
+      "Certo! Offriamo migrazione gratuita assistita per tutti i piani a pagamento. Importiamo menu da Excel, CSV o direttamente da altre piattaforme. Il nostro team ti guida in ogni step.",
     category: "technical",
   },
   {
-    question: "Supportate più sedi?",
+    question: "I menu sono tradotti automaticamente?",
     answer:
-      "Sì: con i piani Pro/Enterprise puoi gestire più sedi con menu, ordini e analytics separati o aggregati.",
-    category: "features",
-  },
-  {
-    question: "Il menu è multi-lingua?",
-    answer:
-      "Sì: puoi offrire il menu in più lingue. Utile per locali turistici; puoi usare traduzioni automatiche o inserire testi manuali.",
+      "Sì! Flavour supporta 5 lingue (Italiano, Inglese, Tedesco, Spagnolo, Francese). Puoi scegliere la traduzione automatica AI oppure inserire traduzioni manuali per un controllo totale. Perfetto per bar turistici, pub internazionali e locali in zone turistiche.",
     category: "international",
   },
   {
-    question: "Posso personalizzare grafica e branding?",
+    question: "Funziona offline?",
     answer:
-      "Certo: scegli temi e colori, carichi il logo e personalizzi lo stile del menu per renderlo coerente con il tuo brand.",
-    category: "features",
-  },
-  {
-    question: "Nestify è GDPR compliant?",
-    answer:
-      "Sì: gestione cookie e privacy, data retention e protezione dei dati secondo le normative europee. Possiamo supportarti con l'informativa.",
+      "Flavour è una PWA (Progressive Web App). Una volta caricato, funziona anche con connessione instabile. I clienti possono installarlo come app sul telefono senza passare dagli store.",
     category: "technical",
   },
   {
-    question: "Posso cambiare piano quando voglio?",
+    question: "Posso gestire più sedi?",
     answer:
-      "Sì: puoi fare upgrade o downgrade in qualsiasi momento. L'upgrade è immediato, il downgrade a fine periodo di fatturazione.",
+      "Sì! Con i piani Pro e Enterprise puoi gestire più locali da un unico pannello. Menu condivisi o separati per ogni sede, analytics aggregati, gestione centralizzata del personale. Perfetto per catene di bar, franchising o gruppi di ristoranti.",
+    category: "features",
+  },
+  {
+    question: "Come funzionano le prenotazioni?",
+    answer:
+      "I clienti prenotano direttamente dal menu digitale o dal sito. Ricevi notifica istantanea, conferma automatica via WhatsApp, reminder prima della prenotazione. Sistema anti no-show incluso. Funziona per tavoli al ristorante, aree lounge nei bar, sale private.",
+    category: "features",
+  },
+  {
+    question: "Qual è la differenza con Just Eat o Deliveroo?",
+    answer:
+      "Loro prendono fino al 30% di commissioni su ogni ordine. Noi zero. Flavour è tuo: i clienti sono tuoi, i dati sono tuoi, il profitto è 100% tuo. E offri un'esperienza migliore e personalizzata.",
     category: "pricing",
+  },
+  {
+    question: "Supportate pagamenti internazionali?",
+    answer:
+      "Sì! Integriamo Stripe, PayPal, Satispay, Apple Pay, Google Pay. I tuoi clienti internazionali pagano come preferiscono, nella loro valuta. Perfetto per locali turistici e pub in zone internazionali.",
+    category: "international",
+  },
+  {
+    question: "Quanto tempo serve per configurare Flavour?",
+    answer:
+      "Mediamente 10-15 minuti per un menu base. Puoi importare menu esistenti da Excel o iniziare da un template. Il nostro team offre setup assistito gratuito per i piani Pro e Enterprise.",
+    category: "technical",
+  },
+  {
+    question: "Posso cambiare piano in qualsiasi momento?",
+    answer:
+      "Sì! Puoi fare upgrade o downgrade del piano in qualsiasi momento. L'upgrade è immediato, il downgrade avviene alla fine del periodo di fatturazione corrente.",
+    category: "pricing",
+  },
+  {
+    question: "Come funziona il sistema loyalty?",
+    answer:
+      "I clienti accumulano punti ad ogni ordine. Puoi configurare premi, livelli, badge e sfide. Gamification completa con confetti e animazioni. I clienti tornano più spesso e spendono di più.",
+    category: "features",
+  },
+  {
+    question: "Flavour è GDPR compliant?",
+    answer:
+      "Assolutamente sì. I dati sono conservati in server EU, offriamo export/cancellazione dati su richiesta, cookie banner integrato, informativa privacy personalizzabile. Siamo conformi a tutte le normative europee sulla privacy.",
+    category: "technical",
   },
 ];
 
@@ -166,7 +184,7 @@ const FAQPage = () => {
               Domande Frequenti
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Trova risposte alle domande più comuni su Nestify, i piani e le funzionalità per il tuo locale
+              Trova risposte alle domande più comuni su Flavour, i nostri piani e le funzionalità
             </p>
           </div>
 

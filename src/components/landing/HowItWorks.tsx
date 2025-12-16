@@ -44,7 +44,7 @@ const HowItWorks = memo(() => {
   const { openLeadForm } = useLeadForm();
 
   return (
-    <section id="howitworks" className="py-16 md:py-20 relative overflow-hidden">
+    <section className="py-16 md:py-20 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-background to-background" />
       
@@ -62,7 +62,7 @@ const HowItWorks = memo(() => {
           </h2>
 
           <p className="text-muted-foreground">
-            Non serve essere esperti di tecnologia. Se sai usare WhatsApp, sai usare Nestify. Promesso.
+            Non serve essere esperti di tecnologia. Se sai usare WhatsApp, sai usare Flavour. Promesso.
           </p>
         </div>
 

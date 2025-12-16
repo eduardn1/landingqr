@@ -35,7 +35,7 @@ import {
   Gamepad2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLeadForm } from "@/hooks/useLeadForm";
+import { Link } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
 
 interface HeroFeature {
@@ -191,7 +191,6 @@ const featureCategories: FeatureCategory[] = [
 ];
 
 const Features = memo(() => {
-  const { openLeadForm } = useLeadForm();
   const [activeCategory, setActiveCategory] = useState("menu");
   const [activeFeature, setActiveFeature] = useState(0);
   const featureDetailRef = useRef<HTMLDivElement>(null);
@@ -375,15 +374,13 @@ const Features = memo(() => {
 
         {/* CTA - Compact */}
         <div className="text-center">
-          <Button
-            size="lg"
-            className="gradient-button group"
-            onClick={() => openLeadForm("features-cta")}
-          >
-            <Sparkles className="w-4 h-4 mr-2" />
-            Richiedi una demo
-            <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-          </Button>
+          <Link to="/demo">
+            <Button size="lg" className="gradient-button group">
+              <Sparkles className="w-4 h-4 mr-2" />
+              Prova la Demo
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

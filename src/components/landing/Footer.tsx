@@ -1,7 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * NESTIFY - Footer Component
- * Digital tools for Hospitality
+ * QRCODESTUDIOJEM - Footer Component (Enhanced Design)
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -20,20 +19,22 @@ import {
   Shield, 
   Lock, 
   CheckCircle,
+  BookOpen,
   HelpCircle,
   Sparkles,
   Users
 } from "lucide-react";
-import logoShort from "@/assets/logo-short.svg";
 
 const footerLinks = {
   prodotto: [
     { label: "Funzionalità", href: "#features" },
     { label: "Prezzi", href: "#pricing" },
+    { label: "Demo Interattiva", href: "/demo", isRoute: true },
     { label: "Come funziona", href: "#howitworks" },
     { label: "Diventa Rivenditore", href: "/diventa-rivenditore", isRoute: true },
   ],
   risorse: [
+    { label: "Guide & Tutorial", href: "/guide", isRoute: true },
     { label: "Centro Assistenza", href: "/faq", isRoute: true },
     { label: "FAQ", href: "/faq", isRoute: true },
   ],
@@ -65,12 +66,14 @@ const Footer = memo(() => {
           {/* Brand Column - Spans 2 cols on lg */}
           <div className="col-span-2 space-y-5">
             <Link to="/" className="flex items-center gap-2">
-              <img src={logoShort} alt="Nestify" className="w-9 h-9" />
-              <span className="font-bold text-xl tracking-tight text-foreground">Nestify</span>
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/25">
+                <span className="text-white font-bold">F</span>
+              </div>
+              <span className="font-bold text-xl tracking-tight text-foreground">Flavour</span>
             </Link>
             
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              Menu QR, prenotazioni, asporto e delivery per bar, ristoranti, pub e caffetterie.
+              La piattaforma all-in-one per menu digitali, prenotazioni e ordini online per bar, ristoranti, pub e caffetterie.
             </p>
             
             {/* Contact Info */}
@@ -113,7 +116,7 @@ const Footer = memo(() => {
           {/* Risorse */}
           <div>
             <h4 className="font-semibold mb-4 text-sm text-foreground flex items-center gap-2">
-              <HelpCircle className="w-4 h-4 text-primary" />
+              <BookOpen className="w-4 h-4 text-primary" />
               Risorse
             </h4>
             <ul className="space-y-2.5">
@@ -216,7 +219,7 @@ const Footer = memo(() => {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs text-muted-foreground">
-            <span>© {new Date().getFullYear()} Nestify. Tutti i diritti riservati.</span>
+            <span>© {new Date().getFullYear()} Flavour. Tutti i diritti riservati.</span>
             <span className="hidden sm:inline">•</span>
             <span>P.IVA IT03883630927</span>
           </div>

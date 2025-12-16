@@ -21,7 +21,7 @@ const testimonials = [
     businessType: "Pub",
     location: "Milano",
     rating: 5,
-    quote: "Da quando usiamo Nestify, gli ordini di birre artigianali e cocktail sono aumentati del 52%. I clienti adorano ordinare dal tavolo senza aspettare al bancone.",
+    quote: "Da quando usiamo Flavour, gli ordini di birre artigianali e cocktail sono aumentati del 52%. I clienti adorano ordinare dal tavolo senza aspettare al bancone.",
     highlight: "+52% ordini",
     gradient: "from-violet-500 to-purple-600",
     avatar: "MR",
@@ -167,7 +167,7 @@ const Testimonials = memo(() => {
           </h2>
 
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground px-4">
-            Bar, ristoranti e pub italiani che hanno già trasformato il loro business con Nestify
+            Bar, ristoranti e pub italiani che hanno già trasformato il loro business con Flavour
           </p>
         </motion.div>
 

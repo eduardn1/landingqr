@@ -23,12 +23,12 @@ html, body {
     --popover: 0 0% 100%;
     --popover-foreground: 225 15% 10%;
 
-    /* Nestify Green Primary */
-    --primary: 151 85% 58%;
-    --primary-foreground: 0 0% 0%;
-    --primary-light: 151 85% 68%;
-    --primary-dark: 145 56% 51%;
-    --primary-glow: 151 85% 58%;
+    /* Electric Indigo Primary */
+    --primary: 250 89% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 250 89% 68%;
+    --primary-dark: 250 89% 48%;
+    --primary-glow: 250 89% 58%;
 
     --secondary: 225 15% 96%;
     --secondary-foreground: 225 15% 10%;
@@ -53,21 +53,21 @@ html, body {
     --border-subtle: 225 15% 92%;
     --border-medium: 225 15% 82%;
     --border-strong: 225 15% 75%;
-    --border-glow: 151 85% 58%;
+    --border-glow: 250 89% 58%;
 
     --input: 225 15% 92%;
-    --ring: 151 85% 58%;
+    --ring: 250 89% 58%;
 
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 99%;
     --sidebar-foreground: 225 15% 10%;
-    --sidebar-primary: 151 85% 58%;
-    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-primary: 250 89% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 225 15% 96%;
     --sidebar-accent-foreground: 225 15% 10%;
     --sidebar-border: 225 15% 88%;
-    --sidebar-ring: 151 85% 58%;
+    --sidebar-ring: 250 89% 58%;
   }
 
   /* DARK Theme - Premium Dark with Colorful Accents (versione 1:14 PM) */
@@ -81,12 +81,12 @@ html, body {
     --popover: 225 15% 5%;
     --popover-foreground: 0 0% 98%;
 
-    /* Nestify Green Primary */
-    --primary: 151 85% 58%;
-    --primary-foreground: 0 0% 0%;
-    --primary-light: 151 85% 68%;
-    --primary-dark: 145 56% 51%;
-    --primary-glow: 151 85% 58%;
+    /* Electric Indigo Primary */
+    --primary: 250 89% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 250 89% 75%;
+    --primary-dark: 250 89% 55%;
+    --primary-glow: 250 89% 65%;
 
     --secondary: 225 15% 8%;
     --secondary-foreground: 0 0% 98%;

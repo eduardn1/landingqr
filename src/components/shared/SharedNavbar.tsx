@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * NESTIFY - Shared Navbar for Internal Pages
- * Digital tools for Hospitality
+ * QRCODESTUDIOJEM - Shared Navbar for Internal Pages
+ * Dynamic Island navigation per tutte le pagine interne
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -13,14 +13,14 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Sparkles, Home, MessageCircle, HelpCircle, Users } from "lucide-react";
+import { Sun, Moon, Sparkles, Home, BookOpen, MessageCircle, HelpCircle, Users, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
-import { useLeadForm } from "@/hooks/useLeadForm";
-import logoShort from "@/assets/logo-short.svg";
 
 const navLinks = [
   { id: "home", label: "Home", href: "/", icon: Home },
+  { id: "demo", label: "Demo", href: "/demo", icon: Play },
+  { id: "guide", label: "Guide", href: "/guide", icon: BookOpen },
   { id: "chi-siamo", label: "Chi siamo", href: "/chi-siamo", icon: Users },
   { id: "contatti", label: "Contatti", href: "/contatti", icon: MessageCircle },
   { id: "faq", label: "FAQ", href: "/faq", icon: HelpCircle },
@@ -31,7 +31,6 @@ const SharedNavbar = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const location = useLocation();
-  const { openLeadForm } = useLeadForm();
 
   useEffect(() => {
     setMounted(true);
@@ -102,15 +101,17 @@ const SharedNavbar = () => {
           <div className="relative flex items-center gap-2 px-4 py-2.5 lg:px-5 lg:py-3">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <img src={logoShort} alt="Nestify" className="w-7 h-7 lg:w-8 lg:h-8" />
-              <span className="font-bold text-sm lg:text-base tracking-tight text-foreground">Nestify</span>
+              <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-lg lg:rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md shadow-primary/30">
+                <span className="text-white font-bold text-xs lg:text-sm">F</span>
+              </div>
+              <span className="font-bold text-sm lg:text-base tracking-tight text-foreground">Flavour</span>
             </Link>
 
             <div className="w-px h-5 lg:h-6 bg-border/50 mx-1" />
 
             {/* Desktop: Navigation links */}
             <div className="hidden md:flex items-center gap-1">
-              {navLinks.map((link) => {
+              {navLinks.slice(0, 5).map((link) => {
                 const isActive = location.pathname === link.href;
                 
                 return (
@@ -177,14 +178,15 @@ const SharedNavbar = () => {
             )}
 
             {/* CTA Button */}
-            <Button 
-              onClick={() => openLeadForm("shared_navbar")}
-              size="sm"
-              className="gradient-button rounded-full px-4 h-8 lg:h-9 text-xs lg:text-sm shadow-md shadow-primary/20"
-            >
-              <span className="hidden sm:inline">Inizia gratis</span>
-              <Sparkles className="w-4 h-4 sm:hidden" />
-            </Button>
+            <Link to="/demo">
+              <Button 
+                size="sm"
+                className="gradient-button rounded-full px-4 h-8 lg:h-9 text-xs lg:text-sm shadow-md shadow-primary/20"
+              >
+                <span className="hidden sm:inline">Prova demo</span>
+                <Sparkles className="w-4 h-4 sm:hidden" />
+              </Button>
+            </Link>
           </div>
         </motion.div>
 
@@ -210,7 +212,7 @@ const SharedNavbar = () => {
                   : '0 8px 32px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.9)',
               }}
             >
-              <div className="p-3 grid grid-cols-4 gap-1">
+              <div className="p-3 grid grid-cols-6 gap-1">
                 {navLinks.map((link) => {
                   const IconComponent = link.icon;
                   const isActive = location.pathname === link.href;

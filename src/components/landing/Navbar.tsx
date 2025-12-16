@@ -1,7 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * NESTIFY - Navigation Bar
- * Digital tools for Hospitality
+ * QRCODESTUDIOJEM - Navigation Bar
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -13,17 +12,18 @@
 import { useState, useEffect, useCallback, useMemo, memo } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Sparkles, CreditCard, HelpCircle, Home, Grid3X3, X, MessageCircle, Users, ExternalLink } from "lucide-react";
+import { Sun, Moon, Sparkles, CreditCard, HelpCircle, Play, Home, Grid3X3, X, BookOpen, MessageCircle, Users, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { useLeadForm } from "@/hooks/useLeadForm";
-import logoShort from "@/assets/logo-short.svg";
 
 // Static pages menu - defined outside component to prevent recreation
 const staticPages = [
   { label: "Chi siamo", href: "/chi-siamo", icon: Users },
   { label: "Contatti", href: "/contatti", icon: MessageCircle },
-  { label: "Centro Assistenza", href: "/faq", icon: HelpCircle },
+  { label: "Guide", href: "/guide", icon: BookOpen },
+  { label: "FAQ", href: "/faq", icon: HelpCircle },
+  { label: "Demo", href: "/demo", icon: Play },
 ] as const;
 
 // Static nav links
@@ -31,7 +31,7 @@ const navLinks = [
   { id: "home", label: "Home", href: "#", icon: Home },
   { id: "features", label: "Funzionalità", href: "#features", icon: Sparkles },
   { id: "pricing", label: "Prezzi", href: "#pricing", icon: CreditCard },
-  { id: "faq", label: "Assistenza", href: "#faq", icon: HelpCircle },
+  { id: "faq", label: "FAQ", href: "#faq", icon: HelpCircle },
 ] as const;
 
 const Navbar = memo(() => {
@@ -45,54 +45,47 @@ const Navbar = memo(() => {
   useEffect(() => {
     setMounted(true);
     let lastScrollY = window.scrollY;
-    let ticking = false;
     
     const handleScroll = () => {
-      if (ticking) return;
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 80);
       
-      ticking = true;
-      requestAnimationFrame(() => {
-        const currentScrollY = window.scrollY;
-        setIsScrolled(currentScrollY > 80);
-        
-        // Close on any scroll movement
-        if (Math.abs(currentScrollY - lastScrollY) > 10 && isExpanded) {
-          setIsExpanded(false);
-        }
-        lastScrollY = currentScrollY;
+      // Close on any scroll movement
+      if (Math.abs(currentScrollY - lastScrollY) > 10 && isExpanded) {
+        setIsExpanded(false);
+      }
+      lastScrollY = currentScrollY;
 
-        // Detect active section - only check if near top or scrolling significantly
-        if (currentScrollY < 100) {
-          setActiveSection("home");
-        } else {
-          const sections = ["features", "pricing", "faq"];
-          for (const section of sections) {
-            const element = document.getElementById(section);
-            if (element) {
-              const rect = element.getBoundingClientRect();
-              if (rect.top <= 200 && rect.bottom >= 200) {
-                setActiveSection(section);
-                break;
-              }
-            }
+      // Detect active section
+      const sections = ["features", "pricing", "faq"];
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 200 && rect.bottom >= 200) {
+            setActiveSection(section);
+            return;
           }
         }
-        
-        ticking = false;
-      });
+      }
+      
+      if (currentScrollY < 100) {
+        setActiveSection("home");
+      }
     };
     
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isExpanded]);
+  }, [isExpanded, isPagesMenuOpen]);
 
+  // Close pages menu on scroll
   useEffect(() => {
-    if (!isPagesMenuOpen) return;
-    
     const handleScrollForPages = () => {
-      setIsPagesMenuOpen(false);
+      if (isPagesMenuOpen) {
+        setIsPagesMenuOpen(false);
+      }
     };
-    window.addEventListener("scroll", handleScrollForPages, { passive: true, once: true });
+    window.addEventListener("scroll", handleScrollForPages, { passive: true });
     return () => window.removeEventListener("scroll", handleScrollForPages);
   }, [isPagesMenuOpen]);
 
@@ -172,10 +165,12 @@ const Navbar = memo(() => {
           {/* Main Content */}
           <div className="relative flex items-center gap-2 px-3 py-2.5 lg:px-5 lg:py-3 max-w-full overflow-hidden">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-1.5 lg:gap-2 shrink-0">
-              <img src={logoShort} alt="Nestify" className="w-6 h-6 lg:w-8 lg:h-8" />
-              <span className="font-bold text-xs lg:text-base tracking-tight text-foreground">Nestify</span>
-            </Link>
+            <a href="/" className="flex items-center gap-1.5 lg:gap-2 shrink-0">
+              <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-lg lg:rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md shadow-primary/30">
+                <span className="text-white font-bold text-[10px] lg:text-sm">F</span>
+              </div>
+              <span className="font-bold text-xs lg:text-base tracking-tight text-foreground">Flavour</span>
+            </a>
 
             <div className="w-px h-4 lg:h-6 bg-border/50 mx-0.5 lg:mx-1 shrink-0" />
 
