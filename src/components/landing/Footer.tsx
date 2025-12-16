@@ -1,6 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * NESTIFY - Footer Component (Enhanced Design)
+ * NESTIFY - Footer Component
+ * Digital tools for Hospitality
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -23,6 +24,7 @@ import {
   Sparkles,
   Users
 } from "lucide-react";
+import logoShort from "@/assets/logo-short.svg";
 
 const footerLinks = {
   prodotto: [
@@ -63,9 +65,7 @@ const Footer = memo(() => {
           {/* Brand Column - Spans 2 cols on lg */}
           <div className="col-span-2 space-y-5">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/25">
-                <span className="text-white font-bold">N</span>
-              </div>
+              <img src={logoShort} alt="Nestify" className="w-9 h-9" />
               <span className="font-bold text-xl tracking-tight text-foreground">Nestify</span>
             </Link>
             

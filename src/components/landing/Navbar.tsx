@@ -1,6 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
  * NESTIFY - Navigation Bar
+ * Digital tools for Hospitality
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -16,6 +17,7 @@ import { Sun, Moon, Sparkles, CreditCard, HelpCircle, Home, Grid3X3, X, MessageC
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { useLeadForm } from "@/hooks/useLeadForm";
+import logoShort from "@/assets/logo-short.svg";
 
 // Static pages menu - defined outside component to prevent recreation
 const staticPages = [
@@ -171,9 +173,7 @@ const Navbar = memo(() => {
           <div className="relative flex items-center gap-2 px-3 py-2.5 lg:px-5 lg:py-3 max-w-full overflow-hidden">
             {/* Logo */}
             <a href="/" className="flex items-center gap-1.5 lg:gap-2 shrink-0">
-              <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-lg lg:rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md shadow-primary/30">
-                <span className="text-white font-bold text-[10px] lg:text-sm">N</span>
-              </div>
+              <img src={logoShort} alt="Nestify" className="w-6 h-6 lg:w-8 lg:h-8" />
               <span className="font-bold text-xs lg:text-base tracking-tight text-foreground">Nestify</span>
             </a>
 

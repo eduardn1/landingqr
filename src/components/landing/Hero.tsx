@@ -1,6 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - Hero Section (Static/Subtle Animations)
+ * NESTIFY - Hero Section
+ * Digital tools for Hospitality
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -8,15 +9,16 @@
  */
 
 import { memo } from "react";
-import { ArrowRight, Check, Sparkles, Zap, Star, QrCode, CalendarCheck, Truck, BarChart3, Menu, CreditCard, ShoppingBag, TrendingUp, Users, Calendar, Bell, Settings } from "lucide-react";
+import { ArrowRight, Check, Sparkles, Zap, Star, Home, CalendarCheck, BarChart3, Users, Bell, Settings, Building2, Key, MessageSquare, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLeadForm } from "@/hooks/useLeadForm";
+import logoShort from "@/assets/logo-short.svg";
 
 const featureBadges = [
-  { icon: QrCode, text: "Menu QR", color: "from-violet-500 to-purple-600" },
-  { icon: CalendarCheck, text: "Prenotazioni", color: "from-emerald-500 to-teal-600" },
-  { icon: Truck, text: "Delivery", color: "from-orange-500 to-red-500" },
-  { icon: BarChart3, text: "Analytics", color: "from-blue-500 to-cyan-500" },
+  { icon: Building2, text: "Property Management", color: "from-emerald-500 to-teal-600" },
+  { icon: CalendarCheck, text: "Prenotazioni", color: "from-blue-500 to-cyan-500" },
+  { icon: Key, text: "Check-in Automatico", color: "from-orange-500 to-amber-500" },
+  { icon: BarChart3, text: "Analytics", color: "from-violet-500 to-purple-600" },
 ];
 
 const Hero = memo(() => {
@@ -34,8 +36,8 @@ const Hero = memo(() => {
       <div className="absolute inset-0 noise-overlay" />
 
       {/* Static Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl" />
 
       <div className="container relative z-10 py-16">
         <div className="max-w-5xl mx-auto text-center">
@@ -43,21 +45,21 @@ const Hero = memo(() => {
           <div className="mb-6 inline-flex animate-fade-in">
             <div className="badge-primary">
               <Sparkles className="w-4 h-4" />
-              <span>La nuova era dei menu digitali per bar, ristoranti e pub</span>
+              <span>Digital tools for Hospitality</span>
               <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
             </div>
           </div>
 
           {/* Headline */}
           <h1 className="text-display-md sm:text-display-lg md:text-display-xl lg:text-[5.5rem] font-extrabold mb-6 px-2 animate-fade-in">
-            <span className="text-foreground">La tua attività</span>
+            <span className="text-foreground">Gestisci i tuoi</span>
             <br />
-            <span className="gradient-text">digitalizzata</span>
+            <span className="gradient-text">immobili facilmente</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-body-md sm:text-body-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-6 px-4 animate-fade-in">
-            Menu QR, prenotazioni, asporto e delivery per bar, ristoranti, pub e caffetterie.{" "}
+            Automazione check-in, channel manager, comunicazione ospiti e analytics.{" "}
             Tutto in una piattaforma.{" "}
             <span className="text-foreground font-semibold">Pronto in 10 minuti.</span>
           </p>
@@ -90,7 +92,7 @@ const Hero = memo(() => {
             </Button>
 
             <a
-              href="https://demo2.studiojem.it"
+              href="https://demo.nestify.it"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto"
@@ -123,7 +125,7 @@ const Hero = memo(() => {
           {/* Main Dashboard Preview */}
           <div className="relative rounded-2xl overflow-hidden border border-border shadow-xl">
             {/* Glow Effect */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-accent/10 to-primary/20 rounded-2xl blur-xl opacity-40" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 via-teal-500/10 to-emerald-500/20 rounded-2xl blur-xl opacity-40" />
             
             <div className="relative bg-card rounded-2xl overflow-hidden p-4 md:p-6">
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 pointer-events-none" />
@@ -133,9 +135,7 @@ const Hero = memo(() => {
                 {/* Top Bar */}
                 <div className="flex items-center justify-between mb-4 pb-3 border-b border-border">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                      <QrCode className="w-4 h-4 text-white" />
-                    </div>
+                    <img src={logoShort} alt="Nestify" className="w-8 h-8" />
                     <div>
                       <div className="h-3 w-20 bg-foreground/80 rounded" />
                       <div className="h-2 w-14 bg-muted-foreground/40 rounded mt-1" />
@@ -154,10 +154,10 @@ const Hero = memo(() => {
                 {/* Stats Cards */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 mb-4">
                   {[
-                    { icon: ShoppingBag, label: "Ordini", value: "127", color: "from-violet-500 to-purple-600", change: "+12%" },
-                    { icon: TrendingUp, label: "Ricavi", value: "€2.4k", color: "from-emerald-500 to-teal-600", change: "+8%" },
-                    { icon: Users, label: "Clienti", value: "89", color: "from-blue-500 to-cyan-500", change: "+15%" },
-                    { icon: Calendar, label: "Prenotazioni", value: "24", color: "from-orange-500 to-red-500", change: "+5%" },
+                    { icon: Building2, label: "Immobili", value: "24", color: "from-emerald-500 to-teal-600", change: "+3" },
+                    { icon: TrendingUp, label: "Ricavi", value: "€12.4k", color: "from-blue-500 to-cyan-500", change: "+18%" },
+                    { icon: Users, label: "Ospiti", value: "156", color: "from-violet-500 to-purple-600", change: "+22%" },
+                    { icon: CalendarCheck, label: "Prenotazioni", value: "48", color: "from-orange-500 to-amber-500", change: "+12%" },
                   ].map((stat) => (
                     <div key={stat.label} className="bg-muted/50 rounded-lg p-3 border border-border">
                       <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center mb-2`}>
@@ -170,11 +170,11 @@ const Hero = memo(() => {
                   ))}
                 </div>
 
-                {/* Menu Preview Grid */}
+                {/* Properties Preview Grid */}
                 <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
                   {[...Array(6)].map((_, i) => (
                     <div key={i} className="aspect-square bg-gradient-to-br from-muted to-muted/50 rounded-lg border border-border flex items-center justify-center">
-                      <Menu className="w-5 h-5 text-muted-foreground/40" />
+                      <Home className="w-5 h-5 text-muted-foreground/40" />
                     </div>
                   ))}
                 </div>
@@ -185,19 +185,19 @@ const Hero = memo(() => {
           {/* Floating Stats Card - Static */}
           <div className="absolute -left-2 md:left-4 top-1/3 hidden lg:block">
             <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-success/30 to-primary/20 rounded-xl blur-lg opacity-50" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-success/30 to-emerald-500/20 rounded-xl blur-lg opacity-50" />
               <div className="relative bg-card/95 backdrop-blur-xl border border-border rounded-xl p-4 shadow-xl">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-lg bg-success/20 flex items-center justify-center">
                     <Check className="w-5 h-5 text-success" />
                   </div>
                   <div>
-                    <p className="text-xs text-muted-foreground">Ordini oggi</p>
-                    <p className="text-xl font-bold text-foreground">+127</p>
+                    <p className="text-xs text-muted-foreground">Check-in oggi</p>
+                    <p className="text-xl font-bold text-foreground">+12</p>
                   </div>
                 </div>
                 <div className="h-1 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full w-3/4 bg-gradient-to-r from-success to-primary rounded-full" />
+                  <div className="h-full w-3/4 bg-gradient-to-r from-success to-emerald-500 rounded-full" />
                 </div>
               </div>
             </div>
@@ -220,7 +220,7 @@ const Hero = memo(() => {
             <div className="bg-card/90 backdrop-blur-xl border border-border rounded-xl px-3 py-2 shadow-lg">
               <div className="flex items-center gap-2">
                 <div className="flex -space-x-2">
-                  {['bg-gradient-to-br from-pink-500 to-rose-500', 'bg-gradient-to-br from-blue-500 to-cyan-500', 'bg-gradient-to-br from-green-500 to-emerald-500', 'bg-gradient-to-br from-purple-500 to-violet-500'].map((gradient, i) => (
+                  {['bg-gradient-to-br from-emerald-500 to-teal-500', 'bg-gradient-to-br from-blue-500 to-cyan-500', 'bg-gradient-to-br from-orange-500 to-amber-500', 'bg-gradient-to-br from-purple-500 to-violet-500'].map((gradient, i) => (
                     <div key={i} className={`w-6 h-6 rounded-full ${gradient} border-2 border-card flex items-center justify-center text-white text-[10px] font-bold`}>
                       {String.fromCharCode(65 + i)}
                     </div>
@@ -228,7 +228,7 @@ const Hero = memo(() => {
                 </div>
                 <div className="text-xs">
                   <p className="font-semibold text-foreground">+500</p>
-                  <p className="text-muted-foreground">locali attivi</p>
+                  <p className="text-muted-foreground">property manager</p>
                 </div>
               </div>
             </div>

@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
- * QRCODESTUDIOJEM - FAQ Page
- * Pagina dedicata alle domande frequenti
+ * NESTIFY - FAQ Page
+ * Centro Assistenza e Domande Frequenti
  * 
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
@@ -60,67 +60,67 @@ const faqs: FAQItem[] = [
   {
     question: "Come funziona il white-label per agenzie?",
     answer:
-      "Con il piano Enterprise puoi rivendere Flavour con il tuo brand. I tuoi clienti non vedranno mai il nostro logo. Hai accesso a un pannello multi-tenant per gestire tutti i locali, fatturazione separata e margini personalizzabili.",
+      "Con il piano Enterprise puoi rivendere Nestify con il tuo brand. I tuoi clienti non vedranno mai il nostro logo. Hai accesso a un pannello multi-tenant per gestire tutti gli immobili, fatturazione separata e margini personalizzabili.",
     category: "pricing",
   },
   {
-    question: "Ci sono commissioni sugli ordini?",
+    question: "Ci sono commissioni sulle prenotazioni?",
     answer:
-      "Assolutamente no! Non prendiamo commissioni sugli ordini come fanno i grandi aggregatori. Paghi solo l'abbonamento mensile, tutto incluso. Zero sorprese.",
+      "Assolutamente no! Non prendiamo commissioni sulle prenotazioni come fanno altri portali. Paghi solo l'abbonamento mensile, tutto incluso. Zero sorprese.",
     category: "pricing",
   },
   {
-    question: "Funziona per bar, pub e caffetterie?",
+    question: "Funziona per appartamenti, B&B e case vacanza?",
     answer:
-      "Certamente! Flavour è perfetto per ogni tipo di locale: bar, pub, cocktail bar, wine bar, caffetterie, bistrot, pizzerie, osterie, gelaterie, ristoranti. Personalizza il menu con qualsiasi categoria: cocktail, birre artigianali, caffè, pasticceria, piatti, aperitivi, vini.",
+      "Certamente! Nestify è perfetto per ogni tipo di struttura ricettiva: appartamenti, B&B, case vacanza, ville, residence, agriturismi, glamping. Gestisci qualsiasi tipologia di immobile da un'unica dashboard.",
     category: "features",
   },
   {
     question: "Posso migrare da un'altra piattaforma?",
     answer:
-      "Certo! Offriamo migrazione gratuita assistita per tutti i piani a pagamento. Importiamo menu da Excel, CSV o direttamente da altre piattaforme. Il nostro team ti guida in ogni step.",
+      "Certo! Offriamo migrazione gratuita assistita per tutti i piani a pagamento. Importiamo i tuoi immobili e prenotazioni da altre piattaforme. Il nostro team ti guida in ogni step.",
     category: "technical",
   },
   {
-    question: "I menu sono tradotti automaticamente?",
+    question: "Le comunicazioni sono tradotte automaticamente?",
     answer:
-      "Sì! Flavour supporta 5 lingue (Italiano, Inglese, Tedesco, Spagnolo, Francese). Puoi scegliere la traduzione automatica AI oppure inserire traduzioni manuali per un controllo totale. Perfetto per bar turistici, pub internazionali e locali in zone turistiche.",
+      "Sì! Nestify supporta 5 lingue (Italiano, Inglese, Tedesco, Spagnolo, Francese). Puoi scegliere la traduzione automatica AI oppure inserire traduzioni manuali per un controllo totale. Perfetto per host con ospiti internazionali.",
     category: "international",
   },
   {
     question: "Funziona offline?",
     answer:
-      "Flavour è una PWA (Progressive Web App). Una volta caricato, funziona anche con connessione instabile. I clienti possono installarlo come app sul telefono senza passare dagli store.",
+      "Nestify è una PWA (Progressive Web App). Una volta caricato, funziona anche con connessione instabile. Puoi installarlo come app sul telefono senza passare dagli store.",
     category: "technical",
   },
   {
-    question: "Posso gestire più sedi?",
+    question: "Posso gestire più proprietà?",
     answer:
-      "Sì! Con i piani Pro e Enterprise puoi gestire più locali da un unico pannello. Menu condivisi o separati per ogni sede, analytics aggregati, gestione centralizzata del personale. Perfetto per catene di bar, franchising o gruppi di ristoranti.",
+      "Sì! Con i piani Pro e Enterprise puoi gestire più immobili da un unico pannello. Calendar sincronizzati, analytics aggregati, gestione centralizzata. Perfetto per property manager professionisti.",
     category: "features",
   },
   {
-    question: "Come funzionano le prenotazioni?",
+    question: "Come funziona il channel manager?",
     answer:
-      "I clienti prenotano direttamente dal menu digitale o dal sito. Ricevi notifica istantanea, conferma automatica via WhatsApp, reminder prima della prenotazione. Sistema anti no-show incluso. Funziona per tavoli al ristorante, aree lounge nei bar, sale private.",
+      "Il channel manager sincronizza automaticamente disponibilità e prezzi con Airbnb, Booking.com, Vrbo e altri portali. Eviti overbooking e gestisci tutto da un'unica dashboard.",
     category: "features",
   },
   {
-    question: "Qual è la differenza con Just Eat o Deliveroo?",
+    question: "Qual è la differenza con i grandi portali?",
     answer:
-      "Loro prendono fino al 30% di commissioni su ogni ordine. Noi zero. Flavour è tuo: i clienti sono tuoi, i dati sono tuoi, il profitto è 100% tuo. E offri un'esperienza migliore e personalizzata.",
+      "I portali prendono fino al 15-20% di commissioni. Noi zero commissioni. Nestify è tuo: i clienti sono tuoi, i dati sono tuoi, il profitto è 100% tuo. E offri un'esperienza migliore e personalizzata.",
     category: "pricing",
   },
   {
     question: "Supportate pagamenti internazionali?",
     answer:
-      "Sì! Integriamo Stripe, PayPal, Satispay, Apple Pay, Google Pay. I tuoi clienti internazionali pagano come preferiscono, nella loro valuta. Perfetto per locali turistici e pub in zone internazionali.",
+      "Sì! Integriamo Stripe, PayPal, bonifico bancario e altri metodi. I tuoi ospiti internazionali pagano come preferiscono, nella loro valuta.",
     category: "international",
   },
   {
-    question: "Quanto tempo serve per configurare Flavour?",
+    question: "Quanto tempo serve per configurare Nestify?",
     answer:
-      "Mediamente 10-15 minuti per un menu base. Puoi importare menu esistenti da Excel o iniziare da un template. Il nostro team offre setup assistito gratuito per i piani Pro e Enterprise.",
+      "Mediamente 10-15 minuti per aggiungere un immobile. Puoi importare dati esistenti o iniziare da zero. Il nostro team offre setup assistito gratuito per i piani Pro e Enterprise.",
     category: "technical",
   },
   {
@@ -130,13 +130,13 @@ const faqs: FAQItem[] = [
     category: "pricing",
   },
   {
-    question: "Come funziona il sistema loyalty?",
+    question: "Come funziona il check-in automatico?",
     answer:
-      "I clienti accumulano punti ad ogni ordine. Puoi configurare premi, livelli, badge e sfide. Gamification completa con confetti e animazioni. I clienti tornano più spesso e spendono di più.",
+      "Invii automaticamente istruzioni di check-in, codici smart lock, indicazioni stradali. Gli ospiti ricevono tutto via email e WhatsApp. Zero chiamate, zero problemi.",
     category: "features",
   },
   {
-    question: "Flavour è GDPR compliant?",
+    question: "Nestify è GDPR compliant?",
     answer:
       "Assolutamente sì. I dati sono conservati in server EU, offriamo export/cancellazione dati su richiesta, cookie banner integrato, informativa privacy personalizzabile. Siamo conformi a tutte le normative europee sulla privacy.",
     category: "technical",
@@ -184,7 +184,7 @@ const FAQPage = () => {
               Domande Frequenti
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Trova risposte alle domande più comuni su Flavour, i nostri piani e le funzionalità
+              Trova risposte alle domande più comuni su Nestify, i nostri piani e le funzionalità
             </p>
           </div>
 
