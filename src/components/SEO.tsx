@@ -32,7 +32,7 @@ const organizationSchema = {
   "name": "Nestify by StudioJEM",
   "url": BASE_URL,
   "logo": `${BASE_URL}/favicon.ico`,
-  "description": "Piattaforma all-in-one per la gestione immobiliare intelligente.",
+  "description": "Digital tools for Hospitality: menu QR, ordini, delivery e prenotazioni per bar, ristoranti, pub e caffetterie.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Cagliari",
@@ -72,21 +72,20 @@ const softwareSchema = {
     "reviewCount": "500"
   },
   "featureList": [
-    "Gestione immobili",
+    "Menu QR e menu digitale",
+    "Filtri allergeni",
+    "Ordini asporto e delivery",
     "Prenotazioni online",
-    "Channel manager",
-    "Automazione check-in",
-    "Multi-lingua",
-    "Analytics dashboard",
-    "Comunicazione ospiti",
-    "Revenue management"
+    "Loyalty e CRM clienti",
+    "Promo e Stories",
+    "Analytics dashboard"
   ]
 };
 
 export const SEO = ({
   title,
-  description = "Piattaforma all-in-one per la gestione immobiliare intelligente. Gestisci prenotazioni, comunicazioni e operazioni da un'unica dashboard.",
-  keywords = "gestione immobiliare, property management, affitti brevi, airbnb management, booking management, channel manager",
+  description = "Menu QR, ordini, delivery e prenotazioni per bar, ristoranti, pub e caffetterie. Dashboard all-in-one. Pronto in 10 minuti.",
+  keywords = "menu qr, menu digitale, prenotazioni online ristorante, ordini asporto, delivery senza commissioni, loyalty, analytics, bar ristorante pub caffetteria",
   image = DEFAULT_IMAGE,
   url = BASE_URL,
   type = 'website',
@@ -95,7 +94,7 @@ export const SEO = ({
 }: SEOProps) => {
   const fullTitle = title 
     ? `${title} | ${SITE_NAME}` 
-    : `${SITE_NAME} | Gestione Immobiliare Intelligente`;
+    : `${SITE_NAME} | Menu QR e Ordini per Locali`;
 
   const schemas = [
     organizationSchema,
@@ -126,7 +125,7 @@ export const SEO = ({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
-      <meta property="og:image:alt" content={`${SITE_NAME} - Gestione Immobiliare`} />
+      <meta property="og:image:alt" content={`${SITE_NAME} - Menu QR e Prenotazioni`} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="it_IT" />
       

@@ -23,7 +23,7 @@ import logoShort from "@/assets/logo-short.svg";
 const staticPages = [
   { label: "Chi siamo", href: "/chi-siamo", icon: Users },
   { label: "Contatti", href: "/contatti", icon: MessageCircle },
-  { label: "FAQ", href: "/faq", icon: HelpCircle },
+  { label: "Centro Assistenza", href: "/faq", icon: HelpCircle },
 ] as const;
 
 // Static nav links
@@ -31,7 +31,7 @@ const navLinks = [
   { id: "home", label: "Home", href: "#", icon: Home },
   { id: "features", label: "Funzionalità", href: "#features", icon: Sparkles },
   { id: "pricing", label: "Prezzi", href: "#pricing", icon: CreditCard },
-  { id: "faq", label: "FAQ", href: "#faq", icon: HelpCircle },
+  { id: "faq", label: "Assistenza", href: "#faq", icon: HelpCircle },
 ] as const;
 
 const Navbar = memo(() => {
@@ -172,10 +172,10 @@ const Navbar = memo(() => {
           {/* Main Content */}
           <div className="relative flex items-center gap-2 px-3 py-2.5 lg:px-5 lg:py-3 max-w-full overflow-hidden">
             {/* Logo */}
-            <a href="/" className="flex items-center gap-1.5 lg:gap-2 shrink-0">
+            <Link to="/" className="flex items-center gap-1.5 lg:gap-2 shrink-0">
               <img src={logoShort} alt="Nestify" className="w-6 h-6 lg:w-8 lg:h-8" />
               <span className="font-bold text-xs lg:text-base tracking-tight text-foreground">Nestify</span>
-            </a>
+            </Link>
 
             <div className="w-px h-4 lg:h-6 bg-border/50 mx-0.5 lg:mx-1 shrink-0" />
 

@@ -70,7 +70,7 @@ const Footer = memo(() => {
             </Link>
             
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              La piattaforma all-in-one per la gestione immobiliare intelligente.
+              Menu QR, prenotazioni, asporto e delivery per bar, ristoranti, pub e caffetterie.
             </p>
             
             {/* Contact Info */}

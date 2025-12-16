@@ -118,7 +118,7 @@ const ProblemSolution = memo(() => {
           
           <div className="text-center sm:text-left">
             <p className="font-bold text-foreground text-sm">500+ clienti hanno già scelto Nestify</p>
-            <p className="text-xs text-muted-foreground">Gestisci i tuoi immobili oggi</p>
+            <p className="text-xs text-muted-foreground">Tutto per il tuo locale digitale</p>
           </div>
           
           <Button

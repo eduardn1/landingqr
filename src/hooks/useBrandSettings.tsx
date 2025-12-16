@@ -52,17 +52,20 @@ interface BrandSettings {
 }
 
 const defaultSettings: BrandSettings = {
-  site_title: 'Nestify - Gestione Immobiliare',
-  site_description: 'La piattaforma all-in-one per la gestione immobiliare intelligente',
-  meta_keywords: 'gestione immobiliare, property management, affitti brevi, airbnb',
-  og_title: 'Nestify - Gestione Immobiliare',
-  og_description: 'Gestisci i tuoi immobili in modo intelligente',
+  site_title: 'Nestify - Digital tools for Hospitality',
+  site_description:
+    'Menu QR, prenotazioni, asporto e delivery per bar, ristoranti, pub e caffetterie. Tutto in una piattaforma. Pronto in 10 minuti.',
+  meta_keywords:
+    'menu qr, menu digitale, prenotazioni online ristorante, ordini asporto, delivery senza commissioni, loyalty, analytics, bar ristorante pub caffetteria, nestify',
+  og_title: 'Nestify - Digital tools for Hospitality',
+  og_description:
+    'Menu QR, ordini, delivery e prenotazioni per il tuo locale. Dashboard all-in-one. Pronto in 10 minuti.',
   twitter_handle: '@nestify',
   favicon_url: null,
   logo_url: null,
   og_image_url: null,
-  brand_primary_color: '#8B5CF6',
-  brand_secondary_color: '#EC4899',
+  brand_primary_color: '#38ef7d',
+  brand_secondary_color: '#44c171',
   canonical_url: null,
   robots_txt: null,
   google_site_verification: null,
@@ -78,9 +81,9 @@ const defaultSettings: BrandSettings = {
   schema_org_address: null,
   schema_org_phone: null,
   schema_org_email: null,
-  theme_color: '#8B5CF6',
+  theme_color: '#38ef7d',
   background_color: '#000000',
-  manifest_name: 'Nestify - Gestione Immobiliare',
+  manifest_name: 'Nestify - Digital tools for Hospitality',
   manifest_short_name: 'Nestify',
   google_analytics_id: null,
   facebook_pixel_id: null,

@@ -1,8 +1,8 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════════
  * NESTIFY - App Root Component
- * Piattaforma per la gestione immobiliare
- * 
+ * Digital tools for Hospitality
+ *
  * Sviluppato da Eduard Costin Udila @ studiojem.it
  * Web Development & Digital Solutions
  * 

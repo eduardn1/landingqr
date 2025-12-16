@@ -44,7 +44,7 @@ const HowItWorks = memo(() => {
   const { openLeadForm } = useLeadForm();
 
   return (
-    <section className="py-16 md:py-20 relative overflow-hidden">
+    <section id="howitworks" className="py-16 md:py-20 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-background to-background" />
       
