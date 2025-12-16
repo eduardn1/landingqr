@@ -26,15 +26,17 @@ const LogoLoader = memo(({ size = 'md', showText = false, className = '' }: Logo
   return (
     <div className={`flex flex-col items-center gap-3 ${className}`}>
       <div className="relative">
-        {/* Glow effect behind logo */}
-        <div 
-          className={`absolute inset-0 ${sizeClasses[size]} bg-primary/20 rounded-full blur-xl animate-pulse`} 
+        {/* Subtle glow behind logo (keeps the logo recognizable, not a ring spinner) */}
+        <div
+          className={`absolute inset-0 ${sizeClasses[size]} bg-primary/15 rounded-2xl blur-2xl motion-safe:animate-logo-pulse`}
+          aria-hidden="true"
         />
-        {/* Logo with animations */}
+
+        {/* Logo (pulsing, no rotation) */}
         <img
           src={logoShort}
           alt="Nestify"
-          className={`${sizeClasses[size]} relative z-10 animate-logo-spin drop-shadow-[0_0_8px_hsl(var(--primary)/0.5)]`}
+          className={`${sizeClasses[size]} relative z-10 motion-safe:animate-logo-pulse will-change-transform`}
         />
       </div>
       {showText && (
