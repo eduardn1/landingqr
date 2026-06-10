@@ -40,8 +40,8 @@ const Logos = memo(() => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
       
       <div className="container relative z-10 mb-8">
-        <p className="text-center text-muted-foreground text-sm">
-          Usato da bar, ristoranti e pub in tutta Italia
+        <p className="text-center text-muted-foreground text-sm font-medium">
+          Scelto da centinaia di ristoratori, baristi e hotel manager in tutta Italia
         </p>
       </div>
 

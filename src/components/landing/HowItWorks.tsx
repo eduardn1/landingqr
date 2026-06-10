@@ -17,24 +17,24 @@ const steps = [
   {
     step: 1,
     icon: FileEdit,
-    title: "Crea il menu",
-    description: "Aggiungi piatti, prezzi, foto. Importa da Excel o inizia da un template.",
+    title: "Carica il tuo menu",
+    description: "Aggiungi piatti, prezzi e foto. Importa da Excel o scegli un template. Traduzioni automatiche in 5 lingue.",
     time: "5 min",
     gradient: "from-emerald-500/70 to-teal-600/70",
   },
   {
     step: 2,
     icon: Palette,
-    title: "Personalizza",
-    description: "Scegli tra 8 template premium. Colori, logo e layout secondo il tuo brand.",
+    title: "Scegli il design",
+    description: "8 template premium pronti. Personalizza colori, logo e layout per rispecchiare il tuo brand.",
     time: "3 min",
     gradient: "from-blue-500 to-cyan-500",
   },
   {
     step: 3,
     icon: Rocket,
-    title: "Vai live!",
-    description: "QR code pronto, condividi il link. I clienti ordinano, tu gestisci tutto.",
+    title: "Condividi e inizia",
+    description: "QR code generato automaticamente. I tuoi clienti ordinano, tu gestisci tutto da un'unica dashboard.",
     time: "2 min",
     gradient: "from-emerald-500 to-teal-600",
   },
@@ -57,12 +57,12 @@ const HowItWorks = memo(() => {
           </div>
 
           <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-4">
-            <span className="text-foreground">Da zero a online in </span>
-            <span className="gradient-text">3 step</span>
+            <span className="text-foreground">Pronto in </span>
+            <span className="gradient-text">10 minuti</span>
           </h2>
 
           <p className="text-muted-foreground">
-            Non serve essere esperti di tecnologia. Se sai usare WhatsApp, sai usare Nestify. Promesso.
+            Nessuna competenza tecnica richiesta. Se sai usare WhatsApp, sei pronto per Nestify.
           </p>
         </div>
 
