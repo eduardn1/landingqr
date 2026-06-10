@@ -49,17 +49,17 @@ const Hero = memo(() => {
           </div>
 
           {/* Headline */}
-          <h1 className="text-display-md sm:text-display-lg md:text-display-xl lg:text-[5.5rem] font-extrabold mb-6 px-2 animate-fade-in">
-            <span className="text-foreground">La tua attività</span>
+          <h1 className="text-display-md sm:text-display-lg md:text-display-xl lg:text-[5.5rem] font-extrabold mb-6 px-2 animate-fade-in leading-[1.1]">
+            <span className="text-foreground">Tutto il Tuo Locale in</span>
             <br />
-            <span className="gradient-text">digitalizzata</span>
+            <span className="gradient-text">un'Unica App</span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-body-md sm:text-body-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-6 px-4 animate-fade-in">
-            Menu QR, prenotazioni, asporto e delivery per bar, ristoranti, pub e caffetterie.{" "}
-            Tutto in una piattaforma.{" "}
-            <span className="text-foreground font-semibold">Pronto in 10 minuti.</span>
+          <p className="text-body-md sm:text-body-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-8 px-4 animate-fade-in">
+            Gestisci menu, prenotazioni, ordini e magazzino senza stress.{" "}
+            Comunica con i tuoi clienti su WhatsApp in modo automatico e tieni tutto sotto controllo,{" "}
+            <span className="text-foreground font-semibold">dal piccolo bar alla catena di ristoranti.</span>
           </p>
 
           {/* Feature Badges */}
@@ -82,10 +82,10 @@ const Hero = memo(() => {
             <Button
               size="lg"
               onClick={() => openLeadForm("hero-cta")}
-              className="group text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-7 h-auto gradient-button rounded-xl sm:rounded-2xl w-full sm:w-auto"
+              className="group text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-7 h-auto gradient-button rounded-xl sm:rounded-2xl w-full sm:w-auto font-bold tracking-tight"
             >
               <Zap className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-              Inizia gratis ora
+              Inizia la prova gratuita
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
 

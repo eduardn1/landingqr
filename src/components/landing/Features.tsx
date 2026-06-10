@@ -229,11 +229,11 @@ const Features = memo(() => {
           </div>
           
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-4 px-2">
-            <span className="text-foreground">Tutto per il tuo </span>
-            <span className="gradient-text">locale digitale</span>
+            <span className="text-foreground">Un Sistema Operativo per la </span>
+            <span className="gradient-text">Ristorazione Moderna</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto px-4">
-            Menu QR, ordini, delivery, prenotazioni, loyalty, analytics. Una dashboard all-in-one.
+            Non solo un menu QR: una suite completa per gestire ogni aspetto del tuo locale, dalla sala alla cucina.
           </p>
         </div>
 

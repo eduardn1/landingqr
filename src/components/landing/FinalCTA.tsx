@@ -42,16 +42,15 @@ const FinalCTA = memo(() => {
 
               {/* Headline */}
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-                <span className="text-foreground">Pronto a portare la tua</span>
+                <span className="text-foreground">Pronto a Trasformare la</span>
                 <br />
-                <span className="text-foreground">attività nel </span>
-                <span className="gradient-text">futuro?</span>
+                <span className="text-foreground">Gestione del Tuo </span>
+                <span className="gradient-text">Locale?</span>
               </h2>
 
               {/* Subheading */}
               <p className="text-muted-foreground max-w-2xl mx-auto mb-10">
-                Unisciti a centinaia di locali che hanno già scelto Nestify 
-                per digitalizzare la loro attività.
+                Unisciti a centinaia di ristoratori che hanno già scelto Nestify per semplificare il lavoro e aumentare i ricavi.
               </p>
 
               {/* CTA Buttons */}

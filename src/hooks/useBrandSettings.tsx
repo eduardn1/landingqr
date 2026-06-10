@@ -52,11 +52,11 @@ interface BrandSettings {
 }
 
 const defaultSettings: BrandSettings = {
-  site_title: 'Nestify - Digital tools for Hospitality',
-  site_description: 'Digital tools for Hospitality - Menu digitali, prenotazioni e ordini per bar, ristoranti e pub',
-  meta_keywords: 'menu digitale, QR code, ristorante, bar, pub',
-  og_title: 'Nestify - Menu Digitali',
-  og_description: 'Trasforma il tuo locale con menu digitali interattivi',
+  site_title: 'Nestify | Gestisci il Tuo Ristorante o Hotel con un\'Unica Soluzione Semplice',
+  site_description: 'Semplifica la gestione del tuo locale con Nestify. Menu digitale, ordini, prenotazioni e automazione WhatsApp tutto in uno. Più tempo per i tuoi clienti, meno stress per te. Inizia ora!',
+  meta_keywords: 'gestione ristorante, menu digitale qr, prenotazioni online ristorante, automazione whatsapp ristorazione, software hotel hospitality',
+  og_title: 'Nestify | Tutto il Tuo Locale in un\'Unica App',
+  og_description: 'Gestisci menu, prenotazioni, ordini e magazzino senza stress con Nestify.',
   twitter_handle: '@nestify',
   favicon_url: null,
   logo_url: null,
