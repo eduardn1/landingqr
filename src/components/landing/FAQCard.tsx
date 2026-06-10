@@ -30,10 +30,10 @@ const FAQCard = memo(() => {
               </div>
               <div>
                 <h3 className="font-bold text-lg text-foreground mb-1">
-                  Hai domande?
+                  Hai ancora domande?
                 </h3>
                 <p className="text-muted-foreground text-sm">
-                  Consulta le nostre FAQ o contattaci direttamente su WhatsApp
+                  Leggi le FAQ o parla direttamente con il nostro team su WhatsApp
                 </p>
               </div>
             </div>

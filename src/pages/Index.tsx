@@ -25,6 +25,10 @@ const ProblemSolution = lazy(() => import("@/components/landing/ProblemSolution"
 const Features = lazy(() => import("@/components/landing/Features"));
 const ProductShowcase = lazy(() => import("@/components/landing/ProductShowcase"));
 const HowItWorks = lazy(() => import("@/components/landing/HowItWorks"));
+const UseCases = lazy(() => import("@/components/landing/UseCases"));
+const ReservationsModule = lazy(() => import("@/components/landing/ReservationsModule"));
+const InventoryModule = lazy(() => import("@/components/landing/InventoryModule"));
+const WhatsAppAutomation = lazy(() => import("@/components/landing/WhatsAppAutomation"));
 const Pricing = lazy(() => import("@/components/landing/Pricing"));
 const Testimonials = lazy(() => import("@/components/landing/Testimonials"));
 const FAQCard = lazy(() => import("@/components/landing/FAQCard"));
@@ -51,6 +55,10 @@ const Index = () => {
           <ProblemSolution />
           <Features />
           <HowItWorks />
+          <UseCases />
+          <ReservationsModule />
+          <InventoryModule />
+          <WhatsAppAutomation />
           <ProductShowcase />
           <Pricing />
           <Testimonials />

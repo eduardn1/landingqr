@@ -75,7 +75,7 @@ const Footer = memo(() => {
             </Link>
             
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              La piattaforma all-in-one per menu digitali, prenotazioni e ordini online per bar, ristoranti, pub e caffetterie.
+              Il sistema operativo completo per la ristorazione moderna. Gestisci sala, cucina e clienti con un'unica app semplice e potente.
             </p>
             
             {/* Contact Info */}

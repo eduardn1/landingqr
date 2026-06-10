@@ -57,14 +57,13 @@ const ProblemSolution = memo(() => {
           </div>
           
           <h2 className="text-2xl md:text-3xl font-black mb-3">
-            <span className="text-foreground">Dal </span>
-            <span className="text-destructive">caos</span>
-            <span className="text-foreground"> al </span>
-            <span className="gradient-text">controllo</span>
+            <span className="text-foreground">Riprendi il </span>
+            <span className="gradient-text">Controllo</span>
+            <span className="text-foreground"> del Tuo Locale</span>
           </h2>
           
           <p className="text-sm text-muted-foreground max-w-md mx-auto">
-            Automatizza le attività quotidiane e risparmia ore ogni giorno
+            Dalla gestione della sala al magazzino, Nestify risolve i problemi che ti fanno perdere tempo ogni giorno.
           </p>
         </div>
 

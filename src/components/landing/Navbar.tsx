@@ -245,9 +245,9 @@ const Navbar = memo(() => {
             <Button 
               onClick={() => openLeadForm("dynamic_island")}
               size="sm"
-              className="gradient-button rounded-full px-3 lg:px-4 h-7 lg:h-9 text-[10px] lg:text-sm shadow-md shadow-primary/20 shrink-0"
+              className="gradient-button rounded-full px-3 lg:px-4 h-7 lg:h-9 text-[10px] lg:text-sm shadow-md shadow-primary/20 shrink-0 font-bold"
             >
-              <span className="hidden sm:inline">Inizia gratis</span>
+              <span className="hidden sm:inline">Prova Gratis</span>
               <Sparkles className="w-3.5 h-3.5 sm:hidden" />
             </Button>
           </div>
