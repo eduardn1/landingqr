@@ -86,7 +86,7 @@ Si propone un'architettura in 21 sezioni che guidi l'utente dal problema alla so
 **Roadmap di implementazione:**
 1.  **Sprint 1: [COMPLETATO]** Design System Foundation (Palette Emerald/Teal, Font Inter/Bricolage, Sfondo Off-white) e Fix UI/UX critici.
 2.  **Sprint 2: [COMPLETATO]** Rifacimento Copywriting strategico su tutte le sezioni (Hero, Features, HowItWorks, FAQ) e allineamento messaging.
-3.  **Sprint 3: [IN PROGRAMMA]** Implementazione moduli specifici (Prenotazioni, Magazzino, WhatsApp) e sezioni Use Cases.
-4.  **Sprint 4: [IN PROGRAMMA]** Pagine secondarie (Chi Siamo, Contatti) e ottimizzazione finale SEO/UX.
+3.  **Sprint 3: [COMPLETATO]** Implementazione moduli specifici (Prenotazioni, Magazzino, WhatsApp) e sezioni Use Cases.
+4.  **Sprint 4: [IN CORSO]** Pagine secondarie (Chi Siamo, Contatti) e ottimizzazione finale SEO/UX con documentazione completa.
 
 ---
