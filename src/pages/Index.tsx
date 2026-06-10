@@ -25,6 +25,8 @@ const ProblemSolution = lazy(() => import("@/components/landing/ProblemSolution"
 const Features = lazy(() => import("@/components/landing/Features"));
 const ProductShowcase = lazy(() => import("@/components/landing/ProductShowcase"));
 const HowItWorks = lazy(() => import("@/components/landing/HowItWorks"));
+const UseCases = lazy(() => import("@/components/landing/UseCases"));
+const ReservationsModule = lazy(() => import("@/components/landing/ReservationsModule"));
 const Pricing = lazy(() => import("@/components/landing/Pricing"));
 const Testimonials = lazy(() => import("@/components/landing/Testimonials"));
 const FAQCard = lazy(() => import("@/components/landing/FAQCard"));
@@ -51,6 +53,8 @@ const Index = () => {
           <ProblemSolution />
           <Features />
           <HowItWorks />
+          <UseCases />
+          <ReservationsModule />
           <ProductShowcase />
           <Pricing />
           <Testimonials />
